@@ -1,0 +1,27 @@
+!!!
+%html{:lang => "en"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_html_head.haml")).render
+
+	%body#page_home
+
+
+		-# loads SVG file into document
+		= Haml::Engine.new(File.read("dev/haml/partials/_js_svg.haml")).render
+
+
+		%header
+
+			%h1 NA
+
+			%h2.subhead-1 Design Concepts / Round 2
+			%h2.subhead-2 For Sandwich
+
+
+		%main{:role => "main"}
+
+			%p Hello!
+
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_scripts.haml")).render
+		-# = Haml::Engine.new(File.read("dev/haml/partials/_js_analytics.haml")).render

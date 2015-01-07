@@ -1,0 +1,16 @@
+%head
+
+	%meta{:charset => "utf-8"}
+	%meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge"}
+
+	%title Northman &ndash; Insurance for the Wild
+
+	%meta{:name => "description", :content => "Insurance for the world."}
+	%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+
+	%meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+	%meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_js_fonts.haml")).render
+
+	%link{:rel => "stylesheet", :href => "assets/css/styles.min.css?v=1"}

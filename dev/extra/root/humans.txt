@@ -1,0 +1,9 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+
+	Northern Army: Ryan Anderson, Rene Antunes, Sian Jones, Curtis Dulmage
+	Site: http://northandnavy.com/
+	Location: Ottawa, Ontario, Canada
