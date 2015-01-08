@@ -1,0 +1,13 @@
+%footer
+
+	%p
+		:plain
+			Your privacy is paramount. Please read our <a href="#" title="">privacy policy and terms of service</a>.
+
+	%ul
+		%li northman
+		%li
+			%a#secret_email{:href => "#", :title => "Email Northman"} email us
+		%li 1 (844) 207-7522
+
+= Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

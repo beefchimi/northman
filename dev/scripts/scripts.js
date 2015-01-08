@@ -6,61 +6,49 @@ document.addEventListener('DOMContentLoaded', function() {
 	var elBody = document.body;
 
 
-	// Gallery
+	// Navigation: Click to toggle navigation
 	// ----------------------------------------------------------------------------
-	function gallery() {
+	function navToggle() {
 
-		var arrGalleryLinks         = document.querySelectorAll('.gallery_link'),
-			numGalleryCount         = arrGalleryLinks.length,
-			numGalleryCountAdjusted = numGalleryCount - 1,
-			elGalleryOverlay        = document.getElementById('gallery'),
-			elGalleryPrev           = document.getElementById('nav_prev'),
-			elGalleryNext           = document.getElementById('nav_next'),
-			elGalleryClose          = document.getElementById('nav_close'),
-			elGalleryTitle          = document.getElementById('title_current'),
-			elGalleryImage          = document.getElementById('gallery_image'),
-			arrGallerySource        = [],
-			arrGalleryTitle         = [],
-			dataCurrent,
-			dataSRC;
+		var elNavToggle = document.getElementById('nav_toggle');
 
-		for (var i = 0; i < numGalleryCount; i++) {
-			launchGallery(arrGalleryLinks[i], i);
-		}
+		elNavToggle.addEventListener('click', function(e) {
 
-		function launchGallery(thisGalleryLink, index) {
+			// classie.toggle(elBody, 'nav-active');
 
-			arrGallerySource.push(thisGalleryLink.getAttribute('href'));
-			arrGalleryTitle.push(thisGalleryLink.getAttribute('title'));
-
-			thisGalleryLink.addEventListener('click', function(e) {
-
-				dataCurrent = index;
-
-				loadImage();
-
-				elBody.setAttribute('data-gallery', 'active');
-
-				e.preventDefault();
-
-			});
-
-		}
-
-		elGalleryClose.addEventListener('click', function(e) {
-
-			elBody.setAttribute('data-gallery', 'inactive');
+			if (elBody.getAttribute('data-nav') == 'active') {
+				elBody.setAttribute('data-nav', 'inactive');
+			} else {
+				elBody.setAttribute('data-nav', 'active');
+			}
 
 			e.preventDefault();
 
-		});
+		}, false);
+
+	}
+
+
+	// secretEmail: Add mailto link to footer
+	// ----------------------------------------------------------------------------
+	function secretEmail() {
+
+		var mailLink    = document.getElementById('secret_email'),
+			prefix      = 'mailto',
+			local       = 'info',
+			domain      = 'northman',
+			suffix      = 'co';
+
+		mailLink.setAttribute('href', prefix + ':' + local + '@' + domain + '.' + suffix);
+		mailLink.innerHTML = local + '@' + domain + '.' + suffix;
 
 	}
 
 
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
-	// gallery();
+	navToggle();
+	secretEmail();
 
 
 }, false);

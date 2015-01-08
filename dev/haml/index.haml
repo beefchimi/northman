@@ -1,27 +1,62 @@
 !!!
 %html{:lang => "en"}
 
-	= Haml::Engine.new(File.read("dev/haml/partials/_html_head.haml")).render
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_home
+	%body#page_home{"data-nav" => "inactive"}
 
-
-		-# loads SVG file into document
-		= Haml::Engine.new(File.read("dev/haml/partials/_js_svg.haml")).render
-
-
-		%header
-
-			%h1 NA
-
-			%h2.subhead-1 Design Concepts / Round 2
-			%h2.subhead-2 For Sandwich
-
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
 		%main{:role => "main"}
 
-			%p Hello!
+			%section
+
+				%h1.visuallyhidden Insurance For The Wild.
+				.wrap_img
+					%img.temp_tagline{:src => "assets/img/temp_tagline.png", :alt => "Insurance For The Wild"}
+
+				-# .wrap_svg
+					-# %svg.svg_nm-tagline
+						-# %use{"xlink:href" => "#nm_tagline"}
+
+				%form#form_home.form_home.has_dropdown
+
+					%label{:for => "select_location"} Where are you going?
+
+					.wrap_select{"data-selected" => ""}
+
+						%select#select_location{:name => "select_location"}
+							%option{:value => "location_ottawa-canada"} Ottawa, Canada
+							%option{:value => "location_toronto-canada"} Toronto, Canada
+							%option{:value => "location_berlin-germany"} Berlin, Germany
+							%option{:value => "location_mexicocity-mexico"} Mexico City, Mexico
+							%option{:value => "location_boston-usa"} Boston, USA
+							%option{:value => "location_newyork-usa"} New York, USA
+							%option{:value => "location_zurich-switzerland"} Zürich, Switzerland
+
+						.dropdown_toggle
+							%span.dropdown_placeholder.truncate Select Your Destination asjdaubnsda
+							%svg.svg_ui-globe
+								%use{"xlink:href" => "#ui_globe"}
 
 
-		= Haml::Engine.new(File.read("dev/haml/partials/_html_scripts.haml")).render
-		-# = Haml::Engine.new(File.read("dev/haml/partials/_js_analytics.haml")).render
+						.wrap_scroll-list{"data-maxheight" => "320"}
+							%ul.dropdown_list
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "location_ottawa-canada"} Ottawa, Canada
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "location_toronto-canada"} Toronto, Canada
+								%li.dropdown_option.disabled
+									%a.dropdown_link{:href => "#", "data-value" => "location_berlin-germany"} Berlin, Germany
+								%li.dropdown_option.disabled
+									%a.dropdown_link{:href => "#", "data-value" => "location_mexicocity-mexico"} Mexico City, Mexico
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "location_boston-usa"} Boston, USA
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "location_newyork-usa"} New York, USA
+								%li.dropdown_option.disabled
+									%a.dropdown_link{:href => "#", "data-value" => "location_zurich-switzerland"} Zürich, Switzerland
+
+					%button#submit_home.submit_home.btn_rnd-hlw{:type => "button"} Get A Price
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

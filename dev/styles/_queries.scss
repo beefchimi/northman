@@ -4,76 +4,19 @@
 
 @media only screen and (min-width: 30em) { // 480px / 16px = 30em
 
-	// Home Page
-	// ----------------------------------------------------------------------------
-	main {
-		max-width: 117rem; // 1106px + padding (32px x 2)
-	}
-	main div.gutter-sizer {
-		width: 2rem; // 4.545454545455%;
-		visibility: visible;
-	}
-	main article {
-		margin-bottom: 4rem;
-		width: calc(50% - 3rem); // 43.75%;
-	}
+
 
 }
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em
 
-	// Home Page
-	// ----------------------------------------------------------------------------
-	main {
-		padding-bottom: 3.2rem;
-	}
-	main article {
-		width: calc(33.33333333333333% - 2.7rem); // 28.169014084507%; // 568px - 40px - 48px / 3
-	}
+
 
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
 
-	// Header
-	// ----------------------------------------------------------------------------
-	header {
-		padding: 6rem 3.2rem 10rem 3.2rem;
-	}
 
-	// Home Page
-	// ----------------------------------------------------------------------------
-	main {
-		padding: 0 3.2rem 6rem 3.2rem;
-	}
-	main div.gutter-sizer {
-		width: 2.5rem; // 2.790178571429%; // 25 / 896
-	}
-	main article {
-		margin-bottom: 6rem;
-		width: calc(33.33333333333333% - 3.9rem); // 29.375%; // 960 - 64 = 896 - 48 = 848 / 3 = 282.66666666666667
-	}
-
-	// Gallery
-	// ----------------------------------------------------------------------------
-	nav h4 {
-		display: block;
-		visibility: visible;
-	}
-
-}
-
-@media only screen and (min-width: 73.125em) { // 1170px / 16px = 73.125em
-
-	// Home Page
-	// ----------------------------------------------------------------------------
-	main div.gutter-sizer {
-		width: 7.6rem; // 6.871609403255%; // 76 / 1106 = 0.06871609403255
-	}
-	main article {
-		margin-bottom: 3.2rem;
-		width: calc(33.33333333333333% - 7.2rem); // 27.179487179487%; // 318 / 1170 = 0.27179487179487
-	}
 
 }
 

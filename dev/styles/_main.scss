@@ -1,116 +1,389 @@
 // ==|== primary styles =======================================================
 // ============================================================================
 
+// SASS Variables
+// ----------------------------------------------------------------------------
+
+$nm_orange: hsla(16,100%,54%,1);
+$nm_cream:  hsla(60,11%,93%,1);
+
 // Foundation
 // ----------------------------------------------------------------------------
-/*
 html,
-body {
-	min-height: 100%;
-	height: 100%;
-}
-*/
-html {
-	font-family: "Apercu Medium", "Helvetica Neue", Helvetica, Calibri, sans-serif;
-	font-size-adjust: 0.508;
-	font-weight: 600;
-	font-style: normal;
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: 'futura-pt', Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 body {
 	position: relative;
+	background: $nm_cream;
 }
 ::selection {
 	color: hsla(0,0%,0%,1);
 	background-color: hsla(0,0%,0%,1);
 }
+// + autoprefixer does not recognize placeholder + \\
+::-webkit-input-placeholder {
+	color: transparent;
+}
+::-moz-placeholder {
+	color: transparent;
+}
+:-ms-input-placeholder {
+	color: transparent;
+}
 
 // Transitions
 // ----------------------------------------------------------------------------
-a {
+a,
+input,
+button {
 	transition: all 0.2s ease-in-out;
-	backface-visibility: hidden; // required because <article> hovers were not working properly
+	// backface-visibility: hidden;
 }
 svg {
 	transition: fill 0.2s ease-in-out;
 }
-nav {
+header a.wrap_svg svg {
+	transition-duration: 0.4s;
+	// transition: fill 1s linear;
+}
+a.nav_toggle div.wrap_menu span {
+	transition: top 0.4s ease-in-out, background-color 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+/*
+nav ul {
 	transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
-main article a img {
-	transition: border-color 0.2s ease-in-out;
-}
-
-
-main article {
-	transition: opacity 0.4s ease-in-out;
-}
-
+*/
 
 // General Styles
 // ----------------------------------------------------------------------------
-svg {
+svg,
+.wrap_svg {
 	display: block;
+}
+.wrap_svg svg {
 	width: 100%;
 	height: 100%;
 }
-
-// CSS Loader
-// ----------------------------------------------------------------------------
-div.loader {
-	position: absolute;
-	z-index: 1;
-	top: 12rem;
-	left: 50%;
-	margin-left: -3.5rem;
-	width: 7rem;
-}
-div.loader div.loader_circle {
-	display: inline-block;
-	width: 1.8rem;
-	height: 1.8rem;
-	background-color: hsla(0,0%,80%,1);
-	border-radius: 100%;
-	animation: loadPulse 1.4s ease-in-out infinite both;
-}
-div.loader div.circle-1 {
-	animation-delay: -0.32s;
-}
-div.loader div.circle-2 {;
-	animation-delay: -0.16s;
-}
-// + animation + \\
-@keyframes loadPulse {
-	0%,
-	80%,
-	100% {
-		transform: scale(0.0);
-	}
-	40% {
-		transform: scale(1.0);
-	}
+// + hide SVG container + \\
+#svgInject {
+	display: none;
+	visibility: hidden;
 }
 
 // Header
 // ----------------------------------------------------------------------------
 header {
-	padding: 4.8rem 2rem;
+	padding: 2rem;
+	// background-color: $nm_cream;
+}
+// --- Wordmark --- \\
+header a.wrap_svg {
+	float: left;
+	position: relative;
+	z-index: 301;
+	width: 15.5rem;
+	height: 4.2rem;
+}
+header a.wrap_svg svg {
+	fill: $nm_orange;
+}
+header a.wrap_svg:hover svg {
+	fill: hsla(0,0%,20%,1);
+}
+header a.wrap_svg:active svg {
+	fill: hsla(0,0%,40%,1);
+}
+
+
+
+html,
+body {
+	min-height: 100%;
+	height: 100%;
+}
+// --- Header Overlay --- \\
+nav.nav_primary ul {
+	position: fixed;
+	z-index: 300;
+	top: 0;
+	left: -150%;
+	width: 100%;
+	height: 100%;
+	padding-top: 12rem;
+	text-align: center;
+	background-color: $nm_orange;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+@keyframes navShow {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes navHide {
+	0% {
+		opacity: 1;
+		left: 0;
+	}
+	100% {
+		opacity: 0;
+		left: 0;
+	}
+}
+// + header overlay states + \\
+body[data-nav="active"] {
+	overflow-y: hidden;
+}
+body[data-nav="active"] nav.nav_primary ul {
+	left: 0;
+	animation: navShow 0.4s ease-in-out;
+}
+body[data-nav="inactive"] nav.nav_primary ul {
+	animation: navHide 0.4s ease-in-out;
+}
+
+
+
+// --- Navigation --- \\
+nav.nav_primary {
+	float: right;
+	width: 4rem;
+	height: 4rem;
+}
+/*
+nav.nav_primary ul {
+	position: fixed;
+	z-index: 300;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding-top: 12rem;
+	text-align: center;
+	background-color: $nm_orange;
+	opacity: 0;
+	visibility: hidden;
+}
+*/
+nav.nav_primary ul li {
+	margin-bottom: 2.6rem;
+}
+nav.nav_primary ul li a {
+	font-size: 2.2rem;
+	font-weight: 700; // futura bold
+	color: $nm_cream;
+}
+nav.nav_primary ul li a:hover {
+	color: hsla(0,0%,20%,1);
+}
+nav.nav_primary ul li a:active {
+	color: hsla(0,0%,40%,1);
+}
+// --- Nav Toggle --- \\
+a.nav_toggle {
+	display: block;
+	position: relative;
+	z-index: 301;
+	margin-top: 0.2rem;
+	width: 4rem;
+	height: 4rem;
+}
+a.nav_toggle div.wrap_menu {
+	position: relative;
+	top: 0.9rem;
+	left: 0.4rem;
+	width: 3.2rem;
+	height: 2.2rem;
+}
+a.nav_toggle div.wrap_menu span {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 0.3rem;
+	background-color: $nm_orange;
+}
+a.nav_toggle div.wrap_menu span.one {
+	top: 0;
+}
+a.nav_toggle div.wrap_menu span.two {
+	top: 0.9rem;
+}
+a.nav_toggle div.wrap_menu span.three {
+	top: 1.8rem;
+}
+/*
+	a.nav_toggle:hover div.wrap_menu span {
+		background-color: hsla(0,0%,20%,1);
+	}
+	a.nav_toggle:active div.wrap_menu span {
+		background-color: hsla(0,0%,40%,1);
+	}
+*/
+// --- Nav Active --- \\
+body[data-nav="active"] a.nav_toggle div.wrap_menu span {
+	background-color: $nm_cream;
+}
+body[data-nav="active"] a.nav_toggle div.wrap_menu span.one {
+	top: 0.9rem;
+	transform: rotate(-45deg);
+}
+body[data-nav="active"] a.nav_toggle div.wrap_menu span.two {
+	opacity: 0;
+	transform: scale(0.2);
+}
+body[data-nav="active"] a.nav_toggle div.wrap_menu span.three {
+	top: 0.9rem;
+	transform: rotate(45deg);
+}
+body[data-nav="active"] header a.wrap_svg svg {
+	fill: $nm_cream;
+}
+/*
+body.nav-active nav.nav_primary ul {
+	opacity: 1;
+	visibility: visible;
+}
+*/
+
+// Footer
+// ----------------------------------------------------------------------------
+footer {
+	padding: 4rem 2rem;
 	text-align: center;
 }
-header h1 {
-	margin-bottom: 4.8rem;
-	font-family: "Apercu Bold", "Helvetica Neue", Helvetica, Calibri, sans-serif;
-	font-weight: bold;
-	font-size: 2rem;
-	color: hsla(41,44%,61%,1);
+footer p {
+	margin-bottom: 4rem;
+	font-family: 'adelle', Georgia,Times, "Times New Roman", serif;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	color: $nm_orange;
 }
-header h2 {
-	font-size: 1.6rem;
-	line-height: 1.2;
-	color: hsla(0,0%,21%,1);
+footer p a {
+	font-weight: 700;
 }
-header h2:first-of-type {
-	margin-bottom: 0.6rem;
+footer ul li {
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+	font-style: italic;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	color: $nm_orange;
 }
+footer ul li:last-child {
+	margin-bottom: 0;
+}
+// + footer links + \\
+footer a {
+	color: $nm_orange;
+}
+footer a:hover {
+	color: hsla(0,0%,20%,1);
+}
+footer a:active {
+	color: hsla(0,0%,30%,1);
+}
+
+// Forms
+// ----------------------------------------------------------------------------
+
+.wrap_select > select {
+	// visually hidden class
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+	position: absolute;
+	margin: -0.1rem;
+	padding: 0;
+	width: 0.1rem;
+	height: 0.1rem;
+	border: 0;
+}
+
+
+.wrap_select ul {
+	display: none;
+}
+
+
+div.dropdown_toggle {
+	cursor: pointer;
+	position: relative;
+	max-width: 39rem;
+	height: 4.8rem; // 6rem;
+	background-color: $nm_cream;
+	border-radius: 0.8rem;
+
+	transition: all 0.2s ease-in-out;
+}
+div.dropdown_toggle span {
+	display: block;
+	padding: 0 4.8rem 0 1.6rem;
+	font-size: 1.8rem; // 2.1rem;
+	font-weight: 700; // futura bold
+	line-height: 4.8rem;
+	color: hsla(0,0%,20%,1);
+}
+
+
+div.dropdown_toggle:hover {
+	opacity: 0.9;
+}
+div.dropdown_toggle:active {
+	opacity: 1;
+}
+
+
+
+// Buttons
+// ----------------------------------------------------------------------------
+[class*="btn_"] {
+	display: block; // inline-block does not allow margin centering
+	padding: 1.2rem 2rem;
+	font-size: 1.4rem;
+	font-weight: 700; // futura bold
+	letter-spacing: 0.2rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
+.btn_rnd-hlw {
+	border: 0.2rem solid $nm_cream;
+	border-radius: 0.8rem;
+}
+
+
+
+.btn_rnd-hlw:hover {
+	color: $nm_orange;
+	border-color: $nm_orange;
+}
+.btn_rnd-hlw:active {
+	opacity: 0.8;
+}
+
+
+/*
+.btn_rnd-hlw {
+	background-color: transparent;
+}
+.btn_rnd-hlw:hover {
+	background-color: $nm_orange;
+	border-color: $nm_orange;
+}
+.btn_rnd-hlw:active {
+	opacity: 0.8;
+}
+*/
 
 
 // ==|== page styles ==========================================================
@@ -118,185 +391,51 @@ header h2:first-of-type {
 
 // Home Page
 // ----------------------------------------------------------------------------
-main {
+main section {
+	background-image: url('../img/bg_home.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+main section div.wrap_img {
 	margin: 0 auto;
-	padding: 2rem 2rem 8rem 2rem;
-	max-width: 35.8rem; // 318px + padding (20px x 2)
-}
-main div.gutter-sizer {
-	width: 0;
-	visibility: hidden;
-}
-main article {
-	margin-bottom: 8rem;
-	width: calc(100% - 4rem); // minus computed <main> padding
-	opacity: 0.1;
+	padding: 4rem 2rem;
+	max-width: 76.3rem; // svg width + padding (2 x 20px)
 }
 
-main article.loaded {
-	opacity: 1;
+
+form.form_home {
+	padding: 3.2rem 2rem;
+	border-top: 0.1rem solid $nm_cream;
 }
 
-main article:last-child {
-	margin-bottom: 0;
-}
-main article h3 {
-	margin-top: 2.8rem;
-	font-size: 1.4rem;
-	text-align: center;
-}
-main article a {
+
+form.form_home label {
 	display: block;
-	color: hsla(0,0%,21%,1);
-}
-main article a img {
-	border: 0.1rem solid hsla(0,0%,0%,0.2);
-}
-main article a:hover {
-	color: hsla(41,44%,61%,1);
-	opacity: 0.86;
-}
-main article a:hover img {
-	border-color: hsla(0,0%,0%,0.3);
-}
-main article a:active {
-	color: hsla(41,44%,51%,1);
-	opacity: 0.96;
-}
-/* TESTING ONLY
-main p {
 	margin-bottom: 3.2rem;
-	font-size: 1.6rem;
-	line-height: 1.3;
-	color: hsla(0,0%,21%,1);
-}
-*/
-
-// Gallery
-// ----------------------------------------------------------------------------
-@keyframes galleryShow {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-@keyframes galleryHide {
-	0% {
-		opacity: 1;
-		left: 0;
-	}
-	100% {
-		opacity: 0;
-		left: 0;
-	}
-}
-aside {
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: -150%;
-	width: 100%;
-	height: 100%;
-	padding-top: 6.4rem;
-	background-color: hsla(0,0%,100%,1);
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
-}
-aside img {
-	display: block;
-	position: relative;
-	z-index: 2;
-	margin: 0 auto;
-	color: hsla(0,0%,100%,0);
-
-	// opacity: 0;
-}
-// + overlay states + \\
-body[data-gallery="active"] {
-	overflow-y: hidden;
-}
-body[data-gallery="active"] aside {
-	left: 0;
-	animation: galleryShow 0.4s ease-in-out;
-}
-body[data-gallery="inactive"] aside {
-	animation: galleryHide 0.4s ease-in-out;
-}
-body[data-gallery="active"] nav {
-	opacity: 1;
-	visibility: visible;
-}
-body[data-gallery="inactive"] nav {
-	opacity: 0;
-	visibility: hidden;
-}
-// --- Navigation --- \\
-nav {
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	right: 0;
-	left: 0;
-	height: 6.4rem;
+	font-size: 1.8rem;
+	font-weight: 700; // futura bold
+	letter-spacing: 0.3rem;
 	text-align: center;
-	background-color: hsla(0,0%,100%,0.96);
-}
-nav h4 {
-	display: none;
-	visibility: hidden;
-	position: fixed;
-	top: 2.3rem;
-	left: 3.2rem;
-	font-size: 1.4rem;
-	color: hsla(0,0%,21%,1);
-}
-nav a.nav_close {
-	display: inline-block;
-	padding: 2.3rem 2rem 2.2rem 2rem;
-	font-size: 1.4rem;
 	text-transform: uppercase;
-	color: hsla(0,0%,21%,1);
+	color: $nm_cream;
 }
-nav a.nav_close:hover {
-	color: hsla(41,44%,61%,1);
-}
-nav a.nav_close:active {
-	color: hsla(41,44%,51%,1);
-}
-nav a.nav_arrow {
-	display: block;
-	position: absolute;
-	top: 1.2rem;
-	left: 50%;
-	margin-left: -2.1rem;
-	padding: 1rem;
-	width: 4.2rem; // actual width of svg: 2.2rem
-	height: 4.2rem; // actual height of svg: 2.2rem
-}
-nav a.nav_prev {
-	transform: translateX(-8rem);
-}
-nav a.nav_next {
-	transform: translateX(8rem) rotate(180deg);
-}
-nav a.nav_arrow svg {
-	fill: hsla(0,0%,21%,1);
-}
-nav a.nav_arrow:hover svg {
-	fill: hsla(41,44%,61%,1);
-}
-nav a.nav_arrow:active svg {
-	fill: hsla(41,44%,51%,1);
+
+form.form_home button {
+	margin: 0 auto;
 }
 
 
-// --- Preload --- \\
-ul.preload {
-	display: none !important;
-	visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+form.form_home div.dropdown_toggle {
+	margin-bottom: 2rem;
 }
+form.form_home div.dropdown_toggle svg.svg_ui-globe {
+	position: absolute;
+	top: 1.4rem;
+	right: 1.6rem;
+	fill: $nm_orange;
+	width: 2rem;
+	height: 2rem;
+}
+
+
