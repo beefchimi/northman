@@ -9,7 +9,7 @@
 
 		%main{:role => "main"}
 
-			%section
+			%section.home_intro
 
 				%h1.visuallyhidden Insurance For The Wild.
 				.wrap_img
@@ -39,7 +39,6 @@
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
 
-
 						.wrap_scroll-list{"data-maxheight" => "320"}
 							%ul.dropdown_list
 								%li.dropdown_option
@@ -58,5 +57,15 @@
 									%a.dropdown_link{:href => "#", "data-value" => "location_zurich-switzerland"} Zürich, Switzerland
 
 					%button#submit_home.submit_home.btn_rnd-hlw{:type => "button"} Get A Price
+
+			%section.home_details
+
+				%article.details_why
+
+				%article.details_packages
+
+				%article.details_coverage
+
+
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
