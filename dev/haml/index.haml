@@ -3,7 +3,7 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_home{"data-nav" => "inactive"}
+	%body#page_home
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
@@ -58,7 +58,7 @@
 
 					%button#submit_home.submit_home.btn_rnd.btn_cream{:type => "button"} Get A Price
 
-			%section.home_details
+			%section.home_details{"data-container" => "width-1440"}
 
 				%article.details_why
 
@@ -114,6 +114,6 @@
 						%li Off-Piste Skiing &amp; Snowboarding
 						%li Winter Sports
 
-
+					%a.btn_rnd.btn_orange{:href => "#", :title => "The Full List"} The Full List
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

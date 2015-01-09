@@ -46,24 +46,18 @@ body {
 a,
 input,
 button {
-	transition: all 0.2s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	// backface-visibility: hidden;
 }
 svg {
-	transition: fill 0.2s ease-in-out;
-}
-header a.wrap_svg svg {
-	transition-duration: 0.4s;
-	// transition: fill 1s linear;
+	transition: fill 0.3s ease-in-out;
 }
 a.nav_toggle div.wrap_menu span {
-	transition: top 0.4s ease-in-out, background-color 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+	transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-/*
-nav ul {
-	transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+nav.nav_primary {
+	transition: max-height 0.4s ease-in-out;
 }
-*/
 
 // General Styles
 // ----------------------------------------------------------------------------
@@ -81,17 +75,26 @@ svg,
 	visibility: hidden;
 }
 
+
+
+[data-container] {
+	margin-left: auto;
+	margin-right: auto;
+}
+[data-container="width-1440"] {
+	max-width: 144rem;
+}
+
+
 // Header
 // ----------------------------------------------------------------------------
 header {
-	padding: 2rem;
+	position: relative;
 	// background-color: $nm_cream;
 }
 // --- Wordmark --- \\
 header a.wrap_svg {
-	float: left;
-	position: relative;
-	z-index: 301;
+	margin: 2rem 1.6rem;
 	width: 15.5rem;
 	height: 4.2rem;
 }
@@ -104,45 +107,13 @@ header a.wrap_svg:hover svg {
 header a.wrap_svg:active svg {
 	fill: hsla(0,0%,40%,1);
 }
-// --- Navigation --- \\
-nav.nav_primary {
-	float: right;
-	width: 4rem;
-	height: 4rem;
-}
-nav.nav_primary ul {
-	position: fixed;
-	z-index: 300;
-	top: 0;
-	left: -150%;
-	width: 100%;
-	height: 100%;
-	padding-top: 12rem;
-	text-align: center;
-	background-color: $nm_orange;
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
-}
-nav.nav_primary ul li {
-	margin-bottom: 2.6rem;
-}
-nav.nav_primary ul li a {
-	font-size: 2.2rem;
-	font-weight: 700; // futura bold
-	color: $nm_cream;
-}
-nav.nav_primary ul li a:hover {
-	color: hsla(0,0%,20%,1);
-}
-nav.nav_primary ul li a:active {
-	color: hsla(0,0%,40%,1);
-}
 // --- Nav Toggle --- \\
 a.nav_toggle {
 	display: block;
-	position: relative;
-	z-index: 301;
-	margin-top: 0.2rem;
+	position: absolute;
+	z-index: 100;
+	top: 2rem;
+	right: 1.6rem;
 	width: 4rem;
 	height: 4rem;
 }
@@ -170,102 +141,59 @@ a.nav_toggle div.wrap_menu span.two {
 a.nav_toggle div.wrap_menu span.three {
 	top: 1.8rem;
 }
-/*
-	a.nav_toggle:hover div.wrap_menu span {
-		background-color: hsla(0,0%,20%,1);
-	}
-	a.nav_toggle:active div.wrap_menu span {
-		background-color: hsla(0,0%,40%,1);
-	}
-*/
-// --- Nav Active --- \\
-@keyframes navShow {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+// --- Navigation --- \\
+nav.nav_primary {
+	max-height: 0;
+	text-align: center;
+	background-color: $nm_orange;
+	overflow-y: hidden;
 }
-@keyframes navHide {
-	0% {
-		opacity: 1;
-		left: 0;
-	}
-	100% {
-		opacity: 0;
-		left: 0;
-	}
+nav.nav_primary ul {
+	padding: 3.2rem 1.6rem;
 }
-body[data-nav="active"] nav.nav_primary ul {
-	left: 0;
-	animation: navShow 0.4s ease-in-out;
+nav.nav_primary ul li {
+	margin-bottom: 2.6rem;
 }
-body[data-nav="inactive"] nav.nav_primary ul {
-	animation: navHide 0.4s ease-in-out;
+nav.nav_primary ul li:last-child {
+	margin-bottom: 0;
 }
-body[data-nav="active"] header a.wrap_svg svg {
-	fill: $nm_cream;
+nav.nav_primary ul li a {
+	font-size: 2rem;
+	font-weight: 700; // futura bold
+	color: $nm_cream;
 }
-body[data-nav="active"] a.nav_toggle div.wrap_menu span {
-	background-color: $nm_cream;
+nav.nav_primary ul li a:hover {
+	color: hsla(0,0%,20%,1);
 }
-body[data-nav="active"] a.nav_toggle div.wrap_menu span.one {
+nav.nav_primary ul li a:active {
+	color: hsla(0,0%,40%,1);
+}
+// --- Toggled: Mobile Nav --- \\
+body.toggled_mobile-nav nav.nav_primary {
+	max-height: 32rem;
+}
+body.toggled_mobile-nav a.nav_toggle div.wrap_menu span.one {
 	top: 0.9rem;
 	transform: rotate(-45deg);
 }
-body[data-nav="active"] a.nav_toggle div.wrap_menu span.two {
+body.toggled_mobile-nav a.nav_toggle div.wrap_menu span.two {
 	opacity: 0;
 	transform: scale(0.2);
 }
-body[data-nav="active"] a.nav_toggle div.wrap_menu span.three {
+body.toggled_mobile-nav a.nav_toggle div.wrap_menu span.three {
 	top: 0.9rem;
 	transform: rotate(45deg);
 }
 
-
-// + header overlay states + \\
-
-/*
-nav.nav_primary ul {
-	position: fixed;
-	z-index: 300;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding-top: 12rem;
-	text-align: center;
-	background-color: $nm_orange;
-	opacity: 0;
-	visibility: hidden;
-}
-body.nav-active nav.nav_primary ul {
-	opacity: 1;
-	visibility: visible;
-}
-*/
-
-/* BREAKS MOMENTUM SCROLLING ON iOS
-html,
-body {
-	min-height: 100%;
-	height: 100%;
-}
-body[data-nav="active"] {
-	overflow-y: hidden;
-}
-*/
-
 // Footer
 // ----------------------------------------------------------------------------
 footer {
-	padding: 4rem 2rem;
+	padding: 4rem 1.6rem;
 	text-align: center;
 }
 footer p {
 	margin-bottom: 4rem;
-	font-family: 'adelle', Georgia,Times, "Times New Roman", serif;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
 	line-height: 1.4;
 	color: $nm_orange;
@@ -324,24 +252,22 @@ div.dropdown_toggle {
 	height: 4.8rem; // 6rem;
 	background-color: $nm_cream;
 	border-radius: 0.8rem;
-
-	transition: all 0.2s ease-in-out;
+	// transition: all 0.2s ease-in-out;
 }
-div.dropdown_toggle span {
-	display: block;
-	padding: 0 4.8rem 0 1.6rem;
-	font-size: 1.8rem; // 2.1rem;
-	font-weight: 700; // futura bold
-	line-height: 4.8rem;
-	color: hsla(0,0%,20%,1);
-}
-
-
 div.dropdown_toggle:hover {
 	opacity: 0.9;
 }
 div.dropdown_toggle:active {
 	opacity: 1;
+}
+
+div.dropdown_toggle span {
+	display: block;
+	padding: 0 1.6rem;
+	font-size: 1.8rem; // 2.1rem;
+	font-weight: 700; // futura bold
+	line-height: 4.8rem;
+	color: hsla(0,0%,20%,1);
 }
 
 
@@ -389,14 +315,11 @@ div.dropdown_toggle:active {
 }
 
 
-
-
 // ==|== page styles ==========================================================
 // ============================================================================
 
 // Home Page
 // ----------------------------------------------------------------------------
-
 // --- Home Intro --- \\
 section.home_intro {
 	background-image: url('../img/bg_home.jpg');
@@ -411,7 +334,7 @@ section.home_intro div.wrap_img {
 }
 // + destination form + \\
 form.form_home {
-	padding: 3.2rem 2rem;
+	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_cream;
 }
 form.form_home label {
@@ -424,13 +347,11 @@ form.form_home label {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-/*
-form.form_home button {
-	margin: 0 auto;
-}
-*/
 form.form_home div.dropdown_toggle {
 	margin: 0 auto 2rem auto;
+}
+form.form_home div.dropdown_toggle span {
+	padding-right: 4.8rem;
 }
 form.form_home div.dropdown_toggle svg.svg_ui-globe {
 	position: absolute;
@@ -440,34 +361,25 @@ form.form_home div.dropdown_toggle svg.svg_ui-globe {
 	width: 2rem;
 	height: 2rem;
 }
-
-
 // --- Home Details --- \\
-section.home_details {
-	// padding-top: 6rem;
-}
 section.home_details article {
-	padding: 4.8rem 2rem;
+	padding: 4.8rem 1.6rem;
 	text-align: center;
+	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
-}
 /*
-section.home_details article:last-child {
-	padding-bottom: 0;
-	border-bottom: none;
-}
+	border-width: 0.2rem;
+	border-style: solid;
+	border-color: $nm_orange;
 */
+}
 section.home_details article div.wrap_svg {
-	margin: 0 auto 3.2rem auto;
+	margin: 0 auto 4rem auto;
 	width: 6.4rem;
 	height: 6.4rem;
 }
 section.home_details article div.wrap_svg svg {
 	fill: $nm_orange;
-}
-
-section.home_details article {
-	color: hsla(0,0%,15%,1);
 }
 section.home_details article h2,
 section.home_details article ul li {
@@ -480,28 +392,29 @@ section.home_details article h2 {
 	letter-spacing: 0.2rem;
 }
 section.home_details article p {
-	margin-bottom: 3.2rem;
-	font-family: 'adelle', Georgia,Times, "Times New Roman", serif;
+	margin-bottom: 4rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem; // 1.7rem;
 	line-height: 1.4;
 }
-
-
 section.home_details article ul {
+	margin-bottom: 4rem;
 	padding: 2.4rem 1.6rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
 section.home_details article ul li {
-	margin-bottom: 1rem;
-	font-family: 'adelle', Georgia,Times, "Times New Roman", serif;
+	margin-bottom: 1.6rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.2rem;
 	line-height: 1.4;
 }
 section.home_details article ul li:last-child {
 	margin-bottom: 0;
 }
-
-
+// + individual articles + \\
 article.details_why {
 }
+
+
+
 

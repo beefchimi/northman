@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
+/*
+	MAJOR REVELATION!
+	IOS8 CHOKES ON CLICK CLASS TOGGLES USING SELECTORS LIKE:
+	a.this_selector.toggled + nav.to_transition
+	INSTEAD, TOGGLE CLASS ON PARENT ELEMENT:
+	body.toggled nav.to_transition
+*/
+
+
 	// Global Variables
 	// ----------------------------------------------------------------------------
 	var elBody = document.body;
@@ -14,13 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		elNavToggle.addEventListener('click', function(e) {
 
-			// classie.toggle(elBody, 'nav-active');
-
-			if (elBody.getAttribute('data-nav') == 'active') {
-				elBody.setAttribute('data-nav', 'inactive');
-			} else {
-				elBody.setAttribute('data-nav', 'active');
-			}
+			classie.toggle(elBody, 'toggled_mobile-nav');
 
 			e.preventDefault();
 
