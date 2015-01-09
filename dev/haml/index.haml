@@ -32,10 +32,10 @@
 							%option{:value => "location_mexicocity-mexico"} Mexico City, Mexico
 							%option{:value => "location_boston-usa"} Boston, USA
 							%option{:value => "location_newyork-usa"} New York, USA
-							%option{:value => "location_zurich-switzerland"} Zürich, Switzerland
+							%option{:value => "location_zurich-switzerland"} Z&uuml;rich, Switzerland
 
 						.dropdown_toggle
-							%span.dropdown_placeholder.truncate Select Your Destination asjdaubnsda
+							%span.dropdown_placeholder.truncate Select Your Destination
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
 
@@ -56,15 +56,63 @@
 								%li.dropdown_option.disabled
 									%a.dropdown_link{:href => "#", "data-value" => "location_zurich-switzerland"} Zürich, Switzerland
 
-					%button#submit_home.submit_home.btn_rnd-hlw{:type => "button"} Get A Price
+					%button#submit_home.submit_home.btn_rnd.btn_cream{:type => "button"} Get A Price
 
 			%section.home_details
 
 				%article.details_why
 
+					.wrap_svg
+						%svg.svg_nm-logo
+							%use{"xlink:href" => "#nm_logo"}
+
+					%h2 Why Northman?
+					%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+
+					%a.btn_rnd.btn_orange{:href => "#", :title => "Find Out More"} Find Out More
+
 				%article.details_packages
 
+					.wrap_svg
+						%svg.svg_ui-package
+							%use{"xlink:href" => "#ui_package"}
+
+					%h2 Packages
+					%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, and we can insure a single person or a whole family under one policy. Pick what’s right for you, and if you can’t find it, we’ll help you.
+
+					%a.btn_rnd.btn_orange{:href => "#", :title => "Choose Your Package"} Choose Your Package
+
 				%article.details_coverage
+
+					.wrap_svg
+						%svg.svg_ui-coverage
+							%use{"xlink:href" => "#ui_coverage"}
+
+					%h2 What's Covered
+					%p If you can (legally) do it, we can cover it. It would be easier to list what we don’t cover, but here are some of the highlights:
+
+					%ul
+						%li Adventure Racing
+						%li Arctic and Antarctic Expedition
+						%li Canoeing &amp; Kayakin
+						%li Climbing
+						%li Diving &amp; Scuba Diving
+						%li Extreme Sports
+						%li Freeride
+						%li Golf
+						%li Helicopter Skiing &amp; Heliboarding
+						%li Marathon, Ultra Marathon &amp; Iron Man
+						%li Megavalanche
+						%li Mountain / Downhill Mountain Biking
+						%li Mountaineering
+						%li Parapenting &amp; Paragliding
+						%li Roller Derby
+						%li Sailing &amp; Offshore Sailing
+						%li Storm Chasing
+						%li Ski
+						%li Ski Mountaineering
+						%li Off-Piste Skiing &amp; Snowboarding
+						%li Winter Sports
 
 
 

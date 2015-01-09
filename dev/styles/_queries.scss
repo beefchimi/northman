@@ -1,5 +1,5 @@
 // ==|== media queries ========================================================
-// WIDTHS: 480px / 568px / 960px / 1170px
+// WIDTHS: 480px / 568px / 768px / 960px
 // ============================================================================
 
 @media only screen and (min-width: 30em) { // 480px / 16px = 30em
@@ -10,13 +10,92 @@
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em
 
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Home Details --- \\
+	section.home_details article ul {
+		text-align: left;
+		column-count: 2;
+		column-gap: 3.2rem;
+	}
+
+}
+
+@media only screen and (min-width: 48em) { // 768px / 16px = 48em
+
 
 
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
 
+// ==|== primary styles =======================================================
+// ============================================================================
 
+	// Header
+	// ----------------------------------------------------------------------------
+	// --- Nav Toggle --- \\
+	a.nav_toggle {
+		display: none;
+		visibility: hidden;
+	}
+	// --- Navigation --- \\
+	nav.nav_primary {
+		width: calc(100% - 15.5rem);
+		height: auto;
+	}
+	nav.nav_primary ul {
+		position: static;
+		left: auto;
+		width: auto;
+		height: auto;
+		padding-top: 1.3rem;
+		text-align: right;
+		background-color: transparent;
+		overflow-y: visible;
+		-webkit-overflow-scrolling: auto;
+	}
+	nav.nav_primary ul li {
+		display: inline-block;
+		margin-right: 2rem;
+		margin-bottom: 0;
+	}
+	nav.nav_primary ul li:last-child {
+		margin-right: 0;
+	}
+	nav.nav_primary ul li a {
+		font-size: 1.4rem;
+		font-weight: 700; // futura bold
+		color: hsla(0,0%,20%,1);
+	}
+	nav.nav_primary ul li a:hover {
+		color: $nm_orange;
+	}
+	nav.nav_primary ul li a:active {
+		color: $nm_orange-light;
+	}
+	// --- Nav Active --- \\
+	body[data-nav="active"] nav.nav_primary ul,
+	body[data-nav="inactive"] nav.nav_primary ul {
+		left: auto;
+		animation: none;
+	}
+	body[data-nav="active"] header a.wrap_svg svg {
+		fill: $nm_orange;
+	}
+
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Home Details --- \\
+	section.home_details article ul {
+		column-count: 3;
+	}
 
 }
 
