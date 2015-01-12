@@ -29,6 +29,48 @@
 // ==|== primary styles =======================================================
 // ============================================================================
 
+	// Forms
+	// ----------------------------------------------------------------------------
+	div.wrap_select div.dropdown_toggle {
+		height: 6rem;
+	}
+	div.wrap_select div.dropdown_toggle span {
+		padding: 0 2rem;
+		font-size: 2.1rem;
+		line-height: 6rem;
+	}
+
+
+
+	div.wrap_select div.wrap_scroll {
+		top: 5.2rem; // minus 8px to cover rounded corners
+	}
+	div.wrap_select div.wrap_scroll ul li a {
+		padding: 2rem;
+	}
+
+	// Buttons
+	// ----------------------------------------------------------------------------
+	.btn_rnd {
+		padding: 0 2.4rem;
+		height: 6rem;
+		line-height: 6rem;
+	}
+
+// ==|== common sections ======================================================
+// ============================================================================
+
+	// Header
+	// ----------------------------------------------------------------------------
+	// --- Wordmark --- \\
+	header a.wrap_svg {
+		left: 3.2rem;
+	}
+	// --- Nav Toggle --- \\
+	a.nav_toggle {
+		right: 3.2rem;
+	}
+
 	// Footer
 	// ----------------------------------------------------------------------------
 	footer {
@@ -40,14 +82,44 @@
 
 	// Home Page
 	// ----------------------------------------------------------------------------
+	// --- Home Intro --- \\
+	section.home_intro div.wrap_img {
+		padding: 10rem 3.2rem;
+		max-width: 78.7rem; // svg width (723px) + padding (2 x 32px)
+	}
+	// --- Home Form --- \\
+	form.form_home {
+		padding: 4.8rem 3.2rem;
+	}
+	// + destination form + \\
+	fieldset.form_destination {
+		position: relative;
+	}
+	fieldset.form_destination legend {
+		margin-bottom: 4rem;
+		letter-spacing: 0.5rem;
+	}
+	fieldset.form_destination div.wrap_select {
+		margin: 0;
+	}
+	fieldset.form_destination div.wrap_select div.dropdown_toggle svg.svg_ui-globe {
+		top: 1.7rem;
+		right: 2rem;
+		width: 2.6rem;
+		height: 2.6rem;
+	}
+	fieldset.form_destination button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
 	// --- Home Details --- \\
 	section.home_details {
-		padding: 6rem 2rem 0 2rem;
+		padding: 6rem 3.2rem 0 3.2rem;
 	}
-
-
 	section.home_details article {
-		padding: 4.8rem 2rem;
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
 		border-left: 0.2rem solid $nm_orange;
 		border-right: 0.2rem solid $nm_orange;
 	}
@@ -55,30 +127,23 @@
 		border-top: 0.2rem solid $nm_orange;
 	}
 
-
-
-
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
 
-
-
-// ==|== page styles ==========================================================
-// ============================================================================
-
-	// Home Page
-	// ----------------------------------------------------------------------------
-	// --- Home Details --- \\
-	section.home_details article ul {
-		column-count: 3;
-	}
-
-// ==|== primary styles =======================================================
+// ==|== common sections ======================================================
 // ============================================================================
 
 	// Header
 	// ----------------------------------------------------------------------------
+	header {
+		padding: 3.6rem 3.2rem 0 3.2rem;
+		min-height: 8.8rem;
+	}
+	// --- Wordmark --- \\
+	header a.wrap_svg {
+		top: 2.2rem;
+	}
 	// --- Nav Toggle --- \\
 	a.nav_toggle {
 		display: none;
@@ -86,7 +151,6 @@
 	}
 	// --- Navigation --- \\
 	nav.nav_primary {
-		width: calc(100% - 15.5rem);
 		max-height: none;
 		text-align: right;
 		background-color: transparent;
@@ -117,6 +181,39 @@
 	body.toggled_mobile-nav nav.nav_primary {
 		max-height: none;
 	}
+
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Home Details --- \\
+	section.home_details article {
+		padding-top: 7.2rem;
+		padding-bottom: 7.2rem;
+	}
+	section.home_details article div.wrap_svg {
+		margin-bottom: 6rem;
+		width: 7.2rem;
+		height: 7.2rem;
+	}
+	section.home_details article h2 {
+		margin-bottom: 3.2rem;
+	}
+	section.home_details article p {
+		margin-bottom: 6rem;
+		font-size: 1.7rem;
+	}
+	section.home_details article ul {
+		margin-bottom: 6rem;
+		column-count: 3;
+	}
+
+
+
+
+
+
 
 }
 

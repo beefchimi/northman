@@ -19,44 +19,7 @@
 					-# %svg.svg_nm-tagline
 						-# %use{"xlink:href" => "#nm_tagline"}
 
-				%form#form_home.form_home.has_dropdown
-
-					%label{:for => "select_location"} Where are you going?
-
-					.wrap_select{"data-selected" => ""}
-
-						%select#select_location{:name => "select_location"}
-							%option{:value => "location_ottawa-canada"} Ottawa, Canada
-							%option{:value => "location_toronto-canada"} Toronto, Canada
-							%option{:value => "location_berlin-germany"} Berlin, Germany
-							%option{:value => "location_mexicocity-mexico"} Mexico City, Mexico
-							%option{:value => "location_boston-usa"} Boston, USA
-							%option{:value => "location_newyork-usa"} New York, USA
-							%option{:value => "location_zurich-switzerland"} Z&uuml;rich, Switzerland
-
-						.dropdown_toggle
-							%span.dropdown_placeholder.truncate Select Your Destination
-							%svg.svg_ui-globe
-								%use{"xlink:href" => "#ui_globe"}
-
-						.wrap_scroll-list{"data-maxheight" => "320"}
-							%ul.dropdown_list
-								%li.dropdown_option
-									%a.dropdown_link{:href => "#", "data-value" => "location_ottawa-canada"} Ottawa, Canada
-								%li.dropdown_option
-									%a.dropdown_link{:href => "#", "data-value" => "location_toronto-canada"} Toronto, Canada
-								%li.dropdown_option.disabled
-									%a.dropdown_link{:href => "#", "data-value" => "location_berlin-germany"} Berlin, Germany
-								%li.dropdown_option.disabled
-									%a.dropdown_link{:href => "#", "data-value" => "location_mexicocity-mexico"} Mexico City, Mexico
-								%li.dropdown_option
-									%a.dropdown_link{:href => "#", "data-value" => "location_boston-usa"} Boston, USA
-								%li.dropdown_option
-									%a.dropdown_link{:href => "#", "data-value" => "location_newyork-usa"} New York, USA
-								%li.dropdown_option.disabled
-									%a.dropdown_link{:href => "#", "data-value" => "location_zurich-switzerland"} Zürich, Switzerland
-
-					%button#submit_home.submit_home.btn_rnd.btn_cream{:type => "button"} Get A Price
+				= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
 
 			%section.home_details{"data-container" => "width-1440"}
 

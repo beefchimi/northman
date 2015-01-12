@@ -59,6 +59,11 @@ nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
 
+div.dropdown_toggle {
+	transition: background-color 0.3s ease-in-out;
+}
+
+
 // General Styles
 // ----------------------------------------------------------------------------
 svg,
@@ -74,9 +79,7 @@ svg,
 	display: none;
 	visibility: hidden;
 }
-
-
-
+// --- Containers --- \\
 [data-container] {
 	margin-left: auto;
 	margin-right: auto;
@@ -84,17 +87,172 @@ svg,
 [data-container="width-1440"] {
 	max-width: 144rem;
 }
+[data-container="width-1264"] {
+	max-width: 126.4rem;
+}
+[data-container="width-1200"] {
+	max-width: 120rem;
+}
 
+// Forms
+// ----------------------------------------------------------------------------
+
+div.wrap_select {
+	position: relative;
+	z-index: 100;
+}
+div.wrap_select > select {
+	// visually hidden class
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+	position: absolute;
+	margin: -0.1rem;
+	padding: 0;
+	width: 0.1rem;
+	height: 0.1rem;
+	border: 0;
+}
+
+
+
+div.wrap_select div.dropdown_toggle {
+	cursor: pointer;
+	position: relative;
+	z-index: 102;
+	height: 4.8rem;
+	background-color: $nm_cream;
+	border-radius: 0.8rem;
+}
+/*
+div.wrap_select[data-selected=""] div.dropdown_toggle {
+	color: hsla(141,100%,18%,1);
+	background-color: hsla(141,100%,18%,0);
+}
+*/
+
+div.wrap_select div.dropdown_toggle span {
+	display: block;
+	user-select: none;
+	padding: 0 1.6rem;
+	font-size: 1.8rem;
+	font-weight: 700; // futura bold
+	line-height: 4.8rem;
+	color: hsla(0,0%,20%,1);
+}
+
+
+
+div.wrap_select div.wrap_scroll {
+	position: absolute;
+	z-index: 101;
+	top: 4rem; // minus 8px to cover rounded corners
+	left: 0;
+	right: 0;
+	background-color: $nm_cream;
+	border-radius: 0 0 0.8rem 0.8rem;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+}
+div.wrap_select div.wrap_scroll ul {
+	padding-top: 0.8rem; // plus 8px to accomodate for rounded corners
+}
+div.wrap_select div.wrap_scroll ul li a {
+	display: block;
+	padding: 1.6rem;
+	font-size: 1.6rem;
+	color: hsla(0,0%,20%,1);
+	background-color: $nm_cream;
+}
+
+
+// + toggled / selected + \\
+div.wrap_select.toggled_dropdown div.wrap_scroll {
+	opacity: 1;
+	visibility: visible;
+}
+div.wrap_select.toggled_dropdown div.wrap_scroll ul li.selected a {
+	pointer-events: none;
+	background-color: hsla(141,29%,94%,1);
+}
+// + interaction + \\
+div.wrap_select:hover div.dropdown_toggle {
+	background-color: hsla(17,100%,97%,1);
+}
+div.wrap_select:active div.dropdown_toggle {
+	background-color: hsla(17,100%,94%,1);
+}
+
+
+/*
+div.wrap_select[data-selected=""]:hover div.dropdown_toggle {
+	background-color: hsla(141,100%,18%,0.06);
+}
+*/
+div.wrap_select div.wrap_scroll ul li a:hover {
+	background-color: hsla(0,0%,98%,1);
+}
+div.wrap_select div.wrap_scroll ul li a:active {
+	background-color: hsla(0,0%,100%,1);
+}
+
+
+
+
+
+
+// Buttons
+// ----------------------------------------------------------------------------
+.btn_rnd {
+	display: table; // inline-block does not allow margin centering
+	margin: 0 auto;
+	padding: 0 2rem;
+	height: 4.8rem;
+	line-height: 4.8rem;
+	font-size: 1.4rem;
+	font-weight: 700; // futura bold
+	letter-spacing: 0.2rem;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 0.8rem;
+	box-shadow: inset 0 0 0 0.2rem;
+}
+// + button: orange + \\
+.btn_orange {
+	color: $nm_orange;
+}
+.btn_orange:hover {
+	color: hsla(0,0%,20%,1);
+}
+.btn_orange:active {
+	color: hsla(0,0%,40%,1);
+}
+// + button: cream + \\
+.btn_cream {
+	color: $nm_cream;
+}
+.btn_cream:hover {
+	color: $nm_orange;
+}
+.btn_cream:active {
+	color: $nm_orange-light;
+}
+
+// ==|== common sections ======================================================
+// ============================================================================
 
 // Header
 // ----------------------------------------------------------------------------
 header {
 	position: relative;
-	// background-color: $nm_cream;
+	min-height: 8rem;
+	padding-top: 8rem;
 }
 // --- Wordmark --- \\
 header a.wrap_svg {
-	margin: 2rem 1.6rem;
+	position: absolute;
+	top: 1.8rem;
+	left: 1.6rem;
 	width: 15.5rem;
 	height: 4.2rem;
 }
@@ -224,96 +382,6 @@ footer a:active {
 	color: hsla(0,0%,30%,1);
 }
 
-// Forms
-// ----------------------------------------------------------------------------
-
-.wrap_select > select {
-	// visually hidden class
-	clip: rect(0 0 0 0);
-	overflow: hidden;
-	position: absolute;
-	margin: -0.1rem;
-	padding: 0;
-	width: 0.1rem;
-	height: 0.1rem;
-	border: 0;
-}
-
-
-.wrap_select ul {
-	display: none;
-}
-
-
-div.dropdown_toggle {
-	cursor: pointer;
-	position: relative;
-	max-width: 39rem;
-	height: 4.8rem; // 6rem;
-	background-color: $nm_cream;
-	border-radius: 0.8rem;
-	// transition: all 0.2s ease-in-out;
-}
-div.dropdown_toggle:hover {
-	opacity: 0.9;
-}
-div.dropdown_toggle:active {
-	opacity: 1;
-}
-
-div.dropdown_toggle span {
-	display: block;
-	padding: 0 1.6rem;
-	font-size: 1.8rem; // 2.1rem;
-	font-weight: 700; // futura bold
-	line-height: 4.8rem;
-	color: hsla(0,0%,20%,1);
-}
-
-
-
-// Buttons
-// ----------------------------------------------------------------------------
-.btn_rnd {
-	display: table; // inline-block does not allow margin centering
-	margin: 0 auto;
-	padding: 1.2rem 2rem;
-	font-size: 1.4rem;
-	font-weight: 700; // futura bold
-	letter-spacing: 0.2rem;
-	text-align: center;
-	text-transform: uppercase;
-	border-width: 0.2rem;
-	border-style: solid;
-	border-radius: 0.8rem;
-}
-// + button: orange + \\
-.btn_orange {
-	color: $nm_orange;
-	border-color: $nm_orange;
-}
-.btn_orange:hover {
-	color: hsla(0,0%,20%,1);
-	border-color: hsla(0,0%,20%,1);
-}
-.btn_orange:active {
-	color: hsla(0,0%,40%,1);
-	border-color: hsla(0,0%,40%,1);
-}
-// + button: cream + \\
-.btn_cream {
-	color: $nm_cream;
-	border-color: $nm_cream;
-}
-.btn_cream:hover {
-	color: $nm_orange;
-	border-color: $nm_orange;
-}
-.btn_cream:active {
-	color: $nm_orange-light;
-	border-color: $nm_orange-light;
-}
-
 
 // ==|== page styles ==========================================================
 // ============================================================================
@@ -330,16 +398,21 @@ section.home_intro {
 section.home_intro div.wrap_img {
 	margin: 0 auto;
 	padding: 4rem 2rem;
-	max-width: 76.3rem; // svg width + padding (2 x 20px)
+	// max-width: 76.3rem; // svg width + padding (2 x 20px)
 }
-// + destination form + \\
+// --- Home Form --- \\
 form.form_home {
 	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_cream;
 }
-form.form_home label {
-	display: block;
+// + destination dropdown + \\
+fieldset.form_destination {
+	margin: 0 auto;
+	max-width: 56rem;
+}
+fieldset.form_destination legend {
 	margin-bottom: 3.2rem;
+	width: 100%; // required to center <legend>
 	font-size: 1.8rem;
 	font-weight: 700; // futura bold
 	letter-spacing: 0.3rem;
@@ -347,13 +420,14 @@ form.form_home label {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-form.form_home div.dropdown_toggle {
+fieldset.form_destination div.wrap_select {
+	max-width: 39rem;
 	margin: 0 auto 2rem auto;
 }
-form.form_home div.dropdown_toggle span {
+fieldset.form_destination div.wrap_select div.dropdown_toggle span {
 	padding-right: 4.8rem;
 }
-form.form_home div.dropdown_toggle svg.svg_ui-globe {
+fieldset.form_destination div.wrap_select div.dropdown_toggle svg.svg_ui-globe {
 	position: absolute;
 	top: 1.4rem;
 	right: 1.6rem;
@@ -367,11 +441,6 @@ section.home_details article {
 	text-align: center;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
-/*
-	border-width: 0.2rem;
-	border-style: solid;
-	border-color: $nm_orange;
-*/
 }
 section.home_details article div.wrap_svg {
 	margin: 0 auto 4rem auto;
@@ -392,14 +461,16 @@ section.home_details article h2 {
 	letter-spacing: 0.2rem;
 }
 section.home_details article p {
-	margin-bottom: 4rem;
+	margin: 0 auto 4rem auto;
+	max-width: 86rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem; // 1.7rem;
 	line-height: 1.4;
 }
 section.home_details article ul {
-	margin-bottom: 4rem;
+	margin: 0 auto 4rem auto;
 	padding: 2.4rem 1.6rem;
+	max-width: 104.8rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
 section.home_details article ul li {
