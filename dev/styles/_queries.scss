@@ -39,14 +39,12 @@
 		font-size: 2.1rem;
 		line-height: 6rem;
 	}
-
-
-
-	div.wrap_select div.wrap_scroll {
-		top: 5.2rem; // minus 8px to cover rounded corners
+	div.wrap_select div.wrap_scroll div.fix_ios-scroll {
+		top: 6rem;
 	}
 	div.wrap_select div.wrap_scroll ul li a {
 		padding: 2rem;
+		font-size: 1.8rem;
 	}
 
 	// Buttons
@@ -208,12 +206,6 @@
 		margin-bottom: 6rem;
 		column-count: 3;
 	}
-
-
-
-
-
-
 
 }
 

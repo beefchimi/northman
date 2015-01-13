@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// selectDropdown: Pair each <select> element with its <ul> counter-part
+	// selectDropdown: Pair each <select> element with its <ul> sibling
 	// ----------------------------------------------------------------------------
 	function selectDropdown() {
 
-		// search for a <form> with the class 'has_dropdown' (assumes only 1 form)
+		// search for a <form> with the class 'has_dropdown' (assumes only 1 form per page)
 		var elDropdownForm = document.getElementsByClassName('has_dropdown')[0];
 
-		// check if form.has-dropdown does not exist
+		// check if form.has_dropdown does not exist
 		if (elDropdownForm == null) {
 			return;
 		}
@@ -88,19 +88,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				}
 
-				// add 'active_overlay' class on body to prevent scrolling
-				// classie.add(elBody, 'active_overlay');
+				if ( classie.has(thisDropdownWrap, 'toggle_show') ) {
 
-				// allow for class toggling on the clicked dropdown
-				classie.toggle(thisDropdownWrap, 'toggled_dropdown');
+					// dropdown is currently shown, so hide it
+					classie.remove(thisDropdownWrap, 'toggle_show');
+					classie.add(thisDropdownWrap, 'toggle_hide');
+
+				} else {
+
+					// dropdown is currently hidden, so show it
+					classie.remove(thisDropdownWrap, 'toggle_hide');
+					classie.add(thisDropdownWrap, 'toggle_show');
+
+				}
 
 				e.preventDefault();
 
 			}, false);
-
-			// need to consider the fact that this is a touch enabled device...
-			// typically, the dropdowns should close on "click outside" of 'this'...
-			// but user scrolling could trigger a dropdown close, which may not be ideal... REQUIRES TESTING!
 
 			// click outside of element to close dropdown
 			document.addEventListener('click', function(e) {
@@ -113,9 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						return;
 					}
 
-					// remove active / toggled classes
-					// classie.remove(elBody, 'active_overlay');
-					classie.remove(thisDropdownWrap, 'toggled_dropdown');
+					// hide dropdown
+					classie.remove(thisDropdownWrap, 'toggle_show');
+					classie.add(thisDropdownWrap, 'toggle_hide');
 
 				}
 
@@ -141,8 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
 						dataLabel        = this.innerHTML,
 						elParentLI       = this.parentNode,
 						elParentUL       = elParentLI.parentNode,
-						elParentWrap     = elParentUL.parentNode.parentNode,
-						elSiblingLabel   = elParentUL.parentNode.previousElementSibling.childNodes[1], // first child is an empty text node
+						elParentWrap     = elParentUL.parentNode.parentNode.parentNode,
+						elSiblingLabel   = elParentUL.parentNode.parentNode.previousElementSibling.childNodes[1], // first child is an empty text node
 						elMatchedOption  = elParentWrap.querySelector('option[value="' + dataValue + '"]'),
 						dataPrevSelected = elParentWrap.getAttribute('data-selected'),
 						elPrevSelected   = elParentUL.querySelector('a[data-value="' + dataPrevSelected + '"]');
@@ -158,19 +162,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// remove 'selected' class from previous <li>, if it exists...
 					if (elPrevSelected != null) {
-						// elPrevSelected.parentNode.classList.remove('selected');
 						classie.remove(elPrevSelected.parentNode, 'selected');
 					}
 
 					// then add 'selected' class to parent <li> of newly chosen a[data-value]
 					classie.add(elParentLI, 'selected');
 
-					// remove active class form body to restore scrolling
-					// classie.remove(elBody, 'active_overlay');
+					// hide the parent dropdown
+					classie.remove(elParentWrap, 'toggle_show');
+					classie.add(elParentWrap, 'toggle_hide');
 
-					// remove 'toggled' class from parent article
-					elParentWrap.classList.remove('toggled');
-					classie.remove(elParentWrap, 'toggled_dropdown');
+					// confirm we have provided the correct selected value
+					console.log( document.getElementById('select_location').value );
 
 					e.preventDefault();
 
@@ -180,8 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-		// does this load a new page or do we refresh the results with AJAX?
-		// if AJAX, we will need to display the selected option as the label
 		passSelectValue();
 
 	}
