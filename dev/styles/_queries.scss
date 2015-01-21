@@ -3,9 +3,6 @@
 // ============================================================================
 
 @media only screen and (min-width: 30em) { // 480px / 16px = 30em
-
-
-
 }
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em
@@ -21,6 +18,14 @@
 		column-count: 2;
 		column-gap: 3.2rem;
 	}
+	// --- Form: Price --- \\
+	// + individual columns + \\
+	fieldset.form_price div.wrap_input div.col-1 div.wrap_element {
+		display: inline-block;
+	}
+	fieldset.form_price div.wrap_input div.col-1 span.txt {
+		margin: 0 2rem;
+	}
 
 }
 
@@ -32,7 +37,7 @@
 	// Forms
 	// ----------------------------------------------------------------------------
 	input[type="text"] {
-		// padding: 0 4rem 0 1.6rem;
+		padding: 0 4.4rem 0 2rem;
 		height: 5.2rem;
 	}
 	// --- Select Dropdown --- \\
@@ -41,16 +46,20 @@
 		height: 5.2rem;
 	}
 	div.wrap_select div.dropdown_toggle span {
-		padding: 0 2rem;
-		font-size: 2.1rem;
+		padding-left: 2rem;
+		padding-right: 5.2rem;
 		line-height: 5.2rem;
+	}
+	div.wrap_select div.dropdown_toggle svg {
+		top: 1.8rem;
+		right: 2rem;
 	}
 	// + dropdown list + \\
 	div.wrap_select div.wrap_dropdown ul {
 		padding-top: 5.2rem;
 	}
 	div.wrap_select div.wrap_dropdown ul li a {
-		padding: 2rem;
+		padding: 1.7rem 2rem;
 		font-size: 1.8rem;
 	}
 	// + dropdown scrollable + \\
@@ -117,6 +126,7 @@
 	}
 	fieldset.form_destination div.wrap_element input[type="text"] {
 		height: 6rem;
+		font-size: 2.1rem;
 	}
 	fieldset.form_destination div.wrap_element svg.svg_ui-globe {
 		top: 1.7rem;
@@ -130,6 +140,11 @@
 		right: 3.2rem; // padding-right
 		height: 6rem;
 		line-height: 6rem;
+	}
+	// --- Form: Price --- \\
+	fieldset.form_price div.wrap_input div.wrap_element svg {
+		top: 1.8rem;
+		right: 2rem;
 	}
 	// --- Home Details --- \\
 	section.home_details {
@@ -226,6 +241,65 @@
 		margin-bottom: 6rem;
 		column-count: 3;
 	}
+
+}
+
+@media only screen and (min-width: 84.625em) { // 1354px / 16px = 84.625em
+
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Form: Price --- \\
+	fieldset.form_price h3 {
+		padding: 4rem 0;
+		border-bottom: 0.1rem solid $nm_L21;
+	}
+	fieldset.form_price div.wrap_input {
+		display: flex;
+		flex-direction: row;
+
+		// align-items: center;
+		// justify-content: center;
+		// align-content: stretch;
+
+	}
+	fieldset.form_price div.wrap_input > div {
+		padding: 4rem 0;
+		// flex: 1 0 0;
+		border-top: none;
+	}
+	fieldset.form_price div.wrap_input > div:nth-child(1n+2) {
+		border-left: 0.1rem solid $nm_L21;
+	}
+	// + individual columns + \\
+	fieldset.form_price div.wrap_input div.col-1,
+	fieldset.form_price div.wrap_input div.col-3 {
+		flex: 2 0 0;
+	}
+	fieldset.form_price div.wrap_input div.col-2,
+	fieldset.form_price div.wrap_input div.col-4 {
+		flex: 1 0 0;
+	}
+	fieldset.form_price div.wrap_input div.col-1 {
+		text-align: left;
+	}
+	fieldset.form_price div.wrap_input div.col-2 div.wrap_element p {
+		margin-top: 2.2rem;
+	}
+	fieldset.form_price div.wrap_input div.col-4 {
+		text-align: right;
+	}
+	fieldset.form_price div.wrap_input div.col-4 button {
+		margin: 0;
+	}
+
+}
+
+@media only screen and (min-width: 90em) { // 1440px / 16px = 90em
+
+
 
 }
 
