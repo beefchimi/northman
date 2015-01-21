@@ -12,12 +12,9 @@
 			%section.home_intro
 
 				%h1.visuallyhidden Insurance For The Wild.
-				.wrap_img
-					%img.temp_tagline{:src => "assets/img/temp_tagline.png", :alt => "Insurance For The Wild"}
-
-				-# .wrap_svg
-					-# %svg.svg_nm-tagline
-						-# %use{"xlink:href" => "#nm_tagline"}
+				.wrap_svg
+					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
+						%use{"xlink:href" => "#nm_tagline"}
 
 				= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
 

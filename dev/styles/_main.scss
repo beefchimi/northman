@@ -58,13 +58,15 @@ a.nav_toggle div.wrap_menu span {
 nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
+div.wrap_select div.wrap_dropdown {
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 // General Styles
 // ----------------------------------------------------------------------------
-svg,
 .wrap_svg {
 	display: block;
 }
@@ -92,6 +94,7 @@ svg,
 	max-width: 120rem;
 }
 // --- Animations --- \\
+/*
 @keyframes transShow {
 	0% {
 		opacity: 0;
@@ -110,13 +113,18 @@ svg,
 		left: 0;
 	}
 }
+*/
 // --- FOUT --- \\
+/*
 main,
 header,
 footer {
-	opacity: 0;
+	// IE9 does not support Animations... we will need to use modernizr to force opacity: 1;
+	// test this thoroughly to make sure it actually works consistently
+	opacity: 0; // begin by setting opacity to 0
 	animation: transShow 0.4s ease-in-out 0.2s forwards;
 }
+*/
 
 // Forms
 // ----------------------------------------------------------------------------
@@ -125,7 +133,8 @@ div.wrap_select {
 	position: relative;
 	z-index: 100;
 }
-div.wrap_select > select {
+div.wrap_select > select,
+div.wrap_select > select option[disabled] {
 	// visually hidden class
 	clip: rect(0 0 0 0);
 	overflow: hidden;
@@ -160,22 +169,37 @@ div.wrap_select div.dropdown_toggle span {
 	line-height: 4.8rem;
 	color: hsla(0,0%,20%,1);
 }
-// + dropdown scroll + \\
-div.wrap_select div.wrap_scroll {
+// + dropdown list + \\
+div.wrap_select div.wrap_dropdown {
 	position: absolute;
 	z-index: 101;
 	top: 0;
 	width: 100%;
-	height: 28.8rem; // dropdown_label height x 6
 	background-color: $nm_cream;
 	border-radius: 0.8rem;
 	box-shadow: 0.1rem 0.1rem 0.3rem 0.1rem hsla(0,0%,0%,0.4);
 	overflow: hidden;
-	// initial hidden values
-	left: -999rem;
-	// opacity: 0;
 }
-div.wrap_select div.wrap_scroll div.fix_ios-scroll { // required only get to iOS to behave
+div.wrap_select div.wrap_dropdown ul {
+	padding-top: 4.8rem;
+}
+div.wrap_select div.wrap_dropdown ul li a {
+	display: block;
+	padding: 1.6rem;
+	font-size: 1.6rem;
+	color: hsla(0,0%,20%,1);
+	background-color: $nm_cream;
+}
+div.wrap_select div.wrap_dropdown ul li.selected a {
+	pointer-events: none;
+	color: $nm_orange;
+}
+// + dropdown scrollable + \\
+div.wrap_select div.wrap_dropdown.scrollable {
+	height: 28.8rem; // dropdown_label height x 6
+}
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll { // required only get to iOS to behave
+	display: block;
 	position: absolute;
 	top: 4.8rem;
 	right: 0;
@@ -185,44 +209,23 @@ div.wrap_select div.wrap_scroll div.fix_ios-scroll { // required only get to iOS
 	overflow: hidden;
 	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); // required in order to get iOS Chrome to mask the overflow!
 }
-div.wrap_select div.wrap_scroll ul {
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
+	padding-top: 0;
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
-div.wrap_select div.wrap_scroll ul li a {
-	display: block;
-	padding: 1.6rem;
-	font-size: 1.6rem;
-	color: hsla(0,0%,20%,1);
-	background-color: $nm_cream;
-}
-div.wrap_select div.wrap_scroll ul li.selected a {
-	pointer-events: none;
-	color: $nm_orange;
-}
 // + chrome scrollbar + \\
-div.wrap_select div.wrap_scroll ul::-webkit-scrollbar {
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar {
 	width: 0.4rem;
 	background-color: hsla(0,0%,0%,1);
 }
-div.wrap_select div.wrap_scroll ul::-webkit-scrollbar-track {
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-track {
 	background-color: $nm_cream-dark;
 }
-div.wrap_select div.wrap_scroll ul::-webkit-scrollbar-thumb {
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-thumb {
 	background-color: $nm_orange;
-}
-// + hide / show dropdown \\
-div.wrap_select.toggle_hide div.wrap_scroll {
-	animation: transHide 0.3s ease-in-out;
-}
-div.wrap_select.toggle_show div.wrap_scroll {
-	left: 0;
-	animation: transShow 0.3s ease-in-out forwards;
-}
-div.wrap_select.toggle_show div.dropdown_toggle {
-	border-radius: 0.8rem 0.8rem 0 0;
 }
 // + interaction + \\
 div.wrap_select:hover div.dropdown_toggle {
@@ -231,11 +234,30 @@ div.wrap_select:hover div.dropdown_toggle {
 div.wrap_select:active div.dropdown_toggle {
 	background-color: $nm_cream;
 }
-div.wrap_select div.wrap_scroll ul li a:hover {
+div.wrap_select div.wrap_dropdown ul li a:hover {
 	background-color: hsla(0,0%,98%,1);
 }
-div.wrap_select div.wrap_scroll ul li a:active {
+div.wrap_select div.wrap_dropdown ul li a:active {
 	background-color: hsla(0,0%,100%,1);
+}
+// + hide / show dropdown + \\
+div.wrap_select div.wrap_dropdown { // .toggle_hide
+	// left: -999rem;
+	// animation: transHide 0.3s ease-in-out;
+	opacity: 0;
+	visibility: hidden;
+}
+div.wrap_select.toggle_show {
+	z-index: 200;
+}
+div.wrap_select.toggle_show div.wrap_dropdown {
+	// left: 0;
+	// animation: transShow 0.3s ease-in-out forwards;
+	opacity: 1;
+	visibility: visible;
+}
+div.wrap_select.toggle_show div.dropdown_toggle {
+	border-radius: 0.8rem 0.8rem 0 0;
 }
 
 // Buttons
@@ -425,6 +447,15 @@ footer a:active {
 
 // Home Page
 // ----------------------------------------------------------------------------
+/*
+#page_home {
+	background-image: url('../img/bg_home.jpg');
+	background-repeat: no-repeat;
+	background-position: center 8rem;
+	background-size: 100% auto;
+	background-attachment: fixed;
+}
+*/
 // --- Home Intro --- \\
 section.home_intro {
 	background-image: url('../img/bg_home.jpg');
@@ -432,10 +463,13 @@ section.home_intro {
 	background-position: center center;
 	background-size: cover;
 }
-section.home_intro div.wrap_img {
+section.home_intro div.wrap_svg {
 	margin: 0 auto;
 	padding: 4rem 2rem;
-	// max-width: 76.3rem; // svg width + padding (2 x 20px)
+}
+section.home_intro div.wrap_svg svg.svg_nm-tagline {
+	display: inline;
+	fill: hsla(60,11%,93%,0.9);
 }
 // --- Home Form --- \\
 form.form_home {
@@ -478,6 +512,7 @@ section.home_details article {
 	text-align: center;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
+	// background-color: $nm_cream;
 }
 section.home_details article div.wrap_svg {
 	margin: 0 auto 4rem auto;

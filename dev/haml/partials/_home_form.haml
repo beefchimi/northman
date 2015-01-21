@@ -4,40 +4,43 @@
 
 		%legend Where are you going?
 
-		.wrap_select.toggle_hide{"data-selected" => ""}
+		#wrap_select-destination.wrap_select{"data-selected" => ""}
 
-			%select#select_location{:name => "select_location"}
-				%option{:value => "location_ottawa-canada"} Ottawa, Canada
-				%option{:value => "location_toronto-canada"} Toronto, Canada
-				%option{:value => "location_berlin-germany"} Berlin, Germany
-				%option{:value => "location_mexicocity-mexico"} Mexico City, Mexico
-				%option{:value => "location_boston-usa"} Boston, USA
-				%option{:value => "location_newyork-usa"} New York, USA
-				%option{:value => "location_zurich-switzerland"} Z&uuml;rich, Switzerland
+			%select#select_destination{:name => "select_destination", :required => true}
+				%option{:disabled => true, :selected => true, :value => true} select an option
+				%option{:value => "destination_ottawa-canada"} Ottawa, Canada
+				%option{:value => "destination_toronto-canada"} Toronto, Canada
+				%option{:value => "destination_berlin-germany"} Berlin, Germany
+				%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
+				%option{:value => "destination_boston-usa"} Boston, USA
+				%option{:value => "destination_newyork-usa"} New York, USA
+				%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
 
 			.dropdown_toggle
 				%span.dropdown_placeholder.truncate Select Your Destination
 				%svg.svg_ui-globe
 					%use{"xlink:href" => "#ui_globe"}
 
-			.wrap_scroll
+			-# if UL > LI.length >= 6: add class "scrollable"
+			.wrap_dropdown.scrollable
 
-				.fix_ios-scroll
+				-# if UL > LI.length >= 6: output <span>
+				%span.fix_ios-scroll
 
 					%ul.dropdown_list
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_ottawa-canada"} Ottawa, Canada
+							%a.dropdown_link{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_toronto-canada"} Toronto, Canada
+							%a.dropdown_link{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_berlin-germany"} Berlin, Germany
+							%a.dropdown_link{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_mexicocity-mexico"} Mexico City, Mexico
+							%a.dropdown_link{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_boston-usa"} Boston, USA
+							%a.dropdown_link{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_newyork-usa"} New York, USA
+							%a.dropdown_link{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
 						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "location_zurich-switzerland"} Zürich, Switzerland
+							%a.dropdown_link{:href => "#", "data-value" => "destination_zurich-switzerland"} Zürich, Switzerland
 
 		%button#submit_home.submit_home.btn_rnd.btn_cream{:type => "button"} Get A Price

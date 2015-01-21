@@ -31,6 +31,8 @@
 
 	// Forms
 	// ----------------------------------------------------------------------------
+	// --- Select Dropdown --- \\
+	// + dropdown toggle + \\
 	div.wrap_select div.dropdown_toggle {
 		height: 6rem;
 	}
@@ -39,12 +41,20 @@
 		font-size: 2.1rem;
 		line-height: 6rem;
 	}
-	div.wrap_select div.wrap_scroll div.fix_ios-scroll {
-		top: 6rem;
+	// + dropdown list + \\
+	div.wrap_select div.wrap_dropdown ul {
+		padding-top: 6rem;
 	}
-	div.wrap_select div.wrap_scroll ul li a {
+	div.wrap_select div.wrap_dropdown ul li a {
 		padding: 2rem;
 		font-size: 1.8rem;
+	}
+	// + dropdown scrollable + \\
+	div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
+		top: 6rem;
+	}
+	div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
+		padding-top: 0;
 	}
 
 	// Buttons
@@ -81,7 +91,7 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Intro --- \\
-	section.home_intro div.wrap_img {
+	section.home_intro div.wrap_svg {
 		padding: 10rem 3.2rem;
 		max-width: 78.7rem; // svg width (723px) + padding (2 x 32px)
 	}

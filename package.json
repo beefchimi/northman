@@ -1,7 +1,7 @@
 {
-  "name": "na-clients",
+  "name": "northman",
   "version": "0.0.1",
-  "description": "Wordpress theme for Northern Army's client page.",
+  "description": "Wordpress theme for Northman",
   "main": "gulpfile.js",
   "devDependencies": {
     "cheerio": "^0.18.0",
@@ -20,7 +20,7 @@
     "gulp-ruby-haml": "^0.0.3",
     "gulp-ruby-sass": "^1.0.0-alpha",
     "gulp-sourcemaps": "^1.3.0",
-    "gulp-svgstore": "^4.0.0",
+    "gulp-svgstore": "^4.0.1",
     "gulp-uglify": "^1.0.2",
     "gulp-util": "^3.0.1",
     "imagemin-pngcrush": "^4.0.0"
@@ -30,15 +30,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/beefchimi/na-clients.git"
+    "url": "https://github.com/beefchimi/northman.git"
   },
   "keywords": [
     "northern army",
-    "clients"
+    "northman"
   ],
   "author": "Curtis Dulmage",
   "bugs": {
-    "url": "https://github.com/beefchimi/na-clients/issues"
+    "url": "https://github.com/beefchimi/northman/issues"
   },
-  "homepage": "https://github.com/beefchimi/na-clients"
+  "homepage": "https://github.com/beefchimi/northman"
 }

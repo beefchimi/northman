@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-/*
-	MAJOR REVELATION!
-	IOS8 CHOKES ON CLICK CLASS TOGGLES USING SELECTORS LIKE:
-	a.this_selector.toggled + nav.to_transition
-	INSTEAD, TOGGLE CLASS ON PARENT ELEMENT:
-	body.toggled nav.to_transition
-*/
-
-
 	// Global Variables
 	// ----------------------------------------------------------------------------
 	var elBody = document.body;
@@ -36,11 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function secretEmail() {
 
-		var mailLink    = document.getElementById('secret_email'),
-			prefix      = 'mailto',
-			local       = 'info',
-			domain      = 'northman',
-			suffix      = 'co';
+		var mailLink = document.getElementById('secret_email'),
+			prefix    = 'mailto',
+			local    = 'info',
+			domain   = 'northman',
+			suffix    = 'co';
 
 		mailLink.setAttribute('href', prefix + ':' + local + '@' + domain + '.' + suffix);
 		mailLink.innerHTML = local + '@' + domain + '.' + suffix;
@@ -52,57 +43,63 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function selectDropdown() {
 
-		// search for a <form> with the class 'has_dropdown' (assumes only 1 form per page)
-		var elDropdownForm = document.getElementsByClassName('has_dropdown')[0];
+		// search for any div.wrap_select elements
+		var arrSelectWrap   = document.getElementsByClassName('wrap_select'),
+			numSelectLength = arrSelectWrap.length;
 
-		// check if form.has_dropdown does not exist
-		if (elDropdownForm == null) {
-			return;
-		}
+		// if (arrSelectWrap == null) {
 
-		// form.has_dropdown DOES exist, so lets grab all of the div.wrap_select elements
-		var arrDropdownWrap = elDropdownForm.getElementsByClassName('wrap_select');
+		// check if div.wrap_select exists and is not empty
+		if (typeof arrSelectWrap !== 'undefined' && numSelectLength > 0) {
 
-		// assign the click event to each div.dropdown_label found in form.has_dropdown
-		for (var i = 0; i < arrDropdownWrap.length; i++) {
-			dropdownToggle(arrDropdownWrap[i]);
+			for (var i = 0; i < numSelectLength; i++) {
+				dropdownToggle(arrSelectWrap[i]);
+			}
+
+			passSelectValue();
+
+		} else {
+
+			return; // array not found / empty... exit function
+
 		}
 
 		// function for toggling dropdowns
-		function dropdownToggle(thisDropdownWrap) {
+		function dropdownToggle(thisSelectWrap) {
 
-			var thisDropdownLabel = thisDropdownWrap.getElementsByClassName('dropdown_toggle')[0],
-				thisParentArticle;
+			var thisDropdownToggle = thisSelectWrap.getElementsByClassName('dropdown_toggle')[0];
 
-			thisDropdownLabel.addEventListener('click', function(e) {
+			thisDropdownToggle.addEventListener('click', function(e) {
 
-				thisParentArticle = this.parentNode;
+				// run through each div.wrap_select...
+				for (var i = 0; i < numSelectLength; i++) {
 
-				// run through each dropdown article...
-				for (var i = 0; i < arrDropdownWrap.length; i++) {
-
-					// and if this is NOT the parent dropdown we have clicked on...
-					if (arrDropdownWrap[i] != thisParentArticle) {
-						classie.remove(arrDropdownWrap[i], 'toggled_dropdown'); // remove the 'toggled_dropdown' class
+					// and if this is NOT the parent div.wrap_select we have clicked on...
+					if (arrSelectWrap[i] != thisSelectWrap) {
+						classie.remove(arrSelectWrap[i], 'toggle_show');
 					}
 
 				}
 
-				if ( classie.has(thisDropdownWrap, 'toggle_show') ) {
+/*
+				if ( classie.has(thisSelectWrap, 'toggle_show') ) {
 
 					// dropdown is currently shown, so hide it
-					classie.remove(thisDropdownWrap, 'toggle_show');
-					classie.add(thisDropdownWrap, 'toggle_hide');
+					classie.remove(thisSelectWrap, 'toggle_show');
+					classie.add(thisSelectWrap, 'toggle_hide');
 
 				} else {
 
 					// dropdown is currently hidden, so show it
-					classie.remove(thisDropdownWrap, 'toggle_hide');
-					classie.add(thisDropdownWrap, 'toggle_show');
+					classie.remove(thisSelectWrap, 'toggle_hide');
+					classie.add(thisSelectWrap, 'toggle_show');
 
 				}
+*/
 
-				e.preventDefault();
+				classie.toggle(thisSelectWrap, 'toggle_show');
+
+				e.preventDefault(); // requires the event.preventDefault for the document listener to work
 
 			}, false);
 
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			document.addEventListener('click', function(e) {
 
 				// if this is not the currently toggled dropdown
-				if (e.target != thisDropdownLabel) {
+				if (e.target != thisDropdownToggle) {
 
 					// ignore this event if preventDefault has been called
 					if (e.defaultPrevented) {
@@ -118,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 
 					// hide dropdown
-					classie.remove(thisDropdownWrap, 'toggle_show');
-					classie.add(thisDropdownWrap, 'toggle_hide');
+					classie.remove(thisSelectWrap, 'toggle_show');
+					// classie.add(thisSelectWrap, 'toggle_hide');
 
 				}
 
@@ -130,9 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		// function for passing <ul> values to the corresponding <select>
 		function passSelectValue() {
 
-			var arrDropdownLinks = elDropdownForm.getElementsByClassName('dropdown_link');
+			var arrDropdownLinks = document.getElementsByClassName('dropdown_link');
 
-			// assign the click event to each a.dropdown_link found in the form.has-dropdown
+			// assign the click event to each a.dropdown_link found in the document
 			for (var i = 0; i < arrDropdownLinks.length; i++) {
 				optionChange(arrDropdownLinks[i]);
 			}
@@ -145,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
 						dataLabel        = this.innerHTML,
 						elParentLI       = this.parentNode,
 						elParentUL       = elParentLI.parentNode,
-						elParentWrap     = elParentUL.parentNode.parentNode.parentNode,
-						elSiblingLabel   = elParentUL.parentNode.parentNode.previousElementSibling.childNodes[1], // first child is an empty text node
+						elParentWrap     = findParentClass(elParentUL, 'wrap_select'),
+						elSiblingLabel   = findParentClass(elParentUL, 'wrap_dropdown').previousElementSibling.childNodes[1], // 1st child = empty textNode
 						elMatchedOption  = elParentWrap.querySelector('option[value="' + dataValue + '"]'),
 						dataPrevSelected = elParentWrap.getAttribute('data-selected'),
 						elPrevSelected   = elParentUL.querySelector('a[data-value="' + dataPrevSelected + '"]');
@@ -157,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					// set 'data-selected' to new value
 					elParentWrap.setAttribute('data-selected', dataValue);
 
-					// replace h6.dropdown_label innerHTML with the selected option text
+					// replace div.dropdown_label innerHTML with the selected option text
 					elSiblingLabel.innerHTML = dataLabel;
 
 					// remove 'selected' class from previous <li>, if it exists...
@@ -170,10 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// hide the parent dropdown
 					classie.remove(elParentWrap, 'toggle_show');
-					classie.add(elParentWrap, 'toggle_hide');
 
 					// confirm we have provided the correct selected value
-					console.log( document.getElementById('select_location').value );
+					// console.log( document.getElementById('select_destination').value );
 
 					e.preventDefault();
 
@@ -183,16 +179,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-		passSelectValue();
+	}
+
+
+	// Helper: Find Parent Element by Class or Tag Name
+	// ----------------------------------------------------------------------------
+	function findParentClass(el, className) {
+
+		while (el && !classie.has(el, className) ) {
+			el = el.parentNode;
+		}
+
+		return el;
 
 	}
+
+	function findParentTag(el, tagName) {
+
+		while (el && el.nodeName !== tagName) {
+			el = el.parentNode;
+		}
+
+		return el;
+
+	};
 
 
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
 	navToggle();
 	secretEmail();
-
 	selectDropdown();
 
 

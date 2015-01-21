@@ -27,7 +27,7 @@ var paths = {
 	},
 	scripts: {
 		src : 'dev/scripts/*.js',
-		vndr: 'dev/scripts/vendor/*.js',
+		// vndr: 'dev/scripts/vendor/*.js',
 		dest: 'build/assets/js/'
 	},
 	images: {
@@ -63,8 +63,8 @@ gulp.task('clean', function(cb) {
 // Compile only main HAML files (partials are included via the main files)
 gulp.task('haml', function() {
 
-	return gulp.src(paths.haml.src + '*.haml') // does not work: , {read: false}
-		.pipe(plugins.rubyHaml()) // does not work: {doubleQuote: true}
+	return gulp.src(paths.haml.src + '*.haml')
+		.pipe(plugins.rubyHaml())
 		.pipe(gulp.dest(paths.haml.dest))
 		.pipe(plugins.livereload());
 
@@ -123,6 +123,18 @@ gulp.task('scripts', function() {
 });
 
 
+/*
+// Copy (if changed) all of our vendor scripts to the build js folder
+gulp.task('vendor', function() {
+
+	return gulp.src(paths.scripts.vndr)
+		.pipe(plugins.changed(paths.scripts.dest))
+		.pipe(gulp.dest(paths.scripts.dest));
+
+});
+*/
+
+
 // Check for changed image files and compress them
 gulp.task('images', function() {
 
@@ -153,36 +165,6 @@ gulp.task('svg', function() {
 		}))
 		.pipe(gulp.dest(paths.images.dest));
 
-/* ONCE GULP HAS TASK SEQUENCING, REVISIT THIS AND USE GULP-INJECT
-
-	var svgOutput = gulp.src(paths.svg.src)
-						.pipe(plugins.imagemin({
-							svgoPlugins: [{
-								removeViewBox: false,
-								removeUselessStrokeAndFill: false
-							}]
-						}))
-						.pipe(plugins.svgstore({
-							// prefix: 'icon-',
-							inlineSvg: true
-						}))
-						.pipe(cheerio(function($) {
-							$('svg').attr({
-								'id': 'master-vector',
-								'style': 'display:none'
-							});
-						}));
-
-	function fileContents(filePath, file) {
-		return file.contents.toString('utf8');
-	}
-
-	return gulp.src(paths.haml.dest + '*.html')
-				.pipe(plugins.inject(svgOutput, { transform: fileContents }))
-				.pipe(gulp.dest(paths.haml.dest));
-
-*/
-
 });
 
 
@@ -194,12 +176,6 @@ gulp.task('extras', function() {
 	return gulp.src([paths.extra.root + '*.*', paths.extra.root + '.htaccess'])
 		.pipe(plugins.changed(paths.extra.dest)) // not sure how to check if this is working or not
 		.pipe(gulp.dest(paths.extra.dest));
-
-/*
-	gulp.src(paths.scripts.vndr)
-		.pipe(plugins.changed(paths.scripts.dest))
-		.pipe(gulp.dest(paths.scripts.dest));
-*/
 
 });
 
@@ -237,4 +213,4 @@ gulp.task('watch', ['haml', 'styles', 'scripts'], function() {
 
 
 // Default gulp task, should run gulp clean prior to running the default task...
-gulp.task('default', ['haml', 'styles', 'scripts', 'images', 'extras', 'svg']);
+gulp.task('default', ['haml', 'styles', 'scripts', 'images', 'extras', 'svg']); // remove 'vendor' task
