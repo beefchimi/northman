@@ -31,19 +31,23 @@
 
 	// Forms
 	// ----------------------------------------------------------------------------
+	input[type="text"] {
+		// padding: 0 4rem 0 1.6rem;
+		height: 5.2rem;
+	}
 	// --- Select Dropdown --- \\
 	// + dropdown toggle + \\
 	div.wrap_select div.dropdown_toggle {
-		height: 6rem;
+		height: 5.2rem;
 	}
 	div.wrap_select div.dropdown_toggle span {
 		padding: 0 2rem;
 		font-size: 2.1rem;
-		line-height: 6rem;
+		line-height: 5.2rem;
 	}
 	// + dropdown list + \\
 	div.wrap_select div.wrap_dropdown ul {
-		padding-top: 6rem;
+		padding-top: 5.2rem;
 	}
 	div.wrap_select div.wrap_dropdown ul li a {
 		padding: 2rem;
@@ -51,7 +55,7 @@
 	}
 	// + dropdown scrollable + \\
 	div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
-		top: 6rem;
+		top: 5.2rem;
 	}
 	div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
 		padding-top: 0;
@@ -61,8 +65,8 @@
 	// ----------------------------------------------------------------------------
 	.btn_rnd {
 		padding: 0 2.4rem;
-		height: 6rem;
-		line-height: 6rem;
+		height: 5.2rem;
+		line-height: 5.2rem;
 	}
 
 // ==|== common sections ======================================================
@@ -97,29 +101,35 @@
 	}
 	// --- Home Form --- \\
 	form.form_home {
-		padding: 4.8rem 3.2rem;
+		padding-top: 4.8rem;
 	}
-	// + destination form + \\
+	// --- Form: Destination --- \\
 	fieldset.form_destination {
 		position: relative;
+		padding: 0 3.2rem 4.8rem 3.2rem;
 	}
 	fieldset.form_destination legend {
 		margin-bottom: 4rem;
 		letter-spacing: 0.5rem;
 	}
-	fieldset.form_destination div.wrap_select {
+	fieldset.form_destination div.wrap_element {
 		margin: 0;
 	}
-	fieldset.form_destination div.wrap_select div.dropdown_toggle svg.svg_ui-globe {
+	fieldset.form_destination div.wrap_element input[type="text"] {
+		height: 6rem;
+	}
+	fieldset.form_destination div.wrap_element svg.svg_ui-globe {
 		top: 1.7rem;
 		right: 2rem;
 		width: 2.6rem;
 		height: 2.6rem;
 	}
-	fieldset.form_destination button {
+	fieldset.form_destination > a {
 		position: absolute;
-		bottom: 0;
-		right: 0;
+		top: 0;
+		right: 3.2rem; // padding-right
+		height: 6rem;
+		line-height: 6rem;
 	}
 	// --- Home Details --- \\
 	section.home_details {
@@ -183,7 +193,7 @@
 		color: $nm_orange;
 	}
 	nav.nav_primary ul li a:active {
-		color: $nm_orange-light;
+		color: $nm_orange-L;
 	}
 	// --- Toggled: Mobile Nav --- \\
 	body.toggled_mobile-nav nav.nav_primary {

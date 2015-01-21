@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		var arrSelectWrap   = document.getElementsByClassName('wrap_select'),
 			numSelectLength = arrSelectWrap.length;
 
-		// if (arrSelectWrap == null) {
-
 		// check if div.wrap_select exists and is not empty
 		if (typeof arrSelectWrap !== 'undefined' && numSelectLength > 0) {
 
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		} else {
 
-			return; // array not found / empty... exit function
+			return; // array not found or empty... exit function
 
 		}
 
@@ -80,22 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 
 				}
-
-/*
-				if ( classie.has(thisSelectWrap, 'toggle_show') ) {
-
-					// dropdown is currently shown, so hide it
-					classie.remove(thisSelectWrap, 'toggle_show');
-					classie.add(thisSelectWrap, 'toggle_hide');
-
-				} else {
-
-					// dropdown is currently hidden, so show it
-					classie.remove(thisSelectWrap, 'toggle_hide');
-					classie.add(thisSelectWrap, 'toggle_show');
-
-				}
-*/
 
 				classie.toggle(thisSelectWrap, 'toggle_show');
 

@@ -4,43 +4,86 @@
 
 		%legend Where are you going?
 
-		#wrap_select-destination.wrap_select{"data-selected" => ""}
+		.wrap_element
+			%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :placeholder => "Enter your destination"}
+			%svg.svg_ui-globe
+				%use{"xlink:href" => "#ui_globe"}
 
-			%select#select_destination{:name => "select_destination", :required => true}
-				%option{:disabled => true, :selected => true, :value => true} select an option
-				%option{:value => "destination_ottawa-canada"} Ottawa, Canada
-				%option{:value => "destination_toronto-canada"} Toronto, Canada
-				%option{:value => "destination_berlin-germany"} Berlin, Germany
-				%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
-				%option{:value => "destination_boston-usa"} Boston, USA
-				%option{:value => "destination_newyork-usa"} New York, USA
-				%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+		%a#get_price.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Price
 
-			.dropdown_toggle
-				%span.dropdown_placeholder.truncate Select Your Destination
-				%svg.svg_ui-globe
-					%use{"xlink:href" => "#ui_globe"}
+	%fieldset.form_price
 
-			-# if UL > LI.length >= 6: add class "scrollable"
-			.wrap_dropdown.scrollable
+		%h3 We just need a few details to get you the most accurate price:
 
-				-# if UL > LI.length >= 6: output <span>
-				%span.fix_ios-scroll
+		.wrap_input{"data-container" => "width-1354"}
 
-					%ul.dropdown_list
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
-						%li.dropdown_option
-							%a.dropdown_link{:href => "#", "data-value" => "destination_zurich-switzerland"} Zürich, Switzerland
+			.col-1
 
-		%button#submit_home.submit_home.btn_rnd.btn_cream{:type => "button"} Get A Price
+				%label{:for => "date_begin"} Where are you going?
+
+				.wrap_element
+					%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date"}
+					%svg.svg_ui-arrow-down
+						%use{"xlink:href" => "#ui_arrow-down"}
+
+				%span.txt Til
+
+				.wrap_element
+					%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date"}
+					%svg.svg_ui-arrow-down
+						%use{"xlink:href" => "#ui_arrow-down"}
+
+			.col-2
+
+				%label{:for => "age-groups"} Who is going?
+
+				.wrap_element
+					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages"}
+					%p e.g. 35, 25, 16
+
+			.col-3
+
+				%label{:for => "date_begin"} Where are you from?
+
+				#wrap_select-location.wrap_select{"data-selected" => ""}
+
+					%select#select_location{:name => "select_location", :required => true}
+						%option{:disabled => true, :selected => true, :value => true} select an option
+						%option{:value => "destination_ottawa-canada"} Ottawa, Canada
+						%option{:value => "destination_toronto-canada"} Toronto, Canada
+						%option{:value => "destination_berlin-germany"} Berlin, Germany
+						%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
+						%option{:value => "destination_boston-usa"} Boston, USA
+						%option{:value => "destination_newyork-usa"} New York, USA
+						%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+
+					.dropdown_toggle
+						%span.dropdown_placeholder.truncate Select Your Location
+						%svg.svg_ui-arrow-down
+							%use{"xlink:href" => "#ui_arrow-down"}
+
+					-# if UL > LI.length >= 6: add class "scrollable"
+					.wrap_dropdown.scrollable
+
+						-# if UL > LI.length >= 6: output <span>
+						%span.fix_ios-scroll
+
+							%ul.dropdown_list
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
+								%li.dropdown_option
+									%a.dropdown_link{:href => "#", "data-value" => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+
+			.col-4
+
+				%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Price

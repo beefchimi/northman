@@ -3,14 +3,18 @@
 
 // SASS Variables
 // ----------------------------------------------------------------------------
-$nm_orange: hsla(16,100%,54%,1);
-$nm_orange-light: hsla(16,100%,64%,1);
-$nm_orange-dark: hsla(16,100%,44%,1);
+$nm_orange:    hsla(16,100%,54%,1);
+$nm_orange-L:  hsla(16,100%,64%,1);
+$nm_orange-D:  hsla(16,100%,44%,1);
+$nm_orange-A0: hsla(16,100%,54%,0);
 
-$nm_cream: hsla(60,11%,93%,1);
-$nm_cream-dark: hsla(60,11%,83%,1);
+$nm_cream:   hsla(60,11%,93%,1);
+$nm_cream-D: hsla(60,11%,83%,1);
 
-// $nm_grey: hsla(0,0%,15%,1);
+$nm_L58: hsla(0,0%,58%,1);
+$nm_L21: hsla(0,0%,21%,1);
+$nm_L15: hsla(0,0%,15%,1);
+$nm_L7:  hsla(0,0%,7%,1);
 
 // Foundation
 // ----------------------------------------------------------------------------
@@ -21,6 +25,7 @@ optgroup,
 select,
 textarea {
 	font-family: 'futura-pt', Futura, 'Trebuchet MS', Arial, sans-serif;
+	font-weight: 500;
 }
 body {
 	position: relative;
@@ -32,13 +37,14 @@ body {
 }
 // + autoprefixer does not recognize placeholder + \\
 ::-webkit-input-placeholder {
-	color: transparent;
+	color: $nm_L58;
 }
 ::-moz-placeholder {
-	color: transparent;
+	color: $nm_L58;
+	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: transparent;
+	color: $nm_L58;
 }
 
 // Transitions
@@ -62,58 +68,21 @@ div.wrap_select div.wrap_dropdown {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
-	transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-// General Styles
-// ----------------------------------------------------------------------------
-.wrap_svg {
-	display: block;
-}
-.wrap_svg svg {
-	width: 100%;
-	height: 100%;
-}
-// + hide SVG container + \\
-#svgInject {
-	display: none;
-	visibility: hidden;
-}
-// --- Containers --- \\
-[data-container] {
-	margin-left: auto;
-	margin-right: auto;
-}
-[data-container="width-1440"] {
-	max-width: 144rem;
-}
-[data-container="width-1264"] {
-	max-width: 126.4rem;
-}
-[data-container="width-1200"] {
-	max-width: 120rem;
-}
 // --- Animations --- \\
 /*
 @keyframes transShow {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
 }
 @keyframes transHide {
-	0% {
-		opacity: 1;
-		left: 0;
-	}
-	100% {
-		opacity: 0;
-		left: 0;
-	}
+	0%   { left: 0; opacity: 1; }
+	100% { left: 0; opacity: 0; }
 }
 */
+
 // --- FOUT --- \\
 /*
 main,
@@ -126,8 +95,61 @@ footer {
 }
 */
 
+// General Styles
+// ----------------------------------------------------------------------------
+.wrap_element {
+	position: relative;
+}
+// + SVGs + \\
+#svgInject {
+	display: none;
+	visibility: hidden;
+}
+.wrap_svg {
+	display: block;
+}
+.wrap_svg svg {
+	width: 100%;
+	height: 100%;
+}
+// --- Containers --- \\
+[data-container] {
+	margin-left: auto;
+	margin-right: auto;
+}
+[data-container="width-1440"] {
+	max-width: 144rem;
+}
+[data-container="width-1354"] {
+	max-width: 135.4rem;
+}
+[data-container="width-1264"] {
+	max-width: 126.4rem;
+}
+[data-container="width-1200"] {
+	max-width: 120rem;
+}
+
 // Forms
 // ----------------------------------------------------------------------------
+input[type="text"] {
+	padding: 0 4rem 0 1.6rem;
+	width: 100%;
+	height: 4.8rem;
+	font-size: 1.8rem;
+	color: $nm_L21;
+	background-color: $nm_cream;
+	box-shadow: inset 0 0 0 0.1rem $nm_orange-A0;
+	border-radius: 0.8rem;
+}
+// + interaction + \\
+input[type="text"]:focus {
+	background-color: $nm_cream-D;
+	box-shadow: inset 0 0 0 0.1rem $nm_orange;
+}
+input[type="text"]:hover {
+	background-color: $nm_cream-D;
+}
 // --- Select Dropdown --- \\
 div.wrap_select {
 	position: relative;
@@ -153,21 +175,26 @@ div.wrap_select div.dropdown_toggle {
 	height: 4.8rem;
 	background-color: $nm_cream;
 	border-radius: 0.8rem;
+	box-shadow: inset 0 0 0 0.1rem $nm_orange-A0;
 }
-/*
-div.wrap_select[data-selected=""] div.dropdown_toggle {
-	color: hsla(141,100%,18%,1);
-	background-color: hsla(141,100%,18%,0);
-}
-*/
 div.wrap_select div.dropdown_toggle span {
 	display: block;
 	user-select: none;
-	padding: 0 1.6rem;
+	padding: 0 4.8rem 0 1.6rem;
 	font-size: 1.8rem;
-	font-weight: 700; // futura bold
 	line-height: 4.8rem;
-	color: hsla(0,0%,20%,1);
+	color: $nm_L21;
+}
+div.wrap_select[data-selected=""] div.dropdown_toggle span {
+	color: $nm_L58;
+}
+div.wrap_select div.dropdown_toggle svg {
+	position: absolute;
+	top: 1.6rem;
+	right: 1.6rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	fill: $nm_orange;
 }
 // + dropdown list + \\
 div.wrap_select div.wrap_dropdown {
@@ -222,14 +249,17 @@ div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar {
 	background-color: hsla(0,0%,0%,1);
 }
 div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-track {
-	background-color: $nm_cream-dark;
+	background-color: $nm_cream-D;
 }
 div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-thumb {
 	background-color: $nm_orange;
 }
 // + interaction + \\
+div.wrap_select select:focus + div.dropdown_toggle {
+	box-shadow: inset 0 0 0 0.1rem $nm_orange;
+}
 div.wrap_select:hover div.dropdown_toggle {
-	background-color: $nm_cream-dark;
+	background-color: $nm_cream-D;
 }
 div.wrap_select:active div.dropdown_toggle {
 	background-color: $nm_cream;
@@ -241,9 +271,7 @@ div.wrap_select div.wrap_dropdown ul li a:active {
 	background-color: hsla(0,0%,100%,1);
 }
 // + hide / show dropdown + \\
-div.wrap_select div.wrap_dropdown { // .toggle_hide
-	// left: -999rem;
-	// animation: transHide 0.3s ease-in-out;
+div.wrap_select div.wrap_dropdown {
 	opacity: 0;
 	visibility: hidden;
 }
@@ -251,8 +279,6 @@ div.wrap_select.toggle_show {
 	z-index: 200;
 }
 div.wrap_select.toggle_show div.wrap_dropdown {
-	// left: 0;
-	// animation: transShow 0.3s ease-in-out forwards;
 	opacity: 1;
 	visibility: visible;
 }
@@ -274,28 +300,48 @@ div.wrap_select.toggle_show div.dropdown_toggle {
 	text-align: center;
 	text-transform: uppercase;
 	border-radius: 0.8rem;
+}
+a[class*="brd_"],
+button[class*="brd_"] {
 	box-shadow: inset 0 0 0 0.2rem;
 }
-// + button: orange + \\
-.btn_orange {
+// + fill: orange + \\
+.fill_orange {
+	color: $nm_cream;
+	background-color: $nm_orange;
+}
+.fill_orange:focus,
+.fill_orange:hover {
+	color: $nm_orange;
+	background-color: $nm_cream;
+}
+.fill_orange:active {
+	color: $nm_orange-D;
+	background-color: $nm_cream-D;
+}
+// + border: orange + \\
+.brd_orange {
 	color: $nm_orange;
 }
-.btn_orange:hover {
+.brd_orange:focus,
+.brd_orange:hover {
 	color: hsla(0,0%,20%,1);
 }
-.btn_orange:active {
+.brd_orange:active {
 	color: hsla(0,0%,40%,1);
 }
-// + button: cream + \\
-.btn_cream {
+// + border: cream + \\
+.brd_cream {
 	color: $nm_cream;
 }
-.btn_cream:hover {
+.brd_cream:focus,
+.brd_cream:hover {
 	color: $nm_orange;
 }
-.btn_cream:active {
-	color: $nm_orange-light;
+.brd_cream:active {
+	color: $nm_orange-L;
 }
+
 
 // ==|== common sections ======================================================
 // ============================================================================
@@ -412,6 +458,7 @@ footer p {
 	margin-bottom: 4rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
+	font-weight: 400;
 	line-height: 1.4;
 	color: $nm_orange;
 }
@@ -471,15 +518,15 @@ section.home_intro div.wrap_svg svg.svg_nm-tagline {
 	display: inline;
 	fill: hsla(60,11%,93%,0.9);
 }
-// --- Home Form --- \\
 form.form_home {
-	padding: 3.2rem 1.6rem;
+	padding-top: 3.2rem;
 	border-top: 0.1rem solid $nm_cream;
 }
-// + destination dropdown + \\
+// --- Form: Destination --- \\
 fieldset.form_destination {
 	margin: 0 auto;
-	max-width: 56rem;
+	max-width: 62.4rem; // width 560px + eventual padding (32px x 2)
+	padding: 0 1.6rem 3.2rem 1.6rem;
 }
 fieldset.form_destination legend {
 	margin-bottom: 3.2rem;
@@ -491,28 +538,114 @@ fieldset.form_destination legend {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-fieldset.form_destination div.wrap_select {
+fieldset.form_destination div.wrap_element {
 	max-width: 39rem;
 	margin: 0 auto 2rem auto;
 }
-fieldset.form_destination div.wrap_select div.dropdown_toggle span {
+fieldset.form_destination div.wrap_element input[type="text"] {
 	padding-right: 4.8rem;
+	font-weight: 700;
 }
-fieldset.form_destination div.wrap_select div.dropdown_toggle svg.svg_ui-globe {
+fieldset.form_destination div.wrap_element svg.svg_ui-globe {
 	position: absolute;
 	top: 1.4rem;
 	right: 1.6rem;
-	fill: $nm_orange;
 	width: 2rem;
 	height: 2rem;
+	fill: $nm_orange;
 }
+// --- Form: Price --- \\
+fieldset.form_price {
+	background-color: $nm_L7;
+}
+fieldset.form_price h3,
+fieldset.form_price label,
+fieldset.form_price span.txt {
+	font-size: 1.3rem;
+	font-weight: 700; // futura bold
+	letter-spacing: 0.3rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
+fieldset.form_price h3 {
+	padding: 3.2rem 1.6rem;
+	font-style: italic;
+	line-height: 1.4;
+}
+fieldset.form_price label,
+fieldset.form_price span.txt {
+	display: block;
+}
+fieldset.form_price label {
+	margin-bottom: 2.6rem;
+}
+fieldset.form_price span.txt {
+	margin: 2rem 0;
+}
+fieldset.form_price p {
+	margin-top: 1.6rem;
+	font-size: 1.6rem;
+	font-style: italic;
+	text-align: center;
+	color: $nm_cream;
+}
+
+
+
+
+fieldset.form_price div.wrap_input > div {
+	padding: 3.2rem 1.6rem;
+	border-top: 0.1rem solid $nm_L21;
+}
+
+
+
+
+
+fieldset.form_price div.wrap_input div.wrap_element {
+	position: relative;
+	margin: 0 auto;
+}
+fieldset.form_price div.wrap_input div.wrap_element input.pikaday_input {
+	cursor: pointer;
+}
+fieldset.form_price div.wrap_input div.wrap_element svg {
+	pointer-events: none;
+	position: absolute;
+	top: 1.6rem;
+	right: 1.6rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	fill: $nm_orange;
+}
+
+// + individual columns + \\
+fieldset.form_price div.wrap_input div.col-1 div.wrap_element {
+	width: 19rem;
+}
+fieldset.form_price div.wrap_input div.col-2 div.wrap_element {
+	width: 17rem;
+}
+fieldset.form_price div.wrap_input div.col-3 div.wrap_select {
+	margin: 0 auto;
+	width: 22rem;
+}
+fieldset.form_price div.wrap_input div.col-4 button {
+	padding: 0 3.2rem;
+	height: 6.8rem;
+	font-size: 1.9rem;
+}
+
 // --- Home Details --- \\
+section.home_details {
+	background-color: $nm_cream;
+}
 section.home_details article {
 	padding: 4.8rem 1.6rem;
 	text-align: center;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
-	// background-color: $nm_cream;
 }
 section.home_details article div.wrap_svg {
 	margin: 0 auto 4rem auto;
@@ -537,6 +670,7 @@ section.home_details article p {
 	max-width: 86rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem; // 1.7rem;
+	font-weight: 400;
 	line-height: 1.4;
 }
 section.home_details article ul {
@@ -549,6 +683,7 @@ section.home_details article ul li {
 	margin-bottom: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.2rem;
+	font-weight: 400;
 	line-height: 1.4;
 }
 section.home_details article ul li:last-child {
