@@ -1,17 +1,18 @@
 %form#form_home.form_home.has_dropdown
 
-	%fieldset.form_destination
+	%fieldset#form_destination.form_destination
 
 		%legend Where are you going?
 
 		.wrap_element
-			%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :placeholder => "Enter your destination"}
+			%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination"}
 			%svg.svg_ui-globe
 				%use{"xlink:href" => "#ui_globe"}
+			%datalist#datalist_countries
 
-		%a#get_price.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Price
+		%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
 
-	%fieldset.form_price
+	%fieldset#form_quote.form_quote
 
 		%h3 We just need a few details to get you the most accurate price:
 
@@ -19,31 +20,38 @@
 
 			.col-1
 
-				%label{:for => "date_begin"} Where are you going?
+				%label Where are you going?
 
 				.wrap_element
-					%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date"}
-					%svg.svg_ui-arrow-down
-						%use{"xlink:href" => "#ui_arrow-down"}
+					%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date", :required => true}
+					%svg.svg_ui-calendar
+						%use{"xlink:href" => "#ui_calendar"}
 
 				%span.txt Til
 
 				.wrap_element
-					%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date"}
-					%svg.svg_ui-arrow-down
-						%use{"xlink:href" => "#ui_arrow-down"}
+					%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
+					%svg.svg_ui-calendar
+						%use{"xlink:href" => "#ui_calendar"}
+
+				%span.wrap_checkbox
+					%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family"}
+					%label{:for => "check_family"}
+						I’m travelling with my family
+						%svg.svg_ui-checkmark
+							%use{"xlink:href" => "#ui_checkmark"}
 
 			.col-2
 
-				%label{:for => "age-groups"} Who is going?
+				%label Who is going?
 
 				.wrap_element
-					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages"}
+					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
 					%p e.g. 35, 25, 16
 
 			.col-3
 
-				%label{:for => "date_begin"} Where are you from?
+				%label Where are you from?
 
 				#wrap_select-location.wrap_select{"data-selected" => ""}
 
@@ -86,4 +94,4 @@
 
 			.col-4
 
-				%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Price
+				%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Quote

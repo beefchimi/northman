@@ -18,7 +18,8 @@
 
 				= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
 
-			%section.home_details{"data-container" => "width-1440"}
+			-# {"data-container" => "width-1440"}
+			%section.home_details
 
 				%article.details_why
 

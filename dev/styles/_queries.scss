@@ -18,12 +18,12 @@
 		column-count: 2;
 		column-gap: 3.2rem;
 	}
-	// --- Form: Price --- \\
+	// --- Form: Quote --- \\
 	// + individual columns + \\
-	fieldset.form_price div.wrap_input div.col-1 div.wrap_element {
+	fieldset.form_quote div.wrap_input div.col-1 div.wrap_element {
 		display: inline-block;
 	}
-	fieldset.form_price div.wrap_input div.col-1 span.txt {
+	fieldset.form_quote div.wrap_input div.col-1 span.txt {
 		margin: 0 2rem;
 	}
 
@@ -136,15 +136,23 @@
 	}
 	fieldset.form_destination > a {
 		position: absolute;
-		top: 0;
+		bottom: 4.8rem; // padding-bottom of fieldset
 		right: 3.2rem; // padding-right
 		height: 6rem;
+		margin: 0;
 		line-height: 6rem;
 	}
-	// --- Form: Price --- \\
-	fieldset.form_price div.wrap_input div.wrap_element svg {
+	// --- Form: Quote --- \\
+	fieldset.form_quote div.wrap_input div.wrap_element svg {
 		top: 1.8rem;
 		right: 2rem;
+	}
+	// + individual columns + \\
+	fieldset.form_quote div.wrap_input div.col-1 div.wrap_element svg {
+		top: 1.6rem;
+		right: 1.8rem;
+		width: 2rem;
+		height: 2rem;
 	}
 	// --- Home Details --- \\
 	section.home_details {
@@ -251,48 +259,49 @@
 
 	// Home Page
 	// ----------------------------------------------------------------------------
-	// --- Form: Price --- \\
-	fieldset.form_price h3 {
+	// --- Form: Quote --- \\
+	fieldset.form_quote h3 {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	fieldset.form_price div.wrap_input {
+	fieldset.form_quote div.wrap_input {
 		display: flex;
 		flex-direction: row;
-
 		// align-items: center;
 		// justify-content: center;
 		// align-content: stretch;
-
 	}
-	fieldset.form_price div.wrap_input > div {
+	fieldset.form_quote div.wrap_input > div {
 		padding: 4rem 0;
 		// flex: 1 0 0;
 		border-top: none;
 	}
-	fieldset.form_price div.wrap_input > div:nth-child(1n+2) {
+	fieldset.form_quote div.wrap_input > div:nth-child(1n+2) {
 		border-left: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
-	fieldset.form_price div.wrap_input div.col-1,
-	fieldset.form_price div.wrap_input div.col-3 {
-		flex: 2 0 0;
-	}
-	fieldset.form_price div.wrap_input div.col-2,
-	fieldset.form_price div.wrap_input div.col-4 {
-		flex: 1 0 0;
-	}
-	fieldset.form_price div.wrap_input div.col-1 {
+	fieldset.form_quote div.wrap_input div.col-1 {
+		width: 50rem;
 		text-align: left;
 	}
-	fieldset.form_price div.wrap_input div.col-2 div.wrap_element p {
+	fieldset.form_quote div.wrap_input div.col-2 {
+		width: 26.6rem;
+	}
+	fieldset.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
-	fieldset.form_price div.wrap_input div.col-4 {
-		text-align: right;
+	fieldset.form_quote div.wrap_input div.col-3 {
+		width: 34.2rem;
 	}
-	fieldset.form_price div.wrap_input div.col-4 button {
-		margin: 0;
+	fieldset.form_quote div.wrap_input div.col-4 {
+		position: relative;
+		width: 24.6rem;
+	}
+	fieldset.form_quote div.wrap_input div.col-4 button {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin: -3.4rem 0 0 0; // height of button (68px) / 2
 	}
 
 }

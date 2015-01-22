@@ -6,6 +6,56 @@ document.addEventListener('DOMContentLoaded', function() {
 	var elBody = document.body;
 
 
+	// Helper: Detmine which transition event to use
+	// ----------------------------------------------------------------------------
+/*
+	function whichTransitionEvent() {
+
+		var t,
+			el          = document.createElement('fakeelement'),
+			transitions = {
+			'transition' : 'transitionend',
+			'OTransition' : 'oTransitionEnd',
+			'MozTransition' : 'transitionend',
+			'WebkitTransition' : 'webkitTransitionEnd'
+		}
+
+		for (t in transitions) {
+			if (el.style[t] !== undefined) {
+				return transitions[t];
+			}
+		}
+
+	}
+
+	// listen for a transition
+	var transitionEvent = whichTransitionEvent();
+*/
+
+
+	// Helper: Find Parent Element by Class or Tag Name
+	// ----------------------------------------------------------------------------
+	function findParentClass(el, className) {
+
+		while (el && !classie.has(el, className) ) {
+			el = el.parentNode;
+		}
+
+		return el;
+
+	}
+
+	function findParentTag(el, tagName) {
+
+		while (el && el.nodeName !== tagName) {
+			el = el.parentNode;
+		}
+
+		return el;
+
+	};
+
+
 	// Navigation: Click to toggle navigation
 	// ----------------------------------------------------------------------------
 	function navToggle() {
@@ -164,27 +214,186 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// Helper: Find Parent Element by Class or Tag Name
+	// populateCountries: Load datalist JSON and populate autocomplete options
 	// ----------------------------------------------------------------------------
-	function findParentClass(el, className) {
+	function populateCountries() {
 
-		while (el && !classie.has(el, className) ) {
-			el = el.parentNode;
+		var elInputDestination  = document.getElementById('input_destination'),
+			elDatalistCountries = document.getElementById('datalist_countries'),
+			dataRequest         = new XMLHttpRequest(),
+			jsonOptions;
+
+		// Handle state changes for the request.
+		dataRequest.onreadystatechange = function(response) {
+
+			if (dataRequest.readyState === 4) {
+
+				if (dataRequest.status === 200) {
+
+					// Parse the JSON
+					jsonOptions = JSON.parse(dataRequest.responseText);
+
+					// Loop over the JSON array.
+					jsonOptions.forEach(function(item) {
+
+						// Create a new <option> element.
+						var elOption = document.createElement('option');
+
+						// Set the value using the item in the JSON array.
+						elOption.value = item;
+						elOption.innerHTML = item;
+
+						// Add the <option> element to the <datalist>.
+						elDatalistCountries.appendChild(elOption);
+
+					});
+
+					// Update the placeholder text.
+					elInputDestination.placeholder = 'Enter your destination';
+
+					// should be safe to run our toggle click function
+					revealForm();
+
+				} else {
+
+					// An error occured :(
+					elInputDestination.placeholder = 'Couldn\'t load covered Countries';
+
+				}
+
+			}
+
+		};
+
+		// Update the placeholder text.
+		elInputDestination.placeholder = 'Retreiving countries...';
+
+		// Set up and make the request.
+		dataRequest.open('GET', 'assets/js/datalist_countries.json', true);
+		dataRequest.send();
+
+		// reveal the fieldset.form_quote
+		function revealForm() {
+
+			var elFormToggle = document.getElementById('form_toggle'),
+				elFormPrice  = document.getElementById('form_quote'),
+				valDestination;
+
+			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
+
+			elFormToggle.addEventListener('click', function(e) {
+
+				valDestination  = elInputDestination.value;
+
+				if (jsonOptions.indexOf(valDestination) > -1) {
+
+					classie.add(elFormPrice, 'reveal');
+					smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
+
+					// allow overflow-y so dropdowns are not cutoff
+					setTimeout(function() {
+						classie.add(elFormPrice, 'allow-overflow');
+					}, 1200);
+
+/*
+					transitionEvent && elFormPrice.addEventListener(transitionEvent, function() {
+						classie.add(elFormPrice, 'allow-overflow');
+						console.log('Transition complete! This is the callback, no library needed!');
+					});
+*/
+
+				} else {
+
+					console.log('You have not provided a valid Country.');
+
+				}
+
+				e.preventDefault();
+
+			});
+
 		}
-
-		return el;
 
 	}
 
-	function findParentTag(el, tagName) {
 
-		while (el && el.nodeName !== tagName) {
-			el = el.parentNode;
+	// formGetPrice: Reveal the fieldset.form_quote
+	// ----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+	// Plugin: Pikaday Calendar / Datepicker
+	// ----------------------------------------------------------------------------
+	function initPikaday() {
+
+		// https://github.com/dbushell/Pikaday
+
+		var arrPikadayInputs = document.getElementsByClassName('pikaday_input'),
+			numPikadayInputs = arrPikadayInputs.length;
+
+		// check if arrPikadayInputs exists and is not empty
+		if (typeof arrPikadayInputs !== 'undefined' && numPikadayInputs > 0) {
+
+			for (var i = 0; i < numPikadayInputs; i++) {
+
+				new Pikaday({
+					field: arrPikadayInputs[i],
+/*
+					minDate: new Date('2000-01-01'),
+					maxDate: new Date('2020-12-31'),
+					yearRange: [2000,2020],
+					onSelect: function() {
+						var date = document.createTextNode(this.getMoment().format('Do MMMM YYYY') + ' ');
+						document.getElementById('selected').appendChild(date);
+					}
+*/
+					format: 'MMM D, YYYY'
+				});
+
+			}
+
 		}
 
-		return el;
+	}
 
-	};
+
+/*
+
+	$('.input-daterange').datepicker({
+		autoclose: true,
+		todayHighlight: true,
+		startDate: '2015-01-22',
+		format: 'yyyy-mm-dd'
+	});
+
+	$('#start-date').datepicker('show');
+
+	$('#start-date').on('hide', function() {
+
+		var start = $('#start-date').datepicker('getDate');
+		var end = new Date();
+
+		end.setDate(start.getDate() + 45);
+
+		$('#end-date').datepicker('setEndDate', end);
+		$('#end-date').datepicker('show');
+
+		$('#helpDate').html('Northman insures trips of up to 45 days.');
+
+	});
+
+	$('#end-date').on('hide', function () {
+		$('#helpDate').html(' &nbsp; ');
+	});
+
+*/
 
 
 	// Initialize Primary Functions
@@ -192,6 +401,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	navToggle();
 	secretEmail();
 	selectDropdown();
+	initPikaday();
+
+	// only run on home page
+	populateCountries();
 
 
 }, false);
