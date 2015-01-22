@@ -49,7 +49,7 @@ a.nav_toggle div.wrap_menu span {
 nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
-fieldset.form_quote {
+form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
 .pika-single,
@@ -61,10 +61,10 @@ div.dropdown_toggle {
 }
 
 input[type="checkbox"] + label {
-	transition: color 0.2s ease-in-out;
+	transition: color 0.3s ease-in-out;
 }
 input[type="checkbox"] + label::before {
-	transition: border-color 0.2s ease-in-out;
+	transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
 
@@ -176,9 +176,8 @@ input[type="text"]:invalid {
 
 // --- Checkbox --- \\
 span.wrap_checkbox {
-	display: block;
+	display: table;
 	margin: 3.2rem auto 0 auto;
-	width: 28rem;
 }
 input[type="checkbox"] + label {
 	cursor: pointer;
@@ -187,7 +186,7 @@ input[type="checkbox"] + label {
 	padding-left: 4rem;
 	font-size: 1.5rem;
 	font-weight: 700;
-	letter-spacing: 0.1rem;
+	letter-spacing: 0;
 	text-align: left;
 	text-transform: none;
 	color: $nm_cream;
@@ -212,7 +211,6 @@ input[type="checkbox"] + label svg {
 	fill: $nm_orange-A0;
 }
 // + interaction + \\
-input[type="checkbox"]:focus + label,
 input[type="checkbox"] + label:hover {
 	color: $nm_orange;
 }
@@ -221,6 +219,9 @@ input[type="checkbox"] + label:active {
 }
 input[type="checkbox"] + label:active::before {
 	border-color: $nm_orange-L;
+}
+input[type="checkbox"]:focus + label::before {
+	background-color: hsla(0,0%,16%,1); // lighter than: $nm_L7
 }
 input[type="checkbox"]:checked + label svg {
 	fill: $nm_orange;
@@ -598,17 +599,18 @@ section.home_intro div.wrap_svg svg.svg_nm-tagline {
 	display: inline;
 	fill: hsla(60,11%,93%,0.9);
 }
-form.form_home {
+
+// --- Form: Destination --- \\
+form.form_destination {
 	padding-top: 3.2rem;
 	border-top: 0.1rem solid $nm_cream;
 }
-// --- Form: Destination --- \\
-fieldset.form_destination {
+form.form_destination fieldset {
 	margin: 0 auto;
 	max-width: 62.4rem; // width 560px + eventual padding (32px x 2)
 	padding: 0 1.6rem 3.2rem 1.6rem;
 }
-fieldset.form_destination legend {
+form.form_destination fieldset legend {
 	margin-bottom: 3.2rem;
 	width: 100%; // required to center <legend>
 	font-size: 1.8rem;
@@ -618,15 +620,15 @@ fieldset.form_destination legend {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-fieldset.form_destination div.wrap_element {
+form.form_destination fieldset div.wrap_element {
 	max-width: 39rem;
 	margin: 0 auto 2rem auto;
 }
-fieldset.form_destination div.wrap_element input[type="text"] {
+form.form_destination fieldset div.wrap_element input[type="text"] {
 	padding-right: 4.8rem;
 	font-weight: 700;
 }
-fieldset.form_destination div.wrap_element svg.svg_ui-globe {
+form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	position: absolute;
 	top: 1.4rem;
 	right: 1.6rem;
@@ -635,20 +637,20 @@ fieldset.form_destination div.wrap_element svg.svg_ui-globe {
 	fill: $nm_orange;
 }
 // --- Form: Quote --- \\
-fieldset.form_quote {
-	// max-height: 0;
+form.form_quote {
+	max-height: 0;
 	background-color: $nm_L7;
 	overflow-y: hidden;
 }
-fieldset.form_quote.reveal {
+form.form_quote.reveal {
 	max-height: 99rem;
 }
-fieldset.form_quote.allow-overflow {
+form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
-fieldset.form_quote h3,
-fieldset.form_quote div > label,
-fieldset.form_quote span.txt {
+form.form_quote h3,
+form.form_quote div > label,
+form.form_quote span.txt {
 	font-size: 1.3rem;
 	font-weight: 700; // futura bold
 	letter-spacing: 0.3rem;
@@ -656,31 +658,31 @@ fieldset.form_quote span.txt {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-fieldset.form_quote h3 {
+form.form_quote h3 {
 	padding: 3.2rem 1.6rem;
 	font-style: italic;
 	line-height: 1.4;
 }
-fieldset.form_quote div > label {
+form.form_quote div > label {
 	display: block;
 	margin-bottom: 2.6rem;
 }
-fieldset.form_quote span.txt {
+form.form_quote span.txt {
 	display: inline-block;
 	margin: 2rem 0;
 }
-fieldset.form_quote div.wrap_input > div {
+form.form_quote div.wrap_input > div {
 	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_L21;
 }
-fieldset.form_quote div.wrap_input div.wrap_element {
+form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
 	margin: 0 auto;
 }
-fieldset.form_quote div.wrap_input div.wrap_element input.pikaday_input {
+form.form_quote div.wrap_input div.wrap_element input.pikaday_input {
 	cursor: pointer;
 }
-fieldset.form_quote div.wrap_input div.wrap_element svg {
+form.form_quote div.wrap_input div.wrap_element svg {
 	pointer-events: none;
 	position: absolute;
 	top: 1.6rem;
@@ -690,27 +692,27 @@ fieldset.form_quote div.wrap_input div.wrap_element svg {
 	fill: $nm_orange;
 }
 // + individual columns + \\
-fieldset.form_quote div.wrap_input div.col-1 {
+form.form_quote div.wrap_input div.col-1 {
 	text-align: center;
 }
-fieldset.form_quote div.wrap_input div.col-1 div.wrap_element {
+form.form_quote div.wrap_input div.col-1 div.wrap_element {
 	width: 19rem;
 }
-fieldset.form_quote div.wrap_input div.col-2 div.wrap_element {
+form.form_quote div.wrap_input div.col-2 div.wrap_element {
 	width: 17rem;
 }
-fieldset.form_quote div.wrap_input div.col-2 div.wrap_element p {
+form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 	margin-top: 1.6rem;
 	font-size: 1.6rem;
 	font-style: italic;
 	text-align: center;
 	color: $nm_cream;
 }
-fieldset.form_quote div.wrap_input div.col-3 div.wrap_select {
+form.form_quote div.wrap_input div.col-3 div.wrap_select {
 	margin: 0 auto;
 	width: 24rem;
 }
-fieldset.form_quote div.wrap_input div.col-4 button {
+form.form_quote div.wrap_input div.col-4 button {
 	padding: 0 3.2rem;
 	height: 6.8rem;
 	font-size: 1.9rem;

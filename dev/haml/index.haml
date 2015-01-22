@@ -16,7 +16,21 @@
 					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
-				= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
+				%form#form_destination.form_destination
+
+					%fieldset
+
+						%legend Where are you going?
+
+						.wrap_element
+							%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination"}
+							%svg.svg_ui-globe
+								%use{"xlink:href" => "#ui_globe"}
+							%datalist#datalist_countries
+
+						%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
+
+			= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
 
 			-# {"data-container" => "width-1440"}
 			%section.home_details

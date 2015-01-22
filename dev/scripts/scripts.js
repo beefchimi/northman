@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
+/*
+
+	FIRST THINGS FIRST
+
+	create a hidden field that will accept the Destination value upon <a> click
+
+	create some kind of invalid style and message for entering a country that does not exist
+
+*/
+
+
 	// Global Variables
 	// ----------------------------------------------------------------------------
 	var elBody = document.body;
@@ -148,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// hide dropdown
 					classie.remove(thisSelectWrap, 'toggle_show');
-					// classie.add(thisSelectWrap, 'toggle_hide');
 
 				}
 
@@ -199,9 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// hide the parent dropdown
 					classie.remove(elParentWrap, 'toggle_show');
-
-					// confirm we have provided the correct selected value
-					// console.log( document.getElementById('select_destination').value );
 
 					e.preventDefault();
 
@@ -276,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		function revealForm() {
 
 			var elFormToggle = document.getElementById('form_toggle'),
-				elFormPrice  = document.getElementById('form_quote'),
+				elFormQuote  = document.getElementById('form_quote'),
 				valDestination;
 
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
@@ -287,17 +294,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				if (jsonOptions.indexOf(valDestination) > -1) {
 
-					classie.add(elFormPrice, 'reveal');
+					classie.add(elFormQuote, 'reveal');
 					smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
 
 					// allow overflow-y so dropdowns are not cutoff
 					setTimeout(function() {
-						classie.add(elFormPrice, 'allow-overflow');
+						classie.add(elFormQuote, 'allow-overflow');
 					}, 1200);
 
 /*
-					transitionEvent && elFormPrice.addEventListener(transitionEvent, function() {
-						classie.add(elFormPrice, 'allow-overflow');
+					transitionEvent && elFormQuote.addEventListener(transitionEvent, function() {
+						classie.add(elFormQuote, 'allow-overflow');
 						console.log('Transition complete! This is the callback, no library needed!');
 					});
 */

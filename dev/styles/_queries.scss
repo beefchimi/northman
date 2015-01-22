@@ -20,10 +20,10 @@
 	}
 	// --- Form: Quote --- \\
 	// + individual columns + \\
-	fieldset.form_quote div.wrap_input div.col-1 div.wrap_element {
+	form.form_quote div.wrap_input div.col-1 div.wrap_element {
 		display: inline-block;
 	}
-	fieldset.form_quote div.wrap_input div.col-1 span.txt {
+	form.form_quote div.wrap_input div.col-1 span.txt {
 		margin: 0 2rem;
 	}
 
@@ -109,32 +109,33 @@
 		max-width: 78.7rem; // svg width (723px) + padding (2 x 32px)
 	}
 	// --- Home Form --- \\
-	form.form_home {
+
+	// --- Form: Destination --- \\
+	form.form_destination {
 		padding-top: 4.8rem;
 	}
-	// --- Form: Destination --- \\
-	fieldset.form_destination {
+	form.form_destination fieldset {
 		position: relative;
 		padding: 0 3.2rem 4.8rem 3.2rem;
 	}
-	fieldset.form_destination legend {
+	form.form_destination fieldset legend {
 		margin-bottom: 4rem;
 		letter-spacing: 0.5rem;
 	}
-	fieldset.form_destination div.wrap_element {
+	form.form_destination fieldset div.wrap_element {
 		margin: 0;
 	}
-	fieldset.form_destination div.wrap_element input[type="text"] {
+	form.form_destination fieldset div.wrap_element input[type="text"] {
 		height: 6rem;
 		font-size: 2.1rem;
 	}
-	fieldset.form_destination div.wrap_element svg.svg_ui-globe {
+	form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 		top: 1.7rem;
 		right: 2rem;
 		width: 2.6rem;
 		height: 2.6rem;
 	}
-	fieldset.form_destination > a {
+	form.form_destination fieldset > a {
 		position: absolute;
 		bottom: 4.8rem; // padding-bottom of fieldset
 		right: 3.2rem; // padding-right
@@ -143,12 +144,12 @@
 		line-height: 6rem;
 	}
 	// --- Form: Quote --- \\
-	fieldset.form_quote div.wrap_input div.wrap_element svg {
+	form.form_quote div.wrap_input div.wrap_element svg {
 		top: 1.8rem;
 		right: 2rem;
 	}
 	// + individual columns + \\
-	fieldset.form_quote div.wrap_input div.col-1 div.wrap_element svg {
+	form.form_quote div.wrap_input div.col-1 div.wrap_element svg {
 		top: 1.6rem;
 		right: 1.8rem;
 		width: 2rem;
@@ -260,48 +261,48 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	fieldset.form_quote h3 {
+	form.form_quote h3 {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	fieldset.form_quote div.wrap_input {
+	form.form_quote div.wrap_input {
 		display: flex;
 		flex-direction: row;
 		// align-items: center;
 		// justify-content: center;
 		// align-content: stretch;
 	}
-	fieldset.form_quote div.wrap_input > div {
+	form.form_quote div.wrap_input > div {
 		padding: 4rem 0;
 		// flex: 1 0 0;
 		border-top: none;
 	}
-	fieldset.form_quote div.wrap_input > div:nth-child(1n+2) {
+	form.form_quote div.wrap_input > div:nth-child(1n+2) {
 		border-left: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
-	fieldset.form_quote div.wrap_input div.col-1 {
+	form.form_quote div.wrap_input div.col-1 {
 		width: 50rem;
 		text-align: left;
 	}
-	fieldset.form_quote div.wrap_input div.col-2 {
+	form.form_quote div.wrap_input div.col-2 {
 		width: 26.6rem;
 	}
-	fieldset.form_quote div.wrap_input div.col-2 div.wrap_element p {
+	form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
-	fieldset.form_quote div.wrap_input div.col-3 {
+	form.form_quote div.wrap_input div.col-3 {
 		width: 34.2rem;
 	}
-	fieldset.form_quote div.wrap_input div.col-4 {
+	form.form_quote div.wrap_input div.col-4 {
 		position: relative;
 		width: 24.6rem;
 	}
-	fieldset.form_quote div.wrap_input div.col-4 button {
+	form.form_quote div.wrap_input div.col-4 button {
 		position: absolute;
-		top: 50%;
+		top: 7.6rem;
 		right: 0;
-		margin: -3.4rem 0 0 0; // height of button (68px) / 2
+		margin: 0;
 	}
 
 }

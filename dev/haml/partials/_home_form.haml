@@ -1,97 +1,83 @@
-%form#form_home.form_home.has_dropdown
+%form#form_quote.form_quote.has_dropdown
 
-	%fieldset#form_destination.form_destination
+	%h3 We just need a few details to get you the most accurate price:
 
-		%legend Where are you going?
+	.wrap_input{"data-container" => "width-1354"}
 
-		.wrap_element
-			%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination"}
-			%svg.svg_ui-globe
-				%use{"xlink:href" => "#ui_globe"}
-			%datalist#datalist_countries
+		.col-1
 
-		%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
+			%label Where are you going?
 
-	%fieldset#form_quote.form_quote
+			.wrap_element
+				%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date", :required => true}
+				%svg.svg_ui-calendar
+					%use{"xlink:href" => "#ui_calendar"}
 
-		%h3 We just need a few details to get you the most accurate price:
+			%span.txt Til
 
-		.wrap_input{"data-container" => "width-1354"}
+			.wrap_element
+				%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
+				%svg.svg_ui-calendar
+					%use{"xlink:href" => "#ui_calendar"}
 
-			.col-1
+			%span.wrap_checkbox
+				%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family"}
+				%label{:for => "check_family"}
+					I’m travelling with my family
+					%svg.svg_ui-checkmark
+						%use{"xlink:href" => "#ui_checkmark"}
 
-				%label Where are you going?
+		.col-2
 
-				.wrap_element
-					%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date", :required => true}
-					%svg.svg_ui-calendar
-						%use{"xlink:href" => "#ui_calendar"}
+			%label Who is going?
 
-				%span.txt Til
+			.wrap_element
+				%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
+				%p e.g. 35, 25, 16
 
-				.wrap_element
-					%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
-					%svg.svg_ui-calendar
-						%use{"xlink:href" => "#ui_calendar"}
+		.col-3
 
-				%span.wrap_checkbox
-					%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family"}
-					%label{:for => "check_family"}
-						I’m travelling with my family
-						%svg.svg_ui-checkmark
-							%use{"xlink:href" => "#ui_checkmark"}
+			%label Where are you from?
 
-			.col-2
+			#wrap_select-location.wrap_select{"data-selected" => ""}
 
-				%label Who is going?
+				%select#select_location{:name => "select_location", :required => true}
+					%option{:disabled => true, :selected => true, :value => true} select an option
+					%option{:value => "destination_ottawa-canada"} Ottawa, Canada
+					%option{:value => "destination_toronto-canada"} Toronto, Canada
+					%option{:value => "destination_berlin-germany"} Berlin, Germany
+					%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
+					%option{:value => "destination_boston-usa"} Boston, USA
+					%option{:value => "destination_newyork-usa"} New York, USA
+					%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
 
-				.wrap_element
-					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
-					%p e.g. 35, 25, 16
+				.dropdown_toggle
+					%span.dropdown_placeholder.truncate Select Your Location
+					%svg.svg_ui-arrow-down
+						%use{"xlink:href" => "#ui_arrow-down"}
 
-			.col-3
+				-# if UL > LI.length >= 6: add class "scrollable"
+				.wrap_dropdown.scrollable
 
-				%label Where are you from?
+					-# if UL > LI.length >= 6: output <span>
+					%span.fix_ios-scroll
 
-				#wrap_select-location.wrap_select{"data-selected" => ""}
+						%ul.dropdown_list
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
 
-					%select#select_location{:name => "select_location", :required => true}
-						%option{:disabled => true, :selected => true, :value => true} select an option
-						%option{:value => "destination_ottawa-canada"} Ottawa, Canada
-						%option{:value => "destination_toronto-canada"} Toronto, Canada
-						%option{:value => "destination_berlin-germany"} Berlin, Germany
-						%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
-						%option{:value => "destination_boston-usa"} Boston, USA
-						%option{:value => "destination_newyork-usa"} New York, USA
-						%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+		.col-4
 
-					.dropdown_toggle
-						%span.dropdown_placeholder.truncate Select Your Location
-						%svg.svg_ui-arrow-down
-							%use{"xlink:href" => "#ui_arrow-down"}
-
-					-# if UL > LI.length >= 6: add class "scrollable"
-					.wrap_dropdown.scrollable
-
-						-# if UL > LI.length >= 6: output <span>
-						%span.fix_ios-scroll
-
-							%ul.dropdown_list
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
-								%li.dropdown_option
-									%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
-
-			.col-4
-
-				%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Quote
+			%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Quote
