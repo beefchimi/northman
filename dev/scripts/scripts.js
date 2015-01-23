@@ -306,21 +306,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			// only temporary!
 			var elDestinationWrap = document.getElementById('destination_wrap');
 
-			if (elFormDestination.attachEvent) {
-				elFormDestination.attachEvent('submit', validateDestination);
-			} else {
-				elFormDestination.addEventListener('submit', validateDestination);
-			}
-
+			// attached event for form submissions and toggle click
+			elFormDestination.addEventListener('submit', validateDestination);
 			elFormToggle.addEventListener('click', validateDestination);
 
 			function validateDestination(e) {
 
-				if (e.preventDefault) {
-					e.preventDefault();
-				}
+				e.preventDefault();
 
-				valDestination  = elInputDestination.value;
+				// assign entered destination value
+				valDestination = elInputDestination.value;
 
 				if (jsonOptions.indexOf(valDestination.toLowerCase()) > -1) {
 
@@ -347,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 
 					console.log('You have not provided a valid Country.');
-					elInputDestination.placeholder = 'lol nope';
+					elInputDestination.placeholder = 'invalid country';
 					classie.add(elDestinationWrap, 'animate_shake');
 
 					// not sure if this is working perfectly... console.logs +1 each time
