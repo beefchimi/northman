@@ -301,10 +301,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
 
+			var elFormDestination = document.getElementById('form_destination');
+
 			// only temporary!
 			var elDestinationWrap = document.getElementById('destination_wrap');
 
-			elFormToggle.addEventListener('click', function(e) {
+			if (elFormDestination.attachEvent) {
+				elFormDestination.attachEvent('submit', validateDestination);
+			} else {
+				elFormDestination.addEventListener('submit', validateDestination);
+			}
+
+			elFormToggle.addEventListener('click', validateDestination);
+
+			function validateDestination(e) {
+
+				if (e.preventDefault) {
+					e.preventDefault();
+				}
 
 				valDestination  = elInputDestination.value;
 
@@ -342,13 +356,11 @@ document.addEventListener('DOMContentLoaded', function() {
 						console.log('Animation complete! "animate_shake" class removed.');
 					});
 
-
-
 				}
 
-				e.preventDefault();
+				return false;
 
-			});
+			}
 
 		}
 
