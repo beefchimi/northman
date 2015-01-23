@@ -253,7 +253,7 @@
 
 }
 
-@media only screen and (min-width: 84.625em) { // 1354px / 16px = 84.625em
+@media only screen and (min-width: 75em) { // 1200px / 16px = 75em
 
 // ==|== page styles ==========================================================
 // ============================================================================
@@ -282,27 +282,51 @@
 	}
 	// + individual columns + \\
 	form.form_quote div.wrap_input div.col-1 {
-		width: 50rem;
+		width: 37.666174%; // 510px / 1354px = 0.37666174
 		text-align: left;
 	}
 	form.form_quote div.wrap_input div.col-2 {
-		width: 26.6rem;
+		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
 	form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
 	form.form_quote div.wrap_input div.col-3 {
-		width: 34.2rem;
+		width: 24.519941%; // 332px / 1354px = 0.24519941
 	}
 	form.form_quote div.wrap_input div.col-4 {
 		position: relative;
-		width: 24.6rem;
+		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
 	form.form_quote div.wrap_input div.col-4 button {
 		position: absolute;
 		top: 7.6rem;
 		right: 0;
 		margin: 0;
+	}
+
+}
+
+@media only screen and (min-width: 84.625em) { // 1354px / 16px = 84.625em
+
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Form: Quote --- \\
+	// + individual columns + \\
+	form.form_quote div.wrap_input div.col-1 {
+		width: 48rem;
+	}
+	form.form_quote div.wrap_input div.col-2 {
+		width: 27.6rem;
+	}
+	form.form_quote div.wrap_input div.col-3 {
+		width: 34.2rem;
+	}
+	form.form_quote div.wrap_input div.col-4 {
+		width: 25.6rem;
 	}
 
 }

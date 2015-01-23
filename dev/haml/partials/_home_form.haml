@@ -2,6 +2,7 @@
 
 	%h3 We just need a few details to get you the most accurate price:
 
+	-# receives the value from #input_destination
 	%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => ""}
 
 	.wrap_input{"data-container" => "width-1354"}
@@ -11,7 +12,7 @@
 			%label When are you going?
 
 			.wrap_element
-				%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date", :required => true}
+				%input#date_start.date_start.pikaday_input{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true}
 				%svg.svg_ui-calendar
 					%use{"xlink:href" => "#ui_calendar"}
 

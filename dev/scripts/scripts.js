@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		var t,
 			el          = document.createElement('fakeelement'),
 			transitions = {
-			'transition' : 'transitionend',
-			'OTransition' : 'oTransitionEnd',
-			'MozTransition' : 'transitionend',
-			'WebkitTransition' : 'webkitTransitionEnd'
-		}
+				'transition'       : 'transitionend',
+				'OTransition'      : 'oTransitionEnd',
+				'MozTransition'    : 'transitionend',
+				'WebkitTransition' : 'webkitTransitionEnd'
+			}
 
 		for (t in transitions) {
 			if (el.style[t] !== undefined) {
@@ -31,6 +31,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	// listen for a transition
 	var transitionEvent = whichTransitionEvent();
 */
+
+	function whichAnimationEvent() {
+
+		var anim,
+			el         = document.createElement('fakeelement'),
+			animations = {
+				'animation'       : 'animationend',
+				'OAnimation'      : 'oAnimationEnd',
+				'MozAnimation'    : 'animationend',
+				'WebkitAnimation' : 'webkitAnimationEnd'
+			}
+
+		for (anim in animations) {
+			if (el.style[anim] !== undefined) {
+				return animations[anim];
+			}
+		}
+
+	}
+
+	// listen for an animation
+	var animationEvent = whichAnimationEvent();
+
 
 
 	// Helper: Find Parent Element by Class or Tag Name
@@ -278,6 +301,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
 
+			// only temporary!
+			var elDestinationWrap = document.getElementById('destination_wrap');
+
 			elFormToggle.addEventListener('click', function(e) {
 
 				valDestination  = elInputDestination.value;
@@ -308,6 +334,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					console.log('You have not provided a valid Country.');
 					elInputDestination.placeholder = 'lol nope';
+					classie.add(elDestinationWrap, 'animate_shake');
+
+					// not sure if this is working perfectly... console.logs +1 each time
+					animationEvent && elDestinationWrap.addEventListener(animationEvent, function() {
+						classie.remove(elDestinationWrap, 'animate_shake');
+						console.log('Animation complete! "animate_shake" class removed.');
+					});
+
+
 
 				}
 

@@ -80,6 +80,21 @@ input[type="checkbox"] + label::before {
 }
 */
 
+@keyframes shake {
+	0%, 100% {
+		transform: translate3d(0,0,0);
+	}
+	10%, 30%, 50%, 70%, 90% {
+		transform: translate3d(-1rem,0,0);
+	}
+	20%, 40%, 60%, 80% {
+		transform: translate3d(1rem,0,0);
+	}
+}
+.animate_shake {
+	animation: shake 0.7s ease-in-out both; // ease-in-out 0.2s forwards;
+}
+
 // --- FOUT --- \\
 /*
 main,
@@ -696,7 +711,7 @@ form.form_quote div.wrap_input div.col-1 {
 	text-align: center;
 }
 form.form_quote div.wrap_input div.col-1 div.wrap_element {
-	width: 19rem;
+	width: 18rem;
 }
 form.form_quote div.wrap_input div.col-2 div.wrap_element {
 	width: 17rem;
