@@ -2,11 +2,13 @@
 
 	%h3 We just need a few details to get you the most accurate price:
 
+	%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => ""}
+
 	.wrap_input{"data-container" => "width-1354"}
 
 		.col-1
 
-			%label Where are you going?
+			%label When are you going?
 
 			.wrap_element
 				%input#date_begin.date_begin.pikaday_input{:type => "text", :name => "date_begin", :value => "", :placeholder => "Pick begin date", :required => true}

@@ -1,17 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-/*
-
-	FIRST THINGS FIRST
-
-	create a hidden field that will accept the Destination value upon <a> click
-
-	create some kind of invalid style and message for entering a country that does not exist
-
-*/
-
-
 	// Global Variables
 	// ----------------------------------------------------------------------------
 	var elBody = document.body;
@@ -282,8 +271,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		// reveal the fieldset.form_quote
 		function revealForm() {
 
-			var elFormToggle = document.getElementById('form_toggle'),
-				elFormQuote  = document.getElementById('form_quote'),
+			var elFormToggle  = document.getElementById('form_toggle'),
+				elFormQuote   = document.getElementById('form_quote'),
+				elHiddenInput = document.getElementById('hidden_destination'),
 				valDestination;
 
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
@@ -292,8 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				valDestination  = elInputDestination.value;
 
-				if (jsonOptions.indexOf(valDestination) > -1) {
+				if (jsonOptions.indexOf(valDestination.toLowerCase()) > -1) {
 
+					// pass destination value to hidden form field
+					elHiddenInput.value = valDestination;
+					elHiddenInput.setAttribute('value', valDestination);
+
+					// reveal and scroll to form_quote
 					classie.add(elFormQuote, 'reveal');
 					smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
 
@@ -312,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 
 					console.log('You have not provided a valid Country.');
+					elInputDestination.placeholder = 'lol nope';
 
 				}
 
@@ -322,18 +318,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
-
-
-	// formGetPrice: Reveal the fieldset.form_quote
-	// ----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
 
 
 	// Plugin: Pikaday Calendar / Datepicker
