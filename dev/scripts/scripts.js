@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	var animationEvent = whichAnimationEvent();
 
 
-
 	// Helper: Find Parent Element by Class or Tag Name
 	// ----------------------------------------------------------------------------
 	function findParentClass(el, className) {
@@ -102,6 +101,53 @@ document.addEventListener('DOMContentLoaded', function() {
 		return today;
 
 	}
+
+
+	// Helper: Case insensitive array value
+	// ----------------------------------------------------------------------------
+
+	// Test for String equality ignoring case
+	// returns Boolean true if both string is equals ignoring case
+	function equalsIgnoreCase(str1, str2) {
+		return str1.toLowerCase() === str2.toLowerCase();
+	}
+
+	// Find the index of a string in an array of string
+	// returns Number the index of the element in the array or -1 if not found
+	function indexOfIgnoreCase(array, element) {
+
+		var ret = -1;
+
+		array.some(function(ele, index, array) {
+			if ( equalsIgnoreCase(element, ele) ) {
+				ret = index;
+				return true;
+			}
+		});
+
+		return ret;
+
+	}
+
+	// Test the existence of a string in an array of string
+	// returns Boolean true if found and false if not found
+	function existsIgnoreCase(array, element) {
+		return -1 !== indexOfIgnoreCase(array, element);
+	}
+
+	// convenience method
+	Array.prototype.indexOfIgnoreCase = function(input) {
+		return indexOfIgnoreCase(this, input);
+	};
+
+	// convenience method
+	Array.prototype.existsIgnoreCase = function(input) {
+		return -1 !== this.indexOfIgnoreCase(input);
+	}
+
+	// With the above-mentioned convenience functions, we can do things like:
+	// console.log( ["Apple", "bOy", "caR"].existsIgnoreCase('boy') ); // returns true
+	// console.log( ["Apple", "bOy", "caR"].indexOfIgnoreCase('car') ); // returns 2
 
 
 	// Navigation: Click to toggle navigation
@@ -263,7 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	function populateCountries() {
 
 		var elInputDestination  = document.getElementById('input_destination'),
-			elDatalistCountries = document.getElementById('datalist_countries'),
 			dataRequest         = new XMLHttpRequest(),
 			jsonOptions;
 
@@ -276,21 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// Parse the JSON
 					jsonOptions = JSON.parse(dataRequest.responseText);
-
-					// Loop over the JSON array.
-					for (var i = 0; i < jsonOptions.length; i++) {
-
-						// Create a new <option> element.
-						var elOption = document.createElement('option');
-
-						// Set the value using the item in the JSON array.
-						elOption.value = i + 1;
-						elOption.innerHTML = jsonOptions[i];
-
-						// Add the <option> element to the <datalist>.
-						elDatalistCountries.appendChild(elOption);
-
-					}
 
 					// Update the placeholder text.
 					elInputDestination.placeholder = 'Enter your destination';
@@ -336,15 +366,61 @@ document.addEventListener('DOMContentLoaded', function() {
 			elFormDestination.addEventListener('submit', validateDestination);
 			elFormToggle.addEventListener('click', validateDestination);
 
+			var substringMatcher = function(strs) {
+
+				return function findMatches(q, cb) {
+
+					var matches,
+						substrRegex;
+
+					// an array that will be populated with substring matches
+					matches = [];
+
+					// SyntaxError: unterminated parenthetical
+
+					// regex used to determine if a string contains the substring 'q'
+					substrRegex = new RegExp(q, 'i');
+
+					// iterate through the pool of strings and for any string that contains the substring 'q',
+					// add it to the 'matches' array
+					$.each(strs, function(i, str) {
+
+						if (substrRegex.test(str)) {
+							// the typeahead jQuery plugin expects suggestions to a JavaScript object,
+							// refer to typeahead docs for more info
+							matches.push({ value: str });
+						}
+
+					});
+
+					cb(matches);
+
+				};
+
+			};
+
+			var $elTypeahead = $('input.typeahead');
+
+			$elTypeahead.typeahead({
+				hint: true,
+				highlight: true,
+				minLength: 1
+			},
+			{
+				name: 'countries',
+				displayKey: 'value',
+				source: substringMatcher(jsonOptions)
+			});
+
 			function validateDestination(e) {
 
 				e.preventDefault();
 
 				// assign entered destination value
 				valDestination = elInputDestination.value.toLowerCase();
-				valIndex = jsonOptions.indexOf(valDestination);
+				valIndex = jsonOptions.indexOfIgnoreCase(valDestination) + 1;
 
-				if (valIndex > -1) {
+				if ( jsonOptions.existsIgnoreCase(valDestination) ) {
 
 					// pass destination value to hidden form field
 					elHiddenInput.value = valIndex;

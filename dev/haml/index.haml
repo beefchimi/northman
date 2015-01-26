@@ -20,13 +20,13 @@
 
 					%fieldset
 
-						%legend Where are you going?
+						%legend Start by telling us what country you’re travelling to.
 
 						#destination_wrap.wrap_element
-							%input#input_destination.input_destination{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination"}
+							%input#input_destination.input_destination.typeahead{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination"}
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
-							%datalist#datalist_countries
+							-# %datalist#datalist_countries
 
 						%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
 

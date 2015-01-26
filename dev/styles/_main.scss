@@ -165,31 +165,11 @@ input[type="text"]:hover {
 input[type="text"]:focus:hover {
 	background-color: $nm_cream;
 }
-
-
-
+/*
 input::-webkit-calendar-picker-indicator {
 	display: none;
 }
-
-/*
-input[list] + datalist option {
-	padding: 1rem;
-	font-size: 1.6rem;
-
-}
-input[type="text"]:invalid {
-	background-color: red;
-}
 */
-
-
-
-
-
-
-
-
 // --- Checkbox --- \\
 span.wrap_checkbox {
 	display: table;
@@ -242,10 +222,6 @@ input[type="checkbox"]:focus + label::before {
 input[type="checkbox"]:checked + label svg {
 	fill: $nm_orange;
 }
-
-
-
-
 // --- Select Dropdown --- \\
 div.wrap_select {
 	position: relative;
@@ -311,7 +287,7 @@ div.wrap_select div.wrap_dropdown ul li a {
 	display: block;
 	padding: 1.6rem;
 	font-size: 1.6rem;
-	color: hsla(0,0%,20%,1);
+	color: $nm_L21;
 	background-color: $nm_cream;
 }
 div.wrap_select div.wrap_dropdown ul li.selected a {
@@ -382,6 +358,56 @@ div.wrap_select.toggle_show div.wrap_dropdown {
 div.wrap_select.toggle_show div.dropdown_toggle {
 	border-radius: 0.8rem 0.8rem 0 0;
 }
+// --- Typeahead --- \\
+span.twitter-typeahead {
+	display: block;
+	width: 100%;
+}
+span.twitter-typeahead input[type="text"].tt-hint {
+	color: $nm_L58;
+}
+span.tt-dropdown-menu {
+	width: 100%;
+	border-radius: 0 0 0.8rem 0.8rem;
+	box-shadow: $boxshadow_drop;
+	max-height: 28.8rem; // dropdown_label height (48px) x 6
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+span.tt-dropdown-menu div.tt-dataset-states {
+}
+span.tt-dropdown-menu div.tt-dataset-states span.tt-suggestions {
+}
+// + suggestions + \\
+div.tt-suggestion {
+	cursor: pointer;
+	padding: 1.6rem;
+	background-color: $nm_cream;
+}
+div.tt-suggestion:hover {
+	background-color: hsla(0,0%,98%,1);
+}
+div.tt-suggestion:active {
+	background-color: hsla(0,0%,100%,1);
+}
+div.tt-suggestion p {
+	font-size: 1.6rem;
+	color: $nm_L21;
+}
+div.tt-suggestion p strong {
+	font-weight: 500;
+	text-decoration: underline;
+}
+/*
+<span style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;" class="tt-dropdown-menu">
+	<div class="tt-dataset-states">
+		<div class="empty-message"></div>
+		<span style="display: block;" class="tt-suggestions">
+			<div class="tt-suggestion">
+				<p style="white-space: normal;">
+					<strong class="tt-highlight">A</strong>l<strong class="tt-highlight">a</strong>b<strong class="tt-highlight">a</strong>m<strong class="tt-highlight">a</strong>
+*/
 
 // Buttons
 // ----------------------------------------------------------------------------
@@ -615,7 +641,6 @@ section.home_intro div.wrap_svg svg.svg_nm-tagline {
 	display: inline;
 	fill: hsla(60,11%,93%,0.9);
 }
-
 // --- Form: Destination --- \\
 form.form_destination {
 	padding-top: 3.2rem;
