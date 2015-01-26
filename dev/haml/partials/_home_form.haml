@@ -11,17 +11,19 @@
 
 			%label When are you going?
 
-			.wrap_element
-				%input#date_start.date_start.pikaday_input{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true}
-				%svg.svg_ui-calendar
-					%use{"xlink:href" => "#ui_calendar"}
+			#datepicker.input-daterange.input-group
 
-			%span.txt Til
+				.wrap_element
+					%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true}
+					%svg.svg_ui-calendar
+						%use{"xlink:href" => "#ui_calendar"}
 
-			.wrap_element
-				%input#date_end.date_end.pikaday_input{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
-				%svg.svg_ui-calendar
-					%use{"xlink:href" => "#ui_calendar"}
+				%span.txt Til
+
+				.wrap_element
+					%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
+					%svg.svg_ui-calendar
+						%use{"xlink:href" => "#ui_calendar"}
 
 			%span.wrap_checkbox
 				%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family"}

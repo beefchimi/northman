@@ -52,13 +52,14 @@ nav.nav_primary {
 form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
-.pika-single,
+
 div.wrap_select div.wrap_dropdown {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
 
 input[type="checkbox"] + label {
 	transition: color 0.3s ease-in-out;
@@ -694,7 +695,7 @@ form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
 	margin: 0 auto;
 }
-form.form_quote div.wrap_input div.wrap_element input.pikaday_input {
+form.form_quote div.wrap_input div.input-daterange div.wrap_element input {
 	cursor: pointer;
 }
 form.form_quote div.wrap_input div.wrap_element svg {

@@ -79,6 +79,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 
+	// Helper: Get current date
+	// ----------------------------------------------------------------------------
+	function dateToday() {
+
+		var today = new Date(),
+			dd    = today.getDate(),
+			mm    = today.getMonth() + 1, //January is 0!
+			yyyy  = today.getFullYear();
+
+		if (dd < 10) {
+			dd = '0' + dd;
+		}
+
+		if (mm < 10) {
+			mm = '0' + mm;
+		}
+
+		// today = yyyy + '-' + mm + '-' + dd;
+		today = mm + '/' + dd + '/' + yyyy;
+
+		return today;
+
+	}
+
+
 	// Navigation: Click to toggle navigation
 	// ----------------------------------------------------------------------------
 	function navToggle() {
@@ -253,19 +278,19 @@ document.addEventListener('DOMContentLoaded', function() {
 					jsonOptions = JSON.parse(dataRequest.responseText);
 
 					// Loop over the JSON array.
-					jsonOptions.forEach(function(item) {
+					for (var i = 0; i < jsonOptions.length; i++) {
 
 						// Create a new <option> element.
 						var elOption = document.createElement('option');
 
 						// Set the value using the item in the JSON array.
-						elOption.value = item;
-						elOption.innerHTML = item;
+						elOption.value = i + 1;
+						elOption.innerHTML = jsonOptions[i];
 
 						// Add the <option> element to the <datalist>.
 						elDatalistCountries.appendChild(elOption);
 
-					});
+					}
 
 					// Update the placeholder text.
 					elInputDestination.placeholder = 'Enter your destination';
@@ -297,7 +322,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			var elFormToggle  = document.getElementById('form_toggle'),
 				elFormQuote   = document.getElementById('form_quote'),
 				elHiddenInput = document.getElementById('hidden_destination'),
-				valDestination;
+				valDestination,
+				valIndex;
 
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
 
@@ -315,13 +341,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				e.preventDefault();
 
 				// assign entered destination value
-				valDestination = elInputDestination.value;
+				valDestination = elInputDestination.value.toLowerCase();
+				valIndex = jsonOptions.indexOf(valDestination);
 
-				if (jsonOptions.indexOf(valDestination.toLowerCase()) > -1) {
+				if (valIndex > -1) {
 
 					// pass destination value to hidden form field
-					elHiddenInput.value = valDestination;
-					elHiddenInput.setAttribute('value', valDestination);
+					elHiddenInput.value = valIndex;
+					elHiddenInput.setAttribute('value', valIndex);
 
 					// reveal and scroll to form_quote
 					classie.add(elFormQuote, 'reveal');
@@ -345,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					elInputDestination.placeholder = 'invalid country';
 					classie.add(elDestinationWrap, 'animate_shake');
 
-					// not sure if this is working perfectly... console.logs +1 each time
+					// not sure if this is working properly... console.logs +1 each time
 					animationEvent && elDestinationWrap.addEventListener(animationEvent, function() {
 						classie.remove(elDestinationWrap, 'animate_shake');
 						console.log('Animation complete! "animate_shake" class removed.');
@@ -362,71 +389,54 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// Plugin: Pikaday Calendar / Datepicker
+	// Plugin: Bootstrap Datepicker
 	// ----------------------------------------------------------------------------
-	function initPikaday() {
+	function inputDatepicker() {
 
-		// https://github.com/dbushell/Pikaday
+		var $dateStart = $('#date_start'),
+			$dateEnd   = $('#date_end'),
+			valStart,
+			valEnd;
 
-		var arrPikadayInputs = document.getElementsByClassName('pikaday_input'),
-			numPikadayInputs = arrPikadayInputs.length;
+		$('#datepicker').datepicker({
+			autoclose: true,
+			todayHighlight: true,
+			startDate: dateToday(),
+			format: 'M d, yyyy'
+		});
 
-		// check if arrPikadayInputs exists and is not empty
-		if (typeof arrPikadayInputs !== 'undefined' && numPikadayInputs > 0) {
+		// $dateStart.on('hide', function() {
+		$dateStart.on('changeDate', function() {
 
-			for (var i = 0; i < numPikadayInputs; i++) {
+			// changeDate seems to fire 3 times...
+			// but is more accurate to listen for 'changeDate' than 'hide'
 
-				new Pikaday({
-					field: arrPikadayInputs[i],
-/*
-					minDate: new Date('2000-01-01'),
-					maxDate: new Date('2020-12-31'),
-					yearRange: [2000,2020],
-					onSelect: function() {
-						var date = document.createTextNode(this.getMoment().format('Do MMMM YYYY') + ' ');
-						document.getElementById('selected').appendChild(date);
-					}
-*/
-					format: 'MMM D, YYYY'
-				});
+			var valStart = $dateStart.datepicker('getDate'),
+				valEnd   = new Date();
 
-			}
+			// calculate date 45 days from dateStart
+			valEnd.setDate(valStart.getDate() + 45);
 
-		}
+			// set min-max date range for dateEnd
+			$dateEnd.datepicker('setStartDate', valStart);
+			$dateEnd.datepicker('setEndDate', valEnd);
+
+			// this should be handled with a conditional:
+			// if greater than 45 days: reset / else: do nothing
+			$dateEnd.datepicker('setDate', false);
+			$dateEnd.datepicker('show');
+
+			// $('#helpDate').html('Northman insures trips of up to 45 days.');
+			console.log('Northman insures trips of up to 45 days.');
+
+		});
+
+		$dateEnd.on('hide', function () {
+			// $('#helpDate').html(' &nbsp; ');
+			console.log('dateEnd hide');
+		});
 
 	}
-
-
-/*
-
-	$('.input-daterange').datepicker({
-		autoclose: true,
-		todayHighlight: true,
-		startDate: '2015-01-22',
-		format: 'yyyy-mm-dd'
-	});
-
-	$('#start-date').datepicker('show');
-
-	$('#start-date').on('hide', function() {
-
-		var start = $('#start-date').datepicker('getDate');
-		var end = new Date();
-
-		end.setDate(start.getDate() + 45);
-
-		$('#end-date').datepicker('setEndDate', end);
-		$('#end-date').datepicker('show');
-
-		$('#helpDate').html('Northman insures trips of up to 45 days.');
-
-	});
-
-	$('#end-date').on('hide', function () {
-		$('#helpDate').html(' &nbsp; ');
-	});
-
-*/
 
 
 	// Initialize Primary Functions
@@ -434,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	navToggle();
 	secretEmail();
 	selectDropdown();
-	initPikaday();
+	inputDatepicker();
 
 	// only run on home page
 	populateCountries();
