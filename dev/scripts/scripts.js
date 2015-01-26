@@ -444,8 +444,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				} else {
 
-					console.log('You have not provided a valid Country.');
-					elInputDestination.placeholder = 'invalid country';
+					// console.log('You have not provided a valid Country.');
+					elInputDestination.value = '';
+					elInputDestination.placeholder = 'unrecognized country';
 					classie.add(elDestinationWrap, 'animate_shake');
 
 					// not sure if this is working properly... console.logs +1 each time
