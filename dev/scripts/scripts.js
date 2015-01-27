@@ -402,9 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			var $elTypeahead = $('input.typeahead');
 
 			$elTypeahead.typeahead({
-				hint: true,
-				highlight: true,
-				minLength: 1
+				highlight: true
 			},
 			{
 				name: 'countries',
@@ -446,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// console.log('You have not provided a valid Country.');
 					elInputDestination.value = '';
-					elInputDestination.placeholder = 'unrecognized country';
+					elInputDestination.placeholder = 'Unrecognized country';
 					classie.add(elDestinationWrap, 'animate_shake');
 
 					// not sure if this is working properly... console.logs +1 each time
@@ -470,6 +468,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function inputDatepicker() {
 
+		// CURRENTLY BUGGED!
+		// if you select a start date in the future, end date completes stops working
+
 		var $dateStart = $('#date_start'),
 			$dateEnd   = $('#date_end'),
 			valStart,
@@ -488,8 +489,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			// changeDate seems to fire 3 times...
 			// but is more accurate to listen for 'changeDate' than 'hide'
 
-			var valStart = $dateStart.datepicker('getDate'),
-				valEnd   = new Date();
+			valStart = $dateStart.datepicker('getDate');
+			valEnd   = new Date();
 
 			// calculate date 45 days from dateStart
 			valEnd.setDate(valStart.getDate() + 45);

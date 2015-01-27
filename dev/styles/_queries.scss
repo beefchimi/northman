@@ -69,6 +69,10 @@
 	div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
 		padding-top: 0;
 	}
+	// --- Typeahead --- \\
+	span.tt-dropdown-menu {
+		top: 5.2rem !important;
+	}
 
 	// Buttons
 	// ----------------------------------------------------------------------------
@@ -108,8 +112,6 @@
 		padding: 10rem 3.2rem;
 		max-width: 78.7rem; // svg width (723px) + padding (2 x 32px)
 	}
-	// --- Home Form --- \\
-
 	// --- Form: Destination --- \\
 	form.form_destination {
 		padding-top: 4.8rem;

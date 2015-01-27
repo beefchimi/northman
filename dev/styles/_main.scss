@@ -52,12 +52,13 @@ nav.nav_primary {
 form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
-
+/*
 div.wrap_select div.wrap_dropdown {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
+*/
 div.dropdown_toggle {
-	transition: background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // border-radius 0.3s ease-in-out,
 }
 
 
@@ -217,7 +218,7 @@ input[type="checkbox"] + label:active::before {
 	border-color: $nm_orange-L;
 }
 input[type="checkbox"]:focus + label::before {
-	background-color: hsla(0,0%,16%,1); // lighter than: $nm_L7
+	background-color: hsla(0,0%,12%,1); // lighter than: $nm_L7
 }
 input[type="checkbox"]:checked + label svg {
 	fill: $nm_orange;
@@ -363,11 +364,21 @@ span.twitter-typeahead {
 	display: block;
 	width: 100%;
 }
+span.twitter-typeahead input[type="text"]:valid {
+	box-shadow: none;
+}
+span.twitter-typeahead input[type="text"] {
+	z-index: 999;
+}
 span.twitter-typeahead input[type="text"].tt-hint {
 	color: $nm_L58;
 }
 span.tt-dropdown-menu {
+	z-index: 9;
+	top: 4rem !important;
+	padding-top: 0.8rem;
 	width: 100%;
+	background-color: $nm_cream;
 	border-radius: 0 0 0.8rem 0.8rem;
 	box-shadow: $boxshadow_drop;
 	max-height: 28.8rem; // dropdown_label height (48px) x 6
@@ -670,6 +681,7 @@ form.form_destination fieldset div.wrap_element input[type="text"] {
 	font-weight: 700;
 }
 form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
+	pointer-events: none;
 	position: absolute;
 	top: 1.4rem;
 	right: 1.6rem;

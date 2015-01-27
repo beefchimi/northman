@@ -48,13 +48,19 @@
 
 				%select#select_location{:name => "select_location", :required => true}
 					%option{:disabled => true, :selected => true, :value => true} select an option
-					%option{:value => "destination_ottawa-canada"} Ottawa, Canada
-					%option{:value => "destination_toronto-canada"} Toronto, Canada
-					%option{:value => "destination_berlin-germany"} Berlin, Germany
-					%option{:value => "destination_mexicocity-mexico"} Mexico City, Mexico
-					%option{:value => "destination_boston-usa"} Boston, USA
-					%option{:value => "destination_newyork-usa"} New York, USA
-					%option{:value => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+					%option{:value => "52"} Alberta
+					%option{:value => "53"} British Columbia
+					%option{:value => "54"} Manitoba
+					%option{:value => "55"} New Brunswick
+					%option{:value => "56"} Newfoundland
+					%option{:value => "57"} North West Territories
+					%option{:value => "58"} Nova Scotia
+					%option{:value => "59"} Nunavut
+					%option{:value => "60"} Ontario
+					%option{:value => "61"} Prince Edward Island
+					%option{:value => "62"} Quebec
+					%option{:value => "63"} Saskatchewan
+					%option{:value => "64"} Yukon
 
 				.dropdown_toggle
 					%span.dropdown_placeholder.truncate Select Your Location
@@ -69,19 +75,31 @@
 
 						%ul.dropdown_list
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_ottawa-canada"} Ottawa, Canada
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "52"} Alberta
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_toronto-canada"} Toronto, Canada
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "53"} British Columbia
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_berlin-germany"} Berlin, Germany
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "54"} Manitoba
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_mexicocity-mexico"} Mexico City, Mexico
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "55"} New Brunswick
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_boston-usa"} Boston, USA
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "56"} Newfoundland
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_newyork-usa"} New York, USA
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "57"} North West Territories
 							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "destination_zurich-switzerland"} Z&uuml;rich, Switzerland
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "58"} Nova Scotia
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "59"} Nunavut
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "60"} Ontario
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "61"} Prince Edward Island
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "62"} Quebec
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "63"} Saskatchewan
+							%li.dropdown_option
+								%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
 
 		.col-4
 
