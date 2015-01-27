@@ -26,14 +26,12 @@
 							%input#input_destination.input_destination.typeahead{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination", :required => true}
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
-							-# %datalist#datalist_countries
 
 						%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
 
 			= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
 
-			-# {"data-container" => "width-1440"}
-			%section.home_details
+			%section.home_details.internal_articles{"data-container" => "width-padding_1440"}
 
 				%article.details_why
 

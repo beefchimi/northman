@@ -16,62 +16,133 @@
 					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
-			%section.home_details
+			%section.quote_details.internal_articles{"data-container" => "width-padding_1440"}
 
-				%article.details_why
+				%article.quote_options
 
-					%h2 Based on your information, here’s your quote:
+					%div.clearfix{"data-container" => "width_870"}
 
-					.quote_badge
+						%h2 Based on your information, here’s your quote:
 
+						.quote_badge.badge_single
 
+							.badge_header
 
+								%h6 Single Trip
+								%svg.svg_ui-globe
+									%use{"xlink:href" => "#ui_globe"}
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "Find Out More"} Find Out More
+							.badge_body
 
-				%article.details_packages
+								%h3
+									$135
+									%span.currency can
 
-					.wrap_svg
-						%svg.svg_ui-package
-							%use{"xlink:href" => "#ui_package"}
+								%a.btn_rnd.fill_green{:href => "#", :title => "Buy Now"} Buy Now
 
-					%h2 Packages
-					%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, and we can insure a single person or a whole family under one policy. Pick what’s right for you, and if you can’t find it, we’ll help you.
+						.quote_badge.badge_yearly
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "Choose Your Package"} Choose Your Package
+							.badge_header
 
-				%article.details_coverage
+								%h6 Yearly Membership
+								%svg.svg_ui-globe-double
+									%use{"xlink:href" => "#ui_globe-double"}
 
-					.wrap_svg
-						%svg.svg_ui-coverage
-							%use{"xlink:href" => "#ui_coverage"}
+							.badge_body
 
-					%h2 What's Covered
-					%p If you can (legally) do it, we can cover it. It would be easier to list what we don’t cover, but here are some of the highlights:
+								%h3
+									$210
+									%span.currency can
 
-					%ul
-						%li Adventure Racing
-						%li Arctic and Antarctic Expedition
-						%li Canoeing &amp; Kayakin
-						%li Climbing
-						%li Diving &amp; Scuba Diving
-						%li Extreme Sports
-						%li Freeride
-						%li Golf
-						%li Helicopter Skiing &amp; Heliboarding
-						%li Marathon, Ultra Marathon &amp; Iron Man
-						%li Megavalanche
-						%li Mountain / Downhill Mountain Biking
-						%li Mountaineering
-						%li Parapenting &amp; Paragliding
-						%li Roller Derby
-						%li Sailing &amp; Offshore Sailing
-						%li Storm Chasing
-						%li Ski
-						%li Ski Mountaineering
-						%li Off-Piste Skiing &amp; Snowboarding
-						%li Winter Sports
+								%a.btn_rnd.brd_orange{:href => "#", :title => "Select"} Select
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "The Full List"} The Full List
+						%p.notice * Annual Membership does not include baggage insurance.
+
+				%article.quote_details
+
+					%div{"data-container" => "width_870"}
+
+						.details_captured
+
+							%ul
+								%li
+									%strong Province of Residence:
+									Ontario
+								%li
+									%strong Start Date:
+									Nov 6, 2015
+								%li
+									%strong End Date:
+									Nov 11, 2015
+								%li
+									%strong Family:
+									No
+								%li
+									%strong Covered for:
+									5 days
+								%li
+									%strong Age Limit:
+									Under 60
+
+							%a.btn_rnd.brd_orange{:href => "#", :title => "Edit Details"} Edit Details
+
+						%h2 Single Trip Coverage Includes:
+
+						.accordian
+
+							.row
+								.header
+									%h4 Emergency Evacuation
+									%a{:href => "#", :title => "Expand"}
+										%svg.svg_ui-arrow-down
+											%use{"xlink:href" => "#ui_arrow-down"}
+								.body
+									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+
+							.row
+								.header
+									%h4 Crocodile Safety
+									%a{:href => "#", :title => "Expand"}
+										%svg.svg_ui-arrow-down
+											%use{"xlink:href" => "#ui_arrow-down"}
+								.body
+									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+
+							.row
+								.header
+									%h4 Trip Cancellation and Trip Delay Coverage
+									%a{:href => "#", :title => "Expand"}
+										%svg.svg_ui-arrow-down
+											%use{"xlink:href" => "#ui_arrow-down"}
+								.body
+									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+
+						%a.btn_rnd.brd_orange{:href => "#", :title => "Full Coverage List"} Full Coverage List
+
+				%article.quote_summary
+
+					%div{"data-container" => "width_870"}
+
+						%h2 Quote Summary
+
+						%table
+
+							%tbody
+
+								%tr
+									%td Northman Single Trip / Non-Family
+									%td $135.00
+
+								%tr
+									%td HST
+									%td $18.00
+
+								%tr
+									%td Total (CAN)
+									%td $153.00
+
+						%a.btn_rnd.brd_green{:href => "#", :title => "Buy Now"} Buy Now
+
+						-# %p Insurance underwritten by Travel Underwriters, located at 11th Floor – 6081 No. 3 Road in Richmond, British Columbia Canada, V6Y 2B2. The description herein is a summary only. It does not include all terms, conditions and exclusions of the policies described. Please refer to the actual policies for complete details of coverage and exclusions.
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

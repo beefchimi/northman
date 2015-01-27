@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				valDestination,
 				valIndex;
 
-			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false };
+			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false, offset: 88 };
 
 			var elFormDestination = document.getElementById('form_destination');
 

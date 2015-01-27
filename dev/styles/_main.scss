@@ -131,17 +131,32 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 }
+[data-container="width-padding_1440"] {
+	max-width: 150.4rem; // 1440px + padding (64px)
+}
+[data-container="width-padding_1200"] {
+	max-width: 126.4rem; // 1200px + padding (64px)
+	// padding-left: 1.6rem;
+	// padding-right: 1.6rem;
+}
+/*
 [data-container="width-1440"] {
 	max-width: 144rem;
-}
-[data-container="width-1354"] {
-	max-width: 135.4rem;
 }
 [data-container="width-1264"] {
 	max-width: 126.4rem;
 }
+*/
+[data-container="width_1354"] {
+	max-width: 135.4rem;
+}
+/*
 [data-container="width-1200"] {
 	max-width: 120rem;
+}
+*/
+[data-container="width_870"] {
+	max-width: 87rem;
 }
 
 // Forms
@@ -166,11 +181,6 @@ input[type="text"]:hover {
 input[type="text"]:focus:hover {
 	background-color: $nm_cream;
 }
-/*
-input::-webkit-calendar-picker-indicator {
-	display: none;
-}
-*/
 // --- Checkbox --- \\
 span.wrap_checkbox {
 	display: table;
@@ -429,7 +439,7 @@ div.tt-suggestion p strong {
 	height: 4.8rem;
 	line-height: 4.8rem;
 	font-size: 1.4rem;
-	font-weight: 700; // futura bold
+	font-weight: 700; // futura heavy
 	letter-spacing: 0.2rem;
 	text-align: center;
 	text-transform: uppercase;
@@ -453,15 +463,33 @@ button[class*="brd_"] {
 	color: $nm_orange-D;
 	background-color: $nm_cream-D;
 }
-// + border: orange + \\
+// + fill: green + \\
+.fill_green {
+	color: $nm_cream;
+	background-color: $nm_green;
+}
+.fill_green:focus,
+.fill_green:hover {
+	background-color: $nm_green-L;
+}
+.fill_green:active {
+	background-color: $nm_green;
+}
+// + border: orange & green + \\
 .brd_orange {
 	color: $nm_orange;
 }
+.brd_green {
+	color: $nm_green;
+}
 .brd_orange:focus,
-.brd_orange:hover {
+.brd_green:focus,
+.brd_orange:hover,
+.brd_green:hover {
 	color: hsla(0,0%,20%,1);
 }
-.brd_orange:active {
+.brd_orange:active,
+.brd_green:active {
 	color: hsla(0,0%,40%,1);
 }
 // + border: cream + \\
@@ -485,7 +513,7 @@ button[class*="brd_"] {
 header {
 	background-color: $nm_cream;
 }
-header > div {
+header div[data-container] {
 	position: relative;
 	min-height: 8rem;
 	padding-top: 8rem;
@@ -559,7 +587,7 @@ nav.nav_primary ul li:last-child {
 }
 nav.nav_primary ul li a {
 	font-size: 2rem;
-	font-weight: 700; // futura bold
+	font-weight: 700; // futura heavy
 	color: $nm_cream;
 }
 nav.nav_primary ul li a:hover {
@@ -629,6 +657,63 @@ footer a:active {
 // ==|== page styles ==========================================================
 // ============================================================================
 
+// Internal Pages
+// ----------------------------------------------------------------------------
+section.internal_header {
+	background-image: url('../img/bg_home.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+section.internal_header div.wrap_svg {
+	margin: 0 auto;
+	padding: 4rem 2rem;
+}
+section.internal_header div.wrap_svg svg.svg_nm-tagline {
+	display: inline;
+	fill: hsla(60,11%,93%,0.9);
+}
+// --- Internal Articles --- \\
+section.internal_articles {
+	background-color: $nm_cream;
+}
+section.internal_articles article {
+	padding: 4.8rem 1.6rem;
+	color: hsla(0,0%,15%,1);
+	border-bottom: 0.2rem solid $nm_orange;
+}
+section.internal_articles article h2 {
+	// margin-bottom: 2rem;
+	font-size: 1.7rem;
+	font-weight: 700; // futura heavy
+	letter-spacing: 0.2rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+
+
+// + internal table + \\
+section.internal_articles article table {
+	table-layout: fixed;
+	width: 100%;
+	border: 0.2rem solid $nm_ash;
+}
+section.internal_articles article table tbody tr {
+	border-bottom: 0.2rem solid $nm_ash;
+}
+section.internal_articles article table tbody tr:last-child {
+	border-bottom: none;
+}
+section.internal_articles article table tbody tr td {
+	padding: 1rem;
+	font-size: 1.3rem; // 1.8rem;
+	font-weight: 700; // futura heavy
+}
+
+
+
+
 // Home Page
 // ----------------------------------------------------------------------------
 /*
@@ -669,7 +754,7 @@ form.form_destination fieldset legend {
 	margin-bottom: 3.2rem;
 	width: 100%; // required to center <legend>
 	font-size: 1.8rem;
-	font-weight: 700; // futura bold
+	font-weight: 700; // futura heavy
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
@@ -704,17 +789,17 @@ form.form_quote.reveal {
 form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
-form.form_quote h3,
+form.form_quote h6,
 form.form_quote div > label,
 form.form_quote span.txt {
 	font-size: 1.3rem;
-	font-weight: 700; // futura bold
+	font-weight: 700; // futura heavy
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-form.form_quote h3 {
+form.form_quote h6 {
 	padding: 3.2rem 1.6rem;
 	font-style: italic;
 	line-height: 1.4;
@@ -774,16 +859,8 @@ form.form_quote div.wrap_input div.col-4 button {
 	font-size: 1.9rem;
 }
 // --- Home Details --- \\
-section.home_details {
-	margin: 0 auto;
-	max-width: 150.4rem; // 1440px + padding (64px)
-	background-color: $nm_cream;
-}
 section.home_details article {
-	padding: 4.8rem 1.6rem;
 	text-align: center;
-	color: hsla(0,0%,15%,1);
-	border-bottom: 0.2rem solid $nm_orange;
 }
 section.home_details article div.wrap_svg {
 	margin: 0 auto 4rem auto;
@@ -793,15 +870,8 @@ section.home_details article div.wrap_svg {
 section.home_details article div.wrap_svg svg {
 	fill: $nm_orange;
 }
-section.home_details article h2,
-section.home_details article ul li {
-	text-transform: uppercase;
-}
 section.home_details article h2 {
 	margin-bottom: 2rem;
-	font-size: 1.7rem;
-	font-weight: 700; // futura bold
-	letter-spacing: 0.2rem;
 }
 section.home_details article p {
 	margin: 0 auto 4rem auto;
@@ -823,14 +893,195 @@ section.home_details article ul li {
 	font-size: 1.2rem;
 	font-weight: 400;
 	line-height: 1.4;
+	text-transform: uppercase;
 }
 section.home_details article ul li:last-child {
 	margin-bottom: 0;
 }
-// + individual articles + \\
-article.details_why {
+
+// Quote Pages
+// ----------------------------------------------------------------------------
+section.quote_details {
+}
+section.quote_details article h2 {
+	margin-bottom: 3.2rem;
 }
 
+article.quote_options p.notice {
+	padding: 0 2rem;
+	font-size: 1.3rem;
+	font-style: italic;
+	font-weight: 700; // futura heavy
+	text-align: center;
+	color: $nm_orange;
+}
+// --- Quote Badges --- \\
+div.quote_badge {
+	margin-bottom: 3.2rem;
+	border-radius: 1rem;
+}
+div.badge_header {
+	position: relative;
+	padding: 1.6rem;
+	text-align: left;
+}
+div.badge_header h6 {
+	font-size: 1.5rem;
+	font-weight: 700; // futura heavy
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+}
+div.badge_header svg {
+	position: absolute;
+	top: 1rem;
+	right: 1.6rem;
+	height: 2.6rem;
+}
+div.badge_body {
+	padding: 2.6rem 1.6rem;
+	text-align: center;
+}
+div.badge_body h3 {
+	display: inline-block;
+	position: relative;
+	margin-bottom: 3.2rem;
+	font-size: 6.8rem; // 7.6rem;
+	font-weight: 700; // futura heavy
+	letter-spacing: -0.2rem;
+}
+div.badge_body h3 span.currency {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: -4rem;
+	font-size: 1.6rem;
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+div.badge_body a {
+	width: 17.4rem;
+	// height: 5.8rem;
+}
+// + badge single + \\
+.badge_single {
+	border: 0.2rem solid $nm_green;
+}
+.badge_single div.badge_header {
+	border-bottom: 0.2rem solid $nm_green;
+}
+.badge_single div.badge_header h6,
+.badge_single div.badge_body h3 {
+	color: $nm_green;
+}
+.badge_single div.badge_header svg.svg_ui-globe {
+	width: 2.6rem;
+	fill: $nm_green;
+}
+// + badge yearly + \\
+.badge_yearly {
+	border: 0.2rem solid $nm_orange;
+}
+.badge_yearly div.badge_header {
+	border-bottom: 0.2rem solid $nm_orange;
+}
+.badge_yearly div.badge_header h6,
+.badge_yearly div.badge_body h3 {
+	color: $nm_orange;
+}
+.badge_yearly div.badge_header svg.svg_ui-globe-double {
+	width: 4.5rem;
+	fill: $nm_orange;
+}
+
+// --- Quote Details --- \\
+article.quote_details {
+}
+article.quote_details div.details_captured {
+	margin-bottom: 3.2rem;
+	padding: 1.6rem;
+	border: 0.2rem solid $nm_ash;
+}
+article.quote_details div.details_captured ul {
+	margin-bottom: 3.2rem;
+}
+article.quote_details div.details_captured ul li {
+	margin-bottom: 1rem;
+	font-size: 1.4rem;
+	font-weight: 700; // futura heavy
+}
+article.quote_details div.details_captured ul li:last-child {
+	margin-bottom: 0;
+}
+
+
+
+div.accordian {
+	margin-bottom: 3.2rem;
+	border: 0.2rem solid $nm_ash;
+	border-bottom: none;
+}
+div.accordian div.row {
+	position: relative;
+	padding: 1.6rem;
+	border-bottom: 0.2rem solid $nm_ash;
+}
+div.accordian div.row div.header {
+	// position: relative;
+	// padding: 1.6rem 4.2rem 1.6rem 1.6rem;
+}
+div.accordian div.row div.header h4 {
+	font-size: 1.5rem; // 1.8rem;
+	font-weight: 700; // futura heavy
+}
+div.accordian div.row div.header a {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 4rem;
+	height: 4.7rem; // computed height of collapsed row
+}
+div.accordian div.row div.header a svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 1.6rem;
+	height: 1.6rem;
+	fill: $nm_orange;
+}
+
+div.accordian div.row div.header a:hover svg {
+	fill: hsla(0,0%,20%,1);
+}
+div.accordian div.row div.header a:active svg {
+	fill: hsla(0,0%,40%,1);
+}
+
+div.accordian div.row div.body {
+	max-height: 0;
+	opacity: 0;
+
+}
+div.accordian div.row div.body p {
+	padding-top: 1.6rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.3rem; // 1.5rem;
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+
+// --- Quote Summary --- \\
+article.quote_summary table {
+	margin-bottom: 3.2rem;
+}
+article.quote_summary table tbody tr td:first-child {
+	width: 70%;
+}
+article.quote_summary table tbody tr td:last-child {
+	width: 30%;
+	text-align: right;
+}
 
 
 

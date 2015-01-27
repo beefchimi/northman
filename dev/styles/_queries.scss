@@ -34,6 +34,14 @@
 // ==|== primary styles =======================================================
 // ============================================================================
 
+	// General Styles
+	// ----------------------------------------------------------------------------
+	// --- Containers --- \\
+	[data-container="width-padding_1440"] {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+
 	// Forms
 	// ----------------------------------------------------------------------------
 	input[type="text"] {
@@ -112,6 +120,22 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
+	// Internal Pages
+	// ----------------------------------------------------------------------------
+	// --- Internal Articles --- \\
+	section.internal_articles {
+		padding-top: 6rem;
+	}
+	section.internal_articles article {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+		border-left: 0.2rem solid $nm_orange;
+		border-right: 0.2rem solid $nm_orange;
+	}
+	section.internal_articles article:first-child {
+		border-top: 0.2rem solid $nm_orange;
+	}
+
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Intro --- \\
@@ -164,19 +188,6 @@
 		width: 2rem;
 		height: 2rem;
 	}
-	// --- Home Details --- \\
-	section.home_details {
-		padding: 6rem 3.2rem 0 3.2rem;
-	}
-	section.home_details article {
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
-		border-left: 0.2rem solid $nm_orange;
-		border-right: 0.2rem solid $nm_orange;
-	}
-	section.home_details article:first-child {
-		border-top: 0.2rem solid $nm_orange;
-	}
 
 }
 
@@ -203,7 +214,7 @@
 		right: 0;
 		left: 0;
 	}
-	header > div {
+	header div[data-container] {
 		padding: 3.6rem 3.2rem 0 3.2rem;
 		min-height: 8.8rem;
 	}
@@ -252,13 +263,20 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
-	// Home Page
+	// Internal Pages
 	// ----------------------------------------------------------------------------
-	// --- Home Details --- \\
-	section.home_details article {
+	// --- Internal Articles --- \\
+	section.internal_articles article {
 		padding-top: 7.2rem;
 		padding-bottom: 7.2rem;
 	}
+	section.internal_articles article h2 {
+		// margin-bottom: 3.2rem;
+	}
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Home Details --- \\
 	section.home_details article div.wrap_svg {
 		margin-bottom: 6rem;
 		width: 7.2rem;
@@ -286,20 +304,14 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	form.form_quote h3 {
+	form.form_quote h6 {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	form.form_quote div.wrap_input {
-		display: flex;
-		flex-direction: row;
-		// align-items: center;
-		// justify-content: center;
-		// align-content: stretch;
-	}
 	form.form_quote div.wrap_input > div {
+		float: left;
 		padding: 4rem 0;
-		// flex: 1 0 0;
+		min-height: 22.8rem; // calculated height of tallest div... needed for borders to reach bottom
 		border-top: none;
 	}
 	form.form_quote div.wrap_input > div:nth-child(1n+2) {
