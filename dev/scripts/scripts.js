@@ -469,7 +469,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	function inputDatepicker() {
 
 		// CURRENTLY BUGGED!
-		// if you select a start date in the future, end date completes stops working
+		// if you select a start date in the semi-future (45 days from current date?),
+		// end date will no longer allow you to select a date, or paginate between years / months
 
 		var $dateStart = $('#date_start'),
 			$dateEnd   = $('#date_end'),
