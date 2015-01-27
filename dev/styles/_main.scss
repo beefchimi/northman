@@ -368,13 +368,13 @@ span.twitter-typeahead input[type="text"]:valid {
 	box-shadow: none;
 }
 span.twitter-typeahead input[type="text"] {
-	z-index: 999;
+	z-index: 200;
 }
 span.twitter-typeahead input[type="text"].tt-hint {
 	color: $nm_L58;
 }
 span.tt-dropdown-menu {
-	z-index: 9;
+	z-index: 1;
 	top: 4rem !important;
 	padding-top: 0.8rem;
 	width: 100%;
@@ -483,6 +483,9 @@ button[class*="brd_"] {
 // Header
 // ----------------------------------------------------------------------------
 header {
+	background-color: $nm_cream;
+}
+header > div {
 	position: relative;
 	min-height: 8rem;
 	padding-top: 8rem;
