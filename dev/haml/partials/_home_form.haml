@@ -7,7 +7,7 @@
 
 	.wrap_input.clearfix{"data-container" => "width_1354"}
 
-		.col-1
+		.column.col-1
 
 			%label When are you going?
 
@@ -32,75 +32,77 @@
 					%svg.svg_ui-checkmark
 						%use{"xlink:href" => "#ui_checkmark"}
 
-		.col-2
+		.wrap_columns.clearfix
 
-			%label Who is going?
+			.column.col-2
 
-			.wrap_element
-				%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
-				%p e.g. 35, 25, 16
+				%label Who is going?
 
-		.col-3
+				.wrap_element
+					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
+					%p e.g. 35, 25, 16
 
-			%label Where are you from?
+			.column.col-3
 
-			#wrap_select-location.wrap_select{"data-selected" => ""}
+				%label Where are you from?
 
-				%select#select_location{:name => "select_location", :required => true}
-					%option{:disabled => true, :selected => true, :value => true} select an option
-					%option{:value => "52"} Alberta
-					%option{:value => "53"} British Columbia
-					%option{:value => "54"} Manitoba
-					%option{:value => "55"} New Brunswick
-					%option{:value => "56"} Newfoundland
-					%option{:value => "57"} North West Territories
-					%option{:value => "58"} Nova Scotia
-					%option{:value => "59"} Nunavut
-					%option{:value => "60"} Ontario
-					%option{:value => "61"} Prince Edward Island
-					%option{:value => "62"} Quebec
-					%option{:value => "63"} Saskatchewan
-					%option{:value => "64"} Yukon
+				#wrap_select-location.wrap_select{"data-selected" => ""}
 
-				.dropdown_toggle
-					%span.dropdown_placeholder.truncate Select Your Location
-					%svg.svg_ui-arrow-down
-						%use{"xlink:href" => "#ui_arrow-down"}
+					%select#select_location{:name => "select_location", :required => true}
+						%option{:disabled => true, :selected => true, :value => true} select an option
+						%option{:value => "52"} Alberta
+						%option{:value => "53"} British Columbia
+						%option{:value => "54"} Manitoba
+						%option{:value => "55"} New Brunswick
+						%option{:value => "56"} Newfoundland
+						%option{:value => "57"} North West Territories
+						%option{:value => "58"} Nova Scotia
+						%option{:value => "59"} Nunavut
+						%option{:value => "60"} Ontario
+						%option{:value => "61"} Prince Edward Island
+						%option{:value => "62"} Quebec
+						%option{:value => "63"} Saskatchewan
+						%option{:value => "64"} Yukon
 
-				-# if UL > LI.length >= 6: add class "scrollable"
-				.wrap_dropdown.scrollable
+					.dropdown_toggle
+						%span.dropdown_placeholder.truncate Select Your Location
+						%svg.svg_ui-arrow-down
+							%use{"xlink:href" => "#ui_arrow-down"}
 
-					-# if UL > LI.length >= 6: output <span>
-					%span.fix_ios-scroll
+					-# if UL > LI.length >= 6: add class "scrollable"
+					.wrap_dropdown.scrollable
 
-						%ul.dropdown_list
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "52"} Alberta
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "53"} British Columbia
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "54"} Manitoba
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "55"} New Brunswick
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "56"} Newfoundland
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "57"} North West Territories
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "58"} Nova Scotia
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "59"} Nunavut
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "60"} Ontario
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "61"} Prince Edward Island
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "62"} Quebec
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "63"} Saskatchewan
-							%li.dropdown_option
-								%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
+						-# if UL > LI.length >= 6: output <span>
+						%span.fix_ios-scroll
 
-		.col-4
+							%ul.dropdown_list
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "52"} Alberta
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "53"} British Columbia
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "54"} Manitoba
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "55"} New Brunswick
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "56"} Newfoundland
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "57"} North West Territories
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "58"} Nova Scotia
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "59"} Nunavut
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "60"} Ontario
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "61"} Prince Edward Island
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "62"} Quebec
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "63"} Saskatchewan
+								%li.dropdown_option
+									%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
+
+		.column.col-4
 
 			%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Quote

@@ -803,7 +803,11 @@ form.form_quote span.txt {
 	display: inline-block;
 	margin: 2rem 0;
 }
-form.form_quote div.wrap_input > div {
+form.form_quote div.wrap_input div.wrap_columns {
+	text-align: center;
+}
+form.form_quote div.wrap_input div.column {
+	vertical-align: top;
 	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_L21;
 }
@@ -844,6 +848,9 @@ form.form_quote div.wrap_input div.col-3 div.wrap_select {
 	margin: 0 auto;
 	width: 24rem;
 }
+form.form_quote div.wrap_input div.col-3 div.wrap_select {
+	text-align: left;
+}
 form.form_quote div.wrap_input div.col-4 button {
 	padding: 0 3.2rem;
 	height: 6.8rem;
@@ -868,7 +875,7 @@ section.home_details article p {
 	margin: 0 auto 4rem auto;
 	max-width: 86rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem; // 1.7rem;
+	font-size: 1.5rem;
 	font-weight: 400;
 	line-height: 1.4;
 }

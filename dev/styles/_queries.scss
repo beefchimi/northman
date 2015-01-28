@@ -19,12 +19,27 @@
 		column-gap: 3.2rem;
 	}
 	// --- Form: Quote --- \\
+	form.form_quote div.wrap_input div.wrap_columns {
+		border-top: 0.1rem solid $nm_L21;
+	}
 	// + individual columns + \\
 	form.form_quote div.wrap_input div.col-1 div.wrap_element {
 		display: inline-block;
 	}
 	form.form_quote div.wrap_input div.col-1 span.txt {
 		margin: 0 2rem;
+	}
+	form.form_quote div.wrap_input div.col-2,
+	form.form_quote div.wrap_input div.col-3 {
+		display: inline-block;
+		border-top: none;
+	}
+	form.form_quote div.wrap_input div.col-2 {
+		width: 23.8rem;
+		border-right: 0.1rem solid $nm_L21;
+	}
+	form.form_quote div.wrap_input div.col-3 {
+		width: 30rem;
 	}
 
 	// Quote Pages
@@ -244,6 +259,7 @@
 		top: 0;
 		right: 0;
 		left: 0;
+		// background-color: hsla(60,11%,93%,0.96);
 	}
 	header div[data-container] {
 		padding: 3.6rem 3.2rem 0 3.2rem;
@@ -420,28 +436,38 @@
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	form.form_quote div.wrap_input > div {
+	form.form_quote div.wrap_input div.wrap_columns {
+		border-top: none;
+		float: left;
+		width: 43.426883%; // 588px / 1354px = 0.43426883
+	}
+	form.form_quote div.wrap_input div.column {
 		float: left;
 		padding: 4rem 0;
 		min-height: 22.8rem; // calculated height of tallest div... needed for borders to reach bottom
 		border-top: none;
 	}
-	form.form_quote div.wrap_input > div:nth-child(1n+2) {
-		border-left: 0.1rem solid $nm_L21;
+	form.form_quote div.wrap_input div.col-1,
+	form.form_quote div.wrap_input div.col-3 {
+		border-right: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
 	form.form_quote div.wrap_input div.col-1 {
 		width: 37.666174%; // 510px / 1354px = 0.37666174
 		text-align: left;
 	}
+	form.form_quote div.wrap_input div.col-2,
+	form.form_quote div.wrap_input div.col-3 {
+		display: block;
+	}
 	form.form_quote div.wrap_input div.col-2 {
-		width: 18.906942%; // 256px / 1354px = 0.18906942
+		width: 43.537415%; // 256px / 588px = 0.43537415
 	}
 	form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
 	form.form_quote div.wrap_input div.col-3 {
-		width: 24.519941%; // 332px / 1354px = 0.24519941
+		width: 56.462585%; // 332px / 588px = 0.56462585
 	}
 	form.form_quote div.wrap_input div.col-4 {
 		position: relative;
@@ -464,6 +490,9 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
+	form.form_quote div.wrap_input div.wrap_columns {
+		width: 61.8rem;
+	}
 	// + individual columns + \\
 	form.form_quote div.wrap_input div.col-1 {
 		width: 48rem;

@@ -148,4 +148,6 @@
 
 						-# %p Insurance underwritten by Travel Underwriters, located at 11th Floor – 6081 No. 3 Road in Richmond, British Columbia Canada, V6Y 2B2. The description herein is a summary only. It does not include all terms, conditions and exclusions of the policies described. Please refer to the actual policies for complete details of coverage and exclusions.
 
+		-# = Haml::Engine.new(File.read("dev/haml/partials/_html_modal-form.haml")).render
+
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
