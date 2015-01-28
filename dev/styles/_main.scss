@@ -52,6 +52,12 @@ nav.nav_primary {
 form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
+
+div.accordian_body {
+	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+
 /*
 div.wrap_select div.wrap_dropdown {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -420,15 +426,6 @@ div.tt-suggestion p strong {
 	font-weight: 500;
 	text-decoration: underline;
 }
-/*
-<span style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;" class="tt-dropdown-menu">
-	<div class="tt-dataset-states">
-		<div class="empty-message"></div>
-		<span style="display: block;" class="tt-suggestions">
-			<div class="tt-suggestion">
-				<p style="white-space: normal;">
-					<strong class="tt-highlight">A</strong>l<strong class="tt-highlight">a</strong>b<strong class="tt-highlight">a</strong>m<strong class="tt-highlight">a</strong>
-*/
 
 // Buttons
 // ----------------------------------------------------------------------------
@@ -690,9 +687,6 @@ section.internal_articles article h2 {
 	text-align: center;
 	text-transform: uppercase;
 }
-
-
-
 // + internal table + \\
 section.internal_articles article table {
 	table-layout: fixed;
@@ -710,9 +704,6 @@ section.internal_articles article table tbody tr td {
 	font-size: 1.3rem; // 1.8rem;
 	font-weight: 700; // futura heavy
 }
-
-
-
 
 // Home Page
 // ----------------------------------------------------------------------------
@@ -901,12 +892,9 @@ section.home_details article ul li:last-child {
 
 // Quote Pages
 // ----------------------------------------------------------------------------
-section.quote_details {
-}
 section.quote_details article h2 {
 	margin-bottom: 3.2rem;
 }
-
 article.quote_options p.notice {
 	padding: 0 2rem;
 	font-size: 1.3rem;
@@ -918,7 +906,7 @@ article.quote_options p.notice {
 // --- Quote Badges --- \\
 div.quote_badge {
 	margin-bottom: 3.2rem;
-	border-radius: 1rem;
+	border-radius: 1.6rem;
 }
 div.badge_header {
 	position: relative;
@@ -945,22 +933,21 @@ div.badge_body h3 {
 	display: inline-block;
 	position: relative;
 	margin-bottom: 3.2rem;
-	font-size: 6.8rem; // 7.6rem;
+	font-size: 6.8rem;
 	font-weight: 700; // futura heavy
-	letter-spacing: -0.2rem;
+	letter-spacing: -0.4rem;
 }
 div.badge_body h3 span.currency {
 	display: block;
 	position: absolute;
 	top: 0;
 	right: -4rem;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	letter-spacing: 0;
 	text-transform: uppercase;
 }
-div.badge_body a {
+div.badge_body a.btn_rnd {
 	width: 17.4rem;
-	// height: 5.8rem;
 }
 // + badge single + \\
 .badge_single {
@@ -992,88 +979,95 @@ div.badge_body a {
 	width: 4.5rem;
 	fill: $nm_orange;
 }
-
 // --- Quote Details --- \\
-article.quote_details {
-}
 article.quote_details div.details_captured {
-	margin-bottom: 3.2rem;
-	padding: 1.6rem;
+	margin-bottom: 4.8rem;
+	padding: 3.2rem;
 	border: 0.2rem solid $nm_ash;
 }
 article.quote_details div.details_captured ul {
-	margin-bottom: 3.2rem;
+	margin-bottom: 4.8rem;
+	text-align: center;
 }
 article.quote_details div.details_captured ul li {
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	font-size: 1.4rem;
 	font-weight: 700; // futura heavy
 }
 article.quote_details div.details_captured ul li:last-child {
 	margin-bottom: 0;
 }
-
-
-
+article.quote_details div.details_captured ul li strong {
+	display: block;
+	margin-bottom: 0.6rem;
+	text-transform: uppercase;
+}
+// + coverage accordian + \\
 div.accordian {
-	margin-bottom: 3.2rem;
+	margin-bottom: 4.8rem;
 	border: 0.2rem solid $nm_ash;
 	border-bottom: none;
 }
-div.accordian div.row {
+div.accordian_row {
 	position: relative;
 	padding: 1.6rem;
 	border-bottom: 0.2rem solid $nm_ash;
 }
-div.accordian div.row div.header {
-	// position: relative;
-	// padding: 1.6rem 4.2rem 1.6rem 1.6rem;
-}
-div.accordian div.row div.header h4 {
+div.accordian_header h4 {
 	font-size: 1.5rem; // 1.8rem;
 	font-weight: 700; // futura heavy
 }
-div.accordian div.row div.header a {
+a.accordian_toggle {
+	// mobile: could make the width 100%, overlay the h4, specify exact px position for .wrap_svg
+	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 4rem;
 	height: 4.7rem; // computed height of collapsed row
 }
-div.accordian div.row div.header a svg {
+a.accordian_toggle div.wrap_svg {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	margin-top: -0.8rem;
+	margin-left: -0.8rem;
 	width: 1.6rem;
 	height: 1.6rem;
+}
+a.accordian_toggle div.wrap_svg svg {
 	fill: $nm_orange;
 }
-
-div.accordian div.row div.header a:hover svg {
-	fill: hsla(0,0%,20%,1);
-}
-div.accordian div.row div.header a:active svg {
-	fill: hsla(0,0%,40%,1);
-}
-
-div.accordian div.row div.body {
+div.accordian_body {
 	max-height: 0;
 	opacity: 0;
-
+	overflow: hidden;
 }
-div.accordian div.row div.body p {
+div.accordian_body p {
 	padding-top: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem; // 1.5rem;
 	font-weight: 400;
 	line-height: 1.4;
 }
-
-
+// + interaction + \\
+a.accordian_toggle:hover div.wrap_svg svg {
+	fill: hsla(0,0%,20%,1);
+}
+a.accordian_toggle:active div.wrap_svg svg {
+	fill: hsla(0,0%,40%,1);
+}
+// + toggled row + \\
+.toggle_row a.accordian_toggle div.wrap_svg {
+	transform: rotate(180deg);
+}
+.toggle_row div.accordian_body {
+	max-height: 60rem;
+	opacity: 1;
+}
 // --- Quote Summary --- \\
 article.quote_summary table {
-	margin-bottom: 3.2rem;
+	margin-bottom: 4.8rem;
 }
 article.quote_summary table tbody tr td:first-child {
 	width: 70%;

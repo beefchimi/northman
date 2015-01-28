@@ -3,7 +3,7 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_home
+	%body#page_home.page_home
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 

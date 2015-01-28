@@ -183,6 +183,45 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// toggleAccordian: Expand / Collapse accordian elements
+	// ----------------------------------------------------------------------------
+	function toggleAccordian() {
+
+		var arrAccordianRows   = document.getElementsByClassName('accordian_row'),
+			numAccordianLength = arrAccordianRows.length;
+
+		// check if div.accordian_row exists and is not empty
+		if (typeof arrAccordianRows !== 'undefined' && numAccordianLength > 0) {
+
+			for (var i = 0; i < arrAccordianRows.length; i++) {
+				fartSauce(arrAccordianRows[i]);
+			}
+
+		} else {
+
+			return; // array not found or empty... exit function
+
+		}
+
+		function fartSauce(thisAccordianRow) {
+
+			var elRowToggle = thisAccordianRow.getElementsByClassName('accordian_toggle')[0];
+
+			elRowToggle.addEventListener('click', function(e) {
+
+				console.log('clicked');
+
+				classie.toggle(thisAccordianRow, 'toggle_row');
+
+				e.preventDefault();
+
+			});
+
+		}
+
+	}
+
+
 	// selectDropdown: Pair each <select> element with its <ul> sibling
 	// ----------------------------------------------------------------------------
 	function selectDropdown() {
@@ -522,11 +561,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	navToggle();
 	secretEmail();
+	toggleAccordian();
+
 	selectDropdown();
 	inputDatepicker();
 
 	// only run on home page
-	populateCountries();
+	if ( classie.has(elBody, 'page_home') ) {
+		populateCountries();
+	}
 
 
 }, false);

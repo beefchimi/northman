@@ -62,7 +62,7 @@
 
 					%div{"data-container" => "width_870"}
 
-						.details_captured
+						.details_captured.clearfix
 
 							%ul
 								%li
@@ -90,31 +90,34 @@
 
 						.accordian
 
-							.row
-								.header
+							.accordian_row
+								.accordian_header
 									%h4 Emergency Evacuation
-									%a{:href => "#", :title => "Expand"}
-										%svg.svg_ui-arrow-down
-											%use{"xlink:href" => "#ui_arrow-down"}
-								.body
+									%a.accordian_toggle{:href => "#", :title => "Expand"}
+										.wrap_svg
+											%svg.svg_ui-arrow-down
+												%use{"xlink:href" => "#ui_arrow-down"}
+								.accordian_body
 									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
 
-							.row
-								.header
+							.accordian_row
+								.accordian_header
 									%h4 Crocodile Safety
-									%a{:href => "#", :title => "Expand"}
-										%svg.svg_ui-arrow-down
-											%use{"xlink:href" => "#ui_arrow-down"}
-								.body
+									%a.accordian_toggle{:href => "#", :title => "Expand"}
+										.wrap_svg
+											%svg.svg_ui-arrow-down
+												%use{"xlink:href" => "#ui_arrow-down"}
+								.accordian_body
 									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
 
-							.row
-								.header
+							.accordian_row
+								.accordian_header
 									%h4 Trip Cancellation and Trip Delay Coverage
-									%a{:href => "#", :title => "Expand"}
-										%svg.svg_ui-arrow-down
-											%use{"xlink:href" => "#ui_arrow-down"}
-								.body
+									%a.accordian_toggle{:href => "#", :title => "Expand"}
+										.wrap_svg
+											%svg.svg_ui-arrow-down
+												%use{"xlink:href" => "#ui_arrow-down"}
+								.accordian_body
 									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
 
 						%a.btn_rnd.brd_orange{:href => "#", :title => "Full Coverage List"} Full Coverage List

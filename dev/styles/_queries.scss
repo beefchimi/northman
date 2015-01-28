@@ -27,6 +27,37 @@
 		margin: 0 2rem;
 	}
 
+	// Quote Pages
+	// ----------------------------------------------------------------------------
+	article.quote_options p.notice {
+		padding: 0 0 0 50%;
+	}
+	// --- Quote Badges --- \\
+	div.quote_badge {
+		float: left;
+		width: calc(50% - 1rem);
+	}
+	// + badge single + \\
+	.badge_single {
+		margin-right: 2rem;
+	}
+	// --- Quote Details --- \\
+	article.quote_details div.details_captured ul {
+		text-align: left;
+		column-count: 2;
+		column-gap: 2rem;
+	}
+	article.quote_details div.details_captured ul li {
+		margin-bottom: 1.6rem;
+	}
+	article.quote_details div.details_captured ul li:nth-child(3n) {
+		margin-bottom: 0;
+	}
+	article.quote_details div.details_captured ul li strong {
+		display: inline-block;
+		margin: 0 0.6rem 0 0;
+	}
+
 }
 
 @media only screen and (min-width: 48em) { // 768px / 16px = 48em
@@ -273,6 +304,11 @@
 	section.internal_articles article h2 {
 		// margin-bottom: 3.2rem;
 	}
+	// + internal table + \\
+	section.internal_articles article table tbody tr td {
+		padding: 2.4rem;
+		font-size: 1.8rem;
+	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
@@ -292,6 +328,82 @@
 	section.home_details article ul {
 		margin-bottom: 6rem;
 		column-count: 3;
+	}
+
+	// Quote Pages
+	// ----------------------------------------------------------------------------
+	section.quote_details article h2 {
+		margin-bottom: 4.8rem;
+	}
+	section.quote_details article a.btn_rnd {
+		font-size: 1.6rem;
+		height: 6rem;
+		line-height: 6rem;
+	}
+	section.quote_details article div[data-container] > a.btn_rnd {
+		width: 26rem;
+	}
+	// --- Quote Badges --- \\
+	div.quote_badge {
+		width: calc(50% - 2rem);
+	}
+	div.badge_header {
+		padding: 1.8rem 2.6rem;
+	}
+	div.badge_header svg {
+		top: 1.2rem;
+		right: 2.6rem;
+	}
+	div.badge_body {
+		padding: 3.2rem 2rem;
+	}
+	div.badge_body h3 {
+		font-size: 7.6rem;
+	}
+	div.badge_body h3 span.currency {
+		font-size: 1.6rem;
+	}
+	// + badge single + \\
+	.badge_single {
+		margin-right: 4rem;
+	}
+	// --- Quote Details --- \\
+	article.quote_details div.details_captured {
+		margin-bottom: 6.4rem;
+		padding: 2.4rem;
+	}
+	article.quote_details div.details_captured ul {
+		float: left;
+		margin-bottom: 0;
+		width: 75%;
+		column-gap: 3.2rem;
+	}
+	article.quote_details div.details_captured a.btn_rnd {
+		float: right;
+		margin-top: 0.6rem; // guessing at an amount to visually center the button
+	}
+	// + coverage accordian + \\
+	div.accordian {
+		margin-bottom: 6.4rem;
+	}
+	div.accordian_row {
+		padding: 2.4rem;
+	}
+	div.accordian_header h4 {
+		font-size: 1.8rem;
+	}
+	a.accordian_toggle {
+		width: 6rem;
+		height: 6.6rem; // computed height of collapsed row
+	}
+	div.accordian_body p {
+		padding-top: 2.4rem;
+		font-size: 1.5rem;
+		line-height: 1.5;
+	}
+	// --- Quote Summary --- \\
+	article.quote_summary table {
+		margin-bottom: 6.4rem;
 	}
 
 }
