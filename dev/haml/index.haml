@@ -9,7 +9,7 @@
 
 		%main{:role => "main"}
 
-			%section.home_intro
+			%section.page_header.home_header
 
 				%h1.visuallyhidden Insurance For The Wild.
 				.wrap_svg
@@ -27,11 +27,12 @@
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
 
-						%a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
+						-# %a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
+						%button#form_toggle.btn_rnd.brd_cream{:type => "button"} Get A Quote
 
-			= Haml::Engine.new(File.read("dev/haml/partials/_home_form.haml")).render
+			= Haml::Engine.new(File.read("dev/haml/partials/_form_quote.haml")).render
 
-			%section.home_details.internal_articles{"data-container" => "width-padding_1440"}
+			%section.home_details.page_articles{"data-container" => "width-padding_1440"}
 
 				%article.details_why
 

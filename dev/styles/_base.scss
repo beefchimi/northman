@@ -426,7 +426,6 @@ fieldset[disabled] .datepicker table tr td.range.today.disabled:hover.active {
 	color: hsla(0,0%,100%,1);
 	background-color: hsla(0,0%,60%,1);
 	border-color: hsla(0,0%,33%,1);
-	// text-shadow: 0 -0.1rem 0 hsla(0,0%,0%,0.25);
 }
 .datepicker table tr td.selected:hover,
 .datepicker table tr td.selected:hover:hover,
@@ -536,7 +535,6 @@ fieldset[disabled] .datepicker table tr td.selected.disabled:hover.active {
 	color: hsla(0,0%,100%,1);
 	background-color: hsla(208,56%,53%,1); // blue 1
 	border-color: hsla(208,56%,47%,1); // dark blue 1
-	// text-shadow: 0 -0.1rem 0 hsla(0,0%,0%,0.25);
 }
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active:hover:hover,
@@ -811,7 +809,6 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 	font-weight: normal;
 	line-height: 1.428571429;
 	text-align: center;
-	// text-shadow: 0 0.1rem 0 hsla(0,0%,100%,1);
 	vertical-align: middle;
 	background-color: hsla(0,0%,93%,1);
 	border: solid hsla(0,0%,80%,1);

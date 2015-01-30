@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Global Variables
 	// ----------------------------------------------------------------------------
-	var elBody = document.body;
+	var elHTML = document.documentElement,
+		elBody = document.body;
 
 
 	// Helper: Detmine which transition event to use
 	// ----------------------------------------------------------------------------
-/*
 	function whichTransitionEvent() {
 
-		var t,
-			el          = document.createElement('fakeelement'),
+		var trans,
+			element     = document.createElement('fakeelement'),
 			transitions = {
 				'transition'       : 'transitionend',
 				'OTransition'      : 'oTransitionEnd',
@@ -20,22 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
 				'WebkitTransition' : 'webkitTransitionEnd'
 			}
 
-		for (t in transitions) {
-			if (el.style[t] !== undefined) {
-				return transitions[t];
+		for (trans in transitions) {
+			if (element.style[trans] !== undefined) {
+				return transitions[trans];
 			}
 		}
 
 	}
 
-	// listen for a transition
-	var transitionEvent = whichTransitionEvent();
-*/
-
 	function whichAnimationEvent() {
 
 		var anim,
-			el         = document.createElement('fakeelement'),
+			element    = document.createElement('fakeelement'),
 			animations = {
 				'animation'       : 'animationend',
 				'OAnimation'      : 'oAnimationEnd',
@@ -44,15 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 
 		for (anim in animations) {
-			if (el.style[anim] !== undefined) {
+			if (element.style[anim] !== undefined) {
 				return animations[anim];
 			}
 		}
 
 	}
 
-	// listen for an animation
-	var animationEvent = whichAnimationEvent();
+	var transitionEvent = whichTransitionEvent(), // listen for a transition
+		animationEvent  = whichAnimationEvent(); // listen for an animation
 
 
 	// Helper: Find Parent Element by Class or Tag Name
@@ -150,6 +146,45 @@ document.addEventListener('DOMContentLoaded', function() {
 	// console.log( ["Apple", "bOy", "caR"].indexOfIgnoreCase('car') ); // returns 2
 
 
+	// Helper: Create and Destroy [data-overlay] element
+	// ----------------------------------------------------------------------------
+	function createOverlay() {
+
+		// first, create an empty <div>
+		var elOverlay = document.createElement('div');
+
+		// apply the attributes: id="overlay" & data-overlay="modal"
+		elOverlay.id = 'overlay';
+		elOverlay.setAttribute('data-overlay', 'modal'); // could maybe pass the attr value into the function?
+
+		// append this <div> to the document <body>
+		elBody.appendChild(elOverlay);
+
+		// make the element fully transparent
+		// (don't rely on a predefined CSS style... declare this with JS to getComputerStyle)
+		elOverlay.style.opacity = 0;
+
+		// make sure the initial state is applied
+		window.getComputedStyle(elOverlay).opacity;
+
+		// set opacity to 1 (predefined CSS transition will handle the fade)
+		elOverlay.style.opacity = 1;
+
+	}
+
+	function destroyOverlay() {
+
+		var elOverlay = document.getElementById('overlay');
+
+		elOverlay.style.opacity = 0;
+
+		transitionEvent && elOverlay.addEventListener(transitionEvent, function() {
+			elBody.removeChild(elOverlay);
+		});
+
+	}
+
+
 	// Navigation: Click to toggle navigation
 	// ----------------------------------------------------------------------------
 	function navToggle() {
@@ -194,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (typeof arrAccordianRows !== 'undefined' && numAccordianLength > 0) {
 
 			for (var i = 0; i < arrAccordianRows.length; i++) {
-				fartSauce(arrAccordianRows[i]);
+				accordianExpandCollapse(arrAccordianRows[i]);
 			}
 
 		} else {
@@ -203,13 +238,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-		function fartSauce(thisAccordianRow) {
+		function accordianExpandCollapse(thisAccordianRow) {
 
 			var elRowToggle = thisAccordianRow.getElementsByClassName('accordian_toggle')[0];
 
 			elRowToggle.addEventListener('click', function(e) {
-
-				console.log('clicked');
 
 				classie.toggle(thisAccordianRow, 'toggle_row');
 
@@ -220,6 +253,101 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
+
+
+	// toggleModal:
+	// ----------------------------------------------------------------------------
+	function toggleModal() {
+
+		var arrModalOpen   = document.getElementsByClassName('modal_open'),
+			arrModalClose  = document.getElementsByClassName('modal_close'),
+			numModalLength = arrModalOpen.length,
+			elTargetModal;
+
+		// check if a.modal_open exists and is not empty
+		if (typeof arrModalOpen !== 'undefined' && numModalLength > 0) {
+
+			for (var i = 0; i < numModalLength; i++) {
+				arrModalOpen[i].addEventListener('click', openModal, false);
+				arrModalClose[i].addEventListener('click', closeModal, false);
+			}
+
+		} else {
+
+			return; // array not found or empty... exit function
+
+		}
+
+		function openModal(e) {
+
+			var dataTargetModal = this.getAttribute('href').substring(1); // capture the href of the clicked element, remove the # prefix
+				elTargetModal   = document.getElementById(dataTargetModal); // get the modal we need to open
+
+			classie.add(elHTML, 'overlay_active'); // lock <body> scrolling with 'overlay_active'
+			classie.add(elTargetModal, 'loaded'); // visibility is initially set to "hidden", "loaded" class applied only once
+
+			// create overlay element and fade in modal
+			createOverlay();
+			elTargetModal.setAttribute('data-modal', 'active');
+
+			e.preventDefault();
+
+			document.addEventListener('click', documentClick, false);
+
+		}
+
+		function closeModal(e) {
+
+			var dataTargetModal = this.getAttribute('href').substring(1); // capture the href of the clicked element, remove the # prefix
+				elTargetModal   = document.getElementById(dataTargetModal); // get the modal we need to open
+
+			// once we have found the desired parent element, hide that modal
+			classie.remove(elHTML, 'overlay_active');
+			elTargetModal.setAttribute('data-modal', 'inactive');
+			destroyOverlay();
+
+			e.preventDefault();
+
+			document.removeEventListener('click', documentClick, false);
+
+		}
+
+		function documentClick(e) {
+
+			// if this is not the currently toggled dropdown
+			if ( e.target === document.getElementById('overlay') ) {
+
+				// ignore this event if preventDefault has been called
+				if (e.defaultPrevented) {
+					return;
+				}
+
+				// once we have found the desired parent element, hide that modal (copied from closeModal)
+				classie.remove(elHTML, 'overlay_active');
+				elTargetModal.setAttribute('data-modal', 'inactive');
+				destroyOverlay();
+
+				console.log('clicked on the overlay');
+
+			} else {
+
+				console.log('no, this is NOT the overlay');
+
+			}
+
+		}
+
+	}
+
+/*
+			var elDesiredParent = this.parentNode;
+
+			// cycle upwards from the closest parent of the clicked element,
+			// until we find an element with the attr 'data-modal'
+			while ( !elDesiredParent.getAttribute('data-modal') ) {
+				elDesiredParent = elDesiredParent.parentNode;
+			}
+*/
 
 
 	// selectDropdown: Pair each <select> element with its <ul> sibling
@@ -394,6 +522,12 @@ document.addEventListener('DOMContentLoaded', function() {
 				valDestination,
 				valIndex;
 
+			// IOS BUGS:
+			// MOBILE EXPERIENCE IS GARBAGE TOWN.
+			// "GO" DOES NOT SUBMIT FORM / FIRE VALIDATEDESTINATION().
+			// ABLE TO TAB BETWEEN FORM FIELDS CAUSING DATEPICKER TO BE REVEALED.
+
+			// should have a mobile conditional: offset set to 0
 			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false, offset: 88 };
 
 			var elFormDestination = document.getElementById('form_destination');
@@ -562,9 +696,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	navToggle();
 	secretEmail();
 	toggleAccordian();
+	toggleModal();
 
 	selectDropdown();
-	inputDatepicker();
+	inputDatepicker(); // should I specify the pages this is required on?
 
 	// only run on home page
 	if ( classie.has(elBody, 'page_home') ) {

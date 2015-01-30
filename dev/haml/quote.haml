@@ -9,14 +9,14 @@
 
 		%main{:role => "main"}
 
-			%section.internal_header
+			%section.page_header.quote_header
 
 				%h1.visuallyhidden Get a Quote
 				.wrap_svg
-					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
-						%use{"xlink:href" => "#nm_tagline"}
+					%svg.svg_nm-quote{:viewbox => "0 0 706 70"}
+						%use{"xlink:href" => "#nm_quote"}
 
-			%section.quote_details.internal_articles{"data-container" => "width-padding_1440"}
+			%section.quote_details.page_articles{"data-container" => "width-padding_1440"}
 
 				%article.quote_options
 
@@ -84,7 +84,7 @@
 									%strong Age Limit:
 									Under 60
 
-							%a.btn_rnd.brd_orange{:href => "#", :title => "Edit Details"} Edit Details
+							%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details
 
 						%h2 Single Trip Coverage Includes:
 
@@ -148,6 +148,8 @@
 
 						-# %p Insurance underwritten by Travel Underwriters, located at 11th Floor – 6081 No. 3 Road in Richmond, British Columbia Canada, V6Y 2B2. The description herein is a summary only. It does not include all terms, conditions and exclusions of the policies described. Please refer to the actual policies for complete details of coverage and exclusions.
 
-		-# = Haml::Engine.new(File.read("dev/haml/partials/_html_modal-form.haml")).render
+		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
+			.modal_body
+				= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

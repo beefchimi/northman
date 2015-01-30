@@ -3,9 +3,11 @@
 	%div{"data-container" => "width-padding_1200"}
 
 		%h1.visuallyhidden Northman
-		%a.wrap_svg{:href => "http://northman.co", :title => "Return Home"}
+		%a.wordmark.wrap_svg{:href => "http://northman.co", :title => "Return Home"}
 			%svg.svg_nm-wordmark
 				%use{"xlink:href" => "#nm_wordmark"}
+
+		%h2 Insurance For The Wild
 
 		%a#nav_toggle.nav_toggle{:href => "#", :title => "Toggle Navigation"}
 			.wrap_menu
@@ -26,3 +28,11 @@
 					%a{:href => "#", :title => "Help Desk"} Help Desk
 				%li
 					%a{:href => "#", :title => "Claims & Emergencies"} Claims & Emergencies
+
+			.social_links
+				%a.social_twitter.wrap_svg{:href => "#", :title => "Follow us on Twitter"}
+					%svg.svg_social-twitter
+						%use{"xlink:href" => "#social_twitter"}
+				%a.social_facebook.wrap_svg{:href => "#", :title => "Like us on Facebook"}
+					%svg.svg_social-facebook
+						%use{"xlink:href" => "#social_facebook"}

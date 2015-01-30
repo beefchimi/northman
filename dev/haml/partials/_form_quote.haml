@@ -3,7 +3,7 @@
 	%h6 We just need a few details to get you the most accurate price:
 
 	-# receives the value from #input_destination
-	%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => ""}
+	%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => "", :tabindex => "-1"}
 
 	.wrap_input.clearfix{"data-container" => "width_1354"}
 
@@ -14,19 +14,19 @@
 			#datepicker.input-daterange.input-group
 
 				.wrap_element
-					%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true}
+					%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1"}
 					%svg.svg_ui-calendar
 						%use{"xlink:href" => "#ui_calendar"}
 
 				%span.txt Til
 
 				.wrap_element
-					%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true}
+					%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1"}
 					%svg.svg_ui-calendar
 						%use{"xlink:href" => "#ui_calendar"}
 
 			%span.wrap_checkbox
-				%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family"}
+				%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
 				%label{:for => "check_family"}
 					I’m travelling with my family
 					%svg.svg_ui-checkmark
@@ -39,7 +39,7 @@
 				%label Who is going?
 
 				.wrap_element
-					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true}
+					%input#age-groups.age-groups{:type => "text", :name => "age-groups", :value => "", :placeholder => "Enter ages", :required => true, :tabindex => "-1"}
 					%p e.g. 35, 25, 16
 
 			.column.col-3
@@ -48,7 +48,7 @@
 
 				#wrap_select-location.wrap_select{"data-selected" => ""}
 
-					%select#select_location{:name => "select_location", :required => true}
+					%select#select_location{:name => "select_location", :required => true, :tabindex => "-1"}
 						%option{:disabled => true, :selected => true, :value => true} select an option
 						%option{:value => "52"} Alberta
 						%option{:value => "53"} British Columbia
@@ -105,4 +105,4 @@
 
 		.column.col-4
 
-			%button#submit_home.submit_home.btn_rnd.fill_orange{:type => "button"} Get A Quote
+			%button#submit_quote.submit_quote.btn_rnd.fill_orange{:type => "button", :tabindex => "-1"} Get A Quote

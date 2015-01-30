@@ -9,8 +9,7 @@ input,
 optgroup,
 select,
 textarea {
-	font-family: 'futura-pt', Futura, 'Trebuchet MS', Arial, sans-serif;
-	font-weight: 500;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 body {
 	position: relative;
@@ -49,45 +48,43 @@ a.nav_toggle div.wrap_menu span {
 nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
-form.form_quote {
+body.page_home form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
-
 div.accordian_body {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
-
-
-/*
-div.wrap_select div.wrap_dropdown {
+// div.wrap_select div.wrap_dropdown,
+[data-overlay] {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
-*/
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // border-radius 0.3s ease-in-out,
 }
-
-
 input[type="checkbox"] + label {
 	transition: color 0.3s ease-in-out;
 }
 input[type="checkbox"] + label::before {
 	transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
-
-
 // --- Animations --- \\
-/*
-@keyframes transShow {
+@keyframes animShow {
 	0%   { opacity: 0; }
 	100% { opacity: 1; }
 }
-@keyframes transHide {
-	0%   { left: 0; opacity: 1; }
-	100% { left: 0; opacity: 0; }
+@keyframes animHide {
+	0%   { opacity: 1; left: 0; }
+	99%  { opacity: 0; left: 0; }
+	100% { opacity: 0; left: -200%; }
 }
-*/
-
+[data-modal="active"] {
+	left: 0;
+	animation: animShow 0.4s ease-in-out;
+}
+[data-modal="inactive"] {
+	left: -200%;
+	animation: animHide 0.4s ease-in-out forwards;
+}
 @keyframes shake {
 	0%, 100% {
 		transform: translate3d(0,0,0);
@@ -102,7 +99,6 @@ input[type="checkbox"] + label::before {
 .animate_shake {
 	animation: shake 0.7s ease-in-out both; // ease-in-out 0.2s forwards;
 }
-
 // --- FOUT --- \\
 /*
 main,
@@ -164,6 +160,52 @@ footer {
 [data-container="width_870"] {
 	max-width: 87rem;
 }
+// --- Modals --- \\
+[data-modal] {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $nm_L15;
+	visibility: hidden; // requires visibility in order to hide animation on initial page load... set to 'visible' via JS class 'loaded'
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+[data-modal] div.modal_body {
+	overflow: hidden;
+}
+[data-modal] div.modal_body h5 {
+	padding: 2.6rem 2rem;
+	font-size: 1.7rem;
+	font-style: italic;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
+// --- Overlays --- \\
+// created and added (also destroyed) to DOM via JS
+// opacity and visibility applied via JS
+// transition applied through CSS
+[data-overlay] {
+	position: fixed;
+	z-index: 998;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: hsla(0,0%,0%,0.6);
+}
+// --- Overlay Active --- \\
+html.overlay_active,
+html.overlay_active body {
+	overflow-y: hidden;
+}
+[data-modal].loaded,
+[data-overlay].loaded {
+	visibility: visible;
+}
 
 // Forms
 // ----------------------------------------------------------------------------
@@ -171,7 +213,7 @@ input[type="text"] {
 	padding: 0 4rem 0 1.6rem;
 	width: 100%;
 	height: 4.8rem;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	color: $nm_L21;
 	background-color: $nm_cream;
 	box-shadow: inset 0 0 0 0.1rem $nm_orange-A0;
@@ -197,8 +239,7 @@ input[type="checkbox"] + label {
 	display: block;
 	position: relative;
 	padding-left: 4rem;
-	font-size: 1.5rem;
-	font-weight: 700;
+	font-size: 1.4rem;
 	letter-spacing: 0;
 	text-align: left;
 	text-transform: none;
@@ -271,7 +312,7 @@ div.wrap_select div.dropdown_toggle span {
 	user-select: none;
 	padding-left: 1.6rem;
 	padding-right: 4.8rem;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	line-height: 4.8rem;
 	color: $nm_L21;
 }
@@ -287,12 +328,17 @@ div.wrap_select div.dropdown_toggle svg {
 	fill: $nm_orange;
 }
 // + dropdown list + \\
+div.wrap_select div.wrap_dropdown,
+div.wrap_select div.wrap_dropdown ul,
+div.wrap_select div.wrap_dropdown.scrollable,
+div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
+	background-color: $nm_cream; // be sure there is no chance ios rubber band will show a difference background
+}
 div.wrap_select div.wrap_dropdown {
 	position: absolute;
 	z-index: 101;
 	top: 0;
 	width: 100%;
-	background-color: $nm_cream;
 	border-radius: 0.8rem;
 	box-shadow: $boxshadow_drop;
 	overflow: hidden;
@@ -305,7 +351,6 @@ div.wrap_select div.wrap_dropdown ul li a {
 	padding: 1.6rem;
 	font-size: 1.6rem;
 	color: $nm_L21;
-	background-color: $nm_cream;
 }
 div.wrap_select div.wrap_dropdown ul li.selected a {
 	pointer-events: none;
@@ -423,8 +468,91 @@ div.tt-suggestion p {
 	color: $nm_L21;
 }
 div.tt-suggestion p strong {
-	font-weight: 500;
+	font-weight: 400; // needed to prevent false browser bolding
 	text-decoration: underline;
+}
+// --- Form: Quote --- \\
+form.form_quote h6,
+form.form_quote div > label,
+form.form_quote span.txt {
+	font-size: 1.3rem;
+	letter-spacing: 0.3rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
+form.form_quote h6 {
+	padding: 3.2rem 1.6rem;
+	font-style: italic;
+	line-height: 1.4;
+}
+form.form_quote div > label {
+	display: block;
+	margin-bottom: 2.6rem;
+}
+form.form_quote span.txt {
+	display: inline-block;
+	margin: 2rem 0;
+}
+form.form_quote div.wrap_input div.wrap_columns {
+	text-align: center;
+}
+form.form_quote div.wrap_input div.column {
+	vertical-align: top;
+	padding: 3.2rem 1.6rem;
+	border-top: 0.1rem solid $nm_L21;
+}
+form.form_quote div.wrap_input div.wrap_element {
+	position: relative;
+	margin: 0 auto;
+}
+form.form_quote div.wrap_input div.input-daterange div.wrap_element input {
+	cursor: pointer;
+}
+form.form_quote div.wrap_input div.wrap_element svg {
+	pointer-events: none;
+	position: absolute;
+	top: 1.6rem;
+	right: 1.6rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	fill: $nm_orange;
+}
+// + individual columns + \\
+form.form_quote div.wrap_input div.col-1 {
+	text-align: center;
+}
+form.form_quote div.wrap_input div.col-1 div.wrap_element {
+	width: 18rem;
+}
+form.form_quote div.wrap_input div.col-2 div.wrap_element {
+	width: 17rem;
+}
+form.form_quote div.wrap_input div.col-2 div.wrap_element p {
+	margin-top: 1.6rem;
+	font-size: 1.6rem;
+	font-style: italic;
+	text-align: center;
+	color: $nm_cream;
+}
+form.form_quote div.wrap_input div.col-3 div.wrap_select {
+	margin: 0 auto;
+	width: 24rem;
+	text-align: left;
+}
+form.form_quote div.wrap_input div.col-4 .btn_rnd {
+	padding: 0 3.2rem;
+	height: 6.8rem;
+	font-size: 1.9rem;
+	line-height: 6.8rem;
+}
+form.form_quote div.wrap_input div.col-4 a.btn_rnd {
+	margin-bottom: 3.2rem;
+	width: 16.4rem;
+}
+// --- Modal: Quote --- \\
+aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select div.wrap_dropdown.scrollable {
+	height: 23.6rem; // shortened inorder to stay within modal viewport
 }
 
 // Buttons
@@ -436,7 +564,6 @@ div.tt-suggestion p strong {
 	height: 4.8rem;
 	line-height: 4.8rem;
 	font-size: 1.4rem;
-	font-weight: 700; // futura heavy
 	letter-spacing: 0.2rem;
 	text-align: center;
 	text-transform: uppercase;
@@ -500,6 +627,17 @@ button[class*="brd_"] {
 .brd_cream:active {
 	color: $nm_orange-L;
 }
+// + border: grey + \\
+.brd_grey {
+	color: $nm_L34;
+}
+.brd_grey:focus,
+.brd_grey:hover {
+	color: $nm_cream;
+}
+.brd_grey:active {
+	color: $nm_cream-D;
+}
 
 
 // ==|== common sections ======================================================
@@ -515,22 +653,32 @@ header div[data-container] {
 	min-height: 8rem;
 	padding-top: 8rem;
 }
-// --- Wordmark --- \\
-header a.wrap_svg {
+// --- Wordmark & Logo --- \\
+header a.wordmark {
 	position: absolute;
 	top: 1.8rem;
 	left: 1.6rem;
 	width: 15.5rem;
 	height: 4.2rem;
 }
-header a.wrap_svg svg {
+header a.wordmark svg {
 	fill: $nm_orange;
 }
-header a.wrap_svg:hover svg {
+header a.wordmark:hover svg {
 	fill: hsla(0,0%,20%,1);
 }
-header a.wrap_svg:active svg {
+header a.wordmark:active svg {
 	fill: hsla(0,0%,40%,1);
+}
+header h2 {
+	display: none;
+	position: absolute;
+	top: 3.9rem;
+	left: 22rem;
+	font-size: 1.2rem;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	color: $nm_orange;
 }
 // --- Nav Toggle --- \\
 a.nav_toggle {
@@ -583,8 +731,7 @@ nav.nav_primary ul li:last-child {
 	margin-bottom: 0;
 }
 nav.nav_primary ul li a {
-	font-size: 2rem;
-	font-weight: 700; // futura heavy
+	font-size: 1.8rem;
 	color: $nm_cream;
 }
 nav.nav_primary ul li a:hover {
@@ -592,6 +739,28 @@ nav.nav_primary ul li a:hover {
 }
 nav.nav_primary ul li a:active {
 	color: hsla(0,0%,40%,1);
+}
+// + social links + \\
+nav.nav_primary div.social_links {
+	padding-bottom: 3.2rem;
+	text-align: center;
+}
+nav.nav_primary div.social_links a {
+	display: inline-block;
+	width: 2.8rem;
+	height: 2.8rem;
+}
+nav.nav_primary div.social_links a.social_twitter {
+	margin-right: 4rem;
+}
+nav.nav_primary div.social_links a svg {
+	fill: $nm_cream;
+}
+nav.nav_primary div.social_links a:hover svg {
+	fill: hsla(0,0%,20%,1);
+}
+nav.nav_primary div.social_links a:active svg {
+	fill: hsla(0,0%,40%,1);
 }
 // --- Toggled: Mobile Nav --- \\
 body.toggled_mobile-nav nav.nav_primary {
@@ -616,37 +785,59 @@ footer {
 	padding: 4rem 1.6rem;
 	text-align: center;
 }
-footer p {
+// --- Footer Links --- \\
+ul.footer_links {
 	margin-bottom: 4rem;
+}
+ul.footer_links li {
+	margin-bottom: 1.2rem;
+}
+ul.footer_links li a {
+	font-size: 1.5rem;
+	color: $nm_L21;
+}
+ul.footer_links li a:hover {
+	color: $nm_orange;
+}
+ul.footer_links li a:active {
+	color: $nm_orange-D;
+}
+// --- Contact Info --- \\
+ul.footer_contact {
+	margin-bottom: 4rem;
+}
+ul.footer_contact li {
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	color: $nm_orange;
+}
+ul.footer_contact li:last-child {
+	margin-bottom: 0;
+}
+// --- Privacy Info --- \\
+footer p {
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
-	font-weight: 400;
 	line-height: 1.4;
 	color: $nm_orange;
 }
 footer p a {
 	font-weight: 700;
 }
-footer ul li {
-	margin-bottom: 1rem;
-	font-size: 1.1rem;
-	font-style: italic;
-	font-weight: 700;
-	letter-spacing: 0.1rem;
-	text-transform: uppercase;
+// --- Privacy & Contact Links --- \\
+footer p a,
+ul.footer_contact li a {
 	color: $nm_orange;
 }
-footer ul li:last-child {
-	margin-bottom: 0;
-}
-// + footer links + \\
-footer a {
-	color: $nm_orange;
-}
-footer a:hover {
+footer p a:hover,
+ul.footer_contact li a:hover {
 	color: hsla(0,0%,20%,1);
 }
-footer a:active {
+footer p a:active,
+ul.footer_contact li a:active {
 	color: hsla(0,0%,30%,1);
 }
 
@@ -656,80 +847,78 @@ footer a:active {
 
 // Internal Pages
 // ----------------------------------------------------------------------------
-section.internal_header {
-	background-image: url('../img/bg_home.jpg');
+section.page_header {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 }
-section.internal_header div.wrap_svg {
-	margin: 0 auto;
+section.page_header div.wrap_svg {
 	padding: 4rem 2rem;
+	text-align: center;
 }
-section.internal_header div.wrap_svg svg.svg_nm-tagline {
+section.page_header div.wrap_svg svg {
 	display: inline;
 	fill: hsla(60,11%,93%,0.9);
 }
-// --- Internal Articles --- \\
-section.internal_articles {
+// --- Page Articles --- \\
+section.page_articles {
 	background-color: $nm_cream;
 }
-section.internal_articles article {
+section.page_articles article {
 	padding: 4.8rem 1.6rem;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
 }
-section.internal_articles article h2 {
-	// margin-bottom: 2rem;
+section.page_articles article > div.wrap_svg,
+section.page_articles article div[data-container] > div.wrap_svg {
+	margin: 0 auto 4rem auto;
+	width: 6.4rem;
+	height: 6.4rem;
+}
+section.page_articles article > div.wrap_svg svg,
+section.page_articles article div[data-container] > div.wrap_svg svg {
+	fill: $nm_orange;
+}
+section.page_articles article h2 {
+	margin-bottom: 2rem;
 	font-size: 1.7rem;
-	font-weight: 700; // futura heavy
 	letter-spacing: 0.2rem;
+	line-height: 1.2;
 	text-align: center;
 	text-transform: uppercase;
 }
+/*
+section.home_details article > p,
+section.home_details article div[data-container] > p {
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.4;
+}
+*/
 // + internal table + \\
-section.internal_articles article table {
+section.page_articles article table {
 	table-layout: fixed;
 	width: 100%;
 	border: 0.2rem solid $nm_ash;
 }
-section.internal_articles article table tbody tr {
+section.page_articles article table tbody tr {
 	border-bottom: 0.2rem solid $nm_ash;
 }
-section.internal_articles article table tbody tr:last-child {
+section.page_articles article table tbody tr:last-child {
 	border-bottom: none;
 }
-section.internal_articles article table tbody tr td {
+section.page_articles article table tbody tr td {
 	padding: 1rem;
 	font-size: 1.3rem; // 1.8rem;
-	font-weight: 700; // futura heavy
 }
 
 // Home Page
 // ----------------------------------------------------------------------------
-/*
-#page_home {
+section.home_header {
 	background-image: url('../img/bg_home.jpg');
-	background-repeat: no-repeat;
-	background-position: center 8rem;
-	background-size: 100% auto;
-	background-attachment: fixed;
 }
-*/
-// --- Home Intro --- \\
-section.home_intro {
-	background-image: url('../img/bg_home.jpg');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-section.home_intro div.wrap_svg {
-	margin: 0 auto;
-	padding: 4rem 2rem;
-}
-section.home_intro div.wrap_svg svg.svg_nm-tagline {
-	display: inline;
-	fill: hsla(60,11%,93%,0.9);
+section.home_header div.wrap_svg svg.svg_nm-tagline {
+	max-width: 72.3rem;
 }
 // --- Form: Destination --- \\
 form.form_destination {
@@ -745,7 +934,6 @@ form.form_destination fieldset legend {
 	margin-bottom: 3.2rem;
 	width: 100%; // required to center <legend>
 	font-size: 1.8rem;
-	font-weight: 700; // futura heavy
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
@@ -757,7 +945,6 @@ form.form_destination fieldset div.wrap_element {
 }
 form.form_destination fieldset div.wrap_element input[type="text"] {
 	padding-right: 4.8rem;
-	font-weight: 700;
 }
 form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	pointer-events: none;
@@ -769,114 +956,29 @@ form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	fill: $nm_orange;
 }
 // --- Form: Quote --- \\
-form.form_quote {
+body.page_home form.form_quote {
 	max-height: 0;
-	background-color: $nm_L7;
 	overflow-y: hidden;
+	background-color: $nm_L7;
 }
-form.form_quote.reveal {
+body.page_home form.form_quote.reveal {
 	max-height: 99rem;
 }
-form.form_quote.allow-overflow {
+body.page_home form.form_quote.allow-overflow {
 	overflow-y: visible;
-}
-form.form_quote h6,
-form.form_quote div > label,
-form.form_quote span.txt {
-	font-size: 1.3rem;
-	font-weight: 700; // futura heavy
-	letter-spacing: 0.3rem;
-	text-align: center;
-	text-transform: uppercase;
-	color: $nm_cream;
-}
-form.form_quote h6 {
-	padding: 3.2rem 1.6rem;
-	font-style: italic;
-	line-height: 1.4;
-}
-form.form_quote div > label {
-	display: block;
-	margin-bottom: 2.6rem;
-}
-form.form_quote span.txt {
-	display: inline-block;
-	margin: 2rem 0;
-}
-form.form_quote div.wrap_input div.wrap_columns {
-	text-align: center;
-}
-form.form_quote div.wrap_input div.column {
-	vertical-align: top;
-	padding: 3.2rem 1.6rem;
-	border-top: 0.1rem solid $nm_L21;
-}
-form.form_quote div.wrap_input div.wrap_element {
-	position: relative;
-	margin: 0 auto;
-}
-form.form_quote div.wrap_input div.input-daterange div.wrap_element input {
-	cursor: pointer;
-}
-form.form_quote div.wrap_input div.wrap_element svg {
-	pointer-events: none;
-	position: absolute;
-	top: 1.6rem;
-	right: 1.6rem;
-	width: 1.6rem;
-	height: 1.6rem;
-	fill: $nm_orange;
-}
-// + individual columns + \\
-form.form_quote div.wrap_input div.col-1 {
-	text-align: center;
-}
-form.form_quote div.wrap_input div.col-1 div.wrap_element {
-	width: 18rem;
-}
-form.form_quote div.wrap_input div.col-2 div.wrap_element {
-	width: 17rem;
-}
-form.form_quote div.wrap_input div.col-2 div.wrap_element p {
-	margin-top: 1.6rem;
-	font-size: 1.6rem;
-	font-style: italic;
-	text-align: center;
-	color: $nm_cream;
-}
-form.form_quote div.wrap_input div.col-3 div.wrap_select {
-	margin: 0 auto;
-	width: 24rem;
-}
-form.form_quote div.wrap_input div.col-3 div.wrap_select {
-	text-align: left;
-}
-form.form_quote div.wrap_input div.col-4 button {
-	padding: 0 3.2rem;
-	height: 6.8rem;
-	font-size: 1.9rem;
 }
 // --- Home Details --- \\
 section.home_details article {
 	text-align: center;
 }
-section.home_details article div.wrap_svg {
-	margin: 0 auto 4rem auto;
-	width: 6.4rem;
-	height: 6.4rem;
-}
-section.home_details article div.wrap_svg svg {
-	fill: $nm_orange;
-}
 section.home_details article h2 {
-	margin-bottom: 2rem;
+	// margin-bottom: 2rem;
 }
 section.home_details article p {
 	margin: 0 auto 4rem auto;
 	max-width: 86rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
-	font-weight: 400;
 	line-height: 1.4;
 }
 section.home_details article ul {
@@ -889,7 +991,6 @@ section.home_details article ul li {
 	margin-bottom: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.2rem;
-	font-weight: 400;
 	line-height: 1.4;
 	text-transform: uppercase;
 }
@@ -897,8 +998,15 @@ section.home_details article ul li:last-child {
 	margin-bottom: 0;
 }
 
-// Quote Pages
+// Get A Quote
 // ----------------------------------------------------------------------------
+section.quote_header {
+	background-image: url('../img/bg_home.jpg');
+}
+section.quote_header div.wrap_svg svg {
+	max-width: 70.6rem;
+}
+// --- Quote Details --- \\
 section.quote_details article h2 {
 	margin-bottom: 3.2rem;
 }
@@ -906,7 +1014,6 @@ article.quote_options p.notice {
 	padding: 0 2rem;
 	font-size: 1.3rem;
 	font-style: italic;
-	font-weight: 700; // futura heavy
 	text-align: center;
 	color: $nm_orange;
 }
@@ -922,7 +1029,6 @@ div.badge_header {
 }
 div.badge_header h6 {
 	font-size: 1.5rem;
-	font-weight: 700; // futura heavy
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 }
@@ -941,7 +1047,6 @@ div.badge_body h3 {
 	position: relative;
 	margin-bottom: 3.2rem;
 	font-size: 6.8rem;
-	font-weight: 700; // futura heavy
 	letter-spacing: -0.4rem;
 }
 div.badge_body h3 span.currency {
@@ -999,7 +1104,6 @@ article.quote_details div.details_captured ul {
 article.quote_details div.details_captured ul li {
 	margin-bottom: 2rem;
 	font-size: 1.4rem;
-	font-weight: 700; // futura heavy
 }
 article.quote_details div.details_captured ul li:last-child {
 	margin-bottom: 0;
@@ -1007,6 +1111,7 @@ article.quote_details div.details_captured ul li:last-child {
 article.quote_details div.details_captured ul li strong {
 	display: block;
 	margin-bottom: 0.6rem;
+	font-weight: 400;
 	text-transform: uppercase;
 }
 // + coverage accordian + \\
@@ -1021,8 +1126,8 @@ div.accordian_row {
 	border-bottom: 0.2rem solid $nm_ash;
 }
 div.accordian_header h4 {
-	font-size: 1.5rem; // 1.8rem;
-	font-weight: 700; // futura heavy
+	padding-right: 2rem;
+	font-size: 1.5rem;
 }
 a.accordian_toggle {
 	// mobile: could make the width 100%, overlay the h4, specify exact px position for .wrap_svg
@@ -1053,8 +1158,7 @@ div.accordian_body {
 div.accordian_body p {
 	padding-top: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.3rem; // 1.5rem;
-	font-weight: 400;
+	font-size: 1.3rem;
 	line-height: 1.4;
 }
 // + interaction + \\
@@ -1084,5 +1188,29 @@ article.quote_summary table tbody tr td:last-child {
 	text-align: right;
 }
 
+// Contact Us
+// ----------------------------------------------------------------------------
+section.contact_header {
+	background-image: url('../img/bg_home.jpg');
+}
+section.contact_header div.wrap_svg svg {
+	max-width: 79.6rem;
+}
+section.contact_details article {
+	text-align: center;
+}
+section.contact_details article p {
+	margin-bottom: 4rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.4;
+}
+section.contact_details article p:last-child {
+	margin-bottom: 0;
+}
+section.contact_details article p strong {
+	display: block;
+	color: $nm_orange;
+}
 
-
+// --- Contact Phone --- \\

@@ -7,17 +7,11 @@
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em
 
-// ==|== page styles ==========================================================
+// ==|== primary styles =======================================================
 // ============================================================================
 
-	// Home Page
+	// Forms
 	// ----------------------------------------------------------------------------
-	// --- Home Details --- \\
-	section.home_details article ul {
-		text-align: left;
-		column-count: 2;
-		column-gap: 3.2rem;
-	}
 	// --- Form: Quote --- \\
 	form.form_quote div.wrap_input div.wrap_columns {
 		border-top: 0.1rem solid $nm_L21;
@@ -41,8 +35,51 @@
 	form.form_quote div.wrap_input div.col-3 {
 		width: 30rem;
 	}
+	// --- Modal: Quote --- \\
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 {
+		text-align: center;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 .btn_rnd {
+		display: inline-block;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 a.btn_rnd {
+		margin: 0 3.2rem 0 0;
+	}
 
-	// Quote Pages
+	// Footer
+	// ----------------------------------------------------------------------------
+	footer {
+		padding: 4rem 1.6rem;
+		text-align: center;
+	}
+	// --- Footer Links --- \\
+	ul.footer_links {
+		text-align: center;
+	}
+	ul.footer_links li {
+		display: inline-block;
+		margin: 0 2.4rem 0 0;
+	}
+	ul.footer_links li:last-child {
+		margin-right: 0;
+	}
+	ul.footer_links li a {
+		font-size: 1.4rem;
+	}
+
+// ==|== page styles ==========================================================
+// ============================================================================
+
+	// Home Page
+	// ----------------------------------------------------------------------------
+	// --- Home Details --- \\
+	section.home_details article ul {
+		text-align: left;
+		column-count: 2;
+		column-gap: 3.2rem;
+	}
+
+	// Get A Quote
 	// ----------------------------------------------------------------------------
 	article.quote_options p.notice {
 		padding: 0 0 0 50%;
@@ -87,6 +124,21 @@
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 	}
+	// --- Modals --- \\
+	[data-modal] {
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		width: 52rem;
+		height: auto;
+		max-height: 54.8rem;
+		border-radius: 1.6rem;
+	}
+	[data-modal] div.modal_body h5 {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
 
 	// Forms
 	// ----------------------------------------------------------------------------
@@ -114,7 +166,6 @@
 	}
 	div.wrap_select div.wrap_dropdown ul li a {
 		padding: 1.7rem 2rem;
-		font-size: 1.8rem;
 	}
 	// + dropdown scrollable + \\
 	div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
@@ -134,6 +185,58 @@
 	div.tt-suggestion p {
 		font-size: 1.8rem;
 	}
+	// --- Form: Quote --- \\
+	form.form_quote div.wrap_input div.wrap_element svg {
+		top: 1.8rem;
+		right: 2rem;
+	}
+	// + individual columns + \\
+	form.form_quote div.wrap_input div.col-1 div.wrap_element svg {
+		top: 1.6rem;
+		right: 1.8rem;
+		width: 2rem;
+		height: 2rem;
+	}
+	// --- Modal: Quote --- \\
+	aside.modal_quote {
+		max-height: 60rem;
+	}
+	aside.modal_quote form.form_quote div > label,
+	aside.modal_quote form.form_quote div.wrap_input div.wrap_columns,
+	aside.modal_quote form.form_quote div.wrap_input div.col-1,
+	aside.modal_quote form.form_quote div.wrap_input div.col-2 div.wrap_element p {
+		text-align: left;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.column {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-1 span.wrap_checkbox,
+	aside.modal_quote form.form_quote div.wrap_input div.col-2 div.wrap_element,
+	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-1 div.wrap_element {
+		width: 19.2rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-2,
+	aside.modal_quote form.form_quote div.wrap_input div.col-3 {
+		display: block;
+		float: left;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-2 {
+		width: 22.9rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-2 div.wrap_element {
+		width: 16.6rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-3 {
+		width: 29.1rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
+		width: 22.8rem;
+	}
 
 	// Buttons
 	// ----------------------------------------------------------------------------
@@ -149,7 +252,7 @@
 	// Header
 	// ----------------------------------------------------------------------------
 	// --- Wordmark --- \\
-	header a.wrap_svg {
+	header a.wordmark {
 		left: 3.2rem;
 	}
 	// --- Nav Toggle --- \\
@@ -162,33 +265,40 @@
 	footer {
 		padding: 8rem 2rem;
 	}
+	// --- Footer Links --- \\
+	ul.footer_links {
+		margin-bottom: 8rem;
+	}
+	// --- Contact Info --- \\
+	ul.footer_contact {
+		margin-bottom: 14rem;
+	}
+
 
 // ==|== page styles ==========================================================
 // ============================================================================
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
-	// --- Internal Articles --- \\
-	section.internal_articles {
+	section.page_header div.wrap_svg {
+		padding: 10rem 3.2rem;
+	}
+	// --- Page Articles --- \\
+	section.page_articles {
 		padding-top: 6rem;
 	}
-	section.internal_articles article {
+	section.page_articles article {
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 		border-left: 0.2rem solid $nm_orange;
 		border-right: 0.2rem solid $nm_orange;
 	}
-	section.internal_articles article:first-child {
+	section.page_articles article:first-child {
 		border-top: 0.2rem solid $nm_orange;
 	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
-	// --- Home Intro --- \\
-	section.home_intro div.wrap_svg {
-		padding: 10rem 3.2rem;
-		max-width: 78.7rem; // svg width (723px) + padding (2 x 32px)
-	}
 	// --- Form: Destination --- \\
 	form.form_destination {
 		padding-top: 4.8rem;
@@ -206,7 +316,7 @@
 	}
 	form.form_destination fieldset div.wrap_element input[type="text"] {
 		height: 6rem;
-		font-size: 2.1rem;
+		font-size: 2rem;
 	}
 	form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 		top: 1.7rem;
@@ -214,25 +324,13 @@
 		width: 2.6rem;
 		height: 2.6rem;
 	}
-	form.form_destination fieldset > a {
+	form.form_destination fieldset button {
 		position: absolute;
 		bottom: 4.8rem; // padding-bottom of fieldset
 		right: 3.2rem; // padding-right
 		height: 6rem;
 		margin: 0;
 		line-height: 6rem;
-	}
-	// --- Form: Quote --- \\
-	form.form_quote div.wrap_input div.wrap_element svg {
-		top: 1.8rem;
-		right: 2rem;
-	}
-	// + individual columns + \\
-	form.form_quote div.wrap_input div.col-1 div.wrap_element svg {
-		top: 1.6rem;
-		right: 1.8rem;
-		width: 2rem;
-		height: 2rem;
 	}
 
 }
@@ -262,12 +360,12 @@
 		// background-color: hsla(60,11%,93%,0.96);
 	}
 	header div[data-container] {
-		padding: 3.6rem 3.2rem 0 3.2rem;
+		padding: 2.8rem 3.2rem 0 3.2rem;
 		min-height: 8.8rem;
 	}
 	// --- Wordmark --- \\
-	header a.wrap_svg {
-		top: 2.2rem;
+	header a.wordmark {
+		top: 2.4rem;
 	}
 	// --- Nav Toggle --- \\
 	a.nav_toggle {
@@ -282,6 +380,8 @@
 		overflow-y: visible;
 	}
 	nav.nav_primary ul {
+		display: inline-block;
+		margin-right: 3.2rem;
 		padding: 0;
 	}
 	nav.nav_primary ul li {
@@ -300,7 +400,24 @@
 		color: $nm_orange;
 	}
 	nav.nav_primary ul li a:active {
-		color: $nm_orange-L;
+		color: $nm_orange-D;
+	}
+	// + social links + \\
+	nav.nav_primary div.social_links {
+		display: inline-block;
+		padding-bottom: 0;
+		text-align: right;
+		transform: translateY(0.4rem);
+	}
+	nav.nav_primary div.social_links a {
+		width: 2.2rem;
+		height: 2.2rem;
+	}
+	nav.nav_primary div.social_links a.social_twitter {
+		margin-right: 1rem;
+	}
+	nav.nav_primary div.social_links a svg {
+		fill: $nm_ash-D;
 	}
 	// --- Toggled: Mobile Nav --- \\
 	body.toggled_mobile-nav nav.nav_primary {
@@ -312,16 +429,29 @@
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
-	// --- Internal Articles --- \\
-	section.internal_articles article {
+	// --- Page Articles --- \\
+	section.page_articles article {
 		padding-top: 7.2rem;
 		padding-bottom: 7.2rem;
 	}
-	section.internal_articles article h2 {
+	section.page_articles article > div.wrap_svg,
+	section.page_articles article div[data-container] > div.wrap_svg {
+		margin-bottom: 6rem;
+		width: 7.2rem;
+		height: 7.2rem;
+	}
+	section.page_articles article h2 {
 		// margin-bottom: 3.2rem;
 	}
+/*
+	section.home_details article > p,
+	section.home_details article div[data-container] > p {
+		margin-bottom: 6rem;
+		font-size: 1.7rem;
+	}
+*/
 	// + internal table + \\
-	section.internal_articles article table tbody tr td {
+	section.page_articles article table tbody tr td {
 		padding: 2.4rem;
 		font-size: 1.8rem;
 	}
@@ -329,11 +459,13 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Details --- \\
+/*
 	section.home_details article div.wrap_svg {
 		margin-bottom: 6rem;
 		width: 7.2rem;
 		height: 7.2rem;
 	}
+*/
 	section.home_details article h2 {
 		margin-bottom: 3.2rem;
 	}
@@ -346,7 +478,7 @@
 		column-count: 3;
 	}
 
-	// Quote Pages
+	// Get A Quote
 	// ----------------------------------------------------------------------------
 	section.quote_details article h2 {
 		margin-bottom: 4.8rem;
@@ -426,54 +558,64 @@
 
 @media only screen and (min-width: 75em) { // 1200px / 16px = 75em
 
+// ==|== common sections ======================================================
+// ============================================================================
+
+	// Header
+	// ----------------------------------------------------------------------------
+	// --- Wordmark & Logo --- \\
+	header h2 {
+		display: block;
+	}
+
 // ==|== page styles ==========================================================
 // ============================================================================
 
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	form.form_quote h6 {
+	body.page_home form.form_quote h6 {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	form.form_quote div.wrap_input div.wrap_columns {
+	body.page_home form.form_quote div.wrap_input div.wrap_columns {
 		border-top: none;
 		float: left;
 		width: 43.426883%; // 588px / 1354px = 0.43426883
 	}
-	form.form_quote div.wrap_input div.column {
+	body.page_home form.form_quote div.wrap_input div.column {
 		float: left;
 		padding: 4rem 0;
 		min-height: 22.8rem; // calculated height of tallest div... needed for borders to reach bottom
 		border-top: none;
 	}
-	form.form_quote div.wrap_input div.col-1,
-	form.form_quote div.wrap_input div.col-3 {
+	body.page_home form.form_quote div.wrap_input div.col-1,
+	body.page_home form.form_quote div.wrap_input div.col-3 {
 		border-right: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
-	form.form_quote div.wrap_input div.col-1 {
+	body.page_home form.form_quote div.wrap_input div.col-1 {
 		width: 37.666174%; // 510px / 1354px = 0.37666174
 		text-align: left;
 	}
-	form.form_quote div.wrap_input div.col-2,
-	form.form_quote div.wrap_input div.col-3 {
+	body.page_home form.form_quote div.wrap_input div.col-2,
+	body.page_home form.form_quote div.wrap_input div.col-3 {
 		display: block;
 	}
-	form.form_quote div.wrap_input div.col-2 {
+	body.page_home form.form_quote div.wrap_input div.col-2 {
 		width: 43.537415%; // 256px / 588px = 0.43537415
 	}
-	form.form_quote div.wrap_input div.col-2 div.wrap_element p {
+	body.page_home form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
-	form.form_quote div.wrap_input div.col-3 {
+	body.page_home form.form_quote div.wrap_input div.col-3 {
 		width: 56.462585%; // 332px / 588px = 0.56462585
 	}
-	form.form_quote div.wrap_input div.col-4 {
+	body.page_home form.form_quote div.wrap_input div.col-4 {
 		position: relative;
 		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
-	form.form_quote div.wrap_input div.col-4 button {
+	body.page_home form.form_quote div.wrap_input div.col-4 button {
 		position: absolute;
 		top: 7.6rem;
 		right: 0;
@@ -490,20 +632,20 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	form.form_quote div.wrap_input div.wrap_columns {
+	body.page_home form.form_quote div.wrap_input div.wrap_columns {
 		width: 61.8rem;
 	}
 	// + individual columns + \\
-	form.form_quote div.wrap_input div.col-1 {
+	body.page_home form.form_quote div.wrap_input div.col-1 {
 		width: 48rem;
 	}
-	form.form_quote div.wrap_input div.col-2 {
+	body.page_home form.form_quote div.wrap_input div.col-2 {
 		width: 27.6rem;
 	}
-	form.form_quote div.wrap_input div.col-3 {
+	body.page_home form.form_quote div.wrap_input div.col-3 {
 		width: 34.2rem;
 	}
-	form.form_quote div.wrap_input div.col-4 {
+	body.page_home form.form_quote div.wrap_input div.col-4 {
 		width: 25.6rem;
 	}
 

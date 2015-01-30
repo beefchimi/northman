@@ -1,0 +1,67 @@
+!!!
+%html{:lang => "en"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#page_contact
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.contact_header
+
+				%h1.visuallyhidden Contact Us
+				.wrap_svg
+					%svg.svg_nm-contact{:viewbox => "0 0 796 70"}
+						%use{"xlink:href" => "#nm_contact"}
+
+			%section.contact_details.page_articles{"data-container" => "width-padding_1440"}
+
+				%article.contact_phone
+
+					%div.clearfix{"data-container" => "width_870"}
+
+						.wrap_svg
+							%svg.svg_ui-phone
+								%use{"xlink:href" => "#ui_phone"}
+
+						%h2 Telephone
+						%p Get in touch with our customer service team for help buying, updating or understanding your policy.
+						%p
+							Call toll-free from Canada and the Continental U.S:
+							%strong 1 (844) 207-7522
+						%p
+							While overseas, call collect from anywhere else in the world:
+							%strong +1 (613) 763-2366
+
+				%article.contact_emergency
+
+					%div{"data-container" => "width_870"}
+
+						.wrap_svg
+							%svg.svg_ui-exclaim
+								%use{"xlink:href" => "#ui_exclaim"}
+
+						%h2 Emergencies
+						%p
+							Call the emergency assistance team 24 hours a day, 7 days a week if you need urgent medical or travel assistance:
+							%strong 1 (604) 207-7522
+
+				%article.contact_social
+
+					%div{"data-container" => "width_870"}
+
+						.wrap_svg
+							%svg.svg_social-twitter-stroke
+								%use{"xlink:href" => "#social_twitter-stroke"}
+
+						%h2 Twitter &amp; Facebook
+						%p
+							Twitter:
+							%a{:href => "#", :title => "Follow us on Twitter"} @northmanco
+						%p
+							Facebook:
+							%a{:href => "#", :title => "Like us on Facebook"} www.facebook.com/northmanco
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

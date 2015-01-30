@@ -1,13 +1,24 @@
 %footer
 
-	%p
-		:plain
-			Your privacy is paramount. Please read our <a href="#" title="">privacy policy and terms of service</a>.
+	%ul.footer_links
+		%li
+			%a{:href => "#", :title => "Partner With Us"} Partner With Us
+		%li
+			%a{:href => "#", :title => "About Northman"} About Northman
+		%li
+			%a{:href => "#", :title => "Contact Us"} Contact Us
+		%li
+			%a{:href => "#", :title => "Facebook"} Facebook
+		%li
+			%a{:href => "#", :title => "Twitter"} Twitter
 
-	%ul
+	%ul.footer_contact
 		%li northman
 		%li
 			%a#secret_email{:href => "#", :title => "Email Northman"} email us
 		%li 1 (844) 207-7522
+
+	:plain
+		<p>Your privacy is paramount. Please read our <a href="#" title="">privacy policy and terms of service</a>.</p>
 
 = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render
