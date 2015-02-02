@@ -52,16 +52,20 @@
 
 					%div{"data-container" => "width_870"}
 
-						.wrap_svg
+						.wrap_svg.icon_twitter
 							%svg.svg_social-twitter-stroke
 								%use{"xlink:href" => "#social_twitter-stroke"}
 
+						.wrap_svg.icon_facebook
+							%svg.svg_social-facebook-stroke
+								%use{"xlink:href" => "#social_facebook-stroke"}
+
 						%h2 Twitter &amp; Facebook
 						%p
-							Twitter:
+							Twitter: &nbsp;
 							%a{:href => "#", :title => "Follow us on Twitter"} @northmanco
 						%p
-							Facebook:
+							Facebook: &nbsp;
 							%a{:href => "#", :title => "Like us on Facebook"} www.facebook.com/northmanco
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

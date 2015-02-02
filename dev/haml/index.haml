@@ -16,18 +16,17 @@
 					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
-				%form#form_destination.form_destination
+				%form#form_destination.form_destination.has_typeahead
 
 					%fieldset
 
 						%legend Start by telling us what country you’re travelling to.
 
-						#destination_wrap.wrap_element
-							%input#input_destination.input_destination.typeahead{:type => "text", :name => "input_destination", :value => "", :list => "datalist_countries", :placeholder => "Enter your destination", :required => true}
+						.wrap_element.wrap_input-typeahead
+							%input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :placeholder => "Enter your destination", :required => true}
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
 
-						-# %a#form_toggle.btn_rnd.brd_cream{:href => "#", :title => "Get A Price"} Get A Quote
 						%button#form_toggle.btn_rnd.brd_cream{:type => "button"} Get A Quote
 
 			= Haml::Engine.new(File.read("dev/haml/partials/_form_quote.haml")).render

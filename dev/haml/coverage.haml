@@ -1,0 +1,64 @@
+!!!
+%html{:lang => "en"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#page_coverage
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.coverage_header
+
+				%h1.visuallyhidden What's Covered
+				.wrap_svg
+					%svg.svg_nm-coverage{:viewbox => "0 0 834 53"}
+						%use{"xlink:href" => "#nm_coverage"}
+
+			%section.coverage_callout.page_callout{"data-container" => "width-padding_1440"}
+
+				%article{"data-container" => "width_870"}
+
+					%h2 Pretty Much Everything.
+					%p Our goal is to cover more sports and activities than any other insurance package available. To do this, we’ve built a policy that covers those who want to spend their vacation time on the links or on the slopes. Whether you’re an elite athlete or just someone who wants to wander off the beaten path, you’re covered.
+
+					%a.btn_rnd.brd_cream{:href => "#", :title => "Get A Quote"} Get A Quote
+
+			%section.coverage_details.page_articles{"data-container" => "width-padding_1440"}
+
+				%article.coverage_what
+
+					%div.clearfix{"data-container" => "width_870"}
+
+						%h2 What We Cover
+						%p We cover so many sports and activities, we can’t list them all. Use this handy tool to find the sport or activity relevant to your next trip.
+
+					%form#form_coverage.form_coverage.has_typeahead
+
+						.wrap_element.wrap_input-typeahead
+							%input#input_coverage.input_typeahead{:type => "text", :name => "input_coverage", :value => "", :placeholder => "Enter a sport or activity"}
+
+						%button#form_toggle.btn_rnd.brd_orange{:type => "button"} Is it covered?
+
+						#form_response.form_response
+							#response_success.response_success
+								%p Yep, It's Covered.
+
+				%article.coverage_dont
+
+					%div{"data-container" => "width_870"}
+
+						%h2 What We Don't Cover
+						%p We cover just about every activity, but there are a few you’ll need to talk to us about:
+
+						%ol.list_box
+							%li Injury or sickness while scuba diving unless you are certified by an internationally recognized and accepted program (including but not limited to NAUI, PADI).
+							%li Your participation in, training or practicing for any sport as a professional athlete or while participating in, training or practicing for any motorized speed contest; rodeo, show jumping or horse racing.
+
+						:plain
+							<p>For more detail, please review our <a href="#" title="Policy Manual">Policy Manual</a>, or <a href="#" title="Give us a call">give us a call.</a></p>
+
+						%a.btn_rnd.brd_green{:href => "#", :title => "Get A Quote"} Get A Quote
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

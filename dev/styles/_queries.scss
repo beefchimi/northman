@@ -274,14 +274,13 @@
 		margin-bottom: 14rem;
 	}
 
-
 // ==|== page styles ==========================================================
 // ============================================================================
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
 	section.page_header div.wrap_svg {
-		padding: 10rem 3.2rem;
+		padding: 14rem 3.2rem;
 	}
 	// --- Page Articles --- \\
 	section.page_articles {
@@ -296,9 +295,20 @@
 	section.page_articles article:first-child {
 		border-top: 0.2rem solid $nm_orange;
 	}
+	// + preceeded by page callout + \\
+	section.page_callout + section.page_articles {
+		padding-top: 0;
+	}
+	section.page_callout + section.page_articles article:first-child {
+		border-top: none;
+	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
+	section.home_header div.wrap_svg {
+		padding-top: 10rem;
+		padding-bottom: 10rem;
+	}
 	// --- Form: Destination --- \\
 	form.form_destination {
 		padding-top: 4.8rem;
@@ -434,8 +444,8 @@
 		padding-top: 7.2rem;
 		padding-bottom: 7.2rem;
 	}
-	section.page_articles article > div.wrap_svg,
-	section.page_articles article div[data-container] > div.wrap_svg {
+	section.page_articles article > div.wrap_svg { // home page only
+	// section.page_articles article div[data-container] > div.wrap_svg {
 		margin-bottom: 6rem;
 		width: 7.2rem;
 		height: 7.2rem;
@@ -544,6 +554,10 @@
 		width: 6rem;
 		height: 6.6rem; // computed height of collapsed row
 	}
+	a.accordian_toggle div.wrap_svg {
+		top: 2.4rem;
+		right: 2.4rem;
+	}
 	div.accordian_body p {
 		padding-top: 2.4rem;
 		font-size: 1.5rem;
@@ -553,6 +567,62 @@
 	article.quote_summary table {
 		margin-bottom: 6.4rem;
 	}
+
+	// Contact Us
+	// ----------------------------------------------------------------------------
+	section.contact_details article p {
+		font-size: 1.7rem;
+	}
+	// --- Contact Social --- \\
+	section.contact_details article.contact_social div[data-container] > div.icon_twitter {
+		margin-right: 1.2rem;
+		width: 6rem;
+		height: 6rem;
+	}
+	section.contact_details article.contact_social div[data-container] > div.icon_facebook {
+		width: 4.4rem;
+		height: 4.4rem;
+		transform: translateY(-0.8rem);
+	}
+
+	// What's Covered
+	// ----------------------------------------------------------------------------
+
+	// --- Page Callout --- \\
+	section.page_callout article[data-container] {
+		padding: 7.2rem 3.2rem;
+	}
+	section.page_callout article h2,
+	section.coverage_details article h2 {
+		// margin-bottom: 3.2rem;
+		font-size: 1.9rem;
+	}
+	section.page_callout article p,
+	section.coverage_details article p {
+		margin-bottom: 6rem;
+		font-size: 1.7rem;
+	}
+	section.page_callout article a.btn_rnd,
+	section.coverage_details article a.btn_rnd {
+		font-size: 1.6rem;
+		width: 22rem;
+		height: 6rem;
+		line-height: 6rem;
+	}
+	// + list box + \\
+	ol.list_box {
+		margin-bottom: 6rem;
+	}
+	ol.list_box li {
+		margin-bottom: 3.2rem;
+		padding: 2rem 2rem 2rem 6.4rem;
+		font-size: 1.7rem;
+	}
+	ol.list_box li::before {
+		top: 2rem;
+		left: 2rem;
+	}
+
 
 }
 
@@ -571,8 +641,19 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
+	// Internal Pages
+	// ----------------------------------------------------------------------------
+	section.page_header div.wrap_svg {
+		padding-top: 18rem;
+		padding-bottom: 18rem;
+	}
+
 	// Home Page
 	// ----------------------------------------------------------------------------
+	section.home_header div.wrap_svg {
+		padding-top: 11rem;
+		padding-bottom: 11rem;
+	}
 	// --- Form: Quote --- \\
 	body.page_home form.form_quote h6 {
 		padding: 4rem 0;

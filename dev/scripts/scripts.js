@@ -471,11 +471,65 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// Typeahead: code to execute only on pages using typeahead.js
+	// ----------------------------------------------------------------------------
+	if ( classie.has(elBody, 'page_home') ) {
+
+		var strPlaceholder1 = 'Enter your destination',
+			strPlaceholder2 = 'Could not load covered Countries',
+			strPlaceholder3 = 'Retreiving countries...',
+			strPlaceholder4 = 'Unrecognized country',
+			strJSONPath     = 'assets/js/datalist_countries.json',
+			elFormQuote     = document.getElementById('form_quote'),
+			elHiddenInput   = document.getElementById('hidden_destination'),
+			scrollOptions   = { // should have a mobile conditional: offset set to 0
+				speed: 1000,
+				easing: 'easeInOutQuint',
+				updateURL: false,
+				offset: 88
+			};
+
+		function homeSuccess(psd_valIndex) {
+
+			// pass destination value to hidden form field
+			elHiddenInput.value = psd_valIndex;
+			elHiddenInput.setAttribute('value', psd_valIndex);
+
+			// reveal and scroll to form_quote
+			classie.add(elFormQuote, 'reveal');
+			smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
+
+			// allow overflow-y so dropdowns are not cutoff
+			setTimeout(function() {
+				classie.add(elFormQuote, 'allow-overflow');
+			}, 1200);
+
+		}
+
+		populateCountries(homeSuccess);
+
+	}
+
+/*
+	if ( classie.has(elBody, 'page_coverage') ) {
+
+		var strPlaceholder1 = 'Enter a sport or activity',
+			strPlaceholder2 = 'Could not load covered activities',
+			strPlaceholder3 = 'Retreiving activities...',
+			strPlaceholder4 = 'Unrecognized activity',
+			strJSONPath     = 'assets/js/datalist_activities.json';
+
+		populateCountries();
+
+	}
+*/
+
+
 	// populateCountries: Load datalist JSON and populate autocomplete options
 	// ----------------------------------------------------------------------------
-	function populateCountries() {
+	function populateCountries(successFunction) {
 
-		var elInputDestination  = document.getElementById('input_destination'),
+		var elInputDestination  = document.getElementsByClassName('input_typeahead')[0], // assumes 1 per page
 			dataRequest         = new XMLHttpRequest(),
 			jsonOptions;
 
@@ -490,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					jsonOptions = JSON.parse(dataRequest.responseText);
 
 					// Update the placeholder text.
-					elInputDestination.placeholder = 'Enter your destination';
+					elInputDestination.placeholder = strPlaceholder1;
 
 					// should be safe to run our toggle click function
 					revealForm();
@@ -498,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 
 					// An error occured :(
-					elInputDestination.placeholder = 'Couldn\'t load covered Countries';
+					elInputDestination.placeholder = strPlaceholder2;
 
 				}
 
@@ -507,36 +561,23 @@ document.addEventListener('DOMContentLoaded', function() {
 		};
 
 		// Update the placeholder text.
-		elInputDestination.placeholder = 'Retreiving countries...';
+		elInputDestination.placeholder = strPlaceholder3;
 
 		// Set up and make the request.
-		dataRequest.open('GET', 'assets/js/datalist_countries.json', true);
+		dataRequest.open('GET', strJSONPath, true);
 		dataRequest.send();
 
 		// reveal the fieldset.form_quote
 		function revealForm() {
 
-			var elFormToggle  = document.getElementById('form_toggle'),
-				elFormQuote   = document.getElementById('form_quote'),
-				elHiddenInput = document.getElementById('hidden_destination'),
-				valDestination,
+			var elFormToggle    = document.getElementById('form_toggle'),
+				elFormTypeahead = document.getElementsByClassName('has_typeahead')[0],
+				elTypeaheadWrap = document.getElementsByClassName('wrap_input-typeahead')[0],
+				valTypeahead,
 				valIndex;
 
-			// IOS BUGS:
-			// MOBILE EXPERIENCE IS GARBAGE TOWN.
-			// "GO" DOES NOT SUBMIT FORM / FIRE VALIDATEDESTINATION().
-			// ABLE TO TAB BETWEEN FORM FIELDS CAUSING DATEPICKER TO BE REVEALED.
-
-			// should have a mobile conditional: offset set to 0
-			var scrollOptions = { speed: 1000, easing: 'easeInOutQuint', updateURL: false, offset: 88 };
-
-			var elFormDestination = document.getElementById('form_destination');
-
-			// only temporary!
-			var elDestinationWrap = document.getElementById('destination_wrap');
-
 			// attached event for form submissions and toggle click
-			elFormDestination.addEventListener('submit', validateDestination);
+			elFormTypeahead.addEventListener('submit', validateDestination);
 			elFormToggle.addEventListener('click', validateDestination);
 
 			var substringMatcher = function(strs) {
@@ -550,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					matches = [];
 
 					// SyntaxError: unterminated parenthetical
-
 					// regex used to determine if a string contains the substring 'q'
 					substrRegex = new RegExp(q, 'i');
 
@@ -572,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			};
 
-			var $elTypeahead = $('input.typeahead');
+			var $elTypeahead = $('input.input_typeahead'); // pass js variable here
 
 			$elTypeahead.typeahead({
 				highlight: true
@@ -588,42 +628,30 @@ document.addEventListener('DOMContentLoaded', function() {
 				e.preventDefault();
 
 				// assign entered destination value
-				valDestination = elInputDestination.value.toLowerCase();
-				valIndex = jsonOptions.indexOfIgnoreCase(valDestination) + 1;
+				valTypeahead = elInputDestination.value.toLowerCase();
+				valIndex = jsonOptions.indexOfIgnoreCase(valTypeahead) + 1;
 
-				if ( jsonOptions.existsIgnoreCase(valDestination) ) {
-
-					// pass destination value to hidden form field
-					elHiddenInput.value = valIndex;
-					elHiddenInput.setAttribute('value', valIndex);
-
-					// reveal and scroll to form_quote
-					classie.add(elFormQuote, 'reveal');
-					smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
-
-					// allow overflow-y so dropdowns are not cutoff
-					setTimeout(function() {
-						classie.add(elFormQuote, 'allow-overflow');
-					}, 1200);
+				if ( jsonOptions.existsIgnoreCase(valTypeahead) ) {
 
 /*
-					transitionEvent && elFormQuote.addEventListener(transitionEvent, function() {
-						classie.add(elFormQuote, 'allow-overflow');
-						console.log('Transition complete! This is the callback, no library needed!');
-					});
+					if covered:
+						yes!
+					else
+						no!
 */
+
+					successFunction(valIndex);
+
 
 				} else {
 
-					// console.log('You have not provided a valid Country.');
 					elInputDestination.value = '';
-					elInputDestination.placeholder = 'Unrecognized country';
-					classie.add(elDestinationWrap, 'animate_shake');
+					elInputDestination.placeholder = strPlaceholder4;
+					classie.add(elTypeaheadWrap, 'animate_shake');
 
 					// not sure if this is working properly... console.logs +1 each time
-					animationEvent && elDestinationWrap.addEventListener(animationEvent, function() {
-						classie.remove(elDestinationWrap, 'animate_shake');
-						console.log('Animation complete! "animate_shake" class removed.');
+					animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
+						classie.remove(elTypeaheadWrap, 'animate_shake');
 					});
 
 				}
@@ -700,11 +728,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	selectDropdown();
 	inputDatepicker(); // should I specify the pages this is required on?
-
-	// only run on home page
-	if ( classie.has(elBody, 'page_home') ) {
-		populateCountries();
-	}
 
 
 }, false);
