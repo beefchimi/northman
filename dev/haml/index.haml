@@ -23,7 +23,7 @@
 						%legend Start by telling us what country you’re travelling to.
 
 						.wrap_element.wrap_input-typeahead
-							%input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :placeholder => "Enter your destination", :required => true}
+							%input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :required => true, :placeholder => "Enter your destination", "data-placeholder2" => "Could not load covered Countries", "data-placeholder3" => "Retreiving countries...", "data-placeholder4" => "Unrecognized country", "data-src" => "assets/js/datalist_countries.json"}
 							%svg.svg_ui-globe
 								%use{"xlink:href" => "#ui_globe"}
 

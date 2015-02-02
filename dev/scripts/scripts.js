@@ -261,14 +261,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var arrModalOpen   = document.getElementsByClassName('modal_open'),
 			arrModalClose  = document.getElementsByClassName('modal_close'),
-			numModalLength = arrModalOpen.length,
+			// numModalLength = arrModalOpen.length,
 			elTargetModal;
 
 		// check if a.modal_open exists and is not empty
-		if (typeof arrModalOpen !== 'undefined' && numModalLength > 0) {
+		if (typeof arrModalOpen !== 'undefined' && arrModalOpen.length > 0) {
 
-			for (var i = 0; i < numModalLength; i++) {
+			for (var i = 0; i < arrModalOpen.length; i++) {
 				arrModalOpen[i].addEventListener('click', openModal, false);
+			}
+
+			for (var i = 0; i < arrModalClose.length; i++) {
 				arrModalClose[i].addEventListener('click', closeModal, false);
 			}
 
@@ -475,14 +478,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	if ( classie.has(elBody, 'page_home') ) {
 
-		var strPlaceholder1 = 'Enter your destination',
-			strPlaceholder2 = 'Could not load covered Countries',
-			strPlaceholder3 = 'Retreiving countries...',
-			strPlaceholder4 = 'Unrecognized country',
-			strJSONPath     = 'assets/js/datalist_countries.json',
-			elFormQuote     = document.getElementById('form_quote'),
-			elHiddenInput   = document.getElementById('hidden_destination'),
-			scrollOptions   = { // should have a mobile conditional: offset set to 0
+		var elFormQuote   = document.getElementById('form_quote'),
+			elHiddenInput = document.getElementById('hidden_destination'),
+			// should have a mobile conditional: offset set to 0
+			scrollOptions = {
 				speed: 1000,
 				easing: 'easeInOutQuint',
 				updateURL: false,
@@ -506,31 +505,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-		inputTypeahead(homeSuccess);
-
-	}
-
 /*
-	if ( classie.has(elBody, 'page_coverage') ) {
+		function homeFail(psd_elInputTypeahead, psd_strPlaceholder4, psd_elTypeaheadWrap) {
 
-		var strPlaceholder1 = 'Enter a sport or activity',
-			strPlaceholder2 = 'Could not load covered activities',
-			strPlaceholder3 = 'Retreiving activities...',
-			strPlaceholder4 = 'Unrecognized activity',
-			strJSONPath     = 'assets/js/datalist_activities.json';
+			elInputTypeahead.value = '';
+			elInputTypeahead.placeholder = strPlaceholder4;
+			classie.add(elTypeaheadWrap, 'animate_shake');
 
-		inputTypeahead();
+			// not sure if this is working properly... console.logs +1 each time
+			animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
+				classie.remove(elTypeaheadWrap, 'animate_shake');
+			});
 
-	}
+		}
 */
 
+		typeaheadSuggestion(homeSuccess); // homeFail
 
-	// inputTypeahead: Load datalist JSON and populate autocomplete options
+	}
+
+
+
+
+
+	if ( classie.has(elBody, 'page_coverage') ) {
+
+		var elFormResponse = document.getElementById('form_response');
+
+		function coverageSuccess(psd_valIndex) {
+
+			// don't actually need valIndex
+			classie.remove(elFormResponse, 'fail');
+			classie.add(elFormResponse, 'success');
+
+		}
+
+		typeaheadSuggestion(coverageSuccess);
+
+	}
+
+
+
+
+
+	// typeaheadSuggestion: Load datalist JSON and populate autocomplete options
 	// ----------------------------------------------------------------------------
-	function inputTypeahead(successFunction) {
+	function typeaheadSuggestion(successFunction) {
 
-		var elInputDestination  = document.getElementsByClassName('input_typeahead')[0], // assumes 1 per page
-			dataRequest         = new XMLHttpRequest(),
+		var elInputTypeahead = document.getElementsByClassName('input_typeahead')[0], // assumes 1 per page
+			strPlaceholder1  = elInputTypeahead.getAttribute('placeholder'),
+			strPlaceholder2  = elInputTypeahead.getAttribute('data-placeholder2'),
+			strPlaceholder3  = elInputTypeahead.getAttribute('data-placeholder3'),
+			strPlaceholder4  = elInputTypeahead.getAttribute('data-placeholder4'),
+			strJSONPath      = elInputTypeahead.getAttribute('data-src'),
+			dataRequest      = new XMLHttpRequest(),
 			jsonOptions;
 
 		// Handle state changes for the request.
@@ -544,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					jsonOptions = JSON.parse(dataRequest.responseText);
 
 					// Update the placeholder text.
-					elInputDestination.placeholder = strPlaceholder1;
+					elInputTypeahead.placeholder = strPlaceholder1;
 
 					// should be safe to run our toggle click function
 					revealForm();
@@ -552,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 
 					// An error occured :(
-					elInputDestination.placeholder = strPlaceholder2;
+					elInputTypeahead.placeholder = strPlaceholder2;
 
 				}
 
@@ -561,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		};
 
 		// Update the placeholder text.
-		elInputDestination.placeholder = strPlaceholder3;
+		elInputTypeahead.placeholder = strPlaceholder3;
 
 		// Set up and make the request.
 		dataRequest.open('GET', strJSONPath, true);
@@ -577,8 +605,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				valIndex;
 
 			// attached event for form submissions and toggle click
-			elFormTypeahead.addEventListener('submit', validateDestination);
-			elFormToggle.addEventListener('click', validateDestination);
+			elFormTypeahead.addEventListener('submit', validateTypeahead);
+			elFormToggle.addEventListener('click', validateTypeahead);
 
 			var substringMatcher = function(strs) {
 
@@ -612,47 +640,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			};
 
-			var $elTypeahead = $('input.input_typeahead'); // pass js variable here
+			var $elTypeahead = $('input.input_typeahead'); // already stored as JS variable... need to redefine as jQuery :(
 
 			$elTypeahead.typeahead({
 				highlight: true
 			},
 			{
-				name: 'countries',
+				name: 'activities', // 'countries',
 				displayKey: 'value',
 				source: substringMatcher(jsonOptions)
 			});
 
-			function validateDestination(e) {
+			function validateTypeahead(e) {
 
 				e.preventDefault();
 
-				// assign entered destination value
-				valTypeahead = elInputDestination.value.toLowerCase();
-				valIndex = jsonOptions.indexOfIgnoreCase(valTypeahead) + 1;
+				// assign entered input value
+				valTypeahead = elInputTypeahead.value.toLowerCase();
+				valIndex     = jsonOptions.indexOfIgnoreCase(valTypeahead) + 1;
 
 				if ( jsonOptions.existsIgnoreCase(valTypeahead) ) {
 
-/*
-					if covered:
-						yes!
-					else
-						no!
-*/
-
 					successFunction(valIndex);
-
 
 				} else {
 
-					elInputDestination.value = '';
-					elInputDestination.placeholder = strPlaceholder4;
-					classie.add(elTypeaheadWrap, 'animate_shake');
+					if ( classie.has(elBody, 'page_coverage') ) {
 
-					// not sure if this is working properly... console.logs +1 each time
-					animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
-						classie.remove(elTypeaheadWrap, 'animate_shake');
-					});
+						classie.remove(elFormResponse, 'success');
+						classie.add(elFormResponse, 'fail');
+
+					} else {
+
+						elInputTypeahead.value = '';
+						elInputTypeahead.placeholder = strPlaceholder4;
+						classie.add(elTypeaheadWrap, 'animate_shake');
+
+						// not sure if this is working properly... console.logs +1 each time
+						animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
+							classie.remove(elTypeaheadWrap, 'animate_shake');
+						});
+
+					}
 
 				}
 

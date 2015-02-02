@@ -3,7 +3,7 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_coverage
+	%body#page_coverage.page_coverage
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
@@ -23,7 +23,7 @@
 					%h2 Pretty Much Everything.
 					%p Our goal is to cover more sports and activities than any other insurance package available. To do this, we’ve built a policy that covers those who want to spend their vacation time on the links or on the slopes. Whether you’re an elite athlete or just someone who wants to wander off the beaten path, you’re covered.
 
-					%a.btn_rnd.brd_cream{:href => "#", :title => "Get A Quote"} Get A Quote
+					%a.btn_rnd.brd_cream.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 
 			%section.coverage_details.page_articles{"data-container" => "width-padding_1440"}
 
@@ -36,14 +36,23 @@
 
 					%form#form_coverage.form_coverage.has_typeahead
 
-						.wrap_element.wrap_input-typeahead
-							%input#input_coverage.input_typeahead{:type => "text", :name => "input_coverage", :value => "", :placeholder => "Enter a sport or activity"}
+						.clearfix
 
-						%button#form_toggle.btn_rnd.brd_orange{:type => "button"} Is it covered?
+							.wrap_element.wrap_input-typeahead
+								%input#input_coverage.input_typeahead{:type => "text", :name => "input_coverage", :value => "", :required => true, :placeholder => "Enter a sport or activity", "data-placeholder2" => "Could not load covered activities", "data-placeholder3" => "Retreiving activities...", "data-placeholder4" => "Unrecognized activity", "data-src" => "assets/js/datalist_activities.json"}
+
+							%button#form_toggle.btn_rnd.brd_orange{:type => "button"} Is it covered?
 
 						#form_response.form_response
 							#response_success.response_success
-								%p Yep, It's Covered.
+								%svg.svg_ui-checkmark-thin
+									%use{"xlink:href" => "#ui_checkmark-thin"}
+								%h4 Yep, It's Covered.
+							#response_fail.response_fail
+								%svg.svg_ui-cancel
+									%use{"xlink:href" => "#ui_cancel"}
+								:plain
+									<h4>Not covered (maybe). Give us a call at <span>1 (844) 207-7522</span> and we’ll try to help.</h4>
 
 				%article.coverage_dont
 
@@ -59,6 +68,10 @@
 						:plain
 							<p>For more detail, please review our <a href="#" title="Policy Manual">Policy Manual</a>, or <a href="#" title="Give us a call">give us a call.</a></p>
 
-						%a.btn_rnd.brd_green{:href => "#", :title => "Get A Quote"} Get A Quote
+						%a.btn_rnd.brd_green.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+
+		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
+			.modal_body
+				= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

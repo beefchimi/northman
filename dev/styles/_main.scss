@@ -45,7 +45,8 @@ svg {
 a.nav_toggle div.wrap_menu span {
 	transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-nav.nav_primary {
+nav.nav_primary,
+div.form_response {
 	transition: max-height 0.4s ease-in-out;
 }
 body.page_home form.form_quote {
@@ -55,7 +56,8 @@ div.accordian_body {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 // div.wrap_select div.wrap_dropdown,
-[data-overlay] {
+[data-overlay],
+div.form_response div {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
@@ -464,7 +466,9 @@ div.tt-suggestion:active {
 	background-color: hsla(0,0%,100%,1);
 }
 div.tt-suggestion p {
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif !important;
 	font-size: 1.6rem;
+	text-align: left;
 	color: $nm_L21;
 }
 div.tt-suggestion p strong {
@@ -637,6 +641,35 @@ button[class*="brd_"] {
 }
 .brd_grey:active {
 	color: $nm_cream-D;
+}
+
+// Content
+// ----------------------------------------------------------------------------
+// + list box + \\
+ol.list_box {
+	counter-reset: ordered-counter;
+	margin-bottom: 3.2rem;
+	text-align: left;
+}
+ol.list_box li {
+	position: relative;
+	margin-bottom: 2rem;
+	padding: 1rem 1rem 1rem 3.2rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	border: 0.2rem solid $nm_ash;
+}
+ol.list_box li::before {
+	content: counter(ordered-counter, decimal) ".";
+	counter-increment: ordered-counter;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+ol.list_box li:last-child {
+	margin-bottom: 0;
 }
 
 
@@ -954,6 +987,7 @@ form.form_destination fieldset div.wrap_element input[type="text"] {
 form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	pointer-events: none;
 	position: absolute;
+	z-index: 201;
 	top: 1.4rem;
 	right: 1.6rem;
 	width: 2rem;
@@ -1229,14 +1263,20 @@ section.contact_details article.contact_social div[data-container] > div.wrap_sv
 	display: inline-block;
 }
 section.contact_details article.contact_social div[data-container] > div.icon_twitter {
-	margin-right: 1.2rem;
+	margin-right: 0.4rem;
 	width: 4.8rem;
 	height: 4.8rem;
 }
 section.contact_details article.contact_social div[data-container] > div.icon_facebook {
-	width: 3.6rem;
-	height: 3.6rem;
-	transform: translateY(-0.6rem);
+	width: 3.2rem;
+	height: 3.2rem;
+	transform: translateY(-0.8rem);
+}
+section.contact_details article.contact_social div[data-container] > p {
+	margin-bottom: 2rem;
+}
+section.contact_details article.contact_social div[data-container] > p:last-child {
+	margin-bottom: 0;
 }
 
 // What's Covered
@@ -1247,8 +1287,6 @@ section.coverage_header {
 section.coverage_header div.wrap_svg svg {
 	max-width: 83.4rem;
 }
-
-
 // --- Page Callout --- \\
 section.page_callout {
 	text-align: center;
@@ -1279,7 +1317,6 @@ section.page_callout article a.btn_rnd:hover {
 section.page_callout article a.btn_rnd:active {
 	color: hsla(0,0%,40%,1);
 }
-
 // --- Coverage Details --- \\
 section.coverage_details article {
 	text-align: center;
@@ -1302,110 +1339,105 @@ section.coverage_details article p a:hover {
 section.coverage_details article p a:active {
 	color: hsla(0,0%,40%,1);
 }
-
-
-ol.list_box {
-	counter-reset: ordered-counter;
+// + coverage form + \\
+form.form_coverage {
+	margin: 3.2rem auto 0 auto;
+	max-width: 59rem;
+}
+form.form_coverage div.clearfix {
 	margin-bottom: 3.2rem;
-	text-align: left;
 }
-ol.list_box li {
+form.form_coverage div.wrap_element {
+	margin: 0 auto 2rem auto;
+	max-width: 38.8rem;
+}
+form.form_coverage div.wrap_element input.input_typeahead {
+	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
+}
+form.form_coverage div.wrap_element input.input_typeahead:hover {
+	background-color: $nm_cream;
+}
+form.form_coverage div.wrap_element input.input_typeahead:focus {
+	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
+}
+form.form_coverage div.wrap_element span.tt-dropdown-menu {
+	transform: translateX(0.1rem);
+	width: calc(100% - 0.3rem);
+}
+div.form_response {
 	position: relative;
-	margin-bottom: 2rem;
-	padding: 1rem 1rem 1rem 3.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.3rem;
-	line-height: 1.4;
-	border: 0.2rem solid $nm_ash;
+	margin: 0 auto;
+	max-width: 40.4rem;
+	max-height: 0;
 }
-ol.list_box li::before {
-	content: counter(ordered-counter, decimal) ".";
-	counter-increment: ordered-counter;
+div.form_response div {
+	padding: 0 2rem;
+	height: 5.5rem;
+	line-height: 5.4rem;
+	vertical-align: middle;
+	border-radius: 1rem;
+	opacity: 0;
+	visibility: hidden;
+}
+div.form_response div svg {
 	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+	left: 2rem;
+	width: 2.8rem;
+	height: 2.8rem;
+	fill: $nm_cream;
 }
-ol.list_box li:last-child {
-	margin-bottom: 0;
-}
-
-
-/*
-
-article.page-content div.the-content ol,
-article.page-content div.the-content ul {
+div.form_response div h4 {
 	display: inline-block;
-		margin-bottom: 20px;
-	margin-bottom: 2rem;
-		padding-left: 20px;
-	padding-left: 2rem;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: $nm_cream;
+	vertical-align: middle;
 }
-article.page-content div.the-content ol li,
-article.page-content div.the-content ul li {
-		margin-bottom: 10px;
-	margin-bottom: 1rem;
-		font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 1.3;
+div.form_response div h4 span {
+	white-space: nowrap;
 }
-article.page-content div.the-content ol li > ol,
-article.page-content div.the-content ol li > ul,
-article.page-content div.the-content ul li > ol,
-article.page-content div.the-content ul li > ul {
-	display: block;
-		margin: 10px 0 0 0;
-	margin: 1rem 0 0 0;
-	color: #454545;
-}
-article.page-content div.the-content ol {
-	counter-reset: ordered-counter;
-}
-article.page-content div.the-content ol li {
-	position: relative;
-}
-article.page-content div.the-content ol li:before,
-article.page-content div.the-content ul li > ol li:before {
-	content: counter(ordered-counter, decimal);
-	counter-increment: ordered-counter;
+div.form_response div.response_success {
 	position: absolute;
 	top: 0;
-		left: -16px;
-	left: -1.6rem;
-		font-size: 14px;
-	font-size: 1.4rem;
-	font-weight: 700;
-	color: #005ca6;
+	right: 0;
+	left: 0;
+	background-color: $nm_green;
 }
-article.page-content div.the-content ul li {
-	position: relative;
+div.form_response div.response_success svg {
+	top: 1.4rem;
+	width: 2.8rem;
+	height: 2.8rem;
 }
-article.page-content div.the-content ul li:before,
-article.page-content div.the-content ol li > ul li:before {
-	counter-increment: none;
-	position: absolute;
-		top: -3px;
-	top: -0.3rem;
-		left: -16px;
-	left: -1.6rem;
-	content: "\2022";
-		font-size: 18px;
+div.form_response div.response_success h4 {
+	padding-left: 3.2rem;
 	font-size: 1.8rem;
-	font-weight: 700;
-	color: #005ca6;
+	letter-spacing: 0.2rem;
+}
+div.form_response div.response_fail {
+	background-color: $nm_red;
+}
+div.form_response div.response_fail svg {
+	top: 1.6rem;
+	width: 2.4rem;
+	height: 2.4rem;
+}
+div.form_response div.response_fail h4 {
+	padding-left: 4.2rem;
+	font-size: 1.1rem;
+	letter-spacing: 0.1rem;
 }
 
-*/
 
-/*
-			%section.coverage_details.page_articles{"data-container" => "width-padding_1440"}
+div.form_response.success,
+div.form_response.fail {
+	max-height: 5.5rem;
+}
+div.form_response.success div.response_success,
+div.form_response.fail div.response_fail {
+	opacity: 1;
+	visibility: visible;
+}
 
-				%article.coverage_what
 
-					%div.clearfix{"data-container" => "width_870"}
-
-						%h2 What We Cover
-						%p We cover so many sports and activities, we can’t list them all. Use this handy tool to find the sport or activity relevant to your next trip.
-*/
 
 

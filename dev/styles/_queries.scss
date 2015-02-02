@@ -3,6 +3,25 @@
 // ============================================================================
 
 @media only screen and (min-width: 30em) { // 480px / 16px = 30em
+
+	// What's Covered
+	// ----------------------------------------------------------------------------
+	// --- Coverage Details --- \\
+	// + coverage form + \\
+	div.form_response div {
+		line-height: 5.2rem;
+	}
+	div.form_response div h4 {
+		line-height: 1.3;
+	}
+	div.form_response div.response_success h4 {
+		font-size: 2.1rem;
+	}
+	div.form_response div.response_fail h4 {
+		padding-left: 4rem;
+		font-size: 1.3rem;
+	}
+
 }
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em
@@ -343,6 +362,36 @@
 		line-height: 6rem;
 	}
 
+	// What's Covered
+	// ----------------------------------------------------------------------------
+	// --- Coverage Details --- \\
+	// + coverage form + \\
+	form.form_coverage div.wrap_element {
+		float: left;
+		margin: 0;
+		width: 38.8rem;
+	}
+	form.form_coverage div.wrap_element input.input_typeahead {
+		height: 6rem;
+	}
+	form.form_coverage button.btn_rnd {
+		float: right;
+		height: 6rem;
+	}
+	div.form_response {
+		height: 5rem;
+	}
+	div.form_response div {
+		height: 6rem;
+		line-height: 5.9rem;
+	}
+	div.form_response div.response_success svg {
+		top: 1.6rem;
+	}
+	div.form_response div.response_fail svg {
+		top: 1.9rem;
+	}
+
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
@@ -354,6 +403,22 @@
 	// ----------------------------------------------------------------------------
 	body {
 		padding-top: 8.8rem;
+	}
+
+	// Content
+	// ----------------------------------------------------------------------------
+	// + list box + \\
+	ol.list_box {
+		margin-bottom: 6rem;
+	}
+	ol.list_box li {
+		margin-bottom: 3.2rem;
+		padding: 2rem 2rem 2rem 6.4rem;
+		font-size: 1.7rem;
+	}
+	ol.list_box li::before {
+		top: 2rem;
+		left: 2rem;
 	}
 
 // ==|== common sections ======================================================
@@ -575,19 +640,20 @@
 	}
 	// --- Contact Social --- \\
 	section.contact_details article.contact_social div[data-container] > div.icon_twitter {
-		margin-right: 1.2rem;
 		width: 6rem;
 		height: 6rem;
 	}
 	section.contact_details article.contact_social div[data-container] > div.icon_facebook {
-		width: 4.4rem;
-		height: 4.4rem;
-		transform: translateY(-0.8rem);
+		width: 4rem;
+		height: 4rem;
+		transform: translateY(-1rem);
+	}
+	section.contact_details article.contact_social div[data-container] > p {
+		margin-bottom: 1rem;
 	}
 
 	// What's Covered
 	// ----------------------------------------------------------------------------
-
 	// --- Page Callout --- \\
 	section.page_callout article[data-container] {
 		padding: 7.2rem 3.2rem;
@@ -609,20 +675,6 @@
 		height: 6rem;
 		line-height: 6rem;
 	}
-	// + list box + \\
-	ol.list_box {
-		margin-bottom: 6rem;
-	}
-	ol.list_box li {
-		margin-bottom: 3.2rem;
-		padding: 2rem 2rem 2rem 6.4rem;
-		font-size: 1.7rem;
-	}
-	ol.list_box li::before {
-		top: 2rem;
-		left: 2rem;
-	}
-
 
 }
 
