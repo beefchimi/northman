@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-		populateCountries(homeSuccess);
+		inputTypeahead(homeSuccess);
 
 	}
 
@@ -519,15 +519,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			strPlaceholder4 = 'Unrecognized activity',
 			strJSONPath     = 'assets/js/datalist_activities.json';
 
-		populateCountries();
+		inputTypeahead();
 
 	}
 */
 
 
-	// populateCountries: Load datalist JSON and populate autocomplete options
+	// inputTypeahead: Load datalist JSON and populate autocomplete options
 	// ----------------------------------------------------------------------------
-	function populateCountries(successFunction) {
+	function inputTypeahead(successFunction) {
 
 		var elInputDestination  = document.getElementsByClassName('input_typeahead')[0], // assumes 1 per page
 			dataRequest         = new XMLHttpRequest(),
