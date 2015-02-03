@@ -448,6 +448,7 @@ span.tt-dropdown-menu {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+	// clip: rect(0rem, 100rem, 100rem, -0.8rem);
 }
 span.tt-dropdown-menu div.tt-dataset-states {
 }
@@ -994,6 +995,14 @@ form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	height: 2rem;
 	fill: $nm_orange;
 }
+
+
+
+
+
+
+
+
 // --- Form: Quote --- \\
 body.page_home form.form_quote {
 	max-height: 0;
@@ -1339,7 +1348,7 @@ section.coverage_details article p a:hover {
 section.coverage_details article p a:active {
 	color: hsla(0,0%,40%,1);
 }
-// + coverage form + \\
+// --- Coverage Form --- \\
 form.form_coverage {
 	margin: 3.2rem auto 0 auto;
 	max-width: 59rem;
@@ -1426,8 +1435,7 @@ div.form_response div.response_fail h4 {
 	font-size: 1.1rem;
 	letter-spacing: 0.1rem;
 }
-
-
+// + success & fail response + \\
 div.form_response.success,
 div.form_response.fail {
 	max-height: 5.5rem;
@@ -1437,7 +1445,3 @@ div.form_response.fail div.response_fail {
 	opacity: 1;
 	visibility: visible;
 }
-
-
-
-
