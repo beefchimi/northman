@@ -88,6 +88,13 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
+	// Internal Pages
+	// ----------------------------------------------------------------------------
+	section.page_header div.wrap_svg.icon {
+		margin-bottom: 4.2rem;
+		width: 6.8rem;
+	}
+
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Details --- \\
@@ -103,13 +110,13 @@
 		padding: 0 0 0 50%;
 	}
 	// --- Quote Badges --- \\
-	div.quote_badge {
+	ul.quote_badges li.badge {
 		float: left;
 		width: calc(50% - 1rem);
 	}
 	// + badge single + \\
-	.badge_single {
-		margin-right: 2rem;
+	ul.quote_badges li.badge_single {
+		margin: 0 2rem 0 0;
 	}
 	// --- Quote Details --- \\
 	article.quote_details div.details_captured ul {
@@ -297,8 +304,12 @@
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
-	section.page_header div.wrap_svg {
-		padding: 14rem 3.2rem;
+	section.page_header {
+		padding: 8.2rem 3.2rem 9rem 3.2rem;
+	}
+	section.page_header div.wrap_svg.icon {
+		margin-bottom: 6rem;
+		width: 9.4rem;
 	}
 	// --- Page Articles --- \\
 	section.page_articles {
@@ -388,6 +399,20 @@
 	}
 	div.form_response div.response_fail svg {
 		top: 1.9rem;
+	}
+
+	// Packages
+	// ----------------------------------------------------------------------------
+	// --- Packaged Included --- \\
+	article.packages_included table {
+		// margin-bottom: 3.2rem;
+	}
+	article.packages_included table tr td {
+		display: table-cell;
+		border-bottom: none;
+	}
+	article.packages_included table tr td:nth-child(n+2) {
+		border-left: 0.2rem solid $nm_ash;
 	}
 
 }
@@ -565,27 +590,27 @@
 		width: 26rem;
 	}
 	// --- Quote Badges --- \\
-	div.quote_badge {
+	ul.quote_badges li.badge {
 		width: calc(50% - 2rem);
 	}
-	div.badge_header {
+	ul.quote_badges li.badge div.badge_header {
 		padding: 1.8rem 2.6rem;
 	}
-	div.badge_header svg {
+	ul.quote_badges li.badge div.badge_header div.wrap_svg {
 		top: 1.2rem;
 		right: 2.6rem;
 	}
-	div.badge_body {
+	ul.quote_badges li.badge div.badge_body {
 		padding: 3.2rem 2rem;
 	}
-	div.badge_body h3 {
+	ul.quote_badges li.badge div.badge_body h3 {
 		font-size: 7.6rem;
 	}
-	div.badge_body h3 span.currency {
+	ul.quote_badges li.badge div.badge_body h3 span.currency {
 		font-size: 1.6rem;
 	}
 	// + badge single + \\
-	.badge_single {
+	ul.quote_badges li.badge_single {
 		margin-right: 4rem;
 	}
 	// --- Quote Details --- \\
@@ -674,6 +699,22 @@
 		line-height: 6rem;
 	}
 
+	// Packages
+	// ----------------------------------------------------------------------------
+	// --- Packages Badges --- \\
+	ul.packages_badges li.badge {
+		float: left;
+		width: calc(33.3333333% - 2.2rem);
+	}
+	ul.packages_badges li.badge div.badge_body {
+		height: 20rem;
+	}
+	// + individual badges + \\
+	ul.packages_badges li.badge_single,
+	ul.packages_badges li.badge_family {
+		margin: 0 3.2rem 0 0;
+	}
+
 }
 
 @media only screen and (min-width: 75em) { // 1200px / 16px = 75em
@@ -693,9 +734,12 @@
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
-	section.page_header div.wrap_svg {
-		padding-top: 18rem;
-		padding-bottom: 18rem;
+	section.page_header {
+		padding-top: 11rem;
+		padding-bottom: 12rem;
+	}
+	section.page_header div.wrap_svg.icon {
+		margin-bottom: 6.8rem;
 	}
 
 	// Home Page
@@ -753,6 +797,29 @@
 		margin: 0;
 	}
 
+	// Packages
+	// ----------------------------------------------------------------------------
+	// --- Packages Badges --- \\
+	ul.packages_badges {
+		margin-bottom: 6rem;
+	}
+	ul.packages_badges li.badge {
+		width: calc(33.3333333% - 4.6rem);
+	}
+	ul.packages_badges li.badge div.badge_body {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+	// + individual badges + \\
+	ul.packages_badges li.badge_single,
+	ul.packages_badges li.badge_family {
+		margin-right: 6.8rem;
+	}
+	// --- Packaged Included --- \\
+	article.packages_included table {
+		margin-bottom: 6rem;
+	}
+
 }
 
 @media only screen and (min-width: 84.625em) { // 1354px / 16px = 84.625em
@@ -778,6 +845,13 @@
 	}
 	body.page_home form.form_quote div.wrap_input div.col-4 {
 		width: 25.6rem;
+	}
+
+	// Packages
+	// ----------------------------------------------------------------------------
+	// --- Packages Badges --- \\
+	ul.packages_badges li.badge div.badge_body {
+		height: 16rem;
 	}
 
 }

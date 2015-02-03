@@ -1,0 +1,125 @@
+!!!
+%html{:lang => "en"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#page_packages.page_packages
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.packages_header
+
+				.wrap_svg.icon
+					%svg.svg_ui-package{:viewbox => "0 0 64 64"}
+						%use{"xlink:href" => "#ui_package"}
+
+				%h1.visuallyhidden Packages
+				.wrap_svg.title
+					%svg.svg_nm-packages{:viewbox => "0 0 663 71"}
+						%use{"xlink:href" => "#nm_packages"}
+
+			%section.packages_callout.page_callout
+
+				%article{"data-container" => "width_870"}
+
+					%h2 We love simple.
+					%p Rather than making you choose from dozens of travel packages, we’ve built a single comprehensive, zero-deductible policy that provides full coverage on a per-trip or yearly basis. This covers all medical expenses, emergency evacuation, baggage loss (single trip only), trip delay and trip cancellation. No medical questionnaires, no detailed information about the trip required. The only exception is a short list of non-covered activities, which in most cases can be covered separately.
+
+					%a.btn_rnd.brd_cream.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+
+			%section.packages_details.page_articles{"data-container" => "width-padding_1440"}
+
+				%article.packages_options
+
+					%div{"data-container" => "width_1200"}
+
+						%h2 Northman Packages
+
+						%ul.packages_badges.clearfix
+
+							%li.badge.badge_single
+
+								.badge_header
+
+									%p.option_letter A
+
+									.wrap_svg
+										%svg.svg_ui-globe{:viewbox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_globe"}
+									%h6 Single Trip
+
+								.badge_body
+
+									%p For the lone wolves. Full coverage for a single trip - just tell us when it should begin and end.
+
+							%li.badge.badge_family
+
+								.badge_header
+
+									%p.option_letter B
+
+									.wrap_svg
+										%svg.svg_ui-family{:viewbox => "0 0 64 51"}
+											%use{"xlink:href" => "#ui_family"}
+									%h6 Family Trip
+
+								.badge_body
+
+									%p Bring the kids! Insure up to 5 people residing at the same residence, all under one package. Just tell us their ages, and we’ll get you ready for adventure.
+
+							%li.badge.badge_annual
+
+								.badge_header
+
+									%p.option_letter C
+
+									.wrap_svg
+										%svg.svg_ui-globe-double{:viewbox => "0 0 64 38"}
+											%use{"xlink:href" => "#ui_globe-double"}
+									%h6 Annual Membership
+
+								.badge_body
+
+									%p For the true adrenaline addicts, our annual membership plan covers all of your trips for the entire year, plus added member benefits. Also available for families.
+
+						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+
+				%article.packages_included
+
+					%div{"data-container" => "width_870"}
+
+						%h2 Included with every package
+
+						%table
+
+							%tbody
+
+								%tr
+									%td $5 Million medical coverage per person per trip
+									%td Emergency Evacuation
+									%td 24/7 Emergency Assist
+
+								%tr
+									%td Emergency vehicle coverage: air, sea, land
+									%td Trip cancellation and trip delay
+									%td Private Nursing
+
+								%tr
+									%td Accidental death and dismemberment
+									%td Flights home for travelling companion
+									%td Bill payment coordination and negotiation
+
+								%tr
+									%td Emergency Dental
+									%td Zero deductible on claims
+									%td Medical / Legal Assistance
+
+						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+
+		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
+			.modal_body
+				= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

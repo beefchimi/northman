@@ -24,37 +24,41 @@
 
 						%h2 Based on your information, here’s your quote:
 
-						.quote_badge.badge_single
+						%ul.quote_badges.clearfix
 
-							.badge_header
+							%li.badge.badge_single
 
-								%h6 Single Trip
-								%svg.svg_ui-globe
-									%use{"xlink:href" => "#ui_globe"}
+								.badge_header
 
-							.badge_body
+									%h6 Single Trip
+									.wrap_svg
+										%svg.svg_ui-globe{:viewbox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_globe"}
 
-								%h3
-									$135
-									%span.currency can
+								.badge_body
 
-								%a.btn_rnd.fill_green{:href => "#", :title => "Buy Now"} Buy Now
+									%h3
+										$135
+										%span.currency can
 
-						.quote_badge.badge_yearly
+									%a.btn_rnd.fill_green{:href => "#", :title => "Buy Now"} Buy Now
 
-							.badge_header
+							%li.badge.badge_yearly
 
-								%h6 Yearly Membership
-								%svg.svg_ui-globe-double
-									%use{"xlink:href" => "#ui_globe-double"}
+								.badge_header
 
-							.badge_body
+									%h6 Yearly Membership
+									.wrap_svg
+										%svg.svg_ui-globe-double{:viewbox => "0 0 64 38"}
+											%use{"xlink:href" => "#ui_globe-double"}
 
-								%h3
-									$210
-									%span.currency can
+								.badge_body
 
-								%a.btn_rnd.brd_orange{:href => "#", :title => "Select"} Select
+									%h3
+										$210
+										%span.currency can
+
+									%a.btn_rnd.brd_orange{:href => "#", :title => "Select"} Select
 
 						%p.notice * Annual Membership does not include baggage insurance.
 

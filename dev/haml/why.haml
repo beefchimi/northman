@@ -3,25 +3,30 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_coverage.page_coverage
+	%body#page_why.page_why
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
 		%main{:role => "main"}
 
-			%section.page_header.coverage_header
+			%section.page_header.why_header
 
-				%h1.visuallyhidden What's Covered
-				.wrap_svg
-					%svg.svg_nm-coverage{:viewbox => "0 0 834 53"}
-						%use{"xlink:href" => "#nm_coverage"}
+				.wrap_svg.icon
+					%svg.svg_nm-logo{:viewbox => "0 0 64 64"}
+						%use{"xlink:href" => "#nm_logo"}
 
-			%section.coverage_callout.page_callout
+				%h1.visuallyhidden Why Northman
+				.wrap_svg.title
+					%svg.svg_nm-why{:viewbox => "0 0 772 53"}
+						%use{"xlink:href" => "#nm_why"}
+
+			%section.why_callout.page_callout
 
 				%article{"data-container" => "width_870"}
 
-					%h2 Pretty Much Everything.
-					%p Our goal is to cover more sports and activities than any other insurance package available. To do this, we’ve built a policy that covers those who want to spend their vacation time on the links or on the slopes. Whether you’re an elite athlete or just someone who wants to wander off the beaten path, you’re covered.
+					%h2 Gravity won’t hold you back, neither will we
+					%p Northman was born out of our passion for adventure and sport travel. We saw too many people learn the hard way that traditional travel insurance wasn’t made for adventure travellers. Not only did insurance companies not understand what we wanted to do, they couldn’t tell us if we were covered. That’s not something we wanted to leave to chance.
+					%p We believe that travel should be for everyone, and that adventure should be available to all without worry. We believe that an insurance company should understand their customers and be able to give solid answers with no room for creative interpretation. We believe in working for our members and making their protection complete, affordable and easy to understand.
 
 					%a.btn_rnd.brd_cream.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 

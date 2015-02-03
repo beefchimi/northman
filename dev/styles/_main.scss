@@ -159,6 +159,9 @@ footer {
 	max-width: 120rem;
 }
 */
+[data-container="width_1200"] {
+	max-width: 120rem;
+}
 [data-container="width_870"] {
 	max-width: 87rem;
 }
@@ -882,17 +885,24 @@ ul.footer_contact li a:active {
 // Internal Pages
 // ----------------------------------------------------------------------------
 section.page_header {
+	padding: 3.8rem 2rem 4.2rem 2rem;
+	text-align: center;
+	background-color: $nm_L7;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 }
 section.page_header div.wrap_svg {
-	padding: 6rem 2rem;
-	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+section.page_header div.wrap_svg.icon {
+	margin-bottom: 3.2rem;
+	width: 4.8rem;
 }
 section.page_header div.wrap_svg svg {
 	display: inline;
-	fill: hsla(60,11%,93%,0.9);
+	fill: $nm_cream;
 }
 // --- Page Articles --- \\
 section.page_articles {
@@ -950,14 +960,20 @@ section.page_articles article table tbody tr td {
 // Home Page
 // ----------------------------------------------------------------------------
 section.home_header {
+	background-color: $nm_L7;
 	background-image: url('../img/bg_home.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 }
 section.home_header div.wrap_svg {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	padding: 4rem 2rem;
+	text-align: center;
 }
-section.home_header div.wrap_svg svg.svg_nm-tagline {
+section.home_header div.wrap_svg svg {
+	display: inline;
 	max-width: 72.3rem;
+	fill: hsla(60,11%,93%,0.9);
 }
 // --- Form: Destination --- \\
 form.form_destination {
@@ -995,14 +1011,6 @@ form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	height: 2rem;
 	fill: $nm_orange;
 }
-
-
-
-
-
-
-
-
 // --- Form: Quote --- \\
 body.page_home form.form_quote {
 	max-height: 0;
@@ -1051,7 +1059,7 @@ section.home_details article ul li:last-child {
 section.quote_header {
 	background-image: url('../img/bg_home.jpg');
 }
-section.quote_header div.wrap_svg svg {
+section.quote_header div.wrap_svg.title {
 	max-width: 70.6rem;
 }
 // --- Quote Details --- \\
@@ -1066,38 +1074,40 @@ article.quote_options p.notice {
 	color: $nm_orange;
 }
 // --- Quote Badges --- \\
-div.quote_badge {
+ul.quote_badges {
 	margin-bottom: 3.2rem;
+}
+ul.quote_badges li.badge {
 	border-radius: 1.6rem;
 }
-div.badge_header {
+ul.quote_badges li.badge div.badge_header {
 	position: relative;
 	padding: 1.6rem;
 	text-align: left;
 }
-div.badge_header h6 {
+ul.quote_badges li.badge div.badge_header h6 {
 	font-size: 1.5rem;
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 }
-div.badge_header svg {
+ul.quote_badges li.badge div.badge_header div.wrap_svg {
 	position: absolute;
 	top: 1rem;
 	right: 1.6rem;
 	height: 2.6rem;
 }
-div.badge_body {
+ul.quote_badges li.badge div.badge_body {
 	padding: 2.6rem 1.6rem;
 	text-align: center;
 }
-div.badge_body h3 {
+ul.quote_badges li.badge div.badge_body h3 {
 	display: inline-block;
 	position: relative;
 	margin-bottom: 3.2rem;
 	font-size: 6.8rem;
 	letter-spacing: -0.4rem;
 }
-div.badge_body h3 span.currency {
+ul.quote_badges li.badge div.badge_body h3 span.currency {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -1106,37 +1116,36 @@ div.badge_body h3 span.currency {
 	letter-spacing: 0;
 	text-transform: uppercase;
 }
-div.badge_body a.btn_rnd {
+ul.quote_badges li.badge div.badge_body a.btn_rnd {
 	width: 17.4rem;
 }
 // + badge single + \\
-.badge_single {
+ul.quote_badges li.badge_single {
+	margin-bottom: 3.2rem;
 	border: 0.2rem solid $nm_green;
 }
-.badge_single div.badge_header {
+ul.quote_badges li.badge_single div.badge_header {
 	border-bottom: 0.2rem solid $nm_green;
 }
-.badge_single div.badge_header h6,
-.badge_single div.badge_body h3 {
+ul.quote_badges li.badge_single div.badge_header h6,
+ul.quote_badges li.badge_single div.badge_body h3 {
 	color: $nm_green;
 }
-.badge_single div.badge_header svg.svg_ui-globe {
-	width: 2.6rem;
+ul.quote_badges li.badge_single div.badge_header div.wrap_svg svg {
 	fill: $nm_green;
 }
 // + badge yearly + \\
-.badge_yearly {
+ul.quote_badges li.badge_yearly {
 	border: 0.2rem solid $nm_orange;
 }
-.badge_yearly div.badge_header {
+ul.quote_badges li.badge_yearly div.badge_header {
 	border-bottom: 0.2rem solid $nm_orange;
 }
-.badge_yearly div.badge_header h6,
-.badge_yearly div.badge_body h3 {
+ul.quote_badges li.badge_yearly div.badge_header h6,
+ul.quote_badges li.badge_yearly div.badge_body h3 {
 	color: $nm_orange;
 }
-.badge_yearly div.badge_header svg.svg_ui-globe-double {
-	width: 4.5rem;
+ul.quote_badges li.badge_yearly div.badge_header div.wrap_svg svg {
 	fill: $nm_orange;
 }
 // --- Quote Details --- \\
@@ -1239,7 +1248,7 @@ article.quote_summary table tbody tr td:last-child {
 section.contact_header {
 	background-image: url('../img/bg_home.jpg');
 }
-section.contact_header div.wrap_svg svg {
+section.contact_header div.wrap_svg.title {
 	max-width: 79.6rem;
 }
 section.contact_details article {
@@ -1293,13 +1302,16 @@ section.contact_details article.contact_social div[data-container] > p:last-chil
 section.coverage_header {
 	background-image: url('../img/bg_home.jpg');
 }
-section.coverage_header div.wrap_svg svg {
+section.coverage_header div.wrap_svg.title {
 	max-width: 83.4rem;
 }
 // --- Page Callout --- \\
 section.page_callout {
 	text-align: center;
 	background-color: $nm_orange;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 }
 section.page_callout article[data-container] {
 	padding: 4.8rem 1.6rem;
@@ -1317,7 +1329,7 @@ section.page_callout article p {
 	margin-bottom: 3.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
-	line-height: 1.4;
+	line-height: 1.5;
 	color: $nm_cream;
 }
 section.page_callout article a.btn_rnd:hover {
@@ -1444,4 +1456,132 @@ div.form_response.success div.response_success,
 div.form_response.fail div.response_fail {
 	opacity: 1;
 	visibility: visible;
+}
+
+// Packages
+// ----------------------------------------------------------------------------
+section.packages_header {
+	background-image: url('../img/bg_packages.jpg');
+}
+section.packages_header div.wrap_svg.title {
+	max-width: 66.3rem;
+}
+section.packages_callout {
+	background-image: url('../img/callout_packages.png');
+}
+// --- Packages Badges --- \\
+ul.packages_badges {
+	margin-bottom: 3.2rem;
+}
+ul.packages_badges li.badge {
+	margin: 0 auto;
+	max-width: 42rem;
+	background-color: $nm_cream;
+	border-radius: 1.6rem;
+}
+ul.packages_badges li.badge div.badge_header {
+	position: relative;
+	padding: 2.2rem 1.6rem;
+	text-align: center;
+}
+ul.packages_badges li.badge div.badge_header p.option_letter {
+	position: absolute;
+	top: 1.6rem;
+	left: 1.6rem;
+	font-size: 2.2rem;
+}
+ul.packages_badges li.badge div.badge_header div.wrap_svg {
+	display: inline-block;
+	margin: 0 auto 1.6rem auto;
+	height: 2.6rem;
+}
+ul.packages_badges li.badge div.badge_header h6 {
+	font-size: 1.6rem;
+	font-style: italic;
+	letter-spacing: 0.3rem;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+ul.packages_badges li.badge div.badge_body {
+	display: table;
+	padding: 2.6rem 1.6rem;
+	text-align: center;
+}
+ul.packages_badges li.badge div.badge_body p {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 1.5rem;
+	font-style: italic;
+	line-height: 1.4;
+}
+// + badge single + \\
+ul.packages_badges li.badge_single {
+	margin-bottom: 3.2rem;
+	border: 0.2rem solid $nm_bronze;
+}
+ul.packages_badges li.badge_single div.badge_header {
+	border-bottom: 0.2rem solid $nm_bronze;
+}
+ul.packages_badges li.badge_single div.badge_header h6,
+ul.packages_badges li.badge_single div.badge_header p.option_letter,
+ul.packages_badges li.badge_single div.badge_body p {
+	color: $nm_bronze;
+}
+ul.packages_badges li.badge_single div.badge_header svg {
+	fill: $nm_bronze;
+}
+// + badge family + \\
+ul.packages_badges li.badge_family {
+	margin-bottom: 3.2rem;
+	border: 0.2rem solid $nm_silver;
+}
+ul.packages_badges li.badge_family div.badge_header {
+	border-bottom: 0.2rem solid $nm_silver;
+}
+ul.packages_badges li.badge_family div.badge_header h6,
+ul.packages_badges li.badge_family div.badge_header p.option_letter,
+ul.packages_badges li.badge_family div.badge_body p {
+	color: $nm_silver;
+}
+ul.packages_badges li.badge_family div.badge_header svg {
+	fill: $nm_silver;
+}
+// + badge annual + \\
+ul.packages_badges li.badge_annual {
+	border: 0.2rem solid $nm_gold;
+}
+ul.packages_badges li.badge_annual div.badge_header {
+	border-bottom: 0.2rem solid $nm_gold;
+}
+ul.packages_badges li.badge_annual div.badge_header h6,
+ul.packages_badges li.badge_annual div.badge_header p.option_letter,
+ul.packages_badges li.badge_annual div.badge_body p {
+	color: $nm_gold;
+}
+ul.packages_badges li.badge_annual div.badge_header svg.svg_ui-globe-double {
+	fill: $nm_gold;
+}
+// --- Packaged Included --- \\
+article.packages_included table {
+	margin-bottom: 3.2rem;
+}
+article.packages_included table tr td {
+	display: block;
+	text-align: center;
+	border-bottom: 0.2rem solid $nm_ash;
+}
+article.packages_included table tr td:last-child {
+	border-bottom: none;
+}
+
+// Why Northman
+// ----------------------------------------------------------------------------
+section.why_header {
+	background-image: url('../img/bg_why.jpg');
+}
+section.why_header div.wrap_svg.title {
+	max-width: 77.2rem;
+}
+section.why_callout {
+	background-image: url('../img/callout_why.png');
 }
