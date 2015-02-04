@@ -45,8 +45,13 @@ svg {
 a.nav_toggle div.wrap_menu span {
 	transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-nav.nav_primary,
 div.form_response {
+	transition: height 0.4s ease-in-out;
+}
+div.form_response div {
+	transition: opacity 0.8s ease-in-out 0.2s, visibility 0.8s ease-in-out 0.2s;
+}
+nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
 body.page_home form.form_quote {
@@ -56,8 +61,7 @@ div.accordian_body {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 // div.wrap_select div.wrap_dropdown,
-[data-overlay],
-div.form_response div {
+[data-overlay] {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
@@ -162,8 +166,14 @@ footer {
 [data-container="width_1200"] {
 	max-width: 120rem;
 }
-[data-container="width_870"] {
-	max-width: 87rem;
+[data-container="width_1050"] {
+	max-width: 105rem;
+}
+[data-container="width_868"] {
+	max-width: 86.8rem;
+}
+[data-container="width_720"] {
+	max-width: 72rem;
 }
 // --- Modals --- \\
 [data-modal] {
@@ -904,27 +914,64 @@ section.page_header div.wrap_svg svg {
 	display: inline;
 	fill: $nm_cream;
 }
+
+// --- Page Callout --- \\
+section.page_callout {
+	background-color: $nm_orange;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+section.page_callout article[data-container] {
+	padding: 4.8rem 1.6rem;
+	text-align: center;
+}
+section.page_callout article h2 {
+	margin-bottom: 3.2rem;
+	font-size: 1.7rem;
+	letter-spacing: 0.2rem;
+	line-height: 1.2;
+	text-align: center;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
+section.page_callout article p {
+	margin-bottom: 3.2rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	color: $nm_cream;
+}
+section.page_callout article a.btn_rnd:hover {
+	color: hsla(0,0%,20%,1);
+}
+section.page_callout article a.btn_rnd:active {
+	color: hsla(0,0%,40%,1);
+}
+
 // --- Page Articles --- \\
 section.page_articles {
 	background-color: $nm_cream;
 }
 section.page_articles article {
 	padding: 4.8rem 1.6rem;
+	text-align: center;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
 }
-section.page_articles article > div.wrap_svg,
+// section.page_articles article > div.wrap_svg,
 section.page_articles article div[data-container] > div.wrap_svg {
 	margin: 0 auto 4rem auto;
 	width: 6.4rem;
 	height: 6.4rem;
 }
-section.page_articles article > div.wrap_svg svg,
+// section.page_articles article > div.wrap_svg svg,
 section.page_articles article div[data-container] > div.wrap_svg svg {
 	fill: $nm_orange;
 }
+
+
 section.page_articles article h2 {
-	// margin-bottom: 2rem;
 	margin-bottom: 3.2rem;
 	font-size: 1.7rem;
 	letter-spacing: 0.2rem;
@@ -932,14 +979,31 @@ section.page_articles article h2 {
 	text-align: center;
 	text-transform: uppercase;
 }
-/*
-section.home_details article > p,
-section.home_details article div[data-container] > p {
+section.page_articles article div[data-container] > p:not([class]) {
+	margin-bottom: 4rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
-	line-height: 1.4;
+	line-height: 1.5;
 }
-*/
+section.page_articles article div[data-container] > p:last-child {
+	margin-bottom: 0;
+}
+
+
+// section.contact_articles article a {
+section.page_articles article div[data-container] > p a {
+	color: $nm_orange;
+}
+// section.contact_articles article a:hover {
+section.page_articles article div[data-container] > p a:hover {
+	color: hsla(0,0%,20%,1);
+}
+// section.contact_articles article a:active {
+section.page_articles article div[data-container] > p a:active {
+	color: hsla(0,0%,40%,1);
+}
+
+
 // + internal table + \\
 section.page_articles article table {
 	table-layout: fixed;
@@ -1024,33 +1088,37 @@ body.page_home form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
 // --- Home Details --- \\
-section.home_details article {
-	text-align: center;
+/*
+section.home_articles article {
+	// text-align: center;
 }
-section.home_details article h2 {
+section.home_articles article h2 {
 	// margin-bottom: 2rem;
 }
-section.home_details article p {
+section.home_articles article p {
 	margin: 0 auto 4rem auto;
 	max-width: 86rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.4;
 }
-section.home_details article ul {
-	margin: 0 auto 4rem auto;
+*/
+section.home_articles article ul {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	// margin: 0 auto 4rem auto;
 	padding: 2.4rem 1.6rem;
-	max-width: 104.8rem;
+	// max-width: 104.8rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
-section.home_details article ul li {
+section.home_articles article ul li {
 	margin-bottom: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.2rem;
 	line-height: 1.4;
 	text-transform: uppercase;
 }
-section.home_details article ul li:last-child {
+section.home_articles article ul li:last-child {
 	margin-bottom: 0;
 }
 
@@ -1063,9 +1131,6 @@ section.quote_header div.wrap_svg.title {
 	max-width: 70.6rem;
 }
 // --- Quote Details --- \\
-section.quote_details article h2 {
-	// margin-bottom: 3.2rem;
-}
 article.quote_options p.notice {
 	padding: 0 2rem;
 	font-size: 1.3rem;
@@ -1174,6 +1239,7 @@ article.quote_details div.details_captured ul li strong {
 // + coverage accordian + \\
 div.accordian {
 	margin-bottom: 4.8rem;
+	text-align: left;
 	border: 0.2rem solid $nm_ash;
 	border-bottom: none;
 }
@@ -1237,6 +1303,7 @@ article.quote_summary table {
 }
 article.quote_summary table tbody tr td:first-child {
 	width: 70%;
+	text-align: left;
 }
 article.quote_summary table tbody tr td:last-child {
 	width: 30%;
@@ -1251,122 +1318,61 @@ section.contact_header {
 section.contact_header div.wrap_svg.title {
 	max-width: 79.6rem;
 }
-section.contact_details article {
+/*
+section.contact_articles article {
 	text-align: center;
 }
-section.contact_details article p {
+section.contact_articles article p {
 	margin-bottom: 3.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.4;
 }
-section.contact_details article p:last-child {
+section.contact_articles article p:last-child {
 	margin-bottom: 0;
 }
-section.contact_details article p strong {
+*/
+section.contact_articles article p strong {
 	display: block;
 	color: $nm_orange;
 }
-section.contact_details article a {
-	color: $nm_orange;
-}
-section.contact_details article a:hover {
-	color: hsla(0,0%,20%,1);
-}
-section.contact_details article a:active {
-	color: hsla(0,0%,40%,1);
-}
+
 // --- Contact Social --- \\
-section.contact_details article.contact_social div[data-container] > div.wrap_svg {
+section.contact_articles article.contact_social div[data-container] > div.wrap_svg {
 	display: inline-block;
 }
-section.contact_details article.contact_social div[data-container] > div.icon_twitter {
+section.contact_articles article.contact_social div[data-container] > div.icon_twitter {
 	margin-right: 0.4rem;
 	width: 4.8rem;
 	height: 4.8rem;
 }
-section.contact_details article.contact_social div[data-container] > div.icon_facebook {
+section.contact_articles article.contact_social div[data-container] > div.icon_facebook {
 	width: 3.2rem;
 	height: 3.2rem;
 	transform: translateY(-0.8rem);
 }
-section.contact_details article.contact_social div[data-container] > p {
+section.contact_articles article.contact_social div[data-container] > p {
 	margin-bottom: 2rem;
 }
-section.contact_details article.contact_social div[data-container] > p:last-child {
+section.contact_articles article.contact_social div[data-container] > p:last-child {
 	margin-bottom: 0;
 }
 
 // What's Covered
 // ----------------------------------------------------------------------------
 section.coverage_header {
-	background-image: url('../img/bg_home.jpg');
+	background-image: url('../img/bg_coverage.jpg');
 }
 section.coverage_header div.wrap_svg.title {
 	max-width: 83.4rem;
 }
-// --- Page Callout --- \\
-section.page_callout {
-	text-align: center;
-	background-color: $nm_orange;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-section.page_callout article[data-container] {
-	padding: 4.8rem 1.6rem;
-}
-section.page_callout article h2 {
-	margin-bottom: 3.2rem;
-	font-size: 1.7rem;
-	letter-spacing: 0.2rem;
-	line-height: 1.2;
-	text-align: center;
-	text-transform: uppercase;
-	color: $nm_cream;
-}
-section.page_callout article p {
-	margin-bottom: 3.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem;
-	line-height: 1.5;
-	color: $nm_cream;
-}
-section.page_callout article a.btn_rnd:hover {
-	color: hsla(0,0%,20%,1);
-}
-section.page_callout article a.btn_rnd:active {
-	color: hsla(0,0%,40%,1);
-}
-// --- Coverage Details --- \\
-section.coverage_details article {
-	text-align: center;
-}
-section.coverage_details article p {
-	margin-bottom: 3.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem;
-	line-height: 1.4;
-}
-section.coverage_details article p:last-child {
-	margin-bottom: 0;
-}
-section.coverage_details article p a {
-	color: $nm_orange;
-}
-section.coverage_details article p a:hover {
-	color: hsla(0,0%,20%,1);
-}
-section.coverage_details article p a:active {
-	color: hsla(0,0%,40%,1);
+section.coverage_callout {
+	background-image: url('../img/callout_coverage.png');
 }
 // --- Coverage Form --- \\
 form.form_coverage {
 	margin: 3.2rem auto 0 auto;
 	max-width: 59rem;
-}
-form.form_coverage div.clearfix {
-	margin-bottom: 3.2rem;
 }
 form.form_coverage div.wrap_element {
 	margin: 0 auto 2rem auto;
@@ -1389,9 +1395,13 @@ div.form_response {
 	position: relative;
 	margin: 0 auto;
 	max-width: 40.4rem;
-	max-height: 0;
+	height: 0rem;
 }
 div.form_response div {
+	position: absolute;
+	top: 3.2rem;
+	right: 0;
+	left: 0;
 	padding: 0 2rem;
 	height: 5.5rem;
 	line-height: 5.4rem;
@@ -1418,10 +1428,6 @@ div.form_response div h4 span {
 	white-space: nowrap;
 }
 div.form_response div.response_success {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
 	background-color: $nm_green;
 }
 div.form_response div.response_success svg {
@@ -1450,7 +1456,7 @@ div.form_response div.response_fail h4 {
 // + success & fail response + \\
 div.form_response.success,
 div.form_response.fail {
-	max-height: 5.5rem;
+	height: 8.7rem; // div height (55px) + position top (32px)
 }
 div.form_response.success div.response_success,
 div.form_response.fail div.response_fail {
@@ -1585,3 +1591,17 @@ section.why_header div.wrap_svg.title {
 section.why_callout {
 	background-image: url('../img/callout_why.png');
 }
+
+// Support
+// ----------------------------------------------------------------------------
+section.support_header {
+	background-image: url('../img/bg_support.jpg');
+}
+section.support_header div.wrap_svg.title {
+	max-width: 40.9rem;
+}
+section.support_callout {
+	background-image: url('../img/callout_support.png');
+}
+
+

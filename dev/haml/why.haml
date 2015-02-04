@@ -20,9 +20,9 @@
 					%svg.svg_nm-why{:viewbox => "0 0 772 53"}
 						%use{"xlink:href" => "#nm_why"}
 
-			%section.why_callout.page_callout
+			%section.page_callout.why_callout
 
-				%article{"data-container" => "width_870"}
+				%article{"data-container" => "width_868"}
 
 					%h2 Gravity won’t hold you back, neither will we
 					%p Northman was born out of our passion for adventure and sport travel. We saw too many people learn the hard way that traditional travel insurance wasn’t made for adventure travellers. Not only did insurance companies not understand what we wanted to do, they couldn’t tell us if we were covered. That’s not something we wanted to leave to chance.
@@ -30,50 +30,32 @@
 
 					%a.btn_rnd.brd_cream.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 
-			%section.coverage_details.page_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.why_articles{"data-container" => "width-padding_1440"}
 
-				%article.coverage_what
+				%article
 
-					%div.clearfix{"data-container" => "width_870"}
+					%div{"data-container" => "width_868"}
 
-						%h2 What We Cover
-						%p We cover so many sports and activities, we can’t list them all. Use this handy tool to find the sport or activity relevant to your next trip.
+						%h2 We cover what others won’t
+						%p Chances are, your current off-the-shelf insurance offering doesn’t cover injuries related to most adventure sports or activities, and the last thing you want to do is find out the hard way.
+						%p We designed an insurance product that would fully cover the widest range of activities possible; a safety net for people who don’t use safety nets. Whether you’re hiking through the jungle or skiing down an uncharted mountain, you’re protected for everything from medical bills to emergency evacuations.
 
-					%form#form_coverage.form_coverage.has_typeahead
+				%article
 
-						.clearfix
+					%div{"data-container" => "width_868"}
 
-							.wrap_element.wrap_input-typeahead
-								%input#input_coverage.input_typeahead{:type => "text", :name => "input_coverage", :value => "", :required => true, :placeholder => "Enter a sport or activity", "data-placeholder2" => "Could not load covered activities", "data-placeholder3" => "Retreiving activities...", "data-placeholder4" => "Unrecognized activity", "data-src" => "assets/js/datalist_activities.json"}
+						%h2 We took care of the hard stuff
+						%p No long questionnaires, no complicated forms. Everything can be completed in minutes, and coverage can be bound as soon as immediately.
 
-							%button#form_toggle.btn_rnd.brd_orange{:type => "button"} Is it covered?
+				%article
 
-						#form_response.form_response
-							#response_success.response_success
-								%svg.svg_ui-checkmark-thin
-									%use{"xlink:href" => "#ui_checkmark-thin"}
-								%h4 Yep, It's Covered.
-							#response_fail.response_fail
-								%svg.svg_ui-cancel
-									%use{"xlink:href" => "#ui_cancel"}
-								:plain
-									<h4>Not covered (maybe). Give us a call at <span>1 (844) 207-7522</span> and we’ll try to help.</h4>
+					%div{"data-container" => "width_868"}
 
-				%article.coverage_dont
-
-					%div{"data-container" => "width_870"}
-
-						%h2 What We Don't Cover
-						%p We cover just about every activity, but there are a few you’ll need to talk to us about:
-
-						%ol.list_box
-							%li Injury or sickness while scuba diving unless you are certified by an internationally recognized and accepted program (including but not limited to NAUI, PADI).
-							%li Your participation in, training or practicing for any sport as a professional athlete or while participating in, training or practicing for any motorized speed contest; rodeo, show jumping or horse racing.
-
+						%h2 It’s all included
 						:plain
-							<p>For more detail, please review our <a href="#" title="Policy Manual">Policy Manual</a>, or <a href="#" title="Give us a call">give us a call.</a></p>
+							<p>Our single-trip <a href="#" title="Packages">packages</a> cover everything you need to travel with peace of mind, including medical bills, emergency evacuations, trip cancellation and equipment loss. No medicals required, no loopholes that result in non-payment. For frequent fliers, we have annual packages that cover all  of your trips for a full year.</p>
 
-						%a.btn_rnd.brd_green.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 
 		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
 			.modal_body

@@ -1,0 +1,70 @@
+!!!
+%html{:lang => "en"}
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#page_support.page_support
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.support_header
+
+				.wrap_svg.icon
+					%svg.svg_ui-package{:viewbox => "0 0 64 64"}
+						%use{"xlink:href" => "#ui_package"}
+
+				%h1.visuallyhidden Why Northman
+				.wrap_svg.title
+					%svg.svg_nm-support{:viewbox => "0 0 409 53"}
+						%use{"xlink:href" => "#nm_support"}
+
+			%section.page_callout.support_callout
+
+				%article{"data-container" => "width_868"}
+
+					%h2 We’re here.
+					%p If you have any questions about your coverage, or need to get in touch with a claims specialist, here are all the ways you can reach us.
+
+			%section.page_articles.why_articles{"data-container" => "width-padding_1440"}
+
+				%article.support_phone
+
+					%div.clearfix{"data-container" => true}
+
+						.wrap_svg
+							%svg.svg_ui-phone
+								%use{"xlink:href" => "#ui_phone"}
+
+						%h2 Telephone
+						%p Get in touch with our customer service team for help buying, updating or understanding your policy.
+						%p
+							Call toll-free from Canada and the Continental U.S:
+							%strong 1 (844) 207-7522
+						%p
+							While overseas, call collect from anywhere else in the world:
+							%strong +1 (613) 763-2366
+
+				%article
+
+					%div{"data-container" => "width_868"}
+
+						%h2 We took care of the hard stuff
+						%p No long questionnaires, no complicated forms. Everything can be completed in minutes, and coverage can be bound as soon as immediately.
+
+				%article
+
+					%div{"data-container" => "width_868"}
+
+						%h2 It’s all included
+						:plain
+							<p>Our single-trip <a href="#" title="Packages">packages</a> cover everything you need to travel with peace of mind, including medical bills, emergency evacuations, trip cancellation and equipment loss. No medicals required, no loopholes that result in non-payment. For frequent fliers, we have annual packages that cover all  of your trips for a full year.</p>
+
+						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+
+		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
+			.modal_body
+				= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

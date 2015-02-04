@@ -98,7 +98,7 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Details --- \\
-	section.home_details article ul {
+	section.home_articles article ul {
 		text-align: left;
 		column-count: 2;
 		column-gap: 3.2rem;
@@ -387,9 +387,6 @@
 		float: right;
 		height: 6rem;
 	}
-	div.form_response {
-		height: 5rem;
-	}
 	div.form_response div {
 		height: 6rem;
 		line-height: 5.9rem;
@@ -400,13 +397,15 @@
 	div.form_response div.response_fail svg {
 		top: 1.9rem;
 	}
+	// + success & fail response + \\
+	div.form_response.success,
+	div.form_response.fail {
+		height: 9.2rem; // div height (60px) + position top (32px)
+	}
 
 	// Packages
 	// ----------------------------------------------------------------------------
 	// --- Packaged Included --- \\
-	article.packages_included table {
-		// margin-bottom: 3.2rem;
-	}
 	article.packages_included table tr td {
 		display: table-cell;
 		border-bottom: none;
@@ -527,27 +526,42 @@
 
 	// Internal Pages
 	// ----------------------------------------------------------------------------
+	// --- Page Callout --- \\
+	section.page_callout article[data-container] {
+		padding: 7.2rem 3.2rem;
+	}
+	section.page_callout article h2 {
+		font-size: 1.9rem;
+	}
+	section.page_callout article p {
+		margin-bottom: 6rem;
+		font-size: 1.7rem;
+	}
+	section.page_callout article a.btn_rnd {
+		font-size: 1.6rem;
+		width: 22rem;
+		height: 6rem;
+		line-height: 6rem;
+	}
 	// --- Page Articles --- \\
 	section.page_articles article {
 		padding-top: 7.2rem;
 		padding-bottom: 7.2rem;
 	}
-	section.page_articles article > div.wrap_svg { // home page only
-	// section.page_articles article div[data-container] > div.wrap_svg {
+	section.page_articles article div[data-container] > div.wrap_svg {
 		margin-bottom: 6rem;
-		width: 7.2rem;
-		height: 7.2rem;
 	}
 	section.page_articles article h2 {
-		// margin-bottom: 3.2rem;
+		margin-bottom: 4.2rem;
 	}
-/*
-	section.home_details article > p,
-	section.home_details article div[data-container] > p {
+	section.page_articles article div[data-container] > p:not([class]) {
 		margin-bottom: 6rem;
 		font-size: 1.7rem;
+		line-height: 1.6;
 	}
-*/
+	section.page_articles article div[data-container] > p:last-child {
+		margin-bottom: 0;
+	}
 	// + internal table + \\
 	section.page_articles article table tbody tr td {
 		padding: 2.4rem;
@@ -557,36 +571,24 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Home Details --- \\
-/*
-	section.home_details article div.wrap_svg {
-		margin-bottom: 6rem;
+	section.home_articles article div[data-container] > div.wrap_svg {
 		width: 7.2rem;
 		height: 7.2rem;
 	}
-*/
-	section.home_details article h2 {
-		margin-bottom: 3.2rem;
-	}
-	section.home_details article p {
-		margin-bottom: 6rem;
-		font-size: 1.7rem;
-	}
-	section.home_details article ul {
+	section.home_articles article ul {
+		margin-top: 6rem;
 		margin-bottom: 6rem;
 		column-count: 3;
 	}
 
 	// Get A Quote
 	// ----------------------------------------------------------------------------
-	section.quote_details article h2 {
-		margin-bottom: 4.8rem;
-	}
-	section.quote_details article a.btn_rnd {
+	section.quote_articles article a.btn_rnd {
 		font-size: 1.6rem;
 		height: 6rem;
 		line-height: 6rem;
 	}
-	section.quote_details article div[data-container] > a.btn_rnd {
+	section.quote_articles article div[data-container] > a.btn_rnd {
 		width: 26rem;
 	}
 	// --- Quote Badges --- \\
@@ -658,45 +660,18 @@
 
 	// Contact Us
 	// ----------------------------------------------------------------------------
-	section.contact_details article p {
-		font-size: 1.7rem;
-	}
 	// --- Contact Social --- \\
-	section.contact_details article.contact_social div[data-container] > div.icon_twitter {
+	section.contact_articles article.contact_social div[data-container] > div.icon_twitter {
 		width: 6rem;
 		height: 6rem;
 	}
-	section.contact_details article.contact_social div[data-container] > div.icon_facebook {
+	section.contact_articles article.contact_social div[data-container] > div.icon_facebook {
 		width: 4rem;
 		height: 4rem;
 		transform: translateY(-1rem);
 	}
-	section.contact_details article.contact_social div[data-container] > p {
+	section.contact_articles article.contact_social div[data-container] > p {
 		margin-bottom: 1rem;
-	}
-
-	// What's Covered
-	// ----------------------------------------------------------------------------
-	// --- Page Callout --- \\
-	section.page_callout article[data-container] {
-		padding: 7.2rem 3.2rem;
-	}
-	section.page_callout article h2,
-	section.coverage_details article h2 {
-		// margin-bottom: 3.2rem;
-		font-size: 1.9rem;
-	}
-	section.page_callout article p,
-	section.coverage_details article p {
-		margin-bottom: 6rem;
-		font-size: 1.7rem;
-	}
-	section.page_callout article a.btn_rnd,
-	section.coverage_details article a.btn_rnd {
-		font-size: 1.6rem;
-		width: 22rem;
-		height: 6rem;
-		line-height: 6rem;
 	}
 
 	// Packages

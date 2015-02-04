@@ -11,16 +11,20 @@
 
 			%section.page_header.contact_header
 
+				-# .wrap_svg.icon
+					-# %svg.svg_nm-logo{:viewbox => "0 0 64 64"}
+						-# %use{"xlink:href" => "#nm_logo"}
+
 				%h1.visuallyhidden Contact Us
-				.wrap_svg
+				.wrap_svg.title
 					%svg.svg_nm-contact{:viewbox => "0 0 796 70"}
 						%use{"xlink:href" => "#nm_contact"}
 
-			%section.contact_details.page_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.contact_articles{"data-container" => "width-padding_1440"}
 
 				%article.contact_phone
 
-					%div.clearfix{"data-container" => "width_870"}
+					%div.clearfix{"data-container" => true}
 
 						.wrap_svg
 							%svg.svg_ui-phone
@@ -37,7 +41,7 @@
 
 				%article.contact_emergency
 
-					%div{"data-container" => "width_870"}
+					%div{"data-container" => true}
 
 						.wrap_svg
 							%svg.svg_ui-exclaim
@@ -50,7 +54,7 @@
 
 				%article.contact_social
 
-					%div{"data-container" => "width_870"}
+					%div{"data-container" => true}
 
 						.wrap_svg.icon_twitter
 							%svg.svg_social-twitter-stroke

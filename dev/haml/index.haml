@@ -31,40 +31,46 @@
 
 			= Haml::Engine.new(File.read("dev/haml/partials/_form_quote.haml")).render
 
-			%section.home_details.page_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.home_articles{"data-container" => "width-padding_1440"}
 
 				%article.details_why
 
-					.wrap_svg
-						%svg.svg_nm-logo
-							%use{"xlink:href" => "#nm_logo"}
+					%div{"data-container" => "width_868"}
 
-					%h2 Why Northman?
-					%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+						.wrap_svg
+							%svg.svg_nm-logo
+								%use{"xlink:href" => "#nm_logo"}
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "Find Out More"} Find Out More
+						%h2 Why Northman?
+						%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+
+						%a.btn_rnd.brd_orange{:href => "#", :title => "Find Out More"} Find Out More
 
 				%article.details_packages
 
-					.wrap_svg
-						%svg.svg_ui-package
-							%use{"xlink:href" => "#ui_package"}
+					%div{"data-container" => "width_868"}
 
-					%h2 Packages
-					%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, and we can insure a single person or a whole family under one policy. Pick what’s right for you, and if you can’t find it, we’ll help you.
+						.wrap_svg
+							%svg.svg_ui-package
+								%use{"xlink:href" => "#ui_package"}
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "Choose Your Package"} Choose Your Package
+						%h2 Packages
+						%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, and we can insure a single person or a whole family under one policy. Pick what’s right for you, and if you can’t find it, we’ll help you.
+
+						%a.btn_rnd.brd_orange{:href => "#", :title => "Choose Your Package"} Choose Your Package
 
 				%article.details_coverage
 
-					.wrap_svg
-						%svg.svg_ui-coverage
-							%use{"xlink:href" => "#ui_coverage"}
+					%div{"data-container" => "width_868"}
 
-					%h2 What's Covered
-					%p If you can (legally) do it, we can cover it. It would be easier to list what we don’t cover, but here are some of the highlights:
+						.wrap_svg
+							%svg.svg_ui-coverage
+								%use{"xlink:href" => "#ui_coverage"}
 
-					%ul
+						%h2 What's Covered
+						%p If you can (legally) do it, we can cover it. It would be easier to list what we don’t cover, but here are some of the highlights:
+
+					%ul{"data-container" => "width_1050"}
 						%li Adventure Racing
 						%li Arctic and Antarctic Expedition
 						%li Canoeing &amp; Kayakin

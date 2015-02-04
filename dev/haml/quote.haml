@@ -11,16 +11,20 @@
 
 			%section.page_header.quote_header
 
+				-# .wrap_svg.icon
+					-# %svg.svg_nm-logo{:viewbox => "0 0 64 64"}
+						-# %use{"xlink:href" => "#nm_logo"}
+
 				%h1.visuallyhidden Get a Quote
-				.wrap_svg
+				.wrap_svg.title
 					%svg.svg_nm-quote{:viewbox => "0 0 706 70"}
 						%use{"xlink:href" => "#nm_quote"}
 
-			%section.quote_details.page_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.quote_articles{"data-container" => "width-padding_1440"}
 
 				%article.quote_options
 
-					%div.clearfix{"data-container" => "width_870"}
+					%div.clearfix{"data-container" => "width_868"}
 
 						%h2 Based on your information, here’s your quote:
 
@@ -64,7 +68,7 @@
 
 				%article.quote_details
 
-					%div{"data-container" => "width_870"}
+					%div{"data-container" => "width_868"}
 
 						.details_captured.clearfix
 
@@ -128,7 +132,7 @@
 
 				%article.quote_summary
 
-					%div{"data-container" => "width_870"}
+					%div{"data-container" => "width_868"}
 
 						%h2 Quote Summary
 
@@ -149,8 +153,6 @@
 									%td $153.00
 
 						%a.btn_rnd.brd_green{:href => "#", :title => "Buy Now"} Buy Now
-
-						-# %p Insurance underwritten by Travel Underwriters, located at 11th Floor – 6081 No. 3 Road in Richmond, British Columbia Canada, V6Y 2B2. The description herein is a summary only. It does not include all terms, conditions and exclusions of the policies described. Please refer to the actual policies for complete details of coverage and exclusions.
 
 		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
 			.modal_body
