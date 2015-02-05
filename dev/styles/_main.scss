@@ -993,7 +993,7 @@ section.page_articles article div[data-container] > ul li:last-child {
 	margin-bottom: 0;
 }
 section.page_articles article div[data-container] > p a,
-section.page_articles article div[data-container] > ul li a {
+section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
 }
 section.page_articles article div[data-container] > p a[href^="tel:"] {
@@ -1001,11 +1001,11 @@ section.page_articles article div[data-container] > p a[href^="tel:"] {
 	font-weight: 700;
 }
 section.page_articles article div[data-container] > p a:hover,
-section.page_articles article div[data-container] > ul li a:hover {
+section.page_articles article div[data-container] > ul:not([class]) li a:hover {
 	color: hsla(0,0%,20%,1);
 }
 section.page_articles article div[data-container] > p a:active,
-section.page_articles article div[data-container] > ul li a:active {
+section.page_articles article div[data-container] > ul:not([class]) li a:active {
 	color: hsla(0,0%,40%,1);
 }
 section.page_articles article div[data-container] div.article_svg {
@@ -1022,15 +1022,23 @@ section.page_articles article div[data-container] ul.list_svg {
 section.page_articles article div[data-container] ul.list_svg li {
 	display: inline-block;
 	margin-right: 1.4rem;
-	// width: 4.8rem;
 	height: 3.6rem;
 }
 section.page_articles article div[data-container] ul.list_svg li:last-child {
 	margin-right: 0;
 }
+section.page_articles article div[data-container] ul.list_svg li svg {
+	display: inline; // chrome is not accepting the [viewBox] approach
+}
 // + individual icons + \\
 section.page_articles article div[data-container] ul.list_svg li.icon_mail {
 	width: 4.4rem;
+}
+section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
+	width: 5.1rem;
+}
+section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
+	width: 2rem;
 }
 // + internal table + \\
 section.page_articles article table {

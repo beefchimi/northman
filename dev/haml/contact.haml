@@ -68,9 +68,9 @@
 						%ul
 							%li
 								Twitter: &nbsp;
-								%a{:href => "https://twitter.com/northmanco", :title => "Follow us on Twitter"} @northmanco
+								%a{:href => "https://twitter.com/northmanco", :target => "_blank", :title => "Follow us on Twitter"} @northmanco
 							%li
 								Facebook: &nbsp;
-								%a{:href => "https://www.facebook.com/northmanco", :title => "Like us on Facebook"} www.facebook.com/northmanco
+								%a{:href => "https://www.facebook.com/northmanco", :target => "_blank", :title => "Like us on Facebook"} www.facebook.com/northmanco
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
