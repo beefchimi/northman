@@ -93,6 +93,8 @@
 						%li Off-Piste Skiing &amp; Snowboarding
 						%li Winter Sports
 
-					%a.btn_rnd.brd_orange{:href => "#", :title => "The Full List"} The Full List
+					%a.btn_rnd.brd_orange.modal_open{:href => "#modal_error-60", :title => "The Full List"} The Full List
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_modal_error-60.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

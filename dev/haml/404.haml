@@ -3,12 +3,39 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#page_home
+	%body#page_error.page_error
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
 		%main{:role => "main"}
 
-			%p ERROR 404
+			%section.page_header.error_header
 
-		= Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render
+				.wrap_svg.icon
+					%svg.svg_ui-exclaim{:viewbox => "0 0 64 64"}
+						%use{"xlink:href" => "#ui_exclaim"}
+
+				%h1.visuallyhidden Error 404
+				.wrap_svg.title
+					%svg.svg_nm-error{:viewbox => "0 0 506 53"}
+						%use{"xlink:href" => "#nm_error"}
+
+			%section.page_articles.why_articles{"data-container" => "width-padding_1440"}
+
+				%article
+
+					%div{"data-container" => "width_868"}
+
+						.wrap_svg.article_svg
+							%svg.svg_ui-safety
+								%use{"xlink:href" => "#ui_safety"}
+
+						%h2 Oops, missing page!
+
+						%p
+							:plain
+								It appears the page you are looking for does not exist. Please try returning to the <a href="index.html" title="Return Home">home page</a> to find what you are looking for. Alternatively, you can <a href="mailto:info@northman.co" title="Send us an email">send us an email</a> and hopefully we can answer any questions you might have. Good luck!
+
+						%a.btn_rnd.brd_orange{:href => "mailto:info@northman.co", :title => "Get In Touch"} Get In Touch
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

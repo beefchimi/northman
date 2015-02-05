@@ -202,6 +202,31 @@ footer {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
+[data-modal] div.modal_body > p {
+	margin-bottom: 3.2rem;
+	padding: 2.6rem 2rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.7rem;
+	line-height: 1.4;
+	text-align: center;
+	color: $nm_cream;
+}
+[data-modal] div.modal_body > p a {
+	font-weight: 700;
+	color: $nm_orange;
+}
+[data-modal] div.modal_body > p a:hover {
+	color: hsla(0,0%,80%,1);
+}
+[data-modal] div.modal_body > p a:active {
+	color: hsla(0,0%,60%,1);
+}
+// + over 60 error + \\
+aside.modal_error-60 div.modal_body {
+	padding-top: 4.8rem;
+}
+
+
 // --- Overlays --- \\
 // created and added (also destroyed) to DOM via JS
 // opacity and visibility applied via JS
@@ -1071,6 +1096,7 @@ section.home_header div.wrap_svg {
 	text-align: center;
 }
 section.home_header div.wrap_svg svg {
+	display: inline; // webkit not accepting [viewBox] approach
 	max-width: 72.3rem;
 	fill: hsla(60,11%,93%,0.9);
 }
@@ -1585,7 +1611,6 @@ section.support_header div.wrap_svg.title {
 section.support_callout {
 	background-image: url('../img/callout_support.png');
 }
-
 section.support_articles article.support_id {
 	position: relative;
 	padding-bottom: 36.2rem;
@@ -1598,16 +1623,11 @@ article.support_id img {
 	margin-left: -11.7rem; // 234px / 2
 }
 
-
-/*
-				%article.support_id
-
-					%div{"data-container" => "width_868"}
-
-						%h2 Don’t forget your ID TAG
-
-						%p When you purchase a package with Northman you’ll be given an ID tag. Your ID tag is unique–it has your member number and the emergency call centre number. Wear your tag while traveling and emergency services will know exactly who to call.
-
-						%img{:src => "assets/img/temp_idtag.jpg", :alt => ""}
-*/
-
+// Error 404
+// ----------------------------------------------------------------------------
+section.error_header {
+	background-image: url('../img/bg_home.jpg');
+}
+section.error_header div.wrap_svg.title {
+	max-width: 50.6rem;
+}

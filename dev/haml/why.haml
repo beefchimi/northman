@@ -57,8 +57,6 @@
 
 						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 
-		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
-			.modal_body
-				= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
+		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
