@@ -27,41 +27,92 @@
 					%h2 We’re here.
 					%p If you have any questions about your coverage, or need to get in touch with a claims specialist, here are all the ways you can reach us.
 
-			%section.page_articles.why_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.support_articles{"data-container" => "width-padding_1440"}
 
 				%article.support_phone
 
 					%div.clearfix{"data-container" => true}
 
-						.wrap_svg
+						.wrap_svg.article_svg
 							%svg.svg_ui-phone
 								%use{"xlink:href" => "#ui_phone"}
 
 						%h2 Telephone
-						%p Get in touch with our customer service team for help buying, updating or understanding your policy.
 						%p
-							Call toll-free from Canada and the Continental U.S:
-							%strong 1 (844) 207-7522
+							Call toll-free from within Canada and the Continental U.S:
+							%a{:href => "tel:+1-844-207-7522", :title => "1 (844) 207-7522"} +1 (844) 207-7522
 						%p
-							While overseas, call collect from anywhere else in the world:
-							%strong +1 (613) 763-2366
+							Call us collect from anywhere else in the world:
+							%a{:href => "tel:+1-613-763-2366", :title => "1 (613) 763-2366"} +1 (613) 763-2366
 
-				%article
+				%article.support_contacts
 
 					%div{"data-container" => "width_868"}
 
-						%h2 We took care of the hard stuff
-						%p No long questionnaires, no complicated forms. Everything can be completed in minutes, and coverage can be bound as soon as immediately.
+						%ul.list_svg
+							%li.wrap_svg.article_svg.icon_mail
+								%svg.svg_ui-mail{:viewbox => "0 0 64 45"}
+									%use{"xlink:href" => "#ui_mail"}
+							%li.wrap_svg.article_svg.icon_twitter
+								%svg.svg_social-twitter-stroke{:viewbox => "0 0 64 46"}
+									%use{"xlink:href" => "#social_twitter-stroke"}
+							%li.wrap_svg.article_svg.icon_facebook
+								%svg.svg_social-facebook-stroke{:viewbox => "0 0 35 64"}
+									%use{"xlink:href" => "#social_facebook-stroke"}
 
-				%article
+						%h2 Non-Emergency Contacts
+						%p We know you may not always be able get to a phone. Here are other ways you can get in touch if you need help.
+
+						%ul
+							%li
+								Email: &nbsp;
+								%a{:href => "mailto:hello@northman.co", :title => "Email us"} hello@northman.co
+							%li
+								Text Message: &nbsp;
+								%a{:href => "sms:613-763-2366", :title => "Text us"} 613-763-2366
+							%li
+								Twitter: &nbsp;
+								%a{:href => "https://twitter.com/northmanco", :title => "Follow us on Twitter"} @northmanco
+							%li
+								Facebook: &nbsp;
+								%a{:href => "https://www.facebook.com/northmanco", :title => "Like us on Facebook"} www.facebook.com/northmanco
+
+				%article.support_emergency
 
 					%div{"data-container" => "width_868"}
 
-						%h2 It’s all included
-						:plain
-							<p>Our single-trip <a href="#" title="Packages">packages</a> cover everything you need to travel with peace of mind, including medical bills, emergency evacuations, trip cancellation and equipment loss. No medicals required, no loopholes that result in non-payment. For frequent fliers, we have annual packages that cover all  of your trips for a full year.</p>
+						.wrap_svg.article_svg
+							%svg.svg_ui-safety
+								%use{"xlink:href" => "#ui_safety"}
 
-						%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
+						%h2 Worldwide 24-hour Emergency Assistance
+
+						%p Northman is here to help, wherever you are, whatever your need. If you need emergency assistance, please call the emergency contact 1-844-207-7522. This emergency service will take over for you. They will speak to the doctors, negotiate payment and get you home.
+
+						%p So we can best assist you, please be ready with the following:
+
+						%ul
+							%li
+								%strong Your policy number
+							%li
+								%strong A contact number for where you are now
+							%li
+								%strong The nature of your problem
+
+						%p
+							If you are unable to access this number from your location, you can reverse charges via the local operator and contact us at:
+							%a{:href => "tel:+1-844-763-2366", :title => "Call us"} +1 (844) 763-2366
+
+				%article.support_id
+
+					%div{"data-container" => "width_868"}
+
+						%h2 Don’t forget your ID TAG
+
+						%p When you purchase a package with Northman you’ll be given an ID tag. Your ID tag is unique–it has your member number and the emergency call centre number. Wear your tag while traveling and emergency services will know exactly who to call.
+
+						%img{:src => "assets/img/temp_idtag.jpg", :alt => ""}
+
 
 		%aside#modal_quote.modal_quote{"data-modal" => "inactive"}
 			.modal_body

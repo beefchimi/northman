@@ -26,7 +26,7 @@
 
 					%div.clearfix{"data-container" => true}
 
-						.wrap_svg
+						.wrap_svg.article_svg
 							%svg.svg_ui-phone
 								%use{"xlink:href" => "#ui_phone"}
 
@@ -34,42 +34,43 @@
 						%p Get in touch with our customer service team for help buying, updating or understanding your policy.
 						%p
 							Call toll-free from Canada and the Continental U.S:
-							%strong 1 (844) 207-7522
+							%a{:href => "tel:+1-844-207-7522", :title => "1 (844) 207-7522"} +1 (844) 207-7522
 						%p
 							While overseas, call collect from anywhere else in the world:
-							%strong +1 (613) 763-2366
+							%a{:href => "tel:+1-613-763-2366", :title => "1 (613) 763-2366"} +1 (613) 763-2366
 
 				%article.contact_emergency
 
 					%div{"data-container" => true}
 
-						.wrap_svg
+						.wrap_svg.article_svg
 							%svg.svg_ui-exclaim
 								%use{"xlink:href" => "#ui_exclaim"}
 
 						%h2 Emergencies
 						%p
 							Call the emergency assistance team 24 hours a day, 7 days a week if you need urgent medical or travel assistance:
-							%strong 1 (604) 207-7522
+							%a{:href => "tel:+1-604-207-7522", :title => "1 (604) 207-7522"} +1 (604) 207-7522
 
 				%article.contact_social
 
 					%div{"data-container" => true}
 
-						.wrap_svg.icon_twitter
-							%svg.svg_social-twitter-stroke
-								%use{"xlink:href" => "#social_twitter-stroke"}
-
-						.wrap_svg.icon_facebook
-							%svg.svg_social-facebook-stroke
-								%use{"xlink:href" => "#social_facebook-stroke"}
+						%ul.list_svg
+							%li.wrap_svg.article_svg.icon_twitter
+								%svg.svg_social-twitter-stroke{:viewbox => "0 0 64 46"}
+									%use{"xlink:href" => "#social_twitter-stroke"}
+							%li.wrap_svg.article_svg.icon_facebook
+								%svg.svg_social-facebook-stroke{:viewbox => "0 0 35 64"}
+									%use{"xlink:href" => "#social_facebook-stroke"}
 
 						%h2 Twitter &amp; Facebook
-						%p
-							Twitter: &nbsp;
-							%a{:href => "#", :title => "Follow us on Twitter"} @northmanco
-						%p
-							Facebook: &nbsp;
-							%a{:href => "#", :title => "Like us on Facebook"} www.facebook.com/northmanco
+						%ul
+							%li
+								Twitter: &nbsp;
+								%a{:href => "https://twitter.com/northmanco", :title => "Follow us on Twitter"} @northmanco
+							%li
+								Facebook: &nbsp;
+								%a{:href => "https://www.facebook.com/northmanco", :title => "Like us on Facebook"} www.facebook.com/northmanco
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

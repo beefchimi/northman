@@ -134,6 +134,9 @@ footer {
 	width: 100%;
 	height: 100%;
 }
+.wrap_svg svg[viewBox] {
+	display: inline;
+}
 // --- Containers --- \\
 [data-container] {
 	margin-left: auto;
@@ -911,7 +914,6 @@ section.page_header div.wrap_svg.icon {
 	width: 4.8rem;
 }
 section.page_header div.wrap_svg svg {
-	display: inline;
 	fill: $nm_cream;
 }
 
@@ -942,6 +944,9 @@ section.page_callout article p {
 	line-height: 1.5;
 	color: $nm_cream;
 }
+section.page_callout article p:last-child {
+	margin-bottom: 0;
+}
 section.page_callout article a.btn_rnd:hover {
 	color: hsla(0,0%,20%,1);
 }
@@ -959,18 +964,6 @@ section.page_articles article {
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $nm_orange;
 }
-// section.page_articles article > div.wrap_svg,
-section.page_articles article div[data-container] > div.wrap_svg {
-	margin: 0 auto 4rem auto;
-	width: 6.4rem;
-	height: 6.4rem;
-}
-// section.page_articles article > div.wrap_svg svg,
-section.page_articles article div[data-container] > div.wrap_svg svg {
-	fill: $nm_orange;
-}
-
-
 section.page_articles article h2 {
 	margin-bottom: 3.2rem;
 	font-size: 1.7rem;
@@ -985,25 +978,60 @@ section.page_articles article div[data-container] > p:not([class]) {
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
-section.page_articles article div[data-container] > p:last-child {
+section.page_articles article div[data-container] > ul:not([class]) {
+	margin-bottom: 4rem;
+}
+section.page_articles article div[data-container] > ul:not([class]) li {
+	margin-bottom: 1rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.2;
+}
+section.page_articles article div[data-container] > p:last-child,
+section.page_articles article div[data-container] > ul:last-child,
+section.page_articles article div[data-container] > ul li:last-child {
 	margin-bottom: 0;
 }
-
-
-// section.contact_articles article a {
-section.page_articles article div[data-container] > p a {
+section.page_articles article div[data-container] > p a,
+section.page_articles article div[data-container] > ul li a {
 	color: $nm_orange;
 }
-// section.contact_articles article a:hover {
-section.page_articles article div[data-container] > p a:hover {
+section.page_articles article div[data-container] > p a[href^="tel:"] {
+	display: block;
+	font-weight: 700;
+}
+section.page_articles article div[data-container] > p a:hover,
+section.page_articles article div[data-container] > ul li a:hover {
 	color: hsla(0,0%,20%,1);
 }
-// section.contact_articles article a:active {
-section.page_articles article div[data-container] > p a:active {
+section.page_articles article div[data-container] > p a:active,
+section.page_articles article div[data-container] > ul li a:active {
 	color: hsla(0,0%,40%,1);
 }
-
-
+section.page_articles article div[data-container] div.article_svg {
+	margin: 0 auto 4rem auto;
+	width: 6.4rem;
+	height: 6.4rem;
+}
+section.page_articles article div[data-container] .article_svg svg {
+	fill: $nm_orange;
+}
+section.page_articles article div[data-container] ul.list_svg {
+	margin-bottom: 4rem;
+}
+section.page_articles article div[data-container] ul.list_svg li {
+	display: inline-block;
+	margin-right: 1.4rem;
+	// width: 4.8rem;
+	height: 3.6rem;
+}
+section.page_articles article div[data-container] ul.list_svg li:last-child {
+	margin-right: 0;
+}
+// + individual icons + \\
+section.page_articles article div[data-container] ul.list_svg li.icon_mail {
+	width: 4.4rem;
+}
 // + internal table + \\
 section.page_articles article table {
 	table-layout: fixed;
@@ -1035,7 +1063,6 @@ section.home_header div.wrap_svg {
 	text-align: center;
 }
 section.home_header div.wrap_svg svg {
-	display: inline;
 	max-width: 72.3rem;
 	fill: hsla(60,11%,93%,0.9);
 }
@@ -1088,27 +1115,10 @@ body.page_home form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
 // --- Home Details --- \\
-/*
-section.home_articles article {
-	// text-align: center;
-}
-section.home_articles article h2 {
-	// margin-bottom: 2rem;
-}
-section.home_articles article p {
-	margin: 0 auto 4rem auto;
-	max-width: 86rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem;
-	line-height: 1.4;
-}
-*/
 section.home_articles article ul {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
-	// margin: 0 auto 4rem auto;
 	padding: 2.4rem 1.6rem;
-	// max-width: 104.8rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
 section.home_articles article ul li {
@@ -1317,45 +1327,6 @@ section.contact_header {
 }
 section.contact_header div.wrap_svg.title {
 	max-width: 79.6rem;
-}
-/*
-section.contact_articles article {
-	text-align: center;
-}
-section.contact_articles article p {
-	margin-bottom: 3.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem;
-	line-height: 1.4;
-}
-section.contact_articles article p:last-child {
-	margin-bottom: 0;
-}
-*/
-section.contact_articles article p strong {
-	display: block;
-	color: $nm_orange;
-}
-
-// --- Contact Social --- \\
-section.contact_articles article.contact_social div[data-container] > div.wrap_svg {
-	display: inline-block;
-}
-section.contact_articles article.contact_social div[data-container] > div.icon_twitter {
-	margin-right: 0.4rem;
-	width: 4.8rem;
-	height: 4.8rem;
-}
-section.contact_articles article.contact_social div[data-container] > div.icon_facebook {
-	width: 3.2rem;
-	height: 3.2rem;
-	transform: translateY(-0.8rem);
-}
-section.contact_articles article.contact_social div[data-container] > p {
-	margin-bottom: 2rem;
-}
-section.contact_articles article.contact_social div[data-container] > p:last-child {
-	margin-bottom: 0;
 }
 
 // What's Covered
@@ -1597,6 +1568,9 @@ section.why_callout {
 section.support_header {
 	background-image: url('../img/bg_support.jpg');
 }
+section.support_header div.wrap_svg.icon {
+	transform: rotate(45deg);
+}
 section.support_header div.wrap_svg.title {
 	max-width: 40.9rem;
 }
@@ -1604,4 +1578,28 @@ section.support_callout {
 	background-image: url('../img/callout_support.png');
 }
 
+section.support_articles article.support_id {
+	position: relative;
+	padding-bottom: 36.2rem;
+}
+article.support_id img {
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	left: 50%;
+	margin-left: -11.7rem; // 234px / 2
+}
+
+
+/*
+				%article.support_id
+
+					%div{"data-container" => "width_868"}
+
+						%h2 Don’t forget your ID TAG
+
+						%p When you purchase a package with Northman you’ll be given an ID tag. Your ID tag is unique–it has your member number and the emergency call centre number. Wear your tag while traveling and emergency services will know exactly who to call.
+
+						%img{:src => "assets/img/temp_idtag.jpg", :alt => ""}
+*/
 
