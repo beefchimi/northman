@@ -1207,10 +1207,14 @@ ul.quote_badges li.badge div.badge_header h6 {
 	text-transform: uppercase;
 }
 ul.quote_badges li.badge div.badge_header div.wrap_svg {
+	// display: inline-block;
 	position: absolute;
 	top: 1rem;
 	right: 1.6rem;
 	height: 2.6rem;
+}
+ul.quote_badges li.badge div.badge_header div.wrap_svg svg {
+	display: inline; // webkit not using [viewBox] approach
 }
 ul.quote_badges li.badge div.badge_body {
 	padding: 2.6rem 1.6rem;
@@ -1247,6 +1251,9 @@ ul.quote_badges li.badge_single div.badge_header h6,
 ul.quote_badges li.badge_single div.badge_body h3 {
 	color: $nm_green;
 }
+ul.quote_badges li.badge_single div.badge_header div.wrap_svg {
+	width: 2.6rem; // iOS requires a explicit width
+}
 ul.quote_badges li.badge_single div.badge_header div.wrap_svg svg {
 	fill: $nm_green;
 }
@@ -1260,6 +1267,9 @@ ul.quote_badges li.badge_yearly div.badge_header {
 ul.quote_badges li.badge_yearly div.badge_header h6,
 ul.quote_badges li.badge_yearly div.badge_body h3 {
 	color: $nm_orange;
+}
+ul.quote_badges li.badge_yearly div.badge_header div.wrap_svg {
+	width: 4.4rem; // iOS requires a explicit width
 }
 ul.quote_badges li.badge_yearly div.badge_header div.wrap_svg svg {
 	fill: $nm_orange;
@@ -1389,6 +1399,9 @@ form.form_coverage {
 form.form_coverage div.wrap_element {
 	margin: 0 auto 2rem auto;
 	max-width: 38.8rem;
+}
+form.form_coverage div.wrap_element input {
+	-webkit-appearance: none; // fixes iOS not showing box-shadow
 }
 form.form_coverage div.wrap_element input.input_typeahead {
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
