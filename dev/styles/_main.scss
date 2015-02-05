@@ -106,16 +106,18 @@ input[type="checkbox"] + label::before {
 	animation: shake 0.7s ease-in-out both; // ease-in-out 0.2s forwards;
 }
 // --- FOUT --- \\
-/*
 main,
 header,
 footer {
+	opacity: 0; // begin by setting opacity to 0
+}
+.wf-active main,
+.wf-active header,
+.wf-active footer {
 	// IE9 does not support Animations... we will need to use modernizr to force opacity: 1;
 	// test this thoroughly to make sure it actually works consistently
-	opacity: 0; // begin by setting opacity to 0
-	animation: transShow 0.4s ease-in-out 0.2s forwards;
+	animation: animShow 0.4s ease-in-out forwards;
 }
-*/
 
 // General Styles
 // ----------------------------------------------------------------------------
@@ -225,7 +227,12 @@ footer {
 aside.modal_error-60 div.modal_body {
 	padding-top: 4.8rem;
 }
-
+aside.modal_error-60 div.modal_body a.cancel_error {
+	position: absolute;
+	bottom: 4.8rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
 // --- Overlays --- \\
 // created and added (also destroyed) to DOM via JS

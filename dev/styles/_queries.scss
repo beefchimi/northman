@@ -168,6 +168,12 @@
 	aside.modal_error-60 {
 		max-height: 38rem;
 	}
+	aside.modal_error-60 div.modal_body a.cancel_error {
+		position: static;
+		bottom: auto;
+		left: auto;
+		transform: translateX(0%);
+	}
 
 	// Forms
 	// ----------------------------------------------------------------------------
