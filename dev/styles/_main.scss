@@ -1062,16 +1062,6 @@ section.page_articles article div[data-container] ul.list_svg li:last-child {
 section.page_articles article div[data-container] ul.list_svg li svg {
 	display: inline; // chrome is not accepting the [viewBox] approach
 }
-// + individual icons + \\
-section.page_articles article div[data-container] ul.list_svg li.icon_mail {
-	width: 4.4rem;
-}
-section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
-	width: 5.1rem;
-}
-section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
-	width: 2rem;
-}
 // + internal table + \\
 section.page_articles article table {
 	table-layout: fixed;
@@ -1371,15 +1361,6 @@ article.quote_summary table tbody tr td:last-child {
 	text-align: right;
 }
 
-// Contact Us
-// ----------------------------------------------------------------------------
-section.contact_header {
-	background-image: url('../img/bg_home.jpg');
-}
-section.contact_header div.wrap_svg.title {
-	max-width: 79.6rem;
-}
-
 // What's Covered
 // ----------------------------------------------------------------------------
 section.coverage_header {
@@ -1641,6 +1622,16 @@ article.support_id img {
 	bottom: 0;
 	left: 50%;
 	margin-left: -11.7rem; // 234px / 2
+}
+// + individual icons + \\
+article.support_contacts div[data-container] ul.list_svg li.icon_mail {
+	width: 4.4rem;
+}
+article.support_contacts div[data-container] ul.list_svg li.icon_twitter {
+	width: 5.1rem;
+}
+article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
+	width: 2rem;
 }
 
 // Error 404
