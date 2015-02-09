@@ -1704,12 +1704,16 @@ article.ambassadors p a[href^="mailto:"] {
 	margin: 0 auto;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }
-article.ambassadors ul {
-	list-style: disc;
-	padding: 0 1rem;
-}
 article.ambassadors ul li {
+	position: relative;
+	display: inline-block;
 	font-weight: 700;
 }
-
-
+article.ambassadors ul li::before {
+	display: none;
+	content: "\2022"; // bullet
+	position: absolute;
+	top: -0.2rem;
+	left: -1.8rem;
+	font-size: 1.8rem;
+}

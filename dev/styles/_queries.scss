@@ -421,6 +421,12 @@
 		display: block;
 	}
 
+	// Partners
+	// ----------------------------------------------------------------------------
+	article.ambassadors ul li::before {
+		display: block;
+	}
+
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
