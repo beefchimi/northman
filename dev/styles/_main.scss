@@ -10,6 +10,7 @@ optgroup,
 select,
 textarea {
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+	// font-variant-numeric: oldstyle-nums;
 }
 body {
 	position: relative;
@@ -60,18 +61,36 @@ body.page_home form.form_quote {
 div.accordian_body {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
+
+
+article.quote_options div.error_message {
+	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+
 // div.wrap_select div.wrap_dropdown,
-[data-overlay] {
+[data-overlay],
+ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // border-radius 0.3s ease-in-out,
 }
-input[type="checkbox"] + label {
+ul.list_badges li,
+ul.list_badges li div.badge_header {
+	transition: border-color 0.3s ease-in-out;
+}
+input[type="checkbox"] + label,
+ul.list_badges li div.badge_header h6,
+ul.list_badges li div.badge_body h3,
+ul.list_badges li div.badge_body h3 span.currency {
 	transition: color 0.3s ease-in-out;
 }
 input[type="checkbox"] + label::before {
 	transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
+	transition: padding-left 0.3s ease-in-out;
 }
 // --- Animations --- \\
 @keyframes animShow {
@@ -144,30 +163,9 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 }
-[data-container="width-padding_1440"] {
-	max-width: 150.4rem; // 1440px + padding (64px)
-}
-[data-container="width-padding_1200"] {
-	max-width: 126.4rem; // 1200px + padding (64px)
-	// padding-left: 1.6rem;
-	// padding-right: 1.6rem;
-}
-/*
-[data-container="width-1440"] {
-	max-width: 144rem;
-}
-[data-container="width-1264"] {
-	max-width: 126.4rem;
-}
-*/
 [data-container="width_1354"] {
 	max-width: 135.4rem;
 }
-/*
-[data-container="width-1200"] {
-	max-width: 120rem;
-}
-*/
 [data-container="width_1200"] {
 	max-width: 120rem;
 }
@@ -259,7 +257,8 @@ html.overlay_active body {
 
 // Forms
 // ----------------------------------------------------------------------------
-input[type="text"] {
+input[type="text"],
+input[type="date"] {
 	padding: 0 4rem 0 1.6rem;
 	width: 100%;
 	height: 4.8rem;
@@ -270,13 +269,16 @@ input[type="text"] {
 	border-radius: 0.8rem;
 }
 // + interaction + \\
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus {
 	box-shadow: inset 0 0 0 0.1rem $nm_orange;
 }
-input[type="text"]:hover {
+input[type="text"]:hover,
+input[type="date"]:hover {
 	background-color: $nm_cream-D;
 }
-input[type="text"]:focus:hover {
+input[type="text"]:focus:hover,
+input[type="date"]:focus:hover {
 	background-color: $nm_cream;
 }
 // --- Checkbox --- \\
@@ -694,7 +696,129 @@ button[class*="brd_"] {
 
 // Content
 // ----------------------------------------------------------------------------
-// + list box + \\
+// --- Badges List --- \\
+ul.list_badges {
+	margin-bottom: 3.2rem;
+}
+ul.list_badges li {
+	margin: 0 auto 3.2rem auto;
+	max-width: 41rem;
+	border: 0.2rem solid $nm_orange;
+	border-radius: 1.6rem;
+}
+ul.list_badges li:last-child {
+	margin-bottom: 0;
+}
+ul.list_badges li div.badge_header {
+	position: relative;
+	padding: 1.8rem 1.6rem;
+	border-bottom: 0.2rem solid $nm_orange;
+}
+ul.list_badges li div.badge_header div.wrap_svg {
+	display: inline-block;
+	height: 2.6rem;
+}
+ul.list_badges li div.badge_header div.wrap_svg svg {
+	display: inline; // webkit not using [viewBox] attr
+	fill: $nm_orange;
+}
+ul.list_badges li div.badge_header h6 {
+	text-transform: uppercase;
+}
+ul.list_badges li div.badge_body {
+	display: table;
+	padding: 2.6rem 1.6rem;
+	width: 100%;
+}
+ul.list_badges li div.badge_header h6,
+ul.list_badges li div.badge_header p.option_letter,
+ul.list_badges li div.badge_body h3,
+ul.list_badges li div.badge_body h3 span.currency,
+ul.list_badges li div.badge_body p,
+ul.list_badges li div.badge_body a.btn_rnd {
+	color: $nm_orange;
+}
+ul.list_badges li div.badge_body a.btn_rnd:hover {
+	opacity: 0.8;
+}
+ul.list_badges li div.badge_body a.btn_rnd:active {
+	opacity: 0.9;
+}
+// + badge single + \\
+ul.list_badges li.badge_single {
+	border-color: $nm_bronze;
+}
+ul.list_badges li.badge_single div.badge_header {
+	border-bottom-color: $nm_bronze;
+}
+ul.list_badges li.badge_single div.badge_header h6,
+ul.list_badges li.badge_single div.badge_header p.option_letter,
+ul.list_badges li.badge_single div.badge_body h3,
+ul.list_badges li.badge_single div.badge_body h3 span.currency,
+ul.list_badges li.badge_single div.badge_body p,
+ul.list_badges li.badge_single div.badge_body a.btn_rnd {
+	color: $nm_bronze;
+}
+ul.list_badges li.badge_single div.badge_header div.wrap_svg svg {
+	fill: $nm_bronze;
+}
+// + badge family + \\
+ul.list_badges li.badge_family {
+	border-color: $nm_silver;
+}
+ul.list_badges li.badge_family div.badge_header {
+	border-bottom-color: $nm_silver;
+}
+ul.list_badges li.badge_family div.badge_header h6,
+ul.list_badges li.badge_family div.badge_header p.option_letter,
+ul.list_badges li.badge_family div.badge_body h3,
+ul.list_badges li.badge_family div.badge_body h3 span.currency,
+ul.list_badges li.badge_family div.badge_body p,
+ul.list_badges li.badge_family div.badge_body a.btn_rnd {
+	color: $nm_silver;
+}
+ul.list_badges li.badge_family div.badge_header div.wrap_svg svg {
+	fill: $nm_silver;
+}
+// + badge annual + \\
+ul.list_badges li.badge_annual {
+	border-color: $nm_gold;
+}
+ul.list_badges li.badge_annual div.badge_header {
+	border-bottom-color: $nm_gold;
+}
+ul.list_badges li.badge_annual div.badge_header h6,
+ul.list_badges li.badge_annual div.badge_header p.option_letter,
+ul.list_badges li.badge_annual div.badge_body h3,
+ul.list_badges li.badge_annual div.badge_body h3 span.currency,
+ul.list_badges li.badge_annual div.badge_body p,
+ul.list_badges li.badge_annual div.badge_body a.btn_rnd {
+	color: $nm_gold;
+}
+ul.list_badges li.badge_annual div.badge_header div.wrap_svg svg {
+	fill: $nm_gold;
+}
+// + badge selected + \\
+ul.list_badges li.selected {
+	border-color: $nm_green;
+}
+ul.list_badges li.selected div.badge_header {
+	border-bottom-color: $nm_green;
+}
+ul.list_badges li.selected div.badge_header h6,
+ul.list_badges li.selected div.badge_body h3,
+ul.list_badges li.selected div.badge_body h3 span.currency {
+	color: $nm_green;
+}
+ul.list_badges li.selected div.badge_header div.wrap_svg svg {
+	fill: $nm_green;
+}
+ul.list_badges li.selected div.badge_body a.btn_rnd {
+	color: $nm_cream;
+	background-color: $nm_green;
+	box-shadow: inset 0 0 0 0.2rem $nm_green; // need to redefine box-shadow since text colour is different
+}
+// --- List Box --- \\
 ol.list_box {
 	counter-reset: ordered-counter;
 	margin-bottom: 3.2rem;
@@ -872,10 +996,14 @@ ul.footer_links {
 	margin-bottom: 4rem;
 }
 ul.footer_links li {
-	margin-bottom: 1.2rem;
+	display: inline-block;
+	margin: 0 2.4rem 0 0;
+}
+ul.footer_links li:last-child {
+	margin-right: 0;
 }
 ul.footer_links li a {
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	color: $nm_L21;
 }
 ul.footer_links li a:hover {
@@ -948,7 +1076,6 @@ section.page_header div.wrap_svg.icon {
 section.page_header div.wrap_svg svg {
 	fill: $nm_cream;
 }
-
 // --- Page Callout --- \\
 section.page_callout {
 	background-color: $nm_orange;
@@ -985,7 +1112,6 @@ section.page_callout article a.btn_rnd:hover {
 section.page_callout article a.btn_rnd:active {
 	color: hsla(0,0%,40%,1);
 }
-
 // --- Page Articles --- \\
 section.page_articles {
 	background-color: $nm_cream;
@@ -1005,13 +1131,13 @@ section.page_articles article h2 {
 	text-transform: uppercase;
 }
 section.page_articles article div[data-container] > p:not([class]) {
-	margin-bottom: 4rem;
+	margin-bottom: 3.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
 section.page_articles article div[data-container] > ul:not([class]) {
-	margin-bottom: 4rem;
+	margin-bottom: 3.2rem;
 }
 section.page_articles article div[data-container] > ul:not([class]) li {
 	margin-bottom: 1rem;
@@ -1029,8 +1155,9 @@ section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
 }
 section.page_articles article div[data-container] > p a[href^="tel:"] {
-	display: block;
-	font-weight: 700;
+	display: table;
+	margin: 0 auto;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 section.page_articles article div[data-container] > p a:hover,
 section.page_articles article div[data-container] > ul:not([class]) li a:hover {
@@ -1120,13 +1247,14 @@ form.form_destination fieldset div.wrap_element {
 	max-width: 39rem;
 	margin: 0 auto 2rem auto;
 }
-form.form_destination fieldset div.wrap_element input[type="text"] {
+form.form_destination fieldset div.wrap_element input[type="text"],
+form.form_destination fieldset div.wrap_element input[type="date"] {
 	padding-right: 4.8rem;
 }
 form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	pointer-events: none;
 	position: absolute;
-	z-index: 201;
+	z-index: 200;
 	top: 1.4rem;
 	right: 1.6rem;
 	width: 2rem;
@@ -1149,7 +1277,7 @@ body.page_home form.form_quote.allow-overflow {
 section.home_articles article ul {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
-	padding: 2.4rem 1.6rem;
+	padding: 2.4rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
 section.home_articles article ul li {
@@ -1171,7 +1299,7 @@ section.quote_header {
 section.quote_header div.wrap_svg.title {
 	max-width: 70.6rem;
 }
-// --- Quote Details --- \\
+// --- Quote Options --- \\
 article.quote_options p.notice {
 	padding: 0 2rem;
 	font-size: 1.3rem;
@@ -1179,45 +1307,51 @@ article.quote_options p.notice {
 	text-align: center;
 	color: $nm_orange;
 }
-// --- Quote Badges --- \\
-ul.quote_badges {
+article.quote_options div.error_message {
+	margin: 0 auto;
+	max-width: 36rem;
+	max-height: 0rem;
+	opacity: 0;
+	overflow: hidden;
+	transform: translateY(-2.4rem) scale(0.8);
+}
+article.quote_options div.error_message span {
+	display: block;
 	margin-bottom: 3.2rem;
+	padding: 1rem;
+	font-size: 1.4rem;
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+	color: $nm_cream;
+	background-color: $nm_red;
+	border-radius: 0.8rem;
 }
-ul.quote_badges li.badge {
-	border-radius: 1.6rem;
+section.error_quote article.quote_options div.error_message {
+	max-height: 10rem;
+	opacity: 1;
+	transform: translateY(0rem) scale(1);
 }
-ul.quote_badges li.badge div.badge_header {
-	position: relative;
-	padding: 1.6rem;
+// --- Quote Badges --- \\
+ul.quote_badges li div.badge_header {
 	text-align: left;
 }
-ul.quote_badges li.badge div.badge_header h6 {
+ul.quote_badges li div.badge_header h6 {
 	font-size: 1.5rem;
 	letter-spacing: 0.1rem;
-	text-transform: uppercase;
 }
-ul.quote_badges li.badge div.badge_header div.wrap_svg {
-	// display: inline-block;
+ul.quote_badges li div.badge_header div.wrap_svg {
 	position: absolute;
-	top: 1rem;
+	top: 1.2rem;
 	right: 1.6rem;
-	height: 2.6rem;
 }
-ul.quote_badges li.badge div.badge_header div.wrap_svg svg {
-	display: inline; // webkit not using [viewBox] approach
-}
-ul.quote_badges li.badge div.badge_body {
-	padding: 2.6rem 1.6rem;
-	text-align: center;
-}
-ul.quote_badges li.badge div.badge_body h3 {
+ul.quote_badges li div.badge_body h3 {
 	display: inline-block;
 	position: relative;
 	margin-bottom: 3.2rem;
 	font-size: 6.8rem;
 	letter-spacing: -0.4rem;
 }
-ul.quote_badges li.badge div.badge_body h3 span.currency {
+ul.quote_badges li div.badge_body h3 span.currency {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -1226,43 +1360,28 @@ ul.quote_badges li.badge div.badge_body h3 span.currency {
 	letter-spacing: 0;
 	text-transform: uppercase;
 }
-ul.quote_badges li.badge div.badge_body a.btn_rnd {
+ul.quote_badges li div.badge_body a.btn_rnd {
 	width: 17.4rem;
 }
-// + badge single + \\
-ul.quote_badges li.badge_single {
-	margin-bottom: 3.2rem;
-	border: 0.2rem solid $nm_green;
+ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
+	padding-left: 2.4rem;
 }
-ul.quote_badges li.badge_single div.badge_header {
-	border-bottom: 0.2rem solid $nm_green;
+ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
+	opacity: 0;
 }
-ul.quote_badges li.badge_single div.badge_header h6,
-ul.quote_badges li.badge_single div.badge_body h3 {
-	color: $nm_green;
+// + selected + \\
+ul.quote_badges li.selected div.badge_body a.btn_rnd span.txt_select {
+	padding-left: 0rem;
 }
+ul.quote_badges li.selected div.badge_body a.btn_rnd span.txt_select span.txt_ed {
+	opacity: 1;
+}
+// + individual svgs + \\
 ul.quote_badges li.badge_single div.badge_header div.wrap_svg {
 	width: 2.6rem; // iOS requires a explicit width
 }
-ul.quote_badges li.badge_single div.badge_header div.wrap_svg svg {
-	fill: $nm_green;
-}
-// + badge yearly + \\
-ul.quote_badges li.badge_yearly {
-	border: 0.2rem solid $nm_orange;
-}
-ul.quote_badges li.badge_yearly div.badge_header {
-	border-bottom: 0.2rem solid $nm_orange;
-}
-ul.quote_badges li.badge_yearly div.badge_header h6,
-ul.quote_badges li.badge_yearly div.badge_body h3 {
-	color: $nm_orange;
-}
-ul.quote_badges li.badge_yearly div.badge_header div.wrap_svg {
+ul.quote_badges li.badge_annual div.badge_header div.wrap_svg {
 	width: 4.4rem; // iOS requires a explicit width
-}
-ul.quote_badges li.badge_yearly div.badge_header div.wrap_svg svg {
-	fill: $nm_orange;
 }
 // --- Quote Details --- \\
 article.quote_details div.details_captured {
@@ -1359,6 +1478,9 @@ article.quote_summary table tbody tr td:first-child {
 article.quote_summary table tbody tr td:last-child {
 	width: 30%;
 	text-align: right;
+}
+article.quote_summary table tbody tr:last-child td {
+	font-size: 1.6rem;
 }
 
 // What's Covered
@@ -1482,96 +1604,27 @@ section.packages_callout {
 	background-image: url('../img/callout_packages.png');
 }
 // --- Packages Badges --- \\
-ul.packages_badges {
-	margin-bottom: 3.2rem;
-}
-ul.packages_badges li.badge {
-	margin: 0 auto;
-	max-width: 42rem;
-	background-color: $nm_cream;
-	border-radius: 1.6rem;
-}
-ul.packages_badges li.badge div.badge_header {
-	position: relative;
-	padding: 2.2rem 1.6rem;
-	text-align: center;
-}
-ul.packages_badges li.badge div.badge_header p.option_letter {
+ul.packages_badges li div.badge_header p.option_letter {
 	position: absolute;
 	top: 1.6rem;
 	left: 1.6rem;
 	font-size: 2.2rem;
 }
-ul.packages_badges li.badge div.badge_header div.wrap_svg {
-	display: inline-block;
-	margin: 0 auto 1.6rem auto;
-	height: 2.6rem;
-}
-ul.packages_badges li.badge div.badge_header h6 {
+ul.packages_badges li div.badge_header h6 {
 	font-size: 1.6rem;
 	font-style: italic;
 	letter-spacing: 0.3rem;
 	line-height: 1.2;
-	text-transform: uppercase;
 }
-ul.packages_badges li.badge div.badge_body {
-	display: table;
-	padding: 2.6rem 1.6rem;
-	text-align: center;
+ul.packages_badges li div.badge_header div.wrap_svg {
+	margin: 0 auto 1.6rem auto;
 }
-ul.packages_badges li.badge div.badge_body p {
+ul.packages_badges li div.badge_body p {
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 1.5rem;
 	font-style: italic;
 	line-height: 1.4;
-}
-// + badge single + \\
-ul.packages_badges li.badge_single {
-	margin-bottom: 3.2rem;
-	border: 0.2rem solid $nm_bronze;
-}
-ul.packages_badges li.badge_single div.badge_header {
-	border-bottom: 0.2rem solid $nm_bronze;
-}
-ul.packages_badges li.badge_single div.badge_header h6,
-ul.packages_badges li.badge_single div.badge_header p.option_letter,
-ul.packages_badges li.badge_single div.badge_body p {
-	color: $nm_bronze;
-}
-ul.packages_badges li.badge_single div.badge_header svg {
-	fill: $nm_bronze;
-}
-// + badge family + \\
-ul.packages_badges li.badge_family {
-	margin-bottom: 3.2rem;
-	border: 0.2rem solid $nm_silver;
-}
-ul.packages_badges li.badge_family div.badge_header {
-	border-bottom: 0.2rem solid $nm_silver;
-}
-ul.packages_badges li.badge_family div.badge_header h6,
-ul.packages_badges li.badge_family div.badge_header p.option_letter,
-ul.packages_badges li.badge_family div.badge_body p {
-	color: $nm_silver;
-}
-ul.packages_badges li.badge_family div.badge_header svg {
-	fill: $nm_silver;
-}
-// + badge annual + \\
-ul.packages_badges li.badge_annual {
-	border: 0.2rem solid $nm_gold;
-}
-ul.packages_badges li.badge_annual div.badge_header {
-	border-bottom: 0.2rem solid $nm_gold;
-}
-ul.packages_badges li.badge_annual div.badge_header h6,
-ul.packages_badges li.badge_annual div.badge_header p.option_letter,
-ul.packages_badges li.badge_annual div.badge_body p {
-	color: $nm_gold;
-}
-ul.packages_badges li.badge_annual div.badge_header svg.svg_ui-globe-double {
-	fill: $nm_gold;
 }
 // --- Packaged Included --- \\
 article.packages_included table {
@@ -1612,6 +1665,10 @@ section.support_header div.wrap_svg.title {
 section.support_callout {
 	background-image: url('../img/callout_support.png');
 }
+section.support_callout p br,
+article.support_contacts p br {
+	display: none; // rene requested a line break... activates at 768px
+}
 section.support_articles article.support_id {
 	position: relative;
 	padding-bottom: 36.2rem;
@@ -1634,11 +1691,25 @@ article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
 	width: 2rem;
 }
 
-// Error 404
+// Partners
 // ----------------------------------------------------------------------------
-section.error_header {
-	background-image: url('../img/bg_home.jpg');
+section.partners_header {
+	background-image: url('../img/bg_partners.jpg');
 }
-section.error_header div.wrap_svg.title {
-	max-width: 50.6rem;
+section.partners_header div.wrap_svg.title {
+	max-width: 74rem;
 }
+article.ambassadors p a[href^="mailto:"] {
+	display: table;
+	margin: 0 auto;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+article.ambassadors ul {
+	list-style: disc;
+	padding: 0 1rem;
+}
+article.ambassadors ul li {
+	font-weight: 700;
+}
+
+

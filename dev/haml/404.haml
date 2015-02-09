@@ -9,17 +9,6 @@
 
 		%main{:role => "main"}
 
-			%section.page_header.error_header
-
-				.wrap_svg.icon
-					%svg.svg_ui-exclaim{:viewbox => "0 0 64 64"}
-						%use{"xlink:href" => "#ui_exclaim"}
-
-				%h1.visuallyhidden Error 404
-				.wrap_svg.title
-					%svg.svg_nm-error{:viewbox => "0 0 506 53"}
-						%use{"xlink:href" => "#nm_error"}
-
 			%section.page_articles.why_articles{"data-container" => "width-padding_1440"}
 
 				%article
@@ -30,11 +19,11 @@
 							%svg.svg_ui-safety
 								%use{"xlink:href" => "#ui_safety"}
 
-						%h2 Oops, missing page!
+						%h2 Page not found!
 
 						%p
 							:plain
-								It appears the page you are looking for does not exist. Please try returning to the <a href="index.html" title="Return Home">home page</a> to find what you are looking for. Alternatively, you can <a href="mailto:info@northman.co" title="Send us an email">send us an email</a> and hopefully we can answer any questions you might have. Good luck!
+								It appears the page you are looking for does not exist. Please return to <a href="index.html" title="Return Home">northman.co</a> or <a href="mailto:info@northman.co" title="Send us an email">shoot us an email</a> if you can&apos;t find what you&apos;re looking for. We&apos;d be happy to help.
 
 						%a.btn_rnd.brd_orange{:href => "mailto:info@northman.co", :title => "Get In Touch"} Get In Touch
 

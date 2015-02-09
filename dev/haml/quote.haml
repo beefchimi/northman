@@ -20,7 +20,7 @@
 					%svg.svg_nm-quote{:viewbox => "0 0 706 70"}
 						%use{"xlink:href" => "#nm_quote"}
 
-			%section.page_articles.quote_articles{"data-container" => "width-padding_1440"}
+			%section#quote_articles.page_articles.quote_articles{"data-container" => "width-padding_1440"}
 
 				%article.quote_options
 
@@ -28,13 +28,25 @@
 
 						%h2 Based on your information, here’s your quote:
 
-						%ul.quote_badges.clearfix
+						.error_message
+							%span Please select a quote.
 
-							%li.badge.badge_single
+						%ul.quote_badges.list_badges.clearfix
+
+							-# If landing on Quote with Family checked:
+								-# #quote_title-1 = "Family Trip"
+								-# #quote_title-2 = "Annual Family Membership"
+								-# price is ???
+							-# else:
+								-# #quote_title-1 = "Single Trip"
+								-# #quote_title-2 = "Annual Membership"
+								-# price is ???
+
+							%li#quote_badge-1.badge.badge_single
 
 								.badge_header
 
-									%h6 Single Trip
+									%h6#quote_title-1 Single Trip
 									.wrap_svg
 										%svg.svg_ui-globe{:viewbox => "0 0 64 64"}
 											%use{"xlink:href" => "#ui_globe"}
@@ -45,13 +57,16 @@
 										$135
 										%span.currency can
 
-									%a.btn_rnd.fill_green{:href => "#", :title => "Buy Now"} Buy Now
+									:plain
+										<a href="#" class="btn_rnd brd_blank" title="Select">
+											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
+										</a>
 
-							%li.badge.badge_yearly
+							%li#quote_badge-2.badge.badge_annual
 
 								.badge_header
 
-									%h6 Yearly Membership
+									%h6#quote_title-2 Annual Membership
 									.wrap_svg
 										%svg.svg_ui-globe-double{:viewbox => "0 0 64 38"}
 											%use{"xlink:href" => "#ui_globe-double"}
@@ -62,7 +77,10 @@
 										$210
 										%span.currency can
 
-									%a.btn_rnd.brd_orange{:href => "#", :title => "Select"} Select
+									:plain
+										<a href="#" class="btn_rnd brd_blank" title="Select">
+											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
+										</a>
 
 						%p.notice * Annual Membership does not include baggage insurance.
 
@@ -128,7 +146,7 @@
 								.accordian_body
 									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
 
-						%a.btn_rnd.brd_orange{:href => "#", :title => "Full Coverage List"} Full Coverage List
+						%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "Full Coverage List"} Full Coverage List
 
 				%article.quote_summary
 
@@ -149,10 +167,17 @@
 									%td $18.00
 
 								%tr
+									%td Admin Fee
+									%td $2.00
+
+								%tr
 									%td Total (CAN)
 									%td $153.00
 
-						%a.btn_rnd.brd_green{:href => "#", :title => "Buy Now"} Buy Now
+						-# might need to be a <button>? should find out more from Matt about how this should work...
+						-# currently using e.preventDefault() on this button if no quote selection
+						-# also relying on "title" attribute to retrieve default "Buy Now" string
+						%a#quote_submit.btn_rnd.brd_green{:href => "#", :title => "Buy Now"} Buy Now
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 

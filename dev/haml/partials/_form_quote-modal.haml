@@ -7,7 +7,8 @@
 			-# receives the value from #input_destination
 			%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => "", :tabindex => "-1"}
 
-			%h5 Edit Details
+			-# "Edit Details" if on Quote page
+			%h5 Get a quote
 
 			.wrap_input.clearfix{"data-container" => "width_1354"}
 
@@ -69,7 +70,7 @@
 								%option{:value => "64"} Yukon
 
 							.dropdown_toggle
-								%span.dropdown_placeholder.truncate Select Your Location
+								%span.dropdown_placeholder.truncate Select location
 								%svg.svg_ui-arrow-down
 									%use{"xlink:href" => "#ui_arrow-down"}
 

@@ -70,20 +70,6 @@
 		padding: 4rem 1.6rem;
 		text-align: center;
 	}
-	// --- Footer Links --- \\
-	ul.footer_links {
-		text-align: center;
-	}
-	ul.footer_links li {
-		display: inline-block;
-		margin: 0 2.4rem 0 0;
-	}
-	ul.footer_links li:last-child {
-		margin-right: 0;
-	}
-	ul.footer_links li a {
-		font-size: 1.4rem;
-	}
 
 // ==|== page styles ==========================================================
 // ============================================================================
@@ -106,17 +92,18 @@
 
 	// Get A Quote
 	// ----------------------------------------------------------------------------
+	// --- Quote Options --- \\
 	article.quote_options p.notice {
 		padding: 0 0 0 50%;
 	}
 	// --- Quote Badges --- \\
-	ul.quote_badges li.badge {
+	ul.quote_badges li {
 		float: left;
 		width: calc(50% - 1rem);
+		margin: 0;
 	}
-	// + badge single + \\
-	ul.quote_badges li.badge_single {
-		margin: 0 2rem 0 0;
+	ul.quote_badges li:first-child {
+		margin-right: 2rem;
 	}
 	// --- Quote Details --- \\
 	article.quote_details div.details_captured ul {
@@ -177,7 +164,8 @@
 
 	// Forms
 	// ----------------------------------------------------------------------------
-	input[type="text"] {
+	input[type="text"],
+	input[type="date"] {
 		padding: 0 4.4rem 0 2rem;
 		height: 5.2rem;
 	}
@@ -216,9 +204,6 @@
 	// + suggestions + \\
 	div.tt-suggestion {
 		padding: 1.7rem 2rem;
-	}
-	div.tt-suggestion p {
-		font-size: 1.8rem;
 	}
 	// --- Form: Quote --- \\
 	form.form_quote div.wrap_input div.wrap_element svg {
@@ -363,7 +348,8 @@
 	form.form_destination fieldset div.wrap_element {
 		margin: 0;
 	}
-	form.form_destination fieldset div.wrap_element input[type="text"] {
+	form.form_destination fieldset div.wrap_element input[type="text"],
+	form.form_destination fieldset div.wrap_element input[type="date"] {
 		height: 6rem;
 		font-size: 2rem;
 	}
@@ -380,6 +366,10 @@
 		height: 6rem;
 		margin: 0;
 		line-height: 6rem;
+	}
+	// + typeahead + \\
+	form.form_destination div.tt-suggestion p {
+		font-size: 1.8rem;
 	}
 
 	// What's Covered
@@ -424,6 +414,13 @@
 		border-left: 0.2rem solid $nm_ash;
 	}
 
+	// Support
+	// ----------------------------------------------------------------------------
+	section.support_callout p br,
+	article.support_contacts p br {
+		display: block;
+	}
+
 }
 
 @media only screen and (min-width: 60em) { // 960px / 16px = 60em
@@ -441,7 +438,7 @@
 	// ----------------------------------------------------------------------------
 	// + list box + \\
 	ol.list_box {
-		margin-bottom: 6rem;
+		margin-bottom: 4.2rem;
 	}
 	ol.list_box li {
 		margin-bottom: 3.2rem;
@@ -464,7 +461,7 @@
 		top: 0;
 		right: 0;
 		left: 0;
-		// background-color: hsla(60,11%,93%,0.96);
+		box-shadow: 0rem 0.1rem 0.2rem hsla(0,0%,0%,0.2);
 	}
 	header div[data-container] {
 		padding: 2.8rem 3.2rem 0 3.2rem;
@@ -544,7 +541,7 @@
 		font-size: 1.9rem;
 	}
 	section.page_callout article p {
-		margin-bottom: 6rem;
+		margin-bottom: 4.2rem;
 		font-size: 1.7rem;
 	}
 	section.page_callout article a.btn_rnd {
@@ -562,12 +559,12 @@
 		margin-bottom: 4.2rem;
 	}
 	section.page_articles article div[data-container] > p:not([class]) {
-		margin-bottom: 6rem;
+		margin-bottom: 4.2rem;
 		font-size: 1.7rem;
 		line-height: 1.6;
 	}
 	section.page_articles article div[data-container] > ul:not([class]) {
-		margin-bottom: 6rem;
+		margin-bottom: 4.2rem;
 	}
 	section.page_articles article div[data-container] > ul:not([class]) li {
 		font-size: 1.7rem;
@@ -591,7 +588,7 @@
 	// + internal table + \\
 	section.page_articles article table tbody tr td {
 		padding: 2.4rem;
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 	}
 
 	// Home Page
@@ -604,6 +601,7 @@
 	section.home_articles article ul {
 		margin-top: 6rem;
 		margin-bottom: 6rem;
+		padding: 4rem;
 		column-count: 3;
 	}
 
@@ -615,31 +613,35 @@
 		line-height: 6rem;
 	}
 	section.quote_articles article div[data-container] > a.btn_rnd {
-		width: 26rem;
+		min-width: 26rem;
+	}
+	// --- Quote Options --- \\
+	article.quote_options div.error_message span {
+		margin-bottom: 5.2rem;
 	}
 	// --- Quote Badges --- \\
-	ul.quote_badges li.badge {
+	ul.quote_badges li {
 		width: calc(50% - 2rem);
 	}
-	ul.quote_badges li.badge div.badge_header {
-		padding: 1.8rem 2.6rem;
+	ul.quote_badges li:first-child {
+		margin-right: 4rem;
 	}
-	ul.quote_badges li.badge div.badge_header div.wrap_svg {
-		top: 1.2rem;
+	ul.quote_badges li div.badge_header {
+		padding-left: 2.6rem;
+		padding-right: 2.6rem;
+	}
+	ul.quote_badges li div.badge_header div.wrap_svg {
 		right: 2.6rem;
 	}
-	ul.quote_badges li.badge div.badge_body {
-		padding: 3.2rem 2rem;
+	ul.quote_badges li div.badge_body {
+		padding-top: 3.2rem;
+		padding-bottom: 3.2rem;
 	}
-	ul.quote_badges li.badge div.badge_body h3 {
+	ul.quote_badges li div.badge_body h3 {
 		font-size: 7.6rem;
 	}
-	ul.quote_badges li.badge div.badge_body h3 span.currency {
+	ul.quote_badges li div.badge_body h3 span.currency {
 		font-size: 1.6rem;
-	}
-	// + badge single + \\
-	ul.quote_badges li.badge_single {
-		margin-right: 4rem;
 	}
 	// --- Quote Details --- \\
 	article.quote_details div.details_captured {
@@ -683,13 +685,17 @@
 	article.quote_summary table {
 		margin-bottom: 6.4rem;
 	}
+	article.quote_summary table tbody tr:last-child td {
+		font-size: 2rem;
+	}
 
 	// Packages
 	// ----------------------------------------------------------------------------
 	// --- Packages Badges --- \\
-	ul.packages_badges li.badge {
+	ul.packages_badges li {
 		float: left;
 		width: calc(33.3333333% - 2.2rem);
+		margin: 0;
 	}
 	ul.packages_badges li.badge div.badge_body {
 		height: 20rem;
@@ -697,7 +703,7 @@
 	// + individual badges + \\
 	ul.packages_badges li.badge_single,
 	ul.packages_badges li.badge_family {
-		margin: 0 3.2rem 0 0;
+		margin-right: 3.2rem;
 	}
 
 	// Support
@@ -794,6 +800,10 @@
 		right: 0;
 		margin: 0;
 	}
+	// --- Home Details --- \\
+	section.home_articles article ul {
+		padding: 4.8rem;
+	}
 
 	// Packages
 	// ----------------------------------------------------------------------------
@@ -801,10 +811,10 @@
 	ul.packages_badges {
 		margin-bottom: 6rem;
 	}
-	ul.packages_badges li.badge {
+	ul.packages_badges li {
 		width: calc(33.3333333% - 4.6rem);
 	}
-	ul.packages_badges li.badge div.badge_body {
+	ul.packages_badges li div.badge_body {
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 	}

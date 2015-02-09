@@ -44,7 +44,7 @@
 						%h2 Why Northman?
 						%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
 
-						%a.btn_rnd.brd_orange{:href => "#", :title => "Find Out More"} Find Out More
+						%a.btn_rnd.brd_orange{:href => "why.html", :title => "Find Out More"} Find Out More
 
 				%article.details_packages
 
@@ -57,7 +57,7 @@
 						%h2 Packages
 						%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, and we can insure a single person or a whole family under one policy. Pick what’s right for you, and if you can’t find it, we’ll help you.
 
-						%a.btn_rnd.brd_orange{:href => "#", :title => "Choose Your Package"} Choose Your Package
+						%a.btn_rnd.brd_orange{:href => "packages.html", :title => "Choose Your Package"} Choose Your Package
 
 				%article.details_coverage
 
@@ -93,8 +93,6 @@
 						%li Off-Piste Skiing &amp; Snowboarding
 						%li Winter Sports
 
-					%a.btn_rnd.brd_orange.modal_open{:href => "#modal_error-60", :title => "The Full List"} The Full List
-
-		= Haml::Engine.new(File.read("dev/haml/partials/_modal_error-60.haml")).render
+					%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "The Full List"} The Full List
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

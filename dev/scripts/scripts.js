@@ -3,11 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Global Variables
 	// ----------------------------------------------------------------------------
-	var elHTML = document.documentElement,
-		elBody = document.body;
+	var elHTML    = document.documentElement,
+		elBody    = document.body;
+
+/*
+	var elHeader  = document.getElementsByTagName('header')[0],
+		scrollPos = 0;
+*/
 
 
-	// Helper: Detmine which transition event to use
+	// Helper: Determine which transition event to use
 	// ----------------------------------------------------------------------------
 	function whichTransitionEvent() {
 
@@ -48,7 +53,32 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	var transitionEvent = whichTransitionEvent(), // listen for a transition
-		animationEvent  = whichAnimationEvent(); // listen for an animation
+		animationEvent  = whichAnimationEvent(); // listen for a animation
+
+
+/*
+	// Helper: Fire Window Resize Event Upon Finish
+	// ----------------------------------------------------------------------------
+	var waitForFinalEvent = (function() {
+
+		var timers = {};
+
+		return function(callback, ms, uniqueId) {
+
+			if (!uniqueId) {
+				uniqueId = 'beefchimi'; // Don't call this twice without a uniqueId
+			}
+
+			if (timers[uniqueId]) {
+				clearTimeout(timers[uniqueId]);
+			}
+
+			timers[uniqueId] = setTimeout(callback, ms);
+
+		};
+
+	})();
+*/
 
 
 	// Helper: Find Parent Element by Class or Tag Name
@@ -80,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var today = new Date(),
 			dd    = today.getDate(),
-			mm    = today.getMonth() + 1, //January is 0!
+			mm    = today.getMonth() + 1, // january is 0
 			yyyy  = today.getFullYear();
 
 		if (dd < 10) {
@@ -91,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			mm = '0' + mm;
 		}
 
-		// today = yyyy + '-' + mm + '-' + dd;
 		today = mm + '/' + dd + '/' + yyyy;
 
 		return today;
@@ -202,6 +231,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+/*
+	// fixedHeader: Toggle class after specified scroll distance
+	// ----------------------------------------------------------------------------
+	function fixedHeader() {
+
+		scrollPos = window.pageYOffset;
+
+		if (scrollPos >= 360) {
+			classie.add(elHeader, 'shadow');
+		} else {
+			classie.remove(elHeader, 'shadow');
+		}
+
+	}
+*/
+
+
 	// secretEmail: Add mailto link to footer
 	// ----------------------------------------------------------------------------
 	function secretEmail() {
@@ -255,13 +301,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// toggleModal:
+	// toggleModal: Open & Close modal windows
 	// ----------------------------------------------------------------------------
 	function toggleModal() {
 
 		var arrModalOpen   = document.getElementsByClassName('modal_open'),
 			arrModalClose  = document.getElementsByClassName('modal_close'),
-			// numModalLength = arrModalOpen.length,
 			elTargetModal;
 
 		// check if a.modal_open exists and is not empty
@@ -341,16 +386,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
-
-/*
-			var elDesiredParent = this.parentNode;
-
-			// cycle upwards from the closest parent of the clicked element,
-			// until we find an element with the attr 'data-modal'
-			while ( !elDesiredParent.getAttribute('data-modal') ) {
-				elDesiredParent = elDesiredParent.parentNode;
-			}
-*/
 
 
 	// selectDropdown: Pair each <select> element with its <ul> sibling
@@ -505,34 +540,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
-/*
-		function homeFail(psd_elInputTypeahead, psd_strPlaceholder4, psd_elTypeaheadWrap) {
-
-			elInputTypeahead.value = '';
-			elInputTypeahead.placeholder = strPlaceholder4;
-			classie.add(elTypeaheadWrap, 'animate_shake');
-
-			// not sure if this is working properly... console.logs +1 each time
-			animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
-				classie.remove(elTypeaheadWrap, 'animate_shake');
-			});
-
-		}
-*/
-
-		typeaheadSuggestion(homeSuccess); // homeFail
+		typeaheadSuggestion(homeSuccess);
 
 	}
-
-
-
-
 
 	if ( classie.has(elBody, 'page_coverage') ) {
 
 		var elFormResponse = document.getElementById('form_response');
 
-		function coverageSuccess(psd_valIndex) {
+		function coverageSuccess() {
 
 			// don't actually need valIndex
 			classie.remove(elFormResponse, 'fail');
@@ -543,9 +559,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		typeaheadSuggestion(coverageSuccess);
 
 	}
-
-
-
 
 
 	// typeaheadSuggestion: Load datalist JSON and populate autocomplete options
@@ -561,17 +574,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			dataRequest      = new XMLHttpRequest(),
 			jsonOptions;
 
-		// Handle state changes for the request.
+		// handle state changes for the request
 		dataRequest.onreadystatechange = function(response) {
 
 			if (dataRequest.readyState === 4) {
 
 				if (dataRequest.status === 200) {
 
-					// Parse the JSON
+					// parse the JSON
 					jsonOptions = JSON.parse(dataRequest.responseText);
 
-					// Update the placeholder text.
+					// update the placeholder text
 					elInputTypeahead.placeholder = strPlaceholder1;
 
 					// should be safe to run our toggle click function
@@ -579,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				} else {
 
-					// An error occured :(
+					// an error occured :(
 					elInputTypeahead.placeholder = strPlaceholder2;
 
 				}
@@ -588,10 +601,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		};
 
-		// Update the placeholder text.
+		// update the placeholder text
 		elInputTypeahead.placeholder = strPlaceholder3;
 
-		// Set up and make the request.
+		// set up and make the request
 		dataRequest.open('GET', strJSONPath, true);
 		dataRequest.send();
 
@@ -605,6 +618,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				valIndex;
 
 			// attached event for form submissions and toggle click
+			// executing same function (validateTypeahead) on typeahead:selected below
+			// pressing enter (submit) does not seem to do anything...
 			elFormTypeahead.addEventListener('submit', validateTypeahead);
 			elFormToggle.addEventListener('click', validateTypeahead);
 
@@ -640,16 +655,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			};
 
-			var $elTypeahead = $('input.input_typeahead'); // already stored as JS variable... need to redefine as jQuery :(
+			var $elTypeahead  = $('input.input_typeahead'), // already stored as JS variable... need to redefine as jQuery :(
+				strOptionName = classie.has(elBody, 'page_home') ? 'countries' : 'activities';
 
 			$elTypeahead.typeahead({
 				highlight: true
 			},
 			{
-				name: 'activities', // 'countries',
+				name: strOptionName,
 				displayKey: 'value',
 				source: substringMatcher(jsonOptions)
-			});
+			}).bind('typeahead:selected', validateTypeahead);
 
 			function validateTypeahead(e) {
 
@@ -690,6 +706,96 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 
 		}
+
+	}
+
+
+	// quoteOptions: Toggle between quote options
+	// ----------------------------------------------------------------------------
+	function quoteOptions() {
+
+		// Form data needs to be sent to the Quote page on load.
+
+		// If landing on Quote with Family checked:
+			// #quote_title-1 = "Family Trip"
+			// #quote_title-2 = "Annual Family Membership"
+			// price is ???
+		// else:
+			// #quote_title-1 = "Single Trip"
+			// #quote_title-2 = "Annual Membership"
+			// price is ???
+
+		// Have not handled family input :checked...
+		// might make more sense to leave this with Matt?
+
+		var arrBadges       = document.getElementsByClassName('badge'),
+			elQuoteSection  = document.getElementById('quote_articles'),
+			elSubmitButton  = document.getElementById('quote_submit'),
+			strDefaultTitle = elSubmitButton.title,
+			strSelectedTitle,
+			scrollOptions   = {
+				speed: 1000,
+				easing: 'easeInOutQuint',
+				updateURL: false
+			};
+
+		for (var i = 0; i < arrBadges.length; i++) {
+			selectQuote(arrBadges[i], i);
+		}
+
+		function selectQuote(thisBadge, index) {
+
+			var elSelectButton = thisBadge.getElementsByClassName('btn_rnd')[0];
+
+			elSelectButton.addEventListener('click', function(e) {
+
+				strSelectedTitle = thisBadge.getElementsByTagName('h6')[0].innerHTML;
+
+				// remove 'selected' class from the badge that is not 'this'
+				if (index === 0) {
+					classie.remove(arrBadges[1], 'selected');
+				} else {
+					classie.remove(arrBadges[0], 'selected');
+				}
+
+				// toggle 'selected' class and set elSubmitButton text
+				if ( classie.has(thisBadge, 'selected') ) {
+					classie.remove(thisBadge, 'selected');
+					elSubmitButton.innerHTML = strDefaultTitle;
+				} else {
+					classie.add(thisBadge, 'selected');
+					elSubmitButton.innerHTML = 'Buy ' + strSelectedTitle;
+				}
+
+				// remove 'error_quote' class if it is present
+				classie.remove(elQuoteSection, 'error_quote');
+
+				e.preventDefault();
+
+			});
+
+		}
+
+		// click event for "Buy Now" submit button
+		elSubmitButton.addEventListener('click', function(e) {
+
+			// if either quote badge has the class 'selected'
+			if ( classie.has(arrBadges[0], 'selected') || classie.has(arrBadges[1], 'selected') ) {
+
+				// proceed with submitting the form
+				console.log('we have a selection! proceed!');
+
+			} else {
+
+				// add error class to parent section...
+				// probably do not need to worry about removing this, successful submit will likely go to a new page
+				classie.add(elQuoteSection, 'error_quote');
+				smoothScroll.animateScroll(null, '#quote_articles', scrollOptions);
+				e.preventDefault();
+
+			}
+
+		});
 
 	}
 
@@ -748,15 +854,40 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// Window Events: On - Scroll, Resize
+	// ----------------------------------------------------------------------------
+/*
+	window.addEventListener('scroll', function(e) {
+
+		fixedHeader();
+
+	}, false);
+
+	window.addEventListener('resize', function(e) {
+
+		// do not fire resize event for every pixel... wait until finished
+		waitForFinalEvent(function() {
+
+			fixedHeader();
+
+		}, 500, 'unique string');
+
+	}, false);
+*/
+
+
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
 	navToggle();
 	secretEmail();
 	toggleAccordian();
 	toggleModal();
-
 	selectDropdown();
 	inputDatepicker(); // should I specify the pages this is required on?
+
+	if ( classie.has(elBody, 'page_quote') ) {
+		quoteOptions();
+	}
 
 
 }, false);
