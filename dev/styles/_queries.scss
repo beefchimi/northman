@@ -622,7 +622,7 @@
 		min-width: 26rem;
 	}
 	// --- Quote Options --- \\
-	article.quote_options div.error_message span {
+	article.quote_options div.error_message p {
 		margin-bottom: 5.2rem;
 	}
 	// --- Quote Badges --- \\
@@ -729,6 +729,32 @@
 
 @media only screen and (min-width: 75em) { // 1200px / 16px = 75em
 
+// ==|== plugins ==============================================================
+// ============================================================================
+
+	// bootstrap-datepicker.js
+	// ----------------------------------------------------------------------------
+	.datepicker-dropdown.datepicker-orient-left::before {
+		left: 2rem;
+	}
+	.datepicker-dropdown.datepicker-orient-left::after {
+		left: 2.1rem;
+	}
+	.datepicker-dropdown.datepicker-orient-right::before {
+		right: 2rem;
+	}
+	.datepicker-dropdown.datepicker-orient-right::after {
+		right: 2.1rem;
+	}
+	.datepicker table tr td,
+	.datepicker table tr th {
+		width: 3.2rem;
+		height: 3.2rem;
+	}
+	.datepicker.dropdown-menu {
+		font-size: 1.3rem;
+	}
+
 // ==|== common sections ======================================================
 // ============================================================================
 
@@ -759,7 +785,7 @@
 		padding-bottom: 11rem;
 	}
 	// --- Form: Quote --- \\
-	body.page_home form.form_quote h6 {
+	body.page_home form.form_quote div.form_header {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}

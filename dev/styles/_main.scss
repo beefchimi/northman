@@ -58,16 +58,13 @@ nav.nav_primary {
 body.page_home form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
-div.accordian_body {
+div.accordian_body,
+form.form_quote div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
-
-
 article.quote_options div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-
-
 // div.wrap_select div.wrap_dropdown,
 [data-overlay],
 ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
@@ -536,8 +533,10 @@ form.form_quote span.txt {
 	text-transform: uppercase;
 	color: $nm_cream;
 }
-form.form_quote h6 {
+form.form_quote div.form_header {
 	padding: 3.2rem 1.6rem;
+}
+form.form_quote h6 {
 	font-style: italic;
 	line-height: 1.4;
 }
@@ -604,6 +603,28 @@ form.form_quote div.wrap_input div.col-4 .btn_rnd {
 form.form_quote div.wrap_input div.col-4 a.btn_rnd {
 	margin-bottom: 3.2rem;
 	width: 16.4rem;
+}
+// + quote form error message + \\
+form.form_quote div.error_message {
+	text-align: center;
+	max-height: 0rem;
+	opacity: 0;
+	overflow: hidden;
+}
+form.form_quote div.error_message p {
+	display: block;
+	margin-bottom: 2rem;
+	font-size: 1.3rem;
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+	color: $nm_orange;
+}
+body.page_home form.form_quote div.error_message p {
+	margin: 3.2rem 0 0 0;
+}
+form.form_quote.error div.error_message {
+	max-height: 10rem;
+	opacity: 1;
 }
 // --- Modal: Quote --- \\
 aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select div.wrap_dropdown.scrollable {
@@ -1036,6 +1057,7 @@ footer p {
 }
 footer p a {
 	font-weight: 700;
+	white-space: nowrap;
 }
 // --- Privacy & Contact Links --- \\
 footer p a,
@@ -1315,7 +1337,7 @@ article.quote_options div.error_message {
 	overflow: hidden;
 	transform: translateY(-2.4rem) scale(0.8);
 }
-article.quote_options div.error_message span {
+article.quote_options div.error_message p {
 	display: block;
 	margin-bottom: 3.2rem;
 	padding: 1rem;
@@ -1668,17 +1690,6 @@ section.support_callout {
 section.support_callout p br,
 article.support_contacts p br {
 	display: none; // rene requested a line break... activates at 768px
-}
-section.support_articles article.support_id {
-	position: relative;
-	padding-bottom: 36.2rem;
-}
-article.support_id img {
-	position: absolute;
-	z-index: 1;
-	bottom: 0;
-	left: 50%;
-	margin-left: -11.7rem; // 234px / 2
 }
 // + individual icons + \\
 article.support_contacts div[data-container] ul.list_svg li.icon_mail {

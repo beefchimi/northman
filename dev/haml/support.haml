@@ -113,10 +113,11 @@
 
 					%div{"data-container" => "width_868"}
 
+						.wrap_svg.article_svg
+							%svg.svg_ui-dogtag
+								%use{"xlink:href" => "#ui_dogtag"}
+
 						%h2 Don’t forget your ID TAG
-
 						%p When you purchase a package with Northman you’ll be given an ID tag. Your ID tag is unique–it has your member number and the emergency call centre number. Wear your tag while traveling and emergency services will know exactly who to call.
-
-						%img{:src => "assets/img/temp_idtag.jpg", :alt => ""}
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Global Variables
 	// ----------------------------------------------------------------------------
-	var elHTML    = document.documentElement,
-		elBody    = document.body;
+	var elHTML           = document.documentElement,
+		elBody           = document.body,
+		numViewportWidth = document.documentElement.clientWidth;
 
 /*
 	var elHeader  = document.getElementsByTagName('header')[0],
@@ -515,13 +516,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var elFormQuote   = document.getElementById('form_quote'),
 			elHiddenInput = document.getElementById('hidden_destination'),
-			// should have a mobile conditional: offset set to 0
+			numOffset     = numViewportWidth < 960 ? 0 : 88, // header becomes fixed at 960px wide
 			scrollOptions = {
 				speed: 1000,
 				easing: 'easeInOutQuint',
 				updateURL: false,
-				offset: 88
+				offset: numOffset
 			};
+
+		// Matt will likely be taking care of all of this form validation,
+		// so we can probably get rid of this function...
+		// only using this on the home page quote form, but the error message is present for the quote modal as well
+		function quoteFormSubmit() {
+
+			var elFormStartDate = elFormQuote.getElementsByClassName('date_start')[0],
+				elFormEndDate   = elFormQuote.getElementsByClassName('date_end')[0],
+				elFormAges      = elFormQuote.getElementsByClassName('age-groups')[0],
+				elFormProvince  = elFormQuote.getElementsByTagName('select')[0];
+
+			elFormQuote.addEventListener('submit', function(e) {
+
+				if ( elFormStartDate.value == '' || elFormEndDate.value == '' || elFormAges.value == '' || elFormProvince.value == '' ) {
+
+					smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
+					classie.add(elFormQuote, 'error');
+
+					e.preventDefault();
+					return false;
+
+				} else {
+
+					classie.remove(elFormQuote, 'error');
+					return true;
+
+				}
+
+			});
+
+		}
 
 		function homeSuccess(psd_valIndex) {
 
@@ -540,6 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		}
 
+		quoteFormSubmit();
 		typeaheadSuggestion(homeSuccess);
 
 	}
@@ -669,7 +702,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			function validateTypeahead(e) {
 
-				e.preventDefault();
+				e.preventDefault(); // required to prevent form submission
 
 				// assign entered input value
 				valTypeahead = elInputTypeahead.value.toLowerCase();
@@ -677,6 +710,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				if ( jsonOptions.existsIgnoreCase(valTypeahead) ) {
 
+					elFormToggle.focus(); // needed to close the form controls on iOS (home and coverage buttons share same ID)
 					successFunction(valIndex);
 
 				} else {
@@ -701,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				}
 
-				return false;
+				return false; // also required to prevent form submission
 
 			}
 

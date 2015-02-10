@@ -10,6 +10,9 @@
 			-# "Edit Details" if on Quote page
 			%h5 Get a quote
 
+			.error_message
+				%p Please fill out all details.
+
 			.wrap_input.clearfix{"data-container" => "width_1354"}
 
 				.column.col-1
@@ -111,4 +114,4 @@
 				.column.col-4
 
 					%a#cancel_quote.cancel_quote.btn_rnd.brd_grey.modal_close{:href => "#modal_quote", :title => "Cancel"} Cancel
-					%button#submit_quote.submit_quote.btn_rnd.fill_orange{:type => "button", :tabindex => "-1"} Confirm
+					%button#submit_quote.submit_quote.btn_rnd.fill_orange{:type => "submit", :tabindex => "-1"} Confirm

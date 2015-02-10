@@ -87,7 +87,6 @@ td, th { padding: 0; }
 
 // bootstrap-datepicker.js
 // ----------------------------------------------------------------------------
-// .datepicker,
 .datepicker * {
 	transition: all 0.3s ease-in-out;
 }
@@ -123,16 +122,16 @@ td, th { padding: 0; }
 	border-bottom: 0.6rem solid hsla(0,0%,100%,1);
 }
 .datepicker-dropdown.datepicker-orient-left::before {
-	left: 0.6rem;
+	left: 5rem; // 0.6rem;
 }
 .datepicker-dropdown.datepicker-orient-left::after {
-	left: 0.7rem;
+	left: 5.1rem; // 0.7rem;
 }
 .datepicker-dropdown.datepicker-orient-right::before {
-	right: 0.6rem;
+	right: 5rem; // 0.6rem;
 }
 .datepicker-dropdown.datepicker-orient-right::after {
-	right: 0.7rem;
+	right: 5.1rem; // 0.7rem;
 }
 .datepicker-dropdown.datepicker-orient-top::before {
 	top: -0.7rem;
@@ -165,8 +164,8 @@ td, th { padding: 0; }
 }
 .datepicker table tr td,
 .datepicker table tr th {
-	width: 3rem;
-	height: 3rem;
+	width: 4.2rem;
+	height: 4.2rem;
 	text-align: center;
 	border: none;
 }
@@ -662,7 +661,6 @@ fieldset[disabled] .datepicker table tr td.active.disabled:hover.active {
 	color: hsla(0,0%,100%,1);
 	background-color: hsla(208,56%,53%,1); // blue 1
 	border-color: hsla(208,56%,47%,1); // dark blue 1
-	// text-shadow: 0 -0.1rem 0 hsla(0,0%,0%,0.25);
 }
 .datepicker table tr td span.active:hover,
 .datepicker table tr td span.active:hover:hover,
@@ -825,7 +823,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 	float: left;
 	min-width: 16rem;
 	list-style: none;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	line-height: 1.428571429;
 	color: hsla(0,0%,20%,1);
 	background-color: hsla(0,0%,100%,1);
