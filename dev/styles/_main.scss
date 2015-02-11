@@ -122,9 +122,9 @@ ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 	animation: shake 0.7s ease-in-out both; // ease-in-out 0.2s forwards;
 }
 // --- FOUT --- \\
-main,
-header,
-footer {
+html:not(.ie9) main,
+html:not(.ie9) header,
+html:not(.ie9) footer {
 	opacity: 0; // begin by setting opacity to 0
 }
 .wf-active main,
