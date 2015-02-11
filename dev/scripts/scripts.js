@@ -850,12 +850,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		$('#datepicker').datepicker({
 			autoclose: true,
 			todayHighlight: true,
-			startDate: dateToday(),
+			startDate: new Date(), // dateToday(),
 			format: 'M d, yyyy'
 		});
 
-		// $dateStart.on('hide', function() {
-		$dateStart.on('changeDate', function() {
+		$dateStart.on('hide', function() {
+		// $dateStart.on('changeDate', function() {
 
 			// changeDate seems to fire 3 times...
 			// but is more accurate to listen for 'changeDate' than 'hide'
@@ -863,7 +863,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			valStart = $dateStart.datepicker('getDate');
 			valEnd   = new Date();
 
-			// calculate date 45 days from dateStart
+			// calculate selectable date range as 45 days from dateStart
 			valEnd.setDate(valStart.getDate() + 45);
 
 			// set min-max date range for dateEnd
@@ -875,14 +875,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			$dateEnd.datepicker('setDate', false);
 			$dateEnd.datepicker('show');
 
-			// $('#helpDate').html('Northman insures trips of up to 45 days.');
 			console.log('Northman insures trips of up to 45 days.');
 
-		});
-
-		$dateEnd.on('hide', function () {
-			// $('#helpDate').html(' &nbsp; ');
-			console.log('dateEnd hide');
 		});
 
 	}

@@ -22,14 +22,14 @@
 					#datepicker.input-daterange.input-group
 
 						.wrap_element
-							%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1"}
+							%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1", :readonly => true}
 							%svg.svg_ui-calendar
 								%use{"xlink:href" => "#ui_calendar"}
 
 						%span.txt Til
 
 						.wrap_element
-							%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1"}
+							%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1", :readonly => true}
 							%svg.svg_ui-calendar
 								%use{"xlink:href" => "#ui_calendar"}
 
