@@ -125,13 +125,11 @@ ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 html:not(.ie9) main,
 html:not(.ie9) header,
 html:not(.ie9) footer {
-	opacity: 0; // begin by setting opacity to 0
+	opacity: 0; // begin by setting opacity to 0 (if not IE9)
 }
 .wf-active main,
 .wf-active header,
 .wf-active footer {
-	// IE9 does not support Animations... we will need to use modernizr to force opacity: 1;
-	// test this thoroughly to make sure it actually works consistently
 	animation: animShow 0.4s ease-in-out forwards;
 }
 
@@ -589,7 +587,8 @@ form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 	text-align: center;
 	color: $nm_cream;
 }
-form.form_quote div.wrap_input div.col-3 div.wrap_select {
+form.form_quote div.wrap_input div.col-3 div.wrap_select,
+form.form_quote div.wrap_input div.col-addon div.wrap_select {
 	margin: 0 auto;
 	width: 24rem;
 	text-align: left;
@@ -629,6 +628,9 @@ form.form_quote.error div.error_message {
 // --- Modal: Quote --- \\
 aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select div.wrap_dropdown.scrollable {
 	height: 23.6rem; // shortened inorder to stay within modal viewport
+}
+aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select div.wrap_dropdown.scrollable {
+	height: 20rem; // shortened inorder to stay within modal viewport
 }
 
 // Buttons
@@ -1176,7 +1178,7 @@ section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
 }
-section.page_articles article div[data-container] > p a[href^="tel:"] {
+section.page_articles article:not(.coverage_dont) div[data-container] > p a[href^="tel:"] {
 	display: table;
 	margin: 0 auto;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;

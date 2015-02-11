@@ -114,9 +114,6 @@
 	article.quote_details div.details_captured ul li {
 		margin-bottom: 1.6rem;
 	}
-	article.quote_details div.details_captured ul li:nth-child(3n) {
-		margin-bottom: 0;
-	}
 	article.quote_details div.details_captured ul li strong {
 		display: inline-block;
 		margin: 0 0.6rem 0 0;
@@ -219,7 +216,7 @@
 	}
 	// --- Modal: Quote --- \\
 	aside.modal_quote {
-		max-height: 60rem;
+		max-height: 75.7rem;
 	}
 	aside.modal_quote form.form_quote div > label,
 	aside.modal_quote form.form_quote div.wrap_input div.wrap_columns,
@@ -233,7 +230,8 @@
 	}
 	aside.modal_quote form.form_quote div.wrap_input div.col-1 span.wrap_checkbox,
 	aside.modal_quote form.form_quote div.wrap_input div.col-2 div.wrap_element,
-	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
+	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select,
+	aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select {
 		margin-left: 0;
 		margin-right: 0;
 	}
@@ -256,6 +254,9 @@
 	}
 	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
 		width: 22.8rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select {
+		width: 29rem;
 	}
 
 	// Buttons
@@ -662,7 +663,7 @@
 	}
 	article.quote_details div.details_captured a.btn_rnd {
 		float: right;
-		margin-top: 0.6rem; // guessing at an amount to visually center the button
+		margin-top: 3.2rem; // guessing at an amount to visually center the button
 	}
 	// + coverage accordian + \\
 	div.accordian {

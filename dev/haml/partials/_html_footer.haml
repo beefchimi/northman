@@ -9,13 +9,13 @@
 			%a{:href => "https://twitter.com/northmanco", :target => "_blank", :title => "Twitter"} Twitter
 
 	%ul.footer_contact
-		%li northman
+		%li Northman
 		%li
 			%a#secret_email{:href => "#", :title => "Email Northman"} email us
 		%li
 			%a{:href => "tel:+1-844-207-7522", :title => "Call us"} +1 (844) 207-7522
 
 	:plain
-		<p>Your privacy is paramount. Please read our <a href="#" title="">privacy policy and terms of service</a>.</p>
+		<p>Your privacy is paramount. Please read our <a href="#" title="View our Terms and Policies">privacy policy and terms of service</a>.</p>
 
 = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render
