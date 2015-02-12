@@ -54,13 +54,13 @@
 		width: 30rem;
 	}
 	// --- Modal: Quote --- \\
-	aside.modal_quote form.form_quote div.wrap_input div.col-4 {
+	aside.modal_quote form.form_quote div.wrap_input div.col-5 {
 		text-align: center;
 	}
-	aside.modal_quote form.form_quote div.wrap_input div.col-4 .btn_rnd {
+	aside.modal_quote form.form_quote div.wrap_input div.col-5 .btn_rnd {
 		display: inline-block;
 	}
-	aside.modal_quote form.form_quote div.wrap_input div.col-4 a.btn_rnd {
+	aside.modal_quote form.form_quote div.wrap_input div.col-5 a.btn_rnd {
 		margin: 0 3.2rem 0 0;
 	}
 
@@ -114,8 +114,11 @@
 	article.quote_details div.details_captured ul li {
 		margin-bottom: 1.6rem;
 	}
-	article.quote_details div.details_captured ul li strong {
+	article.quote_details div.details_captured ul li strong,
+	article.quote_details div.details_captured ul li span {
 		display: inline-block;
+	}
+	article.quote_details div.details_captured ul li strong {
 		margin: 0 0.6rem 0 0;
 	}
 
@@ -231,7 +234,7 @@
 	aside.modal_quote form.form_quote div.wrap_input div.col-1 span.wrap_checkbox,
 	aside.modal_quote form.form_quote div.wrap_input div.col-2 div.wrap_element,
 	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select,
-	aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select {
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select {
 		margin-left: 0;
 		margin-right: 0;
 	}
@@ -255,7 +258,7 @@
 	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
 		width: 22.8rem;
 	}
-	aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select {
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select {
 		width: 29rem;
 	}
 
@@ -689,10 +692,31 @@
 		top: 2.4rem;
 		right: 2.4rem;
 	}
-	div.accordian_body p {
+	div.accordian_body div.wrap_content {
 		padding-top: 2.4rem;
+	}
+	div.accordian_body div.wrap_content h5 {
+		margin-bottom: 2.2rem;
+		font-size: 1.6rem;
+	}
+	div.accordian_body div.wrap_content p,
+	div.accordian_body div.wrap_content ul,
+	div.accordian_body div.wrap_content ol {
+		margin-bottom: 2.6rem;
+	}
+	div.accordian_body div.wrap_content p,
+	div.accordian_body div.wrap_content ul li,
+	div.accordian_body div.wrap_content ol li {
 		font-size: 1.5rem;
+	}
+	div.accordian_body div.wrap_content p {
 		line-height: 1.5;
+	}
+	div.accordian_body div.wrap_content ul li,
+	div.accordian_body div.wrap_content ol li {
+		margin-bottom: 1rem;
+		padding-left: 1.6rem;
+		line-height: 1.4;
 	}
 	// --- Quote Summary --- \\
 	article.quote_summary table {
@@ -829,11 +853,11 @@
 	body.page_home form.form_quote div.wrap_input div.col-3 {
 		width: 56.462585%; // 332px / 588px = 0.56462585
 	}
-	body.page_home form.form_quote div.wrap_input div.col-4 {
+	body.page_home form.form_quote div.wrap_input div.col-5 {
 		position: relative;
 		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
-	body.page_home form.form_quote div.wrap_input div.col-4 button {
+	body.page_home form.form_quote div.wrap_input div.col-5 button {
 		position: absolute;
 		top: 7.6rem;
 		right: 0;
@@ -890,7 +914,7 @@
 	body.page_home form.form_quote div.wrap_input div.col-3 {
 		width: 34.2rem;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-4 {
+	body.page_home form.form_quote div.wrap_input div.col-5 {
 		width: 25.6rem;
 	}
 

@@ -151,7 +151,7 @@ html:not(.ie9) footer {
 	height: 100%;
 }
 .wrap_svg svg[viewBox] {
-	display: inline;
+	display: inline; // this selector does not seem to work in webkit
 }
 // --- Containers --- \\
 [data-container] {
@@ -588,18 +588,18 @@ form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 	color: $nm_cream;
 }
 form.form_quote div.wrap_input div.col-3 div.wrap_select,
-form.form_quote div.wrap_input div.col-addon div.wrap_select {
+form.form_quote div.wrap_input div.col-4 div.wrap_select {
 	margin: 0 auto;
 	width: 24rem;
 	text-align: left;
 }
-form.form_quote div.wrap_input div.col-4 .btn_rnd {
+form.form_quote div.wrap_input div.col-5 .btn_rnd {
 	padding: 0 3.2rem;
 	height: 6.8rem;
 	font-size: 1.9rem;
 	line-height: 6.8rem;
 }
-form.form_quote div.wrap_input div.col-4 a.btn_rnd {
+form.form_quote div.wrap_input div.col-5 a.btn_rnd {
 	margin-bottom: 3.2rem;
 	width: 16.4rem;
 }
@@ -629,7 +629,7 @@ form.form_quote.error div.error_message {
 aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select div.wrap_dropdown.scrollable {
 	height: 23.6rem; // shortened inorder to stay within modal viewport
 }
-aside.modal_quote form.form_quote div.wrap_input div.col-addon div.wrap_select div.wrap_dropdown.scrollable {
+aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select div.wrap_dropdown.scrollable {
 	height: 20rem; // shortened inorder to stay within modal viewport
 }
 
@@ -1424,8 +1424,11 @@ article.quote_details div.details_captured ul li {
 article.quote_details div.details_captured ul li:last-child {
 	margin-bottom: 0;
 }
-article.quote_details div.details_captured ul li strong {
+article.quote_details div.details_captured ul li strong,
+article.quote_details div.details_captured ul li span {
 	display: block;
+}
+article.quote_details div.details_captured ul li strong {
 	margin-bottom: 0.6rem;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -1470,11 +1473,53 @@ div.accordian_body {
 	opacity: 0;
 	overflow: hidden;
 }
-div.accordian_body p {
-	padding-top: 1.6rem;
+div.accordian_body div.wrap_content {
+	padding-top: 2rem;
+}
+div.accordian_body div.wrap_content h5 {
+	margin-bottom: 1.6rem;
+	font-size: 1.3rem;
+	line-height: 1.2;
+}
+div.accordian_body div.wrap_content p,
+div.accordian_body div.wrap_content ul,
+div.accordian_body div.wrap_content ol {
+	margin-bottom: 2rem;
+}
+div.accordian_body div.wrap_content p,
+div.accordian_body div.wrap_content ul li,
+div.accordian_body div.wrap_content ol li {
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
+}
+div.accordian_body div.wrap_content p {
 	line-height: 1.4;
+}
+div.accordian_body div.wrap_content ul,
+div.accordian_body div.wrap_content ol {
+}
+div.accordian_body div.wrap_content ul li,
+div.accordian_body div.wrap_content ol li {
+	position: relative;
+	margin-bottom: 0.6rem;
+	padding-left: 1rem;
+	line-height: 1.3;
+}
+div.accordian_body div.wrap_content ul li::before {
+	content: "\2022"; // bullet
+	display: block;
+	position: absolute;
+	top: -0.1rem;
+	left: 0;
+}
+div.accordian_body div.wrap_content p:last-child,
+div.accordian_body div.wrap_content ul:last-child,
+div.accordian_body div.wrap_content ol:last-child {
+	margin-bottom: 0;
+}
+div.accordian_body div.wrap_content ul li:last-child,
+div.accordian_body div.wrap_content ol li:last-child {
+	margin-bottom: 0;
 }
 // + interaction + \\
 a.accordian_toggle:hover div.wrap_svg svg {
@@ -1488,7 +1533,7 @@ a.accordian_toggle:active div.wrap_svg svg {
 	transform: rotate(180deg);
 }
 .toggle_row div.accordian_body {
-	max-height: 60rem;
+	max-height: 160rem;
 	opacity: 1;
 }
 // --- Quote Summary --- \\

@@ -95,75 +95,34 @@
 
 							%ul
 								%li
-									%strong Province of Residence:
-									Ontario
+									%strong.details_label Province of Residence:
+									%span.details_data Ontario
 								%li
-									%strong Start Date:
-									Nov 6, 2015
+									%strong.details_label Start Date:
+									%span.details_data Nov 6, 2015
 								%li
-									%strong End Date:
-									Nov 11, 2015
+									%strong.details_label End Date:
+									%span.details_data Nov 11, 2015
 								%li
-									%strong Family:
-									Yes
+									%strong.details_label Family:
+									%span.details_data Yes
 								%li
-									%strong Age(s):
-									18, 19, 34, 41
+									%strong.details_label Age(s):
+									%span.details_data 18, 19, 34, 41
 								%li
-									%strong Covered For:
-									35 days
+									%strong.details_label Covered For:
+									%span.details_data 35 days
 								%li
-									%strong Trip Cancellation:
-									$3,000
+									%strong.details_label Trip Cancellation:
+									%span.details_data $3,000
 								%li
-									%strong Trip Delay:
-									$25,000
+									%strong.details_label Trip Delay:
+									%span.details_data $25,000
 
 							%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details
 
-						%h2 Single Trip Coverage Includes:
-
-						.accordian
-
-							.accordian_row
-								.accordian_header
-									%h4 Emergency Medical and Evacuation Coverage $5,000,000 per trip
-									%a.accordian_toggle{:href => "#", :title => "Expand"}
-										.wrap_svg
-											%svg.svg_ui-arrow-down
-												%use{"xlink:href" => "#ui_arrow-down"}
-								.accordian_body
-									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
-
-							.accordian_row
-								.accordian_header
-									%h4 Accidental Death and Dismemberment
-									%a.accordian_toggle{:href => "#", :title => "Expand"}
-										.wrap_svg
-											%svg.svg_ui-arrow-down
-												%use{"xlink:href" => "#ui_arrow-down"}
-								.accordian_body
-									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
-
-							.accordian_row
-								.accordian_header
-									%h4 Trip Cancelation and Delay
-									%a.accordian_toggle{:href => "#", :title => "Expand"}
-										.wrap_svg
-											%svg.svg_ui-arrow-down
-												%use{"xlink:href" => "#ui_arrow-down"}
-								.accordian_body
-									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
-
-							.accordian_row
-								.accordian_header
-									%h4 Baggage Coverage
-									%a.accordian_toggle{:href => "#", :title => "Expand"}
-										.wrap_svg
-											%svg.svg_ui-arrow-down
-												%use{"xlink:href" => "#ui_arrow-down"}
-								.accordian_body
-									%p Our coverage is designed for those with a sense of adventure. Those who travel to see the world from a different perspective, not a different swimming pool. Whether you’re zip-lining in Mexico or mountain biking across Africa, you’re covered, plain and simple.
+						= Haml::Engine.new(File.read("dev/haml/partials/_quote_details-single.haml")).render
+						-# = Haml::Engine.new(File.read("dev/haml/partials/_quote_details-annual.haml")).render
 
 						%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "Full Coverage List"} Full Coverage List
 
