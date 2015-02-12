@@ -11,11 +11,11 @@
 	%ul.footer_contact
 		%li Northman
 		%li
-			%a#secret_email{:href => "#", :title => "Email Northman"} email us
+			%a.email_secret.email_info.email_replace{:href => "#", :title => "Email Northman"} email us
 		%li
 			%a{:href => "tel:+1-844-207-7522", :title => "Call us"} +1 (844) 207-7522
 
 	:plain
-		<p>Your privacy is paramount. Please read our <a href="#" title="View our Terms and Policies">privacy policy and terms of service</a>.</p>
+		<p>Your privacy is paramount. Please read our <a href="#" title="View our Privacy Policy">privacy policy</a> and <a href="#" title="View our Terms of Service">terms of service</a>.</p>
 
 = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

@@ -55,7 +55,7 @@ div.form_response div {
 nav.nav_primary {
 	transition: max-height 0.4s ease-in-out;
 }
-body.page_home form.form_quote {
+body.home form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
 div.accordian_body,
@@ -618,7 +618,7 @@ form.form_quote div.error_message p {
 	text-transform: uppercase;
 	color: $nm_orange;
 }
-body.page_home form.form_quote div.error_message p {
+body.home form.form_quote div.error_message p {
 	margin: 3.2rem 0 0 0;
 }
 form.form_quote.error div.error_message {
@@ -1286,15 +1286,15 @@ form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
 	fill: $nm_orange;
 }
 // --- Form: Quote --- \\
-body.page_home form.form_quote {
+body.home form.form_quote {
 	max-height: 0;
 	overflow-y: hidden;
 	background-color: $nm_L7;
 }
-body.page_home form.form_quote.reveal {
+body.home form.form_quote.reveal {
 	max-height: 99rem;
 }
-body.page_home form.form_quote.allow-overflow {
+body.home form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
 // --- Home Details --- \\

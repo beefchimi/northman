@@ -253,14 +253,36 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function secretEmail() {
 
-		var mailLink = document.getElementById('secret_email'),
-			prefix    = 'mailto',
-			local    = 'info',
-			domain   = 'northman',
-			suffix    = 'co';
+		var arrLinks     = document.getElementsByClassName('email_secret'),
+			prefix        = 'mailto',
+			localInfo    = 'info',
+			localHello   = 'hello',
+			localSupport = 'support',
+			domain       = 'northman',
+			suffix        = 'co',
+			localThis;
 
-		mailLink.setAttribute('href', prefix + ':' + local + '@' + domain + '.' + suffix);
-		mailLink.innerHTML = local + '@' + domain + '.' + suffix;
+		// update email address for each 'email_secret' found
+		for (var i = 0; i < arrLinks.length; i++) {
+
+			// is this a 'info' or 'support' link?
+			if ( classie.has(arrLinks[i], 'email_info') ) {
+				localThis = localInfo;
+			} else if ( classie.has(arrLinks[i], 'email_hello') ) {
+				localThis = localHello;
+			} else {
+				localThis = localSupport;
+			}
+
+			// do we need to replace the inner text as well?
+			if ( classie.has(arrLinks[i], 'email_replace') ) {
+				arrLinks[i].innerHTML = localThis + '@' + domain + '.' + suffix;
+			}
+
+			// update the href
+			arrLinks[i].setAttribute('href', prefix + ':' + localThis + '@' + domain + '.' + suffix);
+
+		}
 
 	}
 
@@ -512,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Typeahead: code to execute only on pages using typeahead.js
 	// ----------------------------------------------------------------------------
-	if ( classie.has(elBody, 'page_home') ) {
+	if ( classie.has(elBody, 'home') ) {
 
 		var elFormQuote   = document.getElementById('form_quote'),
 			elHiddenInput = document.getElementById('hidden_destination'),
@@ -577,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	}
 
-	if ( classie.has(elBody, 'page_coverage') ) {
+	if (elBody.id === 'whats-covered') {
 
 		var elFormResponse = document.getElementById('form_response');
 
@@ -689,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			};
 
 			var $elTypeahead  = $('input.input_typeahead'), // already stored as JS variable... need to redefine as jQuery :(
-				strOptionName = classie.has(elBody, 'page_home') ? 'countries' : 'activities';
+				strOptionName = classie.has(elBody, 'home') ? 'countries' : 'activities';
 
 			$elTypeahead.typeahead({
 				highlight: true
@@ -715,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				} else {
 
-					if ( classie.has(elBody, 'page_coverage') ) {
+					if (elBody.id === 'whats-covered') {
 
 						classie.remove(elFormResponse, 'success');
 						classie.add(elFormResponse, 'fail');
@@ -913,7 +935,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	selectDropdown();
 	inputDatepicker(); // should I specify the pages this is required on?
 
-	if ( classie.has(elBody, 'page_quote') ) {
+	if (elBody.id === 'quote') {
 		quoteOptions();
 	}
 

@@ -816,48 +816,48 @@
 		padding-bottom: 11rem;
 	}
 	// --- Form: Quote --- \\
-	body.page_home form.form_quote div.form_header {
+	body.home form.form_quote div.form_header {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	body.page_home form.form_quote div.wrap_input div.wrap_columns {
+	body.home form.form_quote div.wrap_input div.wrap_columns {
 		border-top: none;
 		float: left;
 		width: 43.426883%; // 588px / 1354px = 0.43426883
 	}
-	body.page_home form.form_quote div.wrap_input div.column {
+	body.home form.form_quote div.wrap_input div.column {
 		float: left;
 		padding: 4rem 0;
 		min-height: 22.8rem; // calculated height of tallest div... needed for borders to reach bottom
 		border-top: none;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-1,
-	body.page_home form.form_quote div.wrap_input div.col-3 {
+	body.home form.form_quote div.wrap_input div.col-1,
+	body.home form.form_quote div.wrap_input div.col-3 {
 		border-right: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
-	body.page_home form.form_quote div.wrap_input div.col-1 {
+	body.home form.form_quote div.wrap_input div.col-1 {
 		width: 37.666174%; // 510px / 1354px = 0.37666174
 		text-align: left;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-2,
-	body.page_home form.form_quote div.wrap_input div.col-3 {
+	body.home form.form_quote div.wrap_input div.col-2,
+	body.home form.form_quote div.wrap_input div.col-3 {
 		display: block;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-2 {
+	body.home form.form_quote div.wrap_input div.col-2 {
 		width: 43.537415%; // 256px / 588px = 0.43537415
 	}
-	body.page_home form.form_quote div.wrap_input div.col-2 div.wrap_element p {
+	body.home form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-3 {
+	body.home form.form_quote div.wrap_input div.col-3 {
 		width: 56.462585%; // 332px / 588px = 0.56462585
 	}
-	body.page_home form.form_quote div.wrap_input div.col-5 {
+	body.home form.form_quote div.wrap_input div.col-5 {
 		position: relative;
 		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
-	body.page_home form.form_quote div.wrap_input div.col-5 button {
+	body.home form.form_quote div.wrap_input div.col-5 button {
 		position: absolute;
 		top: 7.6rem;
 		right: 0;
@@ -901,20 +901,20 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	body.page_home form.form_quote div.wrap_input div.wrap_columns {
+	body.home form.form_quote div.wrap_input div.wrap_columns {
 		width: 61.8rem;
 	}
 	// + individual columns + \\
-	body.page_home form.form_quote div.wrap_input div.col-1 {
+	body.home form.form_quote div.wrap_input div.col-1 {
 		width: 48rem;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-2 {
+	body.home form.form_quote div.wrap_input div.col-2 {
 		width: 27.6rem;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-3 {
+	body.home form.form_quote div.wrap_input div.col-3 {
 		width: 34.2rem;
 	}
-	body.page_home form.form_quote div.wrap_input div.col-5 {
+	body.home form.form_quote div.wrap_input div.col-5 {
 		width: 25.6rem;
 	}
 

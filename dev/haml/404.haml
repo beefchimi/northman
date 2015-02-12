@@ -26,8 +26,8 @@
 
 						%p
 							:plain
-								It appears the page you are looking for does not exist. Please return to <a href="index.html" title="Return Home">northman.co</a> or <a href="mailto:info@northman.co" title="Send us an email">shoot us an email</a> if you can&apos;t find what you&apos;re looking for. We&apos;d be happy to help.
+								It appears the page you are looking for does not exist. Please return to <a href="index.html" title="Return Home">northman.co</a> or <a href="#" class="email_secret email_info" title="Send us an email">shoot us an email</a> if you can&apos;t find what you&apos;re looking for. We&apos;d be happy to help.
 
-						%a.btn_rnd.brd_orange{:href => "mailto:info@northman.co", :title => "Get In Touch"} Get In Touch
+						%a.btn_rnd.brd_orange.email_secret.email_info{:href => "#", :title => "Get In Touch"} Get In Touch
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
