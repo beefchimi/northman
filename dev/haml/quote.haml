@@ -10,6 +10,9 @@
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
+		-# for Wordpress only
+		-# = Haml::Engine.new(File.read("dev/haml/partials/_php_stripe.haml")).render
+
 		%main{:role => "main"}
 
 			%section.page_header.quote_header

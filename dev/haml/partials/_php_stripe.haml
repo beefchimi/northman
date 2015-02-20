@@ -1,0 +1,48 @@
+:plain
+	function add_this_script_footer() {
+
+		global $stripe;
+		global $quote;
+		global $user;
+		static $js;
+		$js = '
+
+			<script src="https://checkout.stripe.com/checkout.js"></script>
+
+			<script>
+			var handler = StripeCheckout.configure({
+				key: "'.  $stripe['publishable_key'] .'",
+				image: "/site/northman.png",
+				token: function(token) {
+					var form = $("#policy-form");
+					form.append($(\'<input type="hidden" name="stripeToken" />\').val(token.id));
+					form.append($(\'<input type="hidden" name="stripeEmail" />\').val(token.email));
+					form.submit();
+				}
+			});
+			$("#quote_submit").on("click", function(e) {
+				this.disabled = true;
+				handler.open({
+					name: "Northman Demo Site",
+					description: "Single Trip Policy ($'. $quote->getTotal()/100 .')",
+					amount: '. $quote->getTotal()/100 . ',
+					currency: "CAD",
+					email: "'.  $user->getEmail() . '",
+					panelLabel: "Pay $'. $quote->getTotal()/100 .'",
+					allowRememberMe: false
+				});
+				e.preventDefault();
+			});
+			// Close Checkout on page navigation
+			$(window).on("popstate", function() {
+				handler.close();
+			});
+			</script>
+
+		';
+
+		echo $js;
+
+	}
+
+	// add_action('wp_footer', 'add_this_script_footer', 20);
