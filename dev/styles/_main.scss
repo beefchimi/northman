@@ -158,6 +158,9 @@ html:not(.ie9) footer {
 	margin-left: auto;
 	margin-right: auto;
 }
+[data-container="width-padding_1440"] {
+	max-width: 150.4rem;	 // padding applied at 768px
+}
 [data-container="width_1354"] {
 	max-width: 135.4rem;
 }
@@ -1774,4 +1777,40 @@ article.ambassadors ul li::before {
 	top: -0.2rem;
 	left: -1.8rem;
 	font-size: 1.8rem;
+}
+
+// Thanks
+// ----------------------------------------------------------------------------
+body.page-template-tpl-thanks-php {
+	background-color: $nm_orange;
+}
+section.thanks_articles {
+	background-color: transparent;
+}
+section.thanks_articles article.thank-you {
+	color: $nm_cream;
+	// border-bottom: none;
+}
+section.thanks_articles article.thank-you div.wrap_svg svg {
+	fill: $nm_cream;
+}
+section.thanks_articles article.thank-you h1 {
+	margin-bottom: 4rem;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+	font-size: 4.8rem;
+	font-style: italic;
+	letter-spacing: 0.8rem;
+	text-transform: uppercase;
+}
+// + button + \\
+section.thanks_articles article.thank-you a.brd_cream:hover {
+	color: hsla(0,0%,20%,1);
+}
+section.thanks_articles article.thank-you a.brd_cream:active {
+	color: hsla(0,0%,40%,1);
+}
+// + temp + \\
+body.page-template-tpl-thanks-php footer {
+	display: none;
+	visibility: hidden;
 }

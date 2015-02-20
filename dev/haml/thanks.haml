@@ -12,22 +12,22 @@
 
 		%main{:role => "main"}
 
-			%section.page_articles.error_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.thanks_articles{"data-container" => "width-padding_1440"}
 
-				%article.oops
+				%article.thank-you
 
-					%div{"data-container" => "width_868"}
+					%div{"data-container" => "width_720"}
 
 						.wrap_svg.article_svg
-							%svg.svg_ui-safety
-								%use{"xlink:href" => "#ui_safety"}
+							%svg.svg_ui-thumb
+								%use{"xlink:href" => "#ui_thumb"}
 
-						%h2 Page not found!
+						%h1 Done.
+						%h2 You're Covered.
 
-						%p
-							:plain
-								It appears the page you are looking for does not exist. Please return to <a href="index.html" title="Return Home">northman.co</a> or <a href="#" class="email_secret email_info" title="Send us an email">shoot us an email</a> if you can&apos;t find what you&apos;re looking for. We&apos;d be happy to help.
+						%p You're officially covered for your trip as of this moment. All you need to do is hang on to your confirmation email, which has been sent to you. If you're a first time customer, a physical welcome package will arrive in the mail. Have a great trip!
 
-						%a.btn_rnd.brd_orange.email_secret.email_info{:href => "#", :title => "Get In Touch"} Get In Touch
+						%a.btn_rnd.brd_cream{:href => "#", :title => "Back To Site"} Back To Site
 
+		-# do not output <footer> for this page
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

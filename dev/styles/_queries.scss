@@ -756,6 +756,36 @@
 		width: 2.3rem;
 	}
 
+	// Thanks
+	// ----------------------------------------------------------------------------
+	section.thanks_articles article.thank-you div.wrap_svg.article_svg {
+		width: 12rem;
+		height: 12rem;
+	}
+	section.thanks_articles article.thank-you h1 {
+		margin-bottom: 10rem;
+		font-size: 6.8rem;
+		letter-spacing: 1.2rem;
+	}
+	section.thanks_articles article.thank-you h2 {
+		margin-bottom: 2rem;
+	}
+	section.thanks_articles article.thank-you div[data-container] > p:not([class]) {
+		margin-bottom: 6.4rem;
+	}
+	// + button + \\
+	section.thanks_articles article.thank-you a.brd_cream:hover {
+		color: hsla(0,0%,20%,1);
+	}
+	section.thanks_articles article.thank-you a.brd_cream:active {
+		color: hsla(0,0%,40%,1);
+	}
+	// + temp + \\
+	body.page-template-tpl-thanks-php footer {
+		display: none;
+		visibility: hidden;
+	}
+
 }
 
 @media only screen and (min-width: 75em) { // 1200px / 16px = 75em
@@ -924,12 +954,6 @@
 	ul.packages_badges li.badge div.badge_body {
 		height: 16rem;
 	}
-
-}
-
-@media only screen and (min-width: 90em) { // 1440px / 16px = 90em
-
-
 
 }
 
