@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 */
 
 
-	// Helper: Determine which transition event to use
+	// Helper: Check when a CSS transition or animation has ended
 	// ----------------------------------------------------------------------------
 	function whichTransitionEvent() {
 
