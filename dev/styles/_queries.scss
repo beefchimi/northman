@@ -105,20 +105,20 @@
 	ul.quote_badges li:first-child {
 		margin-right: 2rem;
 	}
-	// --- Quote Details --- \\
-	article.quote_details div.details_captured ul {
+	// --- Details Captured --- \\
+	div.details_captured ul {
 		text-align: left;
 		column-count: 2;
 		column-gap: 2rem;
 	}
-	article.quote_details div.details_captured ul li {
+	div.details_captured ul li {
 		margin-bottom: 1.6rem;
 	}
-	article.quote_details div.details_captured ul li strong,
-	article.quote_details div.details_captured ul li span {
+	div.details_captured ul li strong,
+	div.details_captured ul li span {
 		display: inline-block;
 	}
-	article.quote_details div.details_captured ul li strong {
+	div.details_captured ul li strong {
 		margin: 0 0.6rem 0 0;
 	}
 
@@ -374,6 +374,31 @@
 	// + typeahead + \\
 	form.form_destination div.tt-suggestion p {
 		font-size: 1.8rem;
+	}
+	// --- Quote Required --- \\
+	form.form_required div.wrap_input {
+		max-width: none;
+	}
+	form.form_required div.wrap_input div.wrap_element {
+		margin-bottom: 2rem;
+	}
+	form.form_required div.wrap_input div.wrap_element:last-child {
+		margin-bottom: 0;
+	}
+	form.form_required div.wrap_input div.wrap_element {
+		float: left;
+		width: calc(50% - 1rem);
+	}
+	form.form_required div.wrap_input div.wrap_element.required_birthday,
+	form.form_required div.wrap_input div.wrap_element.required_beneficiary,
+	form.form_required div.wrap_input div.wrap_element.required_address,
+	form.form_required div.wrap_input div.wrap_element.required_postal {
+		margin-right: 2rem;
+	}
+	// + required: traveller + \\
+	form.form_required div.wrap_input div.wrap_element.required_fname,
+	form.form_required div.wrap_input div.wrap_element.required_lname {
+		float: right;
 	}
 
 	// What's Covered
@@ -632,6 +657,9 @@
 		min-width: 26rem;
 	}
 	// --- Quote Options --- \\
+	article.quote_options p.notice {
+		margin-bottom: 6rem;
+	}
 	article.quote_options div.error_message p {
 		margin-bottom: 5.2rem;
 	}
@@ -659,22 +687,21 @@
 	ul.quote_badges li div.badge_body h3 span.currency {
 		font-size: 1.6rem;
 	}
-	// --- Quote Details --- \\
-	article.quote_details div.details_captured {
-		margin-bottom: 6.4rem;
+	// --- Details Captured --- \\
+	div.details_captured {
 		padding: 2.4rem;
 	}
-	article.quote_details div.details_captured ul {
+	div.details_captured ul {
 		float: left;
 		margin-bottom: 0;
 		width: 75%;
 		column-gap: 3.2rem;
 	}
-	article.quote_details div.details_captured a.btn_rnd {
+	div.details_captured a.btn_rnd {
 		float: right;
-		margin-top: 3.2rem; // guessing at an amount to visually center the button
+		margin-top: 2rem; // guessing at an amount to visually center the button
 	}
-	// + coverage accordian + \\
+	// --- Quote Details --- \\
 	div.accordian {
 		margin-bottom: 6.4rem;
 	}
@@ -719,11 +746,48 @@
 		line-height: 1.4;
 	}
 	// --- Quote Summary --- \\
-	article.quote_summary table {
-		margin-bottom: 6.4rem;
-	}
 	article.quote_summary table tbody tr:last-child td {
 		font-size: 2rem;
+	}
+	// --- Quote Required --- \\
+	form.form_required div.wrap_input {
+		margin-bottom: 6rem;
+	}
+	form.form_required div.wrap_input.required_details {
+		margin-bottom: 8rem;
+	}
+	form.form_required div.wrap_input div.wrap_element {
+		margin-bottom: 0;
+	}
+	form.form_required div.wrap_input div.wrap_element.required_fname,
+	form.form_required div.wrap_input div.wrap_element.required_lname,
+	form.form_required div.wrap_input div.wrap_element.required_city {
+		margin-right: 2rem;
+	}
+	form.form_required div.wrap_input div.wrap_element.required_beneficiary,
+	form.form_required div.wrap_input div.wrap_element.required_telephone {
+		margin-right: 0;
+		width: calc(32%);
+	}
+	form.form_required div.wrap_input div.wrap_element.required_birthday,
+	form.form_required div.wrap_input div.wrap_element.required_address {
+		width: calc(28% - 2rem);
+	}
+	form.form_required div.wrap_input div.wrap_element.required_fname,
+	form.form_required div.wrap_input div.wrap_element.required_lname,
+	form.form_required div.wrap_input div.wrap_element.required_city,
+	form.form_required div.wrap_input div.wrap_element.required_postal {
+		width: calc(20% - 2rem);
+	}
+	form.form_required div.wrap_input div.wrap_element.required_fname,
+	form.form_required div.wrap_input div.wrap_element.required_lname {
+		float: left;
+	}
+	// + required: birthday + \\
+	form.form_required div.wrap_input div.wrap_element.required_birthday svg {
+		right: 1.8rem;
+		width: 2rem;
+		height: 2rem;
 	}
 
 	// Packages

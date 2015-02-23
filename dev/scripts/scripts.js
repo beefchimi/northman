@@ -786,7 +786,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var arrBadges       = document.getElementsByClassName('badge'),
 			elQuoteSection  = document.getElementById('quote_articles'),
-			elSubmitButton  = document.getElementById('quote_submit'),
+			elSubmitButton  = document.getElementById('required_submit'),
 			strDefaultTitle = elSubmitButton.title,
 			strSelectedTitle,
 			scrollOptions   = {

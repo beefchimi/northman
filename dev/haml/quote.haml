@@ -90,10 +90,6 @@
 
 						%p.notice * Annual Membership does not include baggage insurance.
 
-				%article.quote_details
-
-					%div{"data-container" => "width_868"}
-
 						.details_captured.clearfix
 
 							%ul
@@ -123,6 +119,10 @@
 									%span.details_data $25,000
 
 							%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details
+
+				%article.quote_details
+
+					%div{"data-container" => "width_868"}
 
 						= Haml::Engine.new(File.read("dev/haml/partials/_quote_details-single.haml")).render
 						-# = Haml::Engine.new(File.read("dev/haml/partials/_quote_details-annual.haml")).render
@@ -155,10 +155,15 @@
 									%td Total (CAN)
 									%td $153.00
 
-						-# might need to be a <button>? should find out more from Matt about how this should work...
-						-# currently using e.preventDefault() on this button if no quote selection
-						-# also relying on "title" attribute to retrieve default "Buy Now" string
-						%a#quote_submit.btn_rnd.brd_green{:href => "#", :title => "Buy Now"} Buy Now
+				%article.quote_required
+
+					%div{"data-container" => "width_868"}
+
+						%h2 Required Information
+
+						= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-required.haml")).render
+
+
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 

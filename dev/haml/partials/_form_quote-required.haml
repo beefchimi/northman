@@ -1,0 +1,60 @@
+%form#form_required.form_required
+
+	.wrap_input.required_traveller.clearfix
+
+		%label Traveller 1
+
+		.wrap_element.required_birthday
+			%input.datepicker{:type => "text", :name => "dob[0]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
+			%svg.svg_ui-calendar
+				%use{"xlink:href" => "#ui_calendar"}
+
+		.wrap_element.required_fname
+			%input.fname{:type => "text", :name => "fname[0]", :value => "", :placeholder => "First Name", :required => true}
+
+		.wrap_element.required_lname
+			%input.lname{:type => "text", :name => "lname[0]", :value => "", :placeholder => "Last Name", :required => true}
+
+		.wrap_element.required_beneficiary
+			%input.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", :required => true}
+
+	.wrap_input.required_traveller.clearfix
+
+		%label Traveller 2
+
+		.wrap_element.required_birthday
+			%input.datepicker{:type => "text", :name => "dob[1]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
+			%svg.svg_ui-calendar
+				%use{"xlink:href" => "#ui_calendar"}
+
+		.wrap_element.required_fname
+			%input.fname{:type => "text", :name => "fname[1]", :value => "", :placeholder => "First Name", :required => true}
+
+		.wrap_element.required_lname
+			%input.lname{:type => "text", :name => "lname[1]", :value => "", :placeholder => "Last Name", :required => true}
+
+		.wrap_element.required_beneficiary
+			%input.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", :required => true}
+
+	.wrap_input.required_details.clearfix
+
+		.wrap_element.required_address
+			%label{:for => "required_address"} Street Address
+			%input#required_address.address{:type => "text", :name => "address", :value => "", :required => true}
+
+		.wrap_element.required_city
+			%label{:for => "required_city"} City
+			%input#required_city.city{:type => "text", :name => "city", :value => "", :required => true}
+
+		.wrap_element.required_postal
+			%label{:for => "required_postal"} Postal Code
+			%input#required_postal.postal{:type => "text", :name => "postal", :value => "", :required => true}
+
+		.wrap_element.required_telephone
+			%label{:for => "required_telephone"} Telephone
+			%input#required_telephone.telephone{:type => "text", :name => "telephone", :value => "", :placeholder => "(XXX) XXX-XXXX", :required => true}
+
+
+	-# currently using e.preventDefault() on this button if no quote selection
+	-# also relying on "title" attribute to retrieve default "Buy Now" string
+	%button#required_submit.btn_rnd.brd_green{:type => "submit"} Buy Now

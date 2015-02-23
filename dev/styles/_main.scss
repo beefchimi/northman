@@ -232,8 +232,7 @@ aside.modal_error-60 div.modal_body a.cancel_error {
 
 // --- Overlays --- \\
 // created and added (also destroyed) to DOM via JS
-// opacity and visibility applied via JS
-// transition applied through CSS
+// opacity applied via JS | transition via CSS
 [data-overlay] {
 	position: fixed;
 	z-index: 998;
@@ -248,8 +247,8 @@ html.overlay_active,
 html.overlay_active body {
 	overflow-y: hidden;
 }
-[data-modal].loaded,
-[data-overlay].loaded {
+// [data-overlay].loaded,
+[data-modal].loaded {
 	visibility: visible;
 }
 
@@ -557,6 +556,10 @@ form.form_quote div.wrap_input div.column {
 	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_L21;
 }
+
+
+
+
 form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
 	margin: 0 auto;
@@ -573,6 +576,10 @@ form.form_quote div.wrap_input div.wrap_element svg {
 	height: 1.6rem;
 	fill: $nm_orange;
 }
+
+
+
+
 // + individual columns + \\
 form.form_quote div.wrap_input div.col-1 {
 	text-align: center;
@@ -1328,6 +1335,7 @@ section.quote_header div.wrap_svg.title {
 }
 // --- Quote Options --- \\
 article.quote_options p.notice {
+	margin-bottom: 4.8rem;
 	padding: 0 2rem;
 	font-size: 1.3rem;
 	font-style: italic;
@@ -1410,33 +1418,32 @@ ul.quote_badges li.badge_single div.badge_header div.wrap_svg {
 ul.quote_badges li.badge_annual div.badge_header div.wrap_svg {
 	width: 4.4rem; // iOS requires a explicit width
 }
-// --- Quote Details --- \\
-article.quote_details div.details_captured {
-	margin-bottom: 4.8rem;
+// --- Details Captured --- \\
+div.details_captured {
 	padding: 3.2rem;
 	border: 0.2rem solid $nm_ash;
 }
-article.quote_details div.details_captured ul {
+div.details_captured ul {
 	margin-bottom: 4.8rem;
 	text-align: center;
 }
-article.quote_details div.details_captured ul li {
+div.details_captured ul li {
 	margin-bottom: 2rem;
 	font-size: 1.4rem;
 }
-article.quote_details div.details_captured ul li:last-child {
+div.details_captured ul li:last-child {
 	margin-bottom: 0;
 }
-article.quote_details div.details_captured ul li strong,
-article.quote_details div.details_captured ul li span {
+div.details_captured ul li strong,
+div.details_captured ul li span {
 	display: block;
 }
-article.quote_details div.details_captured ul li strong {
+div.details_captured ul li strong {
 	margin-bottom: 0.6rem;
 	font-weight: 400;
 	text-transform: uppercase;
 }
-// + coverage accordian + \\
+// --- Quote Details --- \\
 div.accordian {
 	margin-bottom: 4.8rem;
 	text-align: left;
@@ -1540,9 +1547,6 @@ a.accordian_toggle:active div.wrap_svg svg {
 	opacity: 1;
 }
 // --- Quote Summary --- \\
-article.quote_summary table {
-	margin-bottom: 4.8rem;
-}
 article.quote_summary table tbody tr td:first-child {
 	width: 70%;
 	text-align: left;
@@ -1553,6 +1557,55 @@ article.quote_summary table tbody tr td:last-child {
 }
 article.quote_summary table tbody tr:last-child td {
 	font-size: 1.6rem;
+}
+// --- Quote Required --- \\
+form.form_required label {
+	display: block;
+	margin-bottom: 1.6rem;
+	font-size: 1.6rem;
+	text-align: left;
+}
+form.form_required div.wrap_input {
+	margin: 0 auto 4.8rem auto;
+	max-width: 38.8rem;
+}
+form.form_required div.wrap_input.required_details {
+	margin-bottom: 6rem;
+}
+form.form_required div.wrap_input div.wrap_element {
+	margin-bottom: 2rem;
+}
+form.form_required div.wrap_input div.wrap_element:last-child {
+	margin-bottom: 0;
+}
+form.form_required div.wrap_input div.wrap_element input {
+	-webkit-appearance: none; // fixes iOS not showing box-shadow
+}
+form.form_required div.wrap_input div.wrap_element input[type="text"] {
+	background-color: hsla(0,0%,100%,1);
+	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
+}
+form.form_required div.wrap_input div.wrap_element input[type="text"]:focus {
+	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
+}
+form.form_required button {
+	width: 22rem;
+}
+// + required: birthday + \\
+form.form_required div.wrap_input div.wrap_element.required_birthday {
+	position: relative;
+}
+form.form_required div.wrap_input div.wrap_element.required_birthday input {
+	cursor: pointer;
+}
+form.form_required div.wrap_input div.wrap_element.required_birthday svg {
+	pointer-events: none;
+	position: absolute;
+	top: 1.6rem;
+	right: 1.6rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	fill: $nm_orange;
 }
 
 // What's Covered
