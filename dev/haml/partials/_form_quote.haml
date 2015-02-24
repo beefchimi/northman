@@ -18,21 +18,21 @@
 
 				.wrap_element
 					%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1", :readonly => true}
-					%svg.svg_ui-calendar
+					%svg.ui_calendar{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_calendar"}
 
 				%span.txt Til
 
 				.wrap_element
 					%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1", :readonly => true}
-					%svg.svg_ui-calendar
+					%svg.ui_calendar{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_calendar"}
 
 			%span.wrap_checkbox
 				%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
 				%label{:for => "check_family"}
 					I’m travelling with my family
-					%svg.svg_ui-checkmark
+					%svg.ui_checkmark{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_checkmark"}
 
 		.wrap_columns.clearfix
@@ -69,7 +69,7 @@
 
 					.dropdown_toggle
 						%span.dropdown_placeholder.truncate Select your location
-						%svg.svg_ui-arrow-down
+						%svg.ui_arrow-down{:viewBox => "0 0 64 64"}
 							%use{"xlink:href" => "#ui_arrow-down"}
 
 					-# if UL > LI.length >= 6: add class "scrollable"

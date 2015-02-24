@@ -132,7 +132,8 @@
 	// General Styles
 	// ----------------------------------------------------------------------------
 	// --- Containers --- \\
-	[data-container="width-padding_1440"] {
+	[data-container="width-padding_1440"],
+	[data-container="width-padding_1200"] {
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 	}
@@ -306,6 +307,10 @@
 	section.page_header {
 		padding: 8.2rem 3.2rem 9rem 3.2rem;
 	}
+	section.page_header h1 {
+		font-size: 6.4rem;
+		letter-spacing: 0.8rem;
+	}
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 6rem;
 		width: 9.4rem;
@@ -357,7 +362,7 @@
 		height: 6rem;
 		font-size: 2rem;
 	}
-	form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
+	form.form_destination fieldset div.wrap_element svg {
 		top: 1.7rem;
 		right: 2rem;
 		width: 2.6rem;
@@ -790,36 +795,6 @@
 		height: 2rem;
 	}
 
-	// Packages
-	// ----------------------------------------------------------------------------
-	// --- Packages Badges --- \\
-	ul.packages_badges li {
-		float: left;
-		width: calc(33.3333333% - 2.2rem);
-		margin: 0;
-	}
-	ul.packages_badges li.badge div.badge_body {
-		height: 20rem;
-	}
-	// + individual badges + \\
-	ul.packages_badges li.badge_single,
-	ul.packages_badges li.badge_family {
-		margin-right: 3.2rem;
-	}
-
-	// Support
-	// ----------------------------------------------------------------------------
-	// + individual icons + \\
-	article.support_contacts div[data-container] ul.list_svg li.icon_mail {
-		width: 5.4rem;
-	}
-	article.support_contacts div[data-container] ul.list_svg li.icon_twitter {
-		width: 5.9rem;
-	}
-	article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
-		width: 2.3rem;
-	}
-
 	// Thanks
 	// ----------------------------------------------------------------------------
 	section.thanks_articles article.thank-you div.wrap_svg.article_svg {
@@ -848,6 +823,36 @@
 	body.page-template-tpl-thanks-php footer {
 		display: none;
 		visibility: hidden;
+	}
+
+	// Packages
+	// ----------------------------------------------------------------------------
+	// --- Packages Badges --- \\
+	ul.packages_badges li {
+		float: left;
+		width: calc(33.3333333% - 2.2rem);
+		margin: 0;
+	}
+	ul.packages_badges li.badge div.badge_body {
+		height: 20rem;
+	}
+	// + individual badges + \\
+	ul.packages_badges li.badge_single,
+	ul.packages_badges li.badge_family {
+		margin-right: 3.2rem;
+	}
+
+	// Support
+	// ----------------------------------------------------------------------------
+	// + individual icons + \\
+	article.support_contacts div[data-container] ul.list_svg li.icon_mail {
+		width: 5.4rem;
+	}
+	article.support_contacts div[data-container] ul.list_svg li.icon_twitter {
+		width: 5.9rem;
+	}
+	article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
+		width: 2.3rem;
 	}
 
 }
@@ -898,6 +903,9 @@
 	section.page_header {
 		padding-top: 11rem;
 		padding-bottom: 12rem;
+	}
+	section.page_header h1 {
+		font-size: 8rem;
 	}
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 6.8rem;

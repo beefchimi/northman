@@ -150,8 +150,8 @@ html:not(.ie9) footer {
 	width: 100%;
 	height: 100%;
 }
-.wrap_svg svg[viewBox] {
-	display: inline; // this selector does not seem to work in webkit
+svg.svg_inline {
+	display: inline; // chrome does not respect the [viewBox] selector
 }
 // --- Containers --- \\
 [data-container] {
@@ -160,6 +160,9 @@ html:not(.ie9) footer {
 }
 [data-container="width-padding_1440"] {
 	max-width: 150.4rem;	 // padding applied at 768px
+}
+[data-container="width-padding_1200"] {
+	// max-width: 126.4rem;	 // padding applied at 768px
 }
 [data-container="width_1354"] {
 	max-width: 135.4rem;
@@ -556,10 +559,6 @@ form.form_quote div.wrap_input div.column {
 	padding: 3.2rem 1.6rem;
 	border-top: 0.1rem solid $nm_L21;
 }
-
-
-
-
 form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
 	margin: 0 auto;
@@ -576,10 +575,6 @@ form.form_quote div.wrap_input div.wrap_element svg {
 	height: 1.6rem;
 	fill: $nm_orange;
 }
-
-
-
-
 // + individual columns + \\
 form.form_quote div.wrap_input div.col-1 {
 	text-align: center;
@@ -752,7 +747,6 @@ ul.list_badges li div.badge_header div.wrap_svg {
 	height: 2.6rem;
 }
 ul.list_badges li div.badge_header div.wrap_svg svg {
-	display: inline; // webkit not using [viewBox] attr
 	fill: $nm_orange;
 }
 ul.list_badges li div.badge_header h6 {
@@ -1099,6 +1093,16 @@ section.page_header {
 	background-position: center center;
 	background-size: cover;
 }
+section.page_header h1 {
+	margin: 0 auto;
+	max-width: 86.8rem;
+	font-size: 3.2rem;
+	font-style: italic;
+	letter-spacing: 0.4rem;
+	line-height: 1.2;
+	text-transform: uppercase;
+	color: $nm_cream;
+}
 section.page_header div.wrap_svg {
 	margin-left: auto;
 	margin-right: auto;
@@ -1220,9 +1224,6 @@ section.page_articles article div[data-container] ul.list_svg li {
 section.page_articles article div[data-container] ul.list_svg li:last-child {
 	margin-right: 0;
 }
-section.page_articles article div[data-container] ul.list_svg li svg {
-	display: inline; // chrome is not accepting the [viewBox] approach
-}
 // + internal table + \\
 section.page_articles article table {
 	table-layout: fixed;
@@ -1254,7 +1255,6 @@ section.home_header div.wrap_svg {
 	text-align: center;
 }
 section.home_header div.wrap_svg svg {
-	display: inline; // webkit not accepting [viewBox] approach
 	max-width: 72.3rem;
 	fill: hsla(60,11%,93%,0.9);
 }
@@ -1285,7 +1285,7 @@ form.form_destination fieldset div.wrap_element input[type="text"],
 form.form_destination fieldset div.wrap_element input[type="date"] {
 	padding-right: 4.8rem;
 }
-form.form_destination fieldset div.wrap_element svg.svg_ui-globe {
+form.form_destination fieldset div.wrap_element svg {
 	pointer-events: none;
 	position: absolute;
 	z-index: 200;
@@ -1589,7 +1589,7 @@ form.form_required div.wrap_input div.wrap_element input[type="text"]:focus {
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
 }
 form.form_required button {
-	width: 22rem;
+	min-width: 22rem;
 }
 // + required: birthday + \\
 form.form_required div.wrap_input div.wrap_element.required_birthday {
@@ -1606,6 +1606,54 @@ form.form_required div.wrap_input div.wrap_element.required_birthday svg {
 	width: 1.6rem;
 	height: 1.6rem;
 	fill: $nm_orange;
+}
+
+// Thanks
+// ----------------------------------------------------------------------------
+body.page-template-tpl-thanks-php {
+	background-color: $nm_orange;
+}
+section.thanks_articles {
+	background-color: transparent;
+}
+section.thanks_articles article.thank-you {
+	color: $nm_cream;
+	// border-bottom: none;
+}
+section.thanks_articles article.thank-you div.wrap_svg svg {
+	fill: $nm_cream;
+}
+section.thanks_articles article.thank-you h1 {
+	margin-bottom: 4rem;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+	font-size: 4.8rem;
+	font-style: italic;
+	letter-spacing: 0.8rem;
+	text-transform: uppercase;
+}
+// + button + \\
+section.thanks_articles article.thank-you a.brd_cream:hover {
+	color: hsla(0,0%,20%,1);
+}
+section.thanks_articles article.thank-you a.brd_cream:active {
+	color: hsla(0,0%,40%,1);
+}
+// + temp + \\
+body.page-template-tpl-thanks-php footer {
+	display: none;
+	visibility: hidden;
+}
+
+// Why Northman
+// ----------------------------------------------------------------------------
+section.why_header {
+	background-image: url('../img/bg_why.jpg');
+}
+section.why_header div.wrap_svg.title {
+	max-width: 77.2rem;
+}
+section.why_callout {
+	background-image: url('../img/callout_why.png');
 }
 
 // What's Covered
@@ -1632,6 +1680,7 @@ form.form_coverage div.wrap_element input {
 	-webkit-appearance: none; // fixes iOS not showing box-shadow
 }
 form.form_coverage div.wrap_element input.input_typeahead {
+	background-color: hsla(0,0%,100%,1);
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
 }
 form.form_coverage div.wrap_element input.input_typeahead:hover {
@@ -1764,18 +1813,6 @@ article.packages_included table tr td:last-child {
 	border-bottom: none;
 }
 
-// Why Northman
-// ----------------------------------------------------------------------------
-section.why_header {
-	background-image: url('../img/bg_why.jpg');
-}
-section.why_header div.wrap_svg.title {
-	max-width: 77.2rem;
-}
-section.why_callout {
-	background-image: url('../img/callout_why.png');
-}
-
 // Support
 // ----------------------------------------------------------------------------
 section.support_header {
@@ -1830,40 +1867,4 @@ article.ambassadors ul li::before {
 	top: -0.2rem;
 	left: -1.8rem;
 	font-size: 1.8rem;
-}
-
-// Thanks
-// ----------------------------------------------------------------------------
-body.page-template-tpl-thanks-php {
-	background-color: $nm_orange;
-}
-section.thanks_articles {
-	background-color: transparent;
-}
-section.thanks_articles article.thank-you {
-	color: $nm_cream;
-	// border-bottom: none;
-}
-section.thanks_articles article.thank-you div.wrap_svg svg {
-	fill: $nm_cream;
-}
-section.thanks_articles article.thank-you h1 {
-	margin-bottom: 4rem;
-	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
-	font-size: 4.8rem;
-	font-style: italic;
-	letter-spacing: 0.8rem;
-	text-transform: uppercase;
-}
-// + button + \\
-section.thanks_articles article.thank-you a.brd_cream:hover {
-	color: hsla(0,0%,20%,1);
-}
-section.thanks_articles article.thank-you a.brd_cream:active {
-	color: hsla(0,0%,40%,1);
-}
-// + temp + \\
-body.page-template-tpl-thanks-php footer {
-	display: none;
-	visibility: hidden;
 }

@@ -1,10 +1,11 @@
 %header
 
-	%div{"data-container" => "width-padding_1200"}
+	-# do not need specified width
+	%div{"data-container" => ""}
 
 		%h1.visuallyhidden Northman
 		%a.wordmark.wrap_svg{:href => "index.html", :title => "Return Home"}
-			%svg.svg_nm-wordmark
+			%svg.nm_wordmark{:viewBox => "0 0 220 60"}
 				%use{"xlink:href" => "#nm_wordmark"}
 
 		%h2 Insurance For The Wild
@@ -29,8 +30,8 @@
 
 			.social_links
 				%a.social_twitter.wrap_svg{:href => "https://twitter.com/northmanco", :target => "_blank", :title => "Follow us on Twitter"}
-					%svg.svg_social-twitter
+					%svg.social_twitter{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#social_twitter"}
 				%a.social_facebook.wrap_svg{:href => "https://www.facebook.com/northmanco", :target => "_blank", :title => "Like us on Facebook"}
-					%svg.svg_social-facebook
+					%svg.social_facebook{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#social_facebook"}

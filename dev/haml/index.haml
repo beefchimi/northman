@@ -16,7 +16,7 @@
 
 				%h1.visuallyhidden Insurance For The Wild.
 				.wrap_svg
-					%svg.svg_nm-tagline{:viewbox => "0 0 723 298"}
+					%svg.nm_tagline.svg_inline{:viewBox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
 				%form#form_destination.form_destination.has_typeahead
@@ -27,7 +27,7 @@
 
 						.wrap_element.wrap_input-typeahead
 							%input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :required => true, :placeholder => "Enter your destination", "data-placeholder2" => "Could not load covered Countries", "data-placeholder3" => "Retreiving countries...", "data-placeholder4" => "Unrecognized country", "data-src" => "assets/js/datalist_countries.json"}
-							%svg.svg_ui-globe
+							%svg.ui_globe{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_globe"}
 
 						%button#form_toggle.btn_rnd.brd_cream{:type => "submit"} Get A Quote
@@ -41,7 +41,7 @@
 					%div{"data-container" => "width_868"}
 
 						.wrap_svg.article_svg
-							%svg.svg_nm-logo
+							%svg.nm_logo{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#nm_logo"}
 
 						%h2 Why Northman?
@@ -54,7 +54,7 @@
 					%div{"data-container" => "width_868"}
 
 						.wrap_svg.article_svg
-							%svg.svg_ui-package
+							%svg.ui_package{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_package"}
 
 						%h2 Packages
@@ -67,7 +67,7 @@
 					%div{"data-container" => "width_868"}
 
 						.wrap_svg.article_svg
-							%svg.svg_ui-coverage
+							%svg.ui_coverage{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_coverage"}
 
 						%h2 What's Covered

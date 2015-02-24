@@ -6,7 +6,7 @@
 
 		.wrap_element.required_birthday
 			%input.datepicker{:type => "text", :name => "dob[0]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
-			%svg.svg_ui-calendar
+			%svg.ui_calendar{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_calendar"}
 
 		.wrap_element.required_fname
@@ -24,7 +24,7 @@
 
 		.wrap_element.required_birthday
 			%input.datepicker{:type => "text", :name => "dob[1]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
-			%svg.svg_ui-calendar
+			%svg.ui_calendar{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_calendar"}
 
 		.wrap_element.required_fname
