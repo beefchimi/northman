@@ -6,7 +6,7 @@
 
 	// What's Covered
 	// ----------------------------------------------------------------------------
-	// --- Coverage Form --- \\
+	// --- Form Response --- \\
 	div.form_response div {
 		line-height: 5.2rem;
 	}
@@ -80,11 +80,8 @@
 		margin-bottom: 4.2rem;
 		width: 6.8rem;
 	}
-
-	// Home Page
-	// ----------------------------------------------------------------------------
-	// --- Home Details --- \\
-	section.home_articles article ul {
+	// + list: sports + \\
+	section.page_articles article ul.list_sports {
 		text-align: left;
 		column-count: 2;
 		column-gap: 3.2rem;
@@ -92,7 +89,6 @@
 
 	// Get A Quote
 	// ----------------------------------------------------------------------------
-	// --- Quote Options --- \\
 	article.quote_options p.notice {
 		padding: 0 0 0 50%;
 	}
@@ -408,7 +404,6 @@
 
 	// What's Covered
 	// ----------------------------------------------------------------------------
-	// --- Coverage Form --- \\
 	form.form_coverage div.wrap_element {
 		float: left;
 		margin: 0;
@@ -421,6 +416,7 @@
 		float: right;
 		height: 6rem;
 	}
+	// --- Form Response --- \\
 	div.form_response div {
 		height: 6rem;
 		line-height: 5.9rem;
@@ -472,22 +468,6 @@
 	// ----------------------------------------------------------------------------
 	body {
 		padding-top: 8.8rem;
-	}
-
-	// Content
-	// ----------------------------------------------------------------------------
-	// + list box + \\
-	ol.list_box {
-		margin-bottom: 4.2rem;
-	}
-	ol.list_box li {
-		margin-bottom: 3.2rem;
-		padding: 2rem 2rem 2rem 6.4rem;
-		font-size: 1.7rem;
-	}
-	ol.list_box li::before {
-		top: 2rem;
-		left: 2rem;
 	}
 
 // ==|== common sections ======================================================
@@ -618,12 +598,48 @@
 	section.page_articles article div[data-container] div.article_svg {
 		margin-bottom: 6rem;
 	}
+	// + list: ordered + \\
+	section.page_articles article div[data-container] ol {
+		margin-bottom: 4.2rem;
+	}
+	section.page_articles article div[data-container] ol li {
+		margin-bottom: 3.2rem;
+		padding: 2rem 2rem 2rem 6.4rem;
+		font-size: 1.7rem;
+	}
+	section.page_articles article div[data-container] ol li::before {
+		top: 2rem;
+		left: 2rem;
+	}
+	// + list: sports + \\
+	section.page_articles article ul.list_sports {
+		margin-top: 6rem;
+		margin-bottom: 6rem;
+		padding: 4rem;
+		column-count: 3;
+	}
+/*
+	section.page_articles article ul.list_sports li:nth-child(7),
+	section.page_articles article ul.list_sports li:nth-child(14) {
+		margin-bottom: 0;
+	}
+*/
+	// + list: svg icons + \\
 	section.page_articles article div[data-container] ul.list_svg {
 		margin-bottom: 6rem;
 	}
 	section.page_articles article div[data-container] ul.list_svg li {
 		margin-right: 2rem;
 		height: 4.2rem;
+	}
+	section.page_articles article div[data-container] ul.list_svg li.icon_mail {
+		width: 5.4rem;
+	}
+	section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
+		width: 5.9rem;
+	}
+	section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
+		width: 2.3rem;
 	}
 	// + internal table + \\
 	section.page_articles article table tbody tr td {
@@ -638,18 +654,6 @@
 		width: 7.2rem;
 		height: 7.2rem;
 	}
-	section.home_articles article ul {
-		margin-top: 6rem;
-		margin-bottom: 6rem;
-		padding: 4rem;
-		column-count: 3;
-	}
-/*
-	section.home_articles article ul li:nth-child(7),
-	section.home_articles article ul li:nth-child(14) {
-		margin-bottom: 0;
-	}
-*/
 
 	// Get A Quote
 	// ----------------------------------------------------------------------------
@@ -661,7 +665,6 @@
 	section.quote_articles article div[data-container] > a.btn_rnd {
 		min-width: 26rem;
 	}
-	// --- Quote Options --- \\
 	article.quote_options p.notice {
 		margin-bottom: 6rem;
 	}
@@ -827,7 +830,6 @@
 
 	// Packages
 	// ----------------------------------------------------------------------------
-	// --- Packages Badges --- \\
 	ul.packages_badges li {
 		float: left;
 		width: calc(33.3333333% - 2.2rem);
@@ -840,19 +842,6 @@
 	ul.packages_badges li.badge_single,
 	ul.packages_badges li.badge_family {
 		margin-right: 3.2rem;
-	}
-
-	// Support
-	// ----------------------------------------------------------------------------
-	// + individual icons + \\
-	article.support_contacts div[data-container] ul.list_svg li.icon_mail {
-		width: 5.4rem;
-	}
-	article.support_contacts div[data-container] ul.list_svg li.icon_twitter {
-		width: 5.9rem;
-	}
-	article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
-		width: 2.3rem;
 	}
 
 }
@@ -910,6 +899,10 @@
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 6.8rem;
 	}
+	// + list: sports + \\
+	section.page_articles article ul.list_sports {
+		padding: 4.8rem;
+	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
@@ -965,14 +958,9 @@
 		right: 0;
 		margin: 0;
 	}
-	// --- Home Details --- \\
-	section.home_articles article ul {
-		padding: 4.8rem;
-	}
 
 	// Packages
 	// ----------------------------------------------------------------------------
-	// --- Packages Badges --- \\
 	ul.packages_badges {
 		margin-bottom: 6rem;
 	}
@@ -1022,7 +1010,6 @@
 
 	// Packages
 	// ----------------------------------------------------------------------------
-	// --- Packages Badges --- \\
 	ul.packages_badges li.badge div.badge_body {
 		height: 16rem;
 	}

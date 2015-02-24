@@ -12,18 +12,18 @@
 
 		%main{:role => "main"}
 
-			%section.page_header.partners_header
+			%section.page_header.partner-with-us_header{:style => "background-image: url('assets/img/bg_partners.jpg')"}
 
 				.wrap_svg.icon
 					%svg.ui_partners{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_partners"}
 
 				%h1.visuallyhidden Partners
-				.wrap_svg.title
+				.wrap_svg.title{:style => "max-width: 74rem"}
 					%svg.svg_inline.nm_partners{:viewBox => "0 0 740 47"}
 						%use{"xlink:href" => "#nm_partners"}
 
-			%section.page_articles.partners_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.partner-with-us_articles{"data-container" => "width-padding_1440"}
 
 				%article.ambassadors
 

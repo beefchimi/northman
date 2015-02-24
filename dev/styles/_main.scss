@@ -722,7 +722,7 @@ button[class*="brd_"] {
 	color: $nm_cream-D;
 }
 
-// Content
+// Badges
 // ----------------------------------------------------------------------------
 // --- Badges List --- \\
 ul.list_badges {
@@ -844,32 +844,6 @@ ul.list_badges li.selected div.badge_body a.btn_rnd {
 	color: $nm_cream;
 	background-color: $nm_green;
 	box-shadow: inset 0 0 0 0.2rem $nm_green; // need to redefine box-shadow since text colour is different
-}
-// --- List Box --- \\
-ol.list_box {
-	counter-reset: ordered-counter;
-	margin-bottom: 3.2rem;
-	text-align: left;
-}
-ol.list_box li {
-	position: relative;
-	margin-bottom: 2rem;
-	padding: 1rem 1rem 1rem 3.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.3rem;
-	line-height: 1.4;
-	border: 0.2rem solid $nm_ash;
-}
-ol.list_box li::before {
-	content: counter(ordered-counter, decimal) ".";
-	counter-increment: ordered-counter;
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
-}
-ol.list_box li:last-child {
-	margin-bottom: 0;
 }
 
 
@@ -1093,6 +1067,9 @@ section.page_header {
 	background-position: center center;
 	background-size: cover;
 }
+section.page_header:not([style]) {
+	background-image: url('../img/bg_home.jpg');
+}
 section.page_header h1 {
 	margin: 0 auto;
 	max-width: 86.8rem;
@@ -1192,7 +1169,7 @@ section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
 }
-section.page_articles article:not(.coverage_dont) div[data-container] > p a[href^="tel:"] {
+section.page_articles:not(.whats-covered_articles) article div[data-container] > p a[href^="tel:"] {
 	display: table;
 	margin: 0 auto;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
@@ -1213,6 +1190,57 @@ section.page_articles article div[data-container] div.article_svg {
 section.page_articles article div[data-container] .article_svg svg {
 	fill: $nm_orange;
 }
+
+
+
+// + list: ordered + \\
+section.page_articles article div[data-container] ol {
+	counter-reset: ordered-counter;
+	margin-bottom: 3.2rem;
+	text-align: left;
+}
+section.page_articles article div[data-container] ol li {
+	position: relative;
+	margin-bottom: 2rem;
+	padding: 1rem 1rem 1rem 3.2rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	border: 0.2rem solid $nm_ash;
+}
+section.page_articles article div[data-container] ol li::before {
+	content: counter(ordered-counter, decimal) ".";
+	counter-increment: ordered-counter;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+section.page_articles article div[data-container] ol li:last-child {
+	margin-bottom: 0;
+}
+
+
+// + list: sports + \\
+section.page_articles article ul.list_sports {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	padding: 2.4rem;
+	border: 0.2rem solid hsla(60,5%,78%,1);
+}
+section.page_articles article ul.list_sports li {
+	margin-bottom: 1.6rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.2rem;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+section.page_articles article ul.list_sports li:last-child {
+	margin-bottom: 0;
+}
+
+
+// + list: svg icons + \\
 section.page_articles article div[data-container] ul.list_svg {
 	margin-bottom: 4rem;
 }
@@ -1223,6 +1251,15 @@ section.page_articles article div[data-container] ul.list_svg li {
 }
 section.page_articles article div[data-container] ul.list_svg li:last-child {
 	margin-right: 0;
+}
+section.page_articles article div[data-container] ul.list_svg li.icon_mail {
+	width: 4.4rem;
+}
+section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
+	width: 5.1rem;
+}
+section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
+	width: 2rem;
 }
 // + internal table + \\
 section.page_articles article table {
@@ -1307,33 +1344,9 @@ body.home form.form_quote.reveal {
 body.home form.form_quote.allow-overflow {
 	overflow-y: visible;
 }
-// --- Home Details --- \\
-section.home_articles article ul {
-	margin-top: 4rem;
-	margin-bottom: 4rem;
-	padding: 2.4rem;
-	border: 0.2rem solid hsla(60,5%,78%,1);
-}
-section.home_articles article ul li {
-	margin-bottom: 1.6rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.2rem;
-	line-height: 1.4;
-	text-transform: uppercase;
-}
-section.home_articles article ul li:last-child {
-	margin-bottom: 0;
-}
 
 // Get A Quote
 // ----------------------------------------------------------------------------
-section.quote_header {
-	background-image: url('../img/bg_home.jpg');
-}
-section.quote_header div.wrap_svg.title {
-	max-width: 70.6rem;
-}
-// --- Quote Options --- \\
 article.quote_options p.notice {
 	margin-bottom: 4.8rem;
 	padding: 0 2rem;
@@ -1644,30 +1657,8 @@ body.page-template-tpl-thanks-php footer {
 	visibility: hidden;
 }
 
-// Why Northman
-// ----------------------------------------------------------------------------
-section.why_header {
-	background-image: url('../img/bg_why.jpg');
-}
-section.why_header div.wrap_svg.title {
-	max-width: 77.2rem;
-}
-section.why_callout {
-	background-image: url('../img/callout_why.png');
-}
-
 // What's Covered
 // ----------------------------------------------------------------------------
-section.coverage_header {
-	background-image: url('../img/bg_coverage.jpg');
-}
-section.coverage_header div.wrap_svg.title {
-	max-width: 83.4rem;
-}
-section.coverage_callout {
-	background-image: url('../img/callout_coverage.png');
-}
-// --- Coverage Form --- \\
 form.form_coverage {
 	margin: 3.2rem auto 0 auto;
 	max-width: 59rem;
@@ -1693,6 +1684,7 @@ form.form_coverage div.wrap_element span.tt-dropdown-menu {
 	transform: translateX(0.1rem);
 	width: calc(100% - 0.3rem);
 }
+// --- Form Response --- \\
 div.form_response {
 	position: relative;
 	margin: 0 auto;
@@ -1768,16 +1760,6 @@ div.form_response.fail div.response_fail {
 
 // Packages
 // ----------------------------------------------------------------------------
-section.packages_header {
-	background-image: url('../img/bg_packages.jpg');
-}
-section.packages_header div.wrap_svg.title {
-	max-width: 66.3rem;
-}
-section.packages_callout {
-	background-image: url('../img/callout_packages.png');
-}
-// --- Packages Badges --- \\
 ul.packages_badges li div.badge_header p.option_letter {
 	position: absolute;
 	top: 1.6rem;
@@ -1815,41 +1797,16 @@ article.packages_included table tr td:last-child {
 
 // Support
 // ----------------------------------------------------------------------------
-section.support_header {
-	background-image: url('../img/bg_support.jpg');
-}
 section.support_header div.wrap_svg.icon {
 	transform: rotate(45deg);
-}
-section.support_header div.wrap_svg.title {
-	max-width: 40.9rem;
-}
-section.support_callout {
-	background-image: url('../img/callout_support.png');
 }
 section.support_callout p br,
 article.support_contacts p br {
 	display: none; // rene requested a line break... activates at 768px
 }
-// + individual icons + \\
-article.support_contacts div[data-container] ul.list_svg li.icon_mail {
-	width: 4.4rem;
-}
-article.support_contacts div[data-container] ul.list_svg li.icon_twitter {
-	width: 5.1rem;
-}
-article.support_contacts div[data-container] ul.list_svg li.icon_facebook {
-	width: 2rem;
-}
 
 // Partners
 // ----------------------------------------------------------------------------
-section.partners_header {
-	background-image: url('../img/bg_partners.jpg');
-}
-section.partners_header div.wrap_svg.title {
-	max-width: 74rem;
-}
 article.ambassadors p a[href^="mailto:"] {
 	display: table;
 	margin: 0 auto;

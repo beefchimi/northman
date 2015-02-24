@@ -12,18 +12,18 @@
 
 		%main{:role => "main"}
 
-			%section.page_header.coverage_header
+			%section.page_header.whats-covered_header{:style => "background-image: url('assets/img/bg_coverage.jpg')"}
 
 				.wrap_svg.icon
 					%svg.ui_coverage.svg_inline{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_coverage"}
 
 				%h1.visuallyhidden What's Covered
-				.wrap_svg.title
+				.wrap_svg.title{:style => "max-width: 83.4rem"}
 					%svg.nm_coverage.svg_inline{:viewBox => "0 0 834 53"}
 						%use{"xlink:href" => "#nm_coverage"}
 
-			%section.page_callout.coverage_callout
+			%section.page_callout.coverage_callout{:style => "background-image: url('assets/img/callout_coverage.png')"}
 
 				%article{"data-container" => "width_868"}
 
@@ -32,9 +32,9 @@
 
 					%a.btn_rnd.brd_cream.modal_open{:href => "#modal_quote", :title => "Get A Quote"} Get A Quote
 
-			%section.page_articles.coverage_articles{"data-container" => "width-padding_1440"}
+			%section.page_articles.whats-covered_articles{"data-container" => "width-padding_1440"}
 
-				%article.coverage_what
+				%article
 
 					%div.clearfix{"data-container" => "width_720"}
 
@@ -65,7 +65,7 @@
 								:plain
 									<h4>Not covered (maybe). Give us a call at <span>+1 (844) 207-7522</span> and we’ll try to help.</h4>
 
-				%article.coverage_dont
+				%article
 
 					%div{"data-container" => "width_868"}
 
@@ -76,7 +76,7 @@
 						%h2 What We Don't Cover
 						%p We cover just about every activity, but there are a few you’ll need to talk to us about:
 
-						%ol.list_box
+						%ol
 							%li Injury or sickness while scuba diving unless you are certified by an internationally recognized and accepted program (including but not limited to NAUI, PADI).
 							%li Your participation in, training or practicing for any sport as a professional athlete or while participating in, training or practicing for any motorized speed contest; rodeo, show jumping or horse racing.
 

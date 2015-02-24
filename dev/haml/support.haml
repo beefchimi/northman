@@ -12,18 +12,18 @@
 
 		%main{:role => "main"}
 
-			%section.page_header.support_header
+			%section.page_header.support_header{:style => "background-image: url('assets/img/bg_support.jpg')"}
 
 				.wrap_svg.icon
 					%svg.ui_package{:viewBox => "0 0 64 64"}
 						%use{"xlink:href" => "#ui_package"}
 
 				%h1.visuallyhidden Why Northman
-				.wrap_svg.title
+				.wrap_svg.title{:style => "max-width: 40.9rem"}
 					%svg.svg_inline.nm_support{:viewBox => "0 0 409 53"}
 						%use{"xlink:href" => "#nm_support"}
 
-			%section.page_callout.support_callout
+			%section.page_callout.support_callout{:style => "background-image: url('assets/img/callout_support.png')"}
 
 				%article{"data-container" => "width_868"}
 
@@ -35,7 +35,7 @@
 
 			%section.page_articles.support_articles{"data-container" => "width-padding_1440"}
 
-				%article.support_phone
+				%article
 
 					%div.clearfix{"data-container" => true}
 
@@ -86,7 +86,7 @@
 								Facebook: &nbsp;
 								%a{:href => "https://www.facebook.com/northmanco", :target => "_blank", :title => "Like us on Facebook"} www.facebook.com/northmanco
 
-				%article.support_emergency
+				%article
 
 					%div{"data-container" => "width_868"}
 
@@ -112,7 +112,7 @@
 							If you are unable to access this number from your location, you can reverse charges via the local operator and contact us at:
 							%a{:href => "tel:+1-613-763-2366", :title => "Call us"} +1 (613) 763-2366
 
-				%article.support_id
+				%article
 
 					%div{"data-container" => "width_868"}
 
