@@ -14,6 +14,9 @@ secrets.json
 # Ignore build directory
 build
 
+# Ignore raw images
+dev/media/images
+
 # Ignore copyright webfonts
 dev/extra/fonts
 
