@@ -160,9 +160,7 @@ gulp.task('svg', function() {
 				removeUselessStrokeAndFill: false
 			}]
 		}))
-		.pipe(plugins.svgstore({
-			fileName: 'icons.svg'
-		}))
+		.pipe(plugins.svgstore())
 		.pipe(gulp.dest(paths.images.dest));
 
 });

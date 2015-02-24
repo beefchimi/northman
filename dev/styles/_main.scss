@@ -1629,14 +1629,14 @@ body.page-template-tpl-thanks-php {
 section.thanks_articles {
 	background-color: transparent;
 }
-section.thanks_articles article.thank-you {
+section.thanks_articles article {
 	color: $nm_cream;
-	// border-bottom: none;
+	border-bottom: none;
 }
-section.thanks_articles article.thank-you div.wrap_svg svg {
+section.thanks_articles article div.wrap_svg svg {
 	fill: $nm_cream;
 }
-section.thanks_articles article.thank-you h1 {
+section.thanks_articles article h1 {
 	margin-bottom: 4rem;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 	font-size: 4.8rem;
@@ -1645,10 +1645,10 @@ section.thanks_articles article.thank-you h1 {
 	text-transform: uppercase;
 }
 // + button + \\
-section.thanks_articles article.thank-you a.brd_cream:hover {
+section.thanks_articles article a.brd_cream:hover {
 	color: hsla(0,0%,20%,1);
 }
-section.thanks_articles article.thank-you a.brd_cream:active {
+section.thanks_articles article a.brd_cream:active {
 	color: hsla(0,0%,40%,1);
 }
 // + temp + \\

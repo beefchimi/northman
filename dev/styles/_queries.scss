@@ -800,26 +800,26 @@
 
 	// Thanks
 	// ----------------------------------------------------------------------------
-	section.thanks_articles article.thank-you div.wrap_svg.article_svg {
+	section.thanks_articles article div.wrap_svg.article_svg {
 		width: 12rem;
 		height: 12rem;
 	}
-	section.thanks_articles article.thank-you h1 {
+	section.thanks_articles article h1 {
 		margin-bottom: 10rem;
 		font-size: 6.8rem;
 		letter-spacing: 1.2rem;
 	}
-	section.thanks_articles article.thank-you h2 {
+	section.thanks_articles article h2 {
 		margin-bottom: 2rem;
 	}
-	section.thanks_articles article.thank-you div[data-container] > p:not([class]) {
+	section.thanks_articles article div[data-container] > p:not([class]) {
 		margin-bottom: 6.4rem;
 	}
 	// + button + \\
-	section.thanks_articles article.thank-you a.brd_cream:hover {
+	section.thanks_articles article a.brd_cream:hover {
 		color: hsla(0,0%,20%,1);
 	}
-	section.thanks_articles article.thank-you a.brd_cream:active {
+	section.thanks_articles article a.brd_cream:active {
 		color: hsla(0,0%,40%,1);
 	}
 	// + temp + \\
