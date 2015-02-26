@@ -12,10 +12,14 @@
 
 		%main{:role => "main"}
 
-			%section.home_header
+			%section.page_header.home_header{:style => "background-image: url('assets/img/bg_home.jpg')"}
+
+				-# .wrap_svg.icon
+					-# %svg.nm_logos{:viewBox => "0 0 64 64"}
+						-# %use{"xlink:href" => "#nm_logo"}
 
 				%h1.visuallyhidden Insurance For The Wild.
-				.wrap_svg
+				.wrap_svg.title{:style => "max-width: 72.3rem"}
 					%svg.nm_tagline.svg_inline{:viewBox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
@@ -54,8 +58,8 @@
 					%div{"data-container" => "width_868"}
 
 						.wrap_svg.article_svg
-							%svg.ui_package{:viewBox => "0 0 64 64"}
-								%use{"xlink:href" => "#ui_package"}
+							%svg.ui_packages{:viewBox => "0 0 64 64"}
+								%use{"xlink:href" => "#ui_packages"}
 
 						%h2 Packages
 						%p We have a package for just about everyone. We offer single-trip coverage or yearly memberships for frequent travellers, with policies for lone travellers or group excursions. Can’t find the right package? Contact us and we’ll build a plan that’s right for you.
@@ -73,7 +77,7 @@
 						%h2 What's Covered
 						%p If you can do it, we can probably cover it. Let’s put it this way–our list of what’s not covered is way shorter. Here’s a list of just a few of the adventures covered by Northman:
 
-					%ul.list_sports{"data-container" => "width_1050"}
+					%ul.list_activities{"data-container" => "width_1050"}
 						%li Adventure Racing
 						%li Arctic and Antarctic Expedition
 						%li Mountaineering

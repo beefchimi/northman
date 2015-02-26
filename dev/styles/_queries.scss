@@ -74,14 +74,15 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
-	// Internal Pages
+	// Common
 	// ----------------------------------------------------------------------------
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 4.2rem;
 		width: 6.8rem;
 	}
+	// --- Page Articles --- \\
 	// + list: sports + \\
-	section.page_articles article ul.list_sports {
+	section.page_articles article ul.list_activities {
 		text-align: left;
 		column-count: 2;
 		column-gap: 3.2rem;
@@ -298,11 +299,8 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
-	// Internal Pages
+	// Common
 	// ----------------------------------------------------------------------------
-	section.page_header {
-		padding: 8.2rem 3.2rem 9rem 3.2rem;
-	}
 	section.page_header h1 {
 		font-size: 6.4rem;
 		letter-spacing: 0.8rem;
@@ -310,6 +308,10 @@
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 6rem;
 		width: 9.4rem;
+	}
+	// + internal header + \\
+	section.internal_header {
+		padding: 8.2rem 3.2rem 9rem 3.2rem;
 	}
 	// --- Page Articles --- \\
 	section.page_articles {
@@ -331,10 +333,26 @@
 	section.page_callout + section.page_articles article:first-child {
 		border-top: none;
 	}
+	// + list: unordered + \\
+	section.page_articles article div[data-container] ul:not([class]) li::before {
+		display: block;
+	}
+	// + list: links + \\
+	section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) li {
+		margin-bottom: 1.2rem;
+	}
+	section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) li a {
+		display: inline-block;
+		margin: 0 0 0 0.8rem;
+	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
-	section.home_header div.wrap_svg {
+	section.home_header div.wrap_svg.icon {
+		padding-top: 10rem;
+		margin-bottom: 0;
+	}
+	section.home_header div.wrap_svg.title {
 		padding-top: 10rem;
 		padding-bottom: 10rem;
 	}
@@ -446,14 +464,8 @@
 
 	// Support
 	// ----------------------------------------------------------------------------
-	section.support_callout p br,
+	body.page-template-tpl-support-php section.page_callout p br,
 	article.support_contacts p br {
-		display: block;
-	}
-
-	// Partners
-	// ----------------------------------------------------------------------------
-	article.ambassadors ul li::before {
 		display: block;
 	}
 
@@ -551,7 +563,7 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
-	// Internal Pages
+	// Common
 	// ----------------------------------------------------------------------------
 	// --- Page Callout --- \\
 	section.page_callout article[data-container] {
@@ -612,15 +624,15 @@
 		left: 2rem;
 	}
 	// + list: sports + \\
-	section.page_articles article ul.list_sports {
+	section.page_articles article ul.list_activities {
 		margin-top: 6rem;
 		margin-bottom: 6rem;
 		padding: 4rem;
 		column-count: 3;
 	}
 /*
-	section.page_articles article ul.list_sports li:nth-child(7),
-	section.page_articles article ul.list_sports li:nth-child(14) {
+	section.page_articles article ul.list_activities li:nth-child(7),
+	section.page_articles article ul.list_activities li:nth-child(14) {
 		margin-bottom: 0;
 	}
 */
@@ -887,72 +899,78 @@
 // ==|== page styles ==========================================================
 // ============================================================================
 
-	// Internal Pages
+	// Common
 	// ----------------------------------------------------------------------------
-	section.page_header {
-		padding-top: 11rem;
-		padding-bottom: 12rem;
-	}
 	section.page_header h1 {
 		font-size: 8rem;
 	}
 	section.page_header div.wrap_svg.icon {
 		margin-bottom: 6.8rem;
 	}
+	// + internal header + \\
+	section.internal_header {
+		padding-top: 11rem;
+		padding-bottom: 12rem;
+	}
+	// --- Page Articles --- \\
 	// + list: sports + \\
-	section.page_articles article ul.list_sports {
+	section.page_articles article ul.list_activities {
 		padding: 4.8rem;
 	}
 
 	// Home Page
 	// ----------------------------------------------------------------------------
-	section.home_header div.wrap_svg {
+	section.home_header div.wrap_svg.icon {
+		padding-top: 11rem;
+		margin-bottom: 0;
+	}
+	section.home_header div.wrap_svg.title {
 		padding-top: 11rem;
 		padding-bottom: 11rem;
 	}
 	// --- Form: Quote --- \\
-	body.home form.form_quote div.form_header {
+	body.home main form.form_quote div.form_header {
 		padding: 4rem 0;
 		border-bottom: 0.1rem solid $nm_L21;
 	}
-	body.home form.form_quote div.wrap_input div.wrap_columns {
+	body.home main form.form_quote div.wrap_input div.wrap_columns {
 		border-top: none;
 		float: left;
 		width: 43.426883%; // 588px / 1354px = 0.43426883
 	}
-	body.home form.form_quote div.wrap_input div.column {
+	body.home main form.form_quote div.wrap_input div.column {
 		float: left;
 		padding: 4rem 0;
 		min-height: 22.8rem; // calculated height of tallest div... needed for borders to reach bottom
 		border-top: none;
 	}
-	body.home form.form_quote div.wrap_input div.col-1,
-	body.home form.form_quote div.wrap_input div.col-3 {
+	body.home main form.form_quote div.wrap_input div.col-1,
+	body.home main form.form_quote div.wrap_input div.col-3 {
 		border-right: 0.1rem solid $nm_L21;
 	}
 	// + individual columns + \\
-	body.home form.form_quote div.wrap_input div.col-1 {
+	body.home main form.form_quote div.wrap_input div.col-1 {
 		width: 37.666174%; // 510px / 1354px = 0.37666174
 		text-align: left;
 	}
-	body.home form.form_quote div.wrap_input div.col-2,
-	body.home form.form_quote div.wrap_input div.col-3 {
+	body.home main form.form_quote div.wrap_input div.col-2,
+	body.home main form.form_quote div.wrap_input div.col-3 {
 		display: block;
 	}
-	body.home form.form_quote div.wrap_input div.col-2 {
+	body.home main form.form_quote div.wrap_input div.col-2 {
 		width: 43.537415%; // 256px / 588px = 0.43537415
 	}
-	body.home form.form_quote div.wrap_input div.col-2 div.wrap_element p {
+	body.home main form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 		margin-top: 2.2rem;
 	}
-	body.home form.form_quote div.wrap_input div.col-3 {
+	body.home main form.form_quote div.wrap_input div.col-3 {
 		width: 56.462585%; // 332px / 588px = 0.56462585
 	}
-	body.home form.form_quote div.wrap_input div.col-5 {
+	body.home main form.form_quote div.wrap_input div.col-5 {
 		position: relative;
 		width: 18.906942%; // 256px / 1354px = 0.18906942
 	}
-	body.home form.form_quote div.wrap_input div.col-5 button {
+	body.home main form.form_quote div.wrap_input div.col-5 button {
 		position: absolute;
 		top: 7.6rem;
 		right: 0;
@@ -991,20 +1009,20 @@
 	// Home Page
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
-	body.home form.form_quote div.wrap_input div.wrap_columns {
+	body.home main form.form_quote div.wrap_input div.wrap_columns {
 		width: 61.8rem;
 	}
 	// + individual columns + \\
-	body.home form.form_quote div.wrap_input div.col-1 {
+	body.home main form.form_quote div.wrap_input div.col-1 {
 		width: 48rem;
 	}
-	body.home form.form_quote div.wrap_input div.col-2 {
+	body.home main form.form_quote div.wrap_input div.col-2 {
 		width: 27.6rem;
 	}
-	body.home form.form_quote div.wrap_input div.col-3 {
+	body.home main form.form_quote div.wrap_input div.col-3 {
 		width: 34.2rem;
 	}
-	body.home form.form_quote div.wrap_input div.col-5 {
+	body.home main form.form_quote div.wrap_input div.col-5 {
 		width: 25.6rem;
 	}
 

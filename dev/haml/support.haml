@@ -12,18 +12,18 @@
 
 		%main{:role => "main"}
 
-			%section.page_header.support_header{:style => "background-image: url('assets/img/bg_support.jpg')"}
+			%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_support.jpg')"}
 
 				.wrap_svg.icon
-					%svg.ui_package{:viewBox => "0 0 64 64"}
-						%use{"xlink:href" => "#ui_package"}
+					%svg.ui_support{:viewBox => "0 0 64 64"}
+						%use{"xlink:href" => "#ui_support"}
 
 				%h1.visuallyhidden Why Northman
 				.wrap_svg.title{:style => "max-width: 40.9rem"}
 					%svg.svg_inline.nm_support{:viewBox => "0 0 409 53"}
 						%use{"xlink:href" => "#nm_support"}
 
-			%section.page_callout.support_callout{:style => "background-image: url('assets/img/callout_support.png')"}
+			%section.page_callout{:style => "background-image: url('assets/img/callout_support.png')"}
 
 				%article{"data-container" => "width_868"}
 
@@ -74,16 +74,16 @@
 
 						%ul
 							%li
-								Email: &nbsp;
+								Email:
 								%a.email_secret.email_support.email_replace{:href => "#", :title => "Email us"} email us
 							%li
-								Text Message: &nbsp;
+								Text Message:
 								%a{:href => "sms:+1-613-763-2366", :title => "Text us"} +1 (613) 763-2366
 							%li
-								Twitter: &nbsp;
+								Twitter:
 								%a{:href => "https://twitter.com/northmanco", :target => "_blank", :title => "Follow us on Twitter"} @northmanco
 							%li
-								Facebook: &nbsp;
+								Facebook:
 								%a{:href => "https://www.facebook.com/northmanco", :target => "_blank", :title => "Like us on Facebook"} www.facebook.com/northmanco
 
 				%article
@@ -101,12 +101,9 @@
 						%p So we can best assist you, please be ready with the following:
 
 						%ul
-							%li
-								%strong Your policy number
-							%li
-								%strong A contact number for where you are now
-							%li
-								%strong The nature of your problem
+							%li Your policy number
+							%li A contact number for where you are now
+							%li The nature of your problem
 
 						%p
 							If you are unable to access this number from your location, you can reverse charges via the local operator and contact us at:

@@ -5,12 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	var elHTML           = document.documentElement,
 		elBody           = document.body,
-		numViewportWidth = document.documentElement.clientWidth;
-
-/*
-	var elHeader  = document.getElementsByTagName('header')[0],
-		scrollPos = 0;
-*/
+		numViewportWidth = window.innerWidth,
+		transitionEvent  = whichTransitionEvent(),
+		animationEvent   = whichAnimationEvent();
 
 
 	// Helper: Check when a CSS transition or animation has ended
@@ -52,34 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
-
-	var transitionEvent = whichTransitionEvent(), // listen for a transition
-		animationEvent  = whichAnimationEvent(); // listen for a animation
-
-
-/*
-	// Helper: Fire Window Resize Event Upon Finish
-	// ----------------------------------------------------------------------------
-	var waitForFinalEvent = (function() {
-
-		var timers = {};
-
-		return function(callback, ms, uniqueId) {
-
-			if (!uniqueId) {
-				uniqueId = 'beefchimi'; // Don't call this twice without a uniqueId
-			}
-
-			if (timers[uniqueId]) {
-				clearTimeout(timers[uniqueId]);
-			}
-
-			timers[uniqueId] = setTimeout(callback, ms);
-
-		};
-
-	})();
-*/
 
 
 	// Helper: Find Parent Element by Class or Tag Name
@@ -208,9 +177,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		elOverlay.style.opacity = 0;
 
-		transitionEvent && elOverlay.addEventListener(transitionEvent, function() {
-			elBody.removeChild(elOverlay);
-		});
+		elOverlay.addEventListener(transitionEvent, removeOverlay);
+
+		function removeOverlay(e) {
+
+			// only listen for the opacity property
+			if (e.propertyName == "opacity") {
+
+				elBody.removeChild(elOverlay);
+				elOverlay.removeEventListener(transitionEvent, removeOverlay);
+
+			}
+
+		}
 
 	}
 
@@ -363,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			e.preventDefault();
 
-			document.addEventListener('click', documentClick, false);
+			document.addEventListener('click', documentClick);
 
 		}
 
@@ -379,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			e.preventDefault();
 
-			document.removeEventListener('click', documentClick, false);
+			document.removeEventListener('click', documentClick);
 
 		}
 
@@ -397,12 +376,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				classie.remove(elHTML, 'overlay_active');
 				elTargetModal.setAttribute('data-modal', 'inactive');
 				destroyOverlay();
-
-				console.log('clicked on the overlay');
-
-			} else {
-
-				console.log('no, this is NOT the overlay');
 
 			}
 
@@ -748,16 +721,20 @@ document.addEventListener('DOMContentLoaded', function() {
 						elInputTypeahead.placeholder = strPlaceholder4;
 						classie.add(elTypeaheadWrap, 'animate_shake');
 
-						// not sure if this is working properly... console.logs +1 each time
-						animationEvent && elTypeaheadWrap.addEventListener(animationEvent, function() {
-							classie.remove(elTypeaheadWrap, 'animate_shake');
-						});
+						elTypeaheadWrap.addEventListener(animationEvent, removeShake);
 
 					}
 
 				}
 
 				return false; // also required to prevent form submission
+
+			}
+
+			function removeShake() {
+
+				classie.remove(elTypeaheadWrap, 'animate_shake');
+				elTypeaheadWrap.removeEventListener(animationEvent, removeShake);
 
 			}
 
@@ -902,28 +879,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 
 	}
-
-
-	// Window Events: On - Scroll, Resize
-	// ----------------------------------------------------------------------------
-/*
-	window.addEventListener('scroll', function(e) {
-
-		fixedHeader();
-
-	}, false);
-
-	window.addEventListener('resize', function(e) {
-
-		// do not fire resize event for every pixel... wait until finished
-		waitForFinalEvent(function() {
-
-			fixedHeader();
-
-		}, 500, 'unique string');
-
-	}, false);
-*/
 
 
 	// Initialize Primary Functions
