@@ -232,7 +232,6 @@ aside.modal_error-60 div.modal_body a.cancel_error {
 	left: 50%;
 	transform: translateX(-50%);
 }
-
 // --- Overlays --- \\
 // created and added (also destroyed) to DOM via JS
 // opacity applied via JS | transition via CSS
@@ -253,6 +252,13 @@ html.overlay_active body {
 // [data-overlay].loaded,
 [data-modal].loaded {
 	visibility: visible;
+}
+// --- Wordpress Tricks --- \\
+span.break {
+	display: none; // rene requested a line break... activates at 768px
+	width: 0;
+	height: 0;
+	color: $nm_cream;
 }
 
 // Forms
@@ -1158,7 +1164,7 @@ section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
 }
-section.page_articles:not(.whats-covered_articles) article div[data-container] > p a[href^="tel:"] {
+section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format) {
 	display: table;
 	margin: 0 auto;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
@@ -1652,10 +1658,10 @@ section.thanks_articles article {
 	color: $nm_cream;
 	border-bottom: none;
 }
-section.thanks_articles article div.wrap_svg svg {
+section.thanks_articles article div[data-container] div.article_svg svg {
 	fill: $nm_cream;
 }
-section.thanks_articles article h1 {
+section.thanks_articles article div[data-container] h1 {
 	margin-bottom: 4rem;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 	font-size: 4.8rem;
@@ -1664,10 +1670,10 @@ section.thanks_articles article h1 {
 	text-transform: uppercase;
 }
 // + button + \\
-section.thanks_articles article a.brd_cream:hover {
+section.thanks_articles article div[data-container] a.brd_cream:hover {
 	color: hsla(0,0%,20%,1);
 }
-section.thanks_articles article a.brd_cream:active {
+section.thanks_articles article div[data-container] a.brd_cream:active {
 	color: hsla(0,0%,40%,1);
 }
 // + temp + \\
@@ -1812,18 +1818,6 @@ article.packages_included table tr td {
 }
 article.packages_included table tr td:last-child {
 	border-bottom: none;
-}
-
-// Support
-// ----------------------------------------------------------------------------
-/*
-section.support_header div.wrap_svg.icon {
-	transform: rotate(45deg);
-}
-*/
-body.page-template-tpl-support-php section.page_callout p br,
-article.support_contacts p br {
-	display: none; // rene requested a line break... activates at 768px
 }
 
 // Partners
