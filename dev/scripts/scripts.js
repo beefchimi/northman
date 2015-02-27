@@ -764,7 +764,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var arrBadges       = document.getElementsByClassName('badge'),
 			elQuoteSection  = document.getElementById('quote_articles'),
 			elSubmitButton  = document.getElementById('required_submit'),
-			strDefaultTitle = elSubmitButton.title,
+			strDefaultTitle = elSubmitButton.innerHTML,
 			strSelectedTitle,
 			scrollOptions   = {
 				speed: 1000,

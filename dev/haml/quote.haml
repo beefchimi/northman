@@ -91,28 +91,28 @@
 							%ul
 								%li
 									%strong.details_label Province of Residence:
-									%span.details_data Ontario
+									%span#details_province.details_data Ontario
 								%li
 									%strong.details_label Start Date:
-									%span.details_data Nov 6, 2015
+									%span#details_start-date.details_data Nov 6, 2015
 								%li
 									%strong.details_label End Date:
-									%span.details_data Nov 11, 2015
+									%span#details_end-date.details_data Nov 11, 2015
 								%li
 									%strong.details_label Family:
-									%span.details_data Yes
+									%span#details_family.details_data Yes
 								%li
 									%strong.details_label Age(s):
-									%span.details_data 18, 19, 34, 41
+									%span#details_age.details_data 18, 19, 34, 41
 								%li
 									%strong.details_label Covered For:
-									%span.details_data 35 days
+									%span#details_covered.details_data 35 days
 								%li
 									%strong.details_label Trip Cancellation:
-									%span.details_data $3,000
+									%span#details_cancellation.details_data $3,000
 								%li
 									%strong.details_label Trip Delay:
-									%span.details_data $25,000
+									%span#details_delay.details_data $25,000
 
 							%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details
 
@@ -137,19 +137,19 @@
 
 								%tr
 									%td Northman Single Trip / Non-Family
-									%td $135.00
+									%td#summary_price $135.00
 
 								%tr
 									%td HST
-									%td $18.00
+									%td#summary_hst $18.00
 
 								%tr
 									%td Admin Fee
-									%td $2.00
+									%td#summary_admin $2.00
 
 								%tr
 									%td Total (CAN)
-									%td $153.00
+									%td#summary_total $153.00
 
 				%article.quote_required
 
@@ -158,8 +158,6 @@
 						%h2 Required Information
 
 						= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-required.haml")).render
-
-
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
 

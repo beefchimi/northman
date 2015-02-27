@@ -269,6 +269,7 @@
 	.btn_rnd {
 		padding: 0 2.4rem;
 		height: 5.2rem;
+		// font-size: 1.6rem;
 		line-height: 5.2rem;
 	}
 
@@ -292,8 +293,16 @@
 		padding: 8rem 2rem;
 	}
 	// --- Footer Links --- \\
-	ul.footer_links {
+	nav.nav_footer {
 		margin-bottom: 8rem;
+		max-width: none;
+	}
+	nav.nav_footer ul li,
+	nav.nav_footer ul li:nth-child(3n) {
+		margin: 0 2.4rem 0 0;
+	}
+	nav.nav_footer ul li:last-child {
+		margin-right: 0;
 	}
 	// --- Contact Info --- \\
 	ul.footer_contact {
@@ -338,10 +347,10 @@
 		border-top: none;
 	}
 	// + list: unordered + \\
-	section.page_articles article div[data-container] ul:not([class]) li::before {
+	section.page_articles article div[data-container] > ul:not([class]) li::before {
 		display: block;
 	}
-	section.page_articles article div[data-container] ul:not([class]) li.no_bullet::before {
+	section.page_articles article div[data-container] > ul:not([class]) li.no_bullet::before {
 		display: none;
 	}
 	// + list: links + \\
@@ -460,12 +469,12 @@
 
 	// Packages
 	// ----------------------------------------------------------------------------
-	// --- Packaged Included --- \\
-	article.packages_included table tr td {
+	// --- Packages Included --- \\
+	body.page-id-13 article table tr td {
 		display: table-cell;
 		border-bottom: none;
 	}
-	article.packages_included table tr td:nth-child(n+2) {
+	body.page-id-13 article table tr td:nth-child(n+2) {
 		border-left: 0.2rem solid $nm_ash;
 	}
 
@@ -630,12 +639,6 @@
 		padding: 4rem;
 		column-count: 3;
 	}
-/*
-	section.page_articles article ul.list_activities li:nth-child(7),
-	section.page_articles article ul.list_activities li:nth-child(14) {
-		margin-bottom: 0;
-	}
-*/
 	// + list: svg icons + \\
 	section.page_articles article div[data-container] ul.list_svg {
 		margin-bottom: 6rem;
@@ -654,6 +657,9 @@
 		width: 2.3rem;
 	}
 	// + internal table + \\
+	section.page_articles article table {
+		margin-bottom: 6rem;
+	}
 	section.page_articles article table tbody tr td {
 		padding: 2.4rem;
 		font-size: 1.6rem;
@@ -719,7 +725,7 @@
 	}
 	div.details_captured a.btn_rnd {
 		float: right;
-		margin-top: 2rem; // guessing at an amount to visually center the button
+		margin-top: 2rem; // guessing at an amount to visually center the button (webkit handles this a bit different)
 	}
 	// --- Quote Details --- \\
 	div.accordian {
@@ -981,10 +987,6 @@
 	ul.packages_badges li.badge_single,
 	ul.packages_badges li.badge_family {
 		margin-right: 6.8rem;
-	}
-	// --- Packaged Included --- \\
-	article.packages_included table {
-		margin-bottom: 6rem;
 	}
 
 }

@@ -10,7 +10,6 @@ optgroup,
 select,
 textarea {
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
-	// font-variant-numeric: oldstyle-nums;
 }
 body {
 	position: relative;
@@ -38,7 +37,6 @@ a,
 input,
 button {
 	transition: all 0.3s ease-in-out;
-	// backface-visibility: hidden;
 }
 svg {
 	transition: fill 0.3s ease-in-out;
@@ -65,13 +63,12 @@ form.form_quote div.error_message {
 article.quote_options div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-// div.wrap_select div.wrap_dropdown,
 [data-overlay],
 ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 div.dropdown_toggle {
-	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; // border-radius 0.3s ease-in-out,
+	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 ul.list_badges li,
 ul.list_badges li div.badge_header {
@@ -119,7 +116,7 @@ ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 	}
 }
 .animate_shake {
-	animation: shake 0.7s ease-in-out both; // ease-in-out 0.2s forwards;
+	animation: shake 0.7s ease-in-out both;
 }
 // --- FOUT --- \\
 html:not(.ie9) main,
@@ -161,9 +158,11 @@ svg.svg_inline {
 [data-container="width-padding_1440"] {
 	max-width: 150.4rem;	 // padding applied at 768px
 }
+/*
 [data-container="width-padding_1200"] {
-	// max-width: 126.4rem;	 // padding applied at 768px
+	max-width: 126.4rem;	 // padding applied at 768px
 }
+*/
 [data-container="width_1354"] {
 	max-width: 135.4rem;
 }
@@ -255,10 +254,94 @@ html.overlay_active body {
 }
 // --- Wordpress Tricks --- \\
 span.break {
-	display: none; // rene requested a line break... activates at 768px
+	display: none; // activates at 768px
 	width: 0;
 	height: 0;
 	color: $nm_cream;
+}
+
+// Buttons
+// ----------------------------------------------------------------------------
+.btn_rnd {
+	display: table; // inline-block does not allow margin centering
+	margin: 0 auto;
+	padding: 0 2rem;
+	height: 4.8rem;
+	line-height: 4.8rem;
+	font-size: 1.4rem;
+	letter-spacing: 0.2rem;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 0.8rem;
+}
+a[class*="brd_"],
+button[class*="brd_"] {
+	box-shadow: inset 0 0 0 0.2rem;
+}
+// + fill: orange + \\
+.fill_orange {
+	color: $nm_cream;
+	background-color: $nm_orange;
+}
+.fill_orange:focus,
+.fill_orange:hover {
+	color: $nm_orange;
+	background-color: $nm_cream;
+}
+.fill_orange:active {
+	color: $nm_orange-D;
+	background-color: $nm_cream-D;
+}
+// + fill: green + \\
+.fill_green {
+	color: $nm_cream;
+	background-color: $nm_green;
+}
+.fill_green:focus,
+.fill_green:hover {
+	background-color: $nm_green-L;
+}
+.fill_green:active {
+	background-color: $nm_green;
+}
+// + border: orange & green + \\
+.brd_orange {
+	color: $nm_orange;
+}
+.brd_green {
+	color: $nm_green;
+}
+.brd_orange:focus,
+.brd_green:focus,
+.brd_orange:hover,
+.brd_green:hover {
+	color: hsla(0,0%,20%,1);
+}
+.brd_orange:active,
+.brd_green:active {
+	color: hsla(0,0%,40%,1);
+}
+// + border: cream + \\
+.brd_cream {
+	color: $nm_cream;
+}
+.brd_cream:focus,
+.brd_cream:hover {
+	color: $nm_orange;
+}
+.brd_cream:active {
+	color: $nm_orange-L;
+}
+// + border: grey + \\
+.brd_grey {
+	color: $nm_L34;
+}
+.brd_grey:focus,
+.brd_grey:hover {
+	color: $nm_cream;
+}
+.brd_grey:active {
+	color: $nm_cream-D;
 }
 
 // Forms
@@ -644,90 +727,6 @@ aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select div.w
 	height: 20rem; // shortened inorder to stay within modal viewport
 }
 
-// Buttons
-// ----------------------------------------------------------------------------
-.btn_rnd {
-	display: table; // inline-block does not allow margin centering
-	margin: 0 auto;
-	padding: 0 2rem;
-	height: 4.8rem;
-	line-height: 4.8rem;
-	font-size: 1.4rem;
-	letter-spacing: 0.2rem;
-	text-align: center;
-	text-transform: uppercase;
-	border-radius: 0.8rem;
-}
-a[class*="brd_"],
-button[class*="brd_"] {
-	box-shadow: inset 0 0 0 0.2rem;
-}
-// + fill: orange + \\
-.fill_orange {
-	color: $nm_cream;
-	background-color: $nm_orange;
-}
-.fill_orange:focus,
-.fill_orange:hover {
-	color: $nm_orange;
-	background-color: $nm_cream;
-}
-.fill_orange:active {
-	color: $nm_orange-D;
-	background-color: $nm_cream-D;
-}
-// + fill: green + \\
-.fill_green {
-	color: $nm_cream;
-	background-color: $nm_green;
-}
-.fill_green:focus,
-.fill_green:hover {
-	background-color: $nm_green-L;
-}
-.fill_green:active {
-	background-color: $nm_green;
-}
-// + border: orange & green + \\
-.brd_orange {
-	color: $nm_orange;
-}
-.brd_green {
-	color: $nm_green;
-}
-.brd_orange:focus,
-.brd_green:focus,
-.brd_orange:hover,
-.brd_green:hover {
-	color: hsla(0,0%,20%,1);
-}
-.brd_orange:active,
-.brd_green:active {
-	color: hsla(0,0%,40%,1);
-}
-// + border: cream + \\
-.brd_cream {
-	color: $nm_cream;
-}
-.brd_cream:focus,
-.brd_cream:hover {
-	color: $nm_orange;
-}
-.brd_cream:active {
-	color: $nm_orange-L;
-}
-// + border: grey + \\
-.brd_grey {
-	color: $nm_L34;
-}
-.brd_grey:focus,
-.brd_grey:hover {
-	color: $nm_cream;
-}
-.brd_grey:active {
-	color: $nm_cream-D;
-}
-
 // Badges
 // ----------------------------------------------------------------------------
 // --- Badges List --- \\
@@ -771,12 +770,6 @@ ul.list_badges li div.badge_body p,
 ul.list_badges li div.badge_body a.btn_rnd {
 	color: $nm_orange;
 }
-ul.list_badges li div.badge_body a.btn_rnd:hover {
-	opacity: 0.8;
-}
-ul.list_badges li div.badge_body a.btn_rnd:active {
-	opacity: 0.9;
-}
 // + badge single + \\
 ul.list_badges li.badge_single {
 	border-color: $nm_bronze;
@@ -813,6 +806,9 @@ ul.list_badges li.badge_family div.badge_body a.btn_rnd {
 ul.list_badges li.badge_family div.badge_header div.wrap_svg svg {
 	fill: $nm_silver;
 }
+ul.list_badges li.badge_family div.badge_body a.btn_rnd {
+	color: $nm_silver;
+}
 // + badge annual + \\
 ul.list_badges li.badge_annual {
 	border-color: $nm_gold;
@@ -831,6 +827,13 @@ ul.list_badges li.badge_annual div.badge_body a.btn_rnd {
 ul.list_badges li.badge_annual div.badge_header div.wrap_svg svg {
 	fill: $nm_gold;
 }
+// + interaction + \\
+ul.list_badges li.badge div.badge_body a.btn_rnd:hover {
+	color: hsla(0,0%,20%,1);
+}
+ul.list_badges li.badge div.badge_body a.btn_rnd:active {
+	color: hsla(0,0%,40%,1);
+}
 // + badge selected + \\
 ul.list_badges li.selected {
 	border-color: $nm_green;
@@ -846,7 +849,9 @@ ul.list_badges li.selected div.badge_body h3 span.currency {
 ul.list_badges li.selected div.badge_header div.wrap_svg svg {
 	fill: $nm_green;
 }
-ul.list_badges li.selected div.badge_body a.btn_rnd {
+ul.list_badges li.selected div.badge_body a.btn_rnd,
+ul.list_badges li.selected div.badge_body a.btn_rnd:hover,
+ul.list_badges li.selected div.badge_body a.btn_rnd:active {
 	color: $nm_cream;
 	background-color: $nm_green;
 	box-shadow: inset 0 0 0 0.2rem $nm_green; // need to redefine box-shadow since text colour is different
@@ -999,24 +1004,25 @@ footer {
 	text-align: center;
 }
 // --- Footer Links --- \\
-ul.footer_links {
-	margin-bottom: 4rem;
+nav.nav_footer {
+	margin: 0 auto 4rem auto;
+	max-width: 32rem;
 }
-ul.footer_links li {
+nav.nav_footer ul li {
 	display: inline-block;
-	margin: 0 2.4rem 0 0;
+	margin: 0 2.4rem 1.6rem 0;
 }
-ul.footer_links li:last-child {
+nav.nav_footer ul li:nth-child(3n) {
 	margin-right: 0;
 }
-ul.footer_links li a {
+nav.nav_footer ul li a {
 	font-size: 1.4rem;
 	color: $nm_L21;
 }
-ul.footer_links li a:hover {
+nav.nav_footer ul li a:hover {
 	color: $nm_orange;
 }
-ul.footer_links li a:active {
+nav.nav_footer ul li a:active {
 	color: $nm_orange-D;
 }
 // --- Contact Info --- \\
@@ -1212,10 +1218,10 @@ section.page_articles article div[data-container] ol li:last-child {
 	margin-bottom: 0;
 }
 // + list: unordered + \\
-section.page_articles article div[data-container] ul:not([class]) {
+section.page_articles article div[data-container] > ul:not([class]) {
 	margin-bottom: 3.2rem;
 }
-section.page_articles article div[data-container] ul:not([class]) li {
+section.page_articles article div[data-container] > ul:not([class]) li {
 	position: relative;
 	display: table;
 	margin: 0 auto 1rem auto;
@@ -1224,7 +1230,7 @@ section.page_articles article div[data-container] ul:not([class]) li {
 	font-weight: 700;
 	line-height: 1.2;
 }
-section.page_articles article div[data-container] ul:not([class]) li::before {
+section.page_articles article div[data-container] > ul:not([class]) li::before {
 	display: none;
 	content: "\2022"; // bullet
 	position: absolute;
@@ -1283,21 +1289,20 @@ section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
 section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
 	width: 2rem;
 }
-/*
 section.page_articles article div[data-container] > p:last-child,
 section.page_articles article div[data-container] > ul:last-child,
 section.page_articles article div[data-container] > ul li:last-child {
-*/
-section.page_articles article div[data-container] p:last-child,
-section.page_articles article div[data-container] ul:last-child,
-section.page_articles article div[data-container] ul li:last-child {
 	margin-bottom: 0 !important;
 }
 // + internal table + \\
 section.page_articles article table {
 	table-layout: fixed;
+	margin-bottom: 3.2rem;
 	width: 100%;
 	border: 0.2rem solid $nm_ash;
+}
+section.page_articles article table:last-child {
+	margin-bottom: 0;
 }
 section.page_articles article table tbody tr {
 	border-bottom: 0.2rem solid $nm_ash;
@@ -1807,16 +1812,13 @@ ul.packages_badges li div.badge_body p {
 	font-style: italic;
 	line-height: 1.4;
 }
-// --- Packaged Included --- \\
-article.packages_included table {
-	margin-bottom: 3.2rem;
-}
-article.packages_included table tr td {
+// --- Packages Included --- \\
+body.page-id-13 article tr td {
 	display: block;
 	text-align: center;
 	border-bottom: 0.2rem solid $nm_ash;
 }
-article.packages_included table tr td:last-child {
+body.page-id-13 article tr td:last-child {
 	border-bottom: none;
 }
 

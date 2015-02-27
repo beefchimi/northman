@@ -6,7 +6,7 @@
 
 	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
 
-	%body#packages.page-template-tpl-packages-php
+	%body#packages.page-id-13
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
@@ -55,6 +55,7 @@
 									.wrap_svg
 										%svg.svg_inline.ui_globe{:viewBox => "0 0 64 64"}
 											%use{"xlink:href" => "#ui_globe"}
+
 									%h6 Single Trip
 
 								.badge_body
@@ -70,6 +71,7 @@
 									.wrap_svg
 										%svg.svg_inline.ui_family{:viewBox => "0 0 64 51"}
 											%use{"xlink:href" => "#ui_family"}
+
 									%h6 Family Trip
 
 								.badge_body
@@ -85,6 +87,7 @@
 									.wrap_svg
 										%svg.svg_inline.ui_globe-double{:viewBox => "0 0 64 38"}
 											%use{"xlink:href" => "#ui_globe-double"}
+
 									%h6 Annual Membership
 
 								.badge_body
