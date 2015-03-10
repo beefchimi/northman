@@ -63,7 +63,6 @@ form.form_quote div.error_message {
 article.quote_options div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-[data-overlay],
 ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
@@ -86,6 +85,9 @@ input[type="checkbox"] + label::before {
 ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 	transition: padding-left 0.3s ease-in-out;
 }
+[data-overlay] {
+	transition: opacity 0.6s ease-in-out;
+}
 // --- Animations --- \\
 @keyframes animShow {
 	0%   { opacity: 0; }
@@ -96,15 +98,12 @@ ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 	99%  { opacity: 0; left: 0; }
 	100% { opacity: 0; left: -200%; }
 }
-[data-modal="active"] {
-	left: 0;
-	animation: animShow 0.4s ease-in-out;
+@keyframes anim360 {
+	to {
+		transform: rotate(360deg);
+	}
 }
-[data-modal="inactive"] {
-	left: -200%;
-	animation: animHide 0.4s ease-in-out forwards;
-}
-@keyframes shake {
+@keyframes animShake {
 	0%, 100% {
 		transform: translate3d(0,0,0);
 	}
@@ -116,19 +115,57 @@ ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
 	}
 }
 .animate_shake {
-	animation: shake 0.7s ease-in-out both;
+	animation: animShake 0.7s ease-in-out both;
 }
 // --- FOUT --- \\
 html:not(.ie9) main,
 html:not(.ie9) header,
 html:not(.ie9) footer {
 	opacity: 0; // begin by setting opacity to 0 (if not IE9)
+	animation: animShow 0.6s ease-in-out 0.2s forwards;
 }
+/*
 .wf-active main,
 .wf-active header,
 .wf-active footer {
 	animation: animShow 0.4s ease-in-out forwards;
 }
+*/
+
+/*
+// CSS Loader
+// ----------------------------------------------------------------------------
+div.loader_overlay {
+	position: fixed;
+	z-index: 910;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	// visibility: hidden; // webkit will stop the animation if visibility is changed
+	overflow: hidden;
+	pointer-events: none;
+}
+div.loader_overlay.visible {
+	opacity: 1;
+}
+div.loader_overlay div.wrap_svg {
+	position: absolute;
+	z-index: 911;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	width: 4.4rem;
+	height: 4.4rem;
+	animation: anim360 1s linear infinite forwards;
+}
+div.loader_overlay div.wrap_svg svg {
+	fill: $nm_orange;
+}
+*/
 
 // General Styles
 // ----------------------------------------------------------------------------
@@ -178,8 +215,36 @@ svg.svg_inline {
 [data-container="width_720"] {
 	max-width: 72rem;
 }
+// --- Wordpress Tricks --- \\
+span.break {
+	display: none; // activates at 768px
+	width: 0;
+	height: 0;
+	color: $nm_cream;
+}
+
+// Overlay & Modals
+// ----------------------------------------------------------------------------
+// created and added (also destroyed) to DOM via JS
+// opacity applied via JS | transition via CSS
+[data-overlay] {
+	position: fixed;
+	z-index: 998;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: hsla(0,0%,0%,0.6);
+	overflow: hidden;
+}
+// + overlay active + \\
+html.overlay_active,
+html.overlay_active body {
+	overflow-y: hidden;
+}
 // --- Modals --- \\
 [data-modal] {
+	// if styled the same way as [data-overlay], webkit will not treat positioning / height the same way
 	position: fixed;
 	z-index: 999;
 	top: 0;
@@ -221,7 +286,19 @@ svg.svg_inline {
 [data-modal] div.modal_body > p a:active {
 	color: hsla(0,0%,60%,1);
 }
-// + over 60 error + \\
+// + modal active + \\
+html.ready [data-modal] {
+	visibility: visible;
+}
+[data-modal="active"] {
+	left: 0;
+	animation: animShow 0.4s ease-in-out;
+}
+[data-modal="inactive"] {
+	left: -200%;
+	animation: animHide 0.4s ease-in-out forwards;
+}
+// --- Over 60 Error --- \\
 aside.modal_error-60 div.modal_body {
 	padding-top: 4.8rem;
 }
@@ -230,34 +307,6 @@ aside.modal_error-60 div.modal_body a.cancel_error {
 	bottom: 4.8rem;
 	left: 50%;
 	transform: translateX(-50%);
-}
-// --- Overlays --- \\
-// created and added (also destroyed) to DOM via JS
-// opacity applied via JS | transition via CSS
-[data-overlay] {
-	position: fixed;
-	z-index: 998;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: hsla(0,0%,0%,0.6);
-}
-// --- Overlay Active --- \\
-html.overlay_active,
-html.overlay_active body {
-	overflow-y: hidden;
-}
-// [data-overlay].loaded,
-[data-modal].loaded {
-	visibility: visible;
-}
-// --- Wordpress Tricks --- \\
-span.break {
-	display: none; // activates at 768px
-	width: 0;
-	height: 0;
-	color: $nm_cream;
 }
 
 // Buttons
@@ -1169,10 +1218,12 @@ section.page_articles article div[data-container] > p:not([class]) {
 section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $nm_orange;
+	white-space: nowrap;
 }
-section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format) {
+section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format),
+body.page-id-19 section.page_articles article div[data-container] > p a[href^="mailto:"] {
 	display: table;
-	margin: 0 auto;
+	margin: 0.2rem auto 0 auto;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }
 section.page_articles article div[data-container] > p a:hover,
@@ -1656,6 +1707,10 @@ form.form_required div.wrap_input div.wrap_element.required_birthday svg {
 body.page-template-tpl-thanks-php {
 	background-color: $nm_orange;
 }
+body.page-template-tpl-thanks-php footer {
+	display: none;
+	visibility: hidden;
+}
 section.thanks_articles {
 	background-color: transparent;
 }
@@ -1680,11 +1735,6 @@ section.thanks_articles article div[data-container] a.brd_cream:hover {
 }
 section.thanks_articles article div[data-container] a.brd_cream:active {
 	color: hsla(0,0%,40%,1);
-}
-// + temp + \\
-body.page-template-tpl-thanks-php footer {
-	display: none;
-	visibility: hidden;
 }
 
 // What's Covered
@@ -1820,12 +1870,4 @@ body.page-id-13 article tr td {
 }
 body.page-id-13 article tr td:last-child {
 	border-bottom: none;
-}
-
-// Partners
-// ----------------------------------------------------------------------------
-article.ambassadors p a[href^="mailto:"] {
-	display: table;
-	margin: 0 auto;
-	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }

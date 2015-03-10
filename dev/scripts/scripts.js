@@ -3,11 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Global Variables
 	// ----------------------------------------------------------------------------
-	var elHTML           = document.documentElement,
-		elBody           = document.body,
-		numViewportWidth = window.innerWidth,
-		transitionEvent  = whichTransitionEvent(),
-		animationEvent   = whichAnimationEvent();
+	var elHTML            = document.documentElement,
+		elBody            = document.body,
+		transitionEvent   = whichTransitionEvent(),
+		animationEvent    = whichAnimationEvent(),
+		elOverlay;
+
+	// window measurements
+	var numWindowWidth    = window.innerWidth,
+		numClientWidth    = document.documentElement.clientWidth,
+		numScrollbarWidth = numWindowWidth - numClientWidth,
+		hasScrollbar      = numScrollbarWidth > 0 ? true : false;
 
 
 	// Helper: Check when a CSS transition or animation has ended
@@ -47,53 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				return animations[anim];
 			}
 		}
-
-	}
-
-
-	// Helper: Find Parent Element by Class or Tag Name
-	// ----------------------------------------------------------------------------
-	function findParentClass(el, className) {
-
-		while (el && !classie.has(el, className) ) {
-			el = el.parentNode;
-		}
-
-		return el;
-
-	}
-
-	function findParentTag(el, tagName) {
-
-		while (el && el.nodeName !== tagName) {
-			el = el.parentNode;
-		}
-
-		return el;
-
-	};
-
-
-	// Helper: Get current date
-	// ----------------------------------------------------------------------------
-	function dateToday() {
-
-		var today = new Date(),
-			dd    = today.getDate(),
-			mm    = today.getMonth() + 1, // january is 0
-			yyyy  = today.getFullYear();
-
-		if (dd < 10) {
-			dd = '0' + dd;
-		}
-
-		if (mm < 10) {
-			mm = '0' + mm;
-		}
-
-		today = mm + '/' + dd + '/' + yyyy;
-
-		return today;
 
 	}
 
@@ -145,46 +104,205 @@ document.addEventListener('DOMContentLoaded', function() {
 	// console.log( ["Apple", "bOy", "caR"].indexOfIgnoreCase('car') ); // returns 2
 
 
-	// Helper: Create and Destroy [data-overlay] element
+	// Helper: Get current date
 	// ----------------------------------------------------------------------------
-	function createOverlay() {
+	function dateToday() {
 
-		// first, create an empty <div>
-		var elOverlay = document.createElement('div');
+		var today = new Date(),
+			dd    = today.getDate(),
+			mm    = today.getMonth() + 1, // january is 0
+			yyyy  = today.getFullYear();
 
-		// apply the attributes: id="overlay" & data-overlay="modal"
-		elOverlay.id = 'overlay';
-		elOverlay.setAttribute('data-overlay', 'modal'); // could maybe pass the attr value into the function?
+		if (dd < 10) {
+			dd = '0' + dd;
+		}
 
-		// append this <div> to the document <body>
-		elBody.appendChild(elOverlay);
+		if (mm < 10) {
+			mm = '0' + mm;
+		}
+
+		today = mm + '/' + dd + '/' + yyyy;
+
+		return today;
+
+	}
+
+
+	// Helper: Fire Window Resize Event Upon Finish
+	// ----------------------------------------------------------------------------
+	var waitForFinalEvent = (function() {
+
+		var timers = {};
+
+		return function(callback, ms, uniqueId) {
+
+			if (!uniqueId) {
+				uniqueId = 'beefchimi'; // Don't call this twice without a uniqueId
+			}
+
+			if (timers[uniqueId]) {
+				clearTimeout(timers[uniqueId]);
+			}
+
+			timers[uniqueId] = setTimeout(callback, ms);
+
+		};
+
+	})();
+
+
+	// Helper: Find Parent Element by Class or Tag Name
+	// ----------------------------------------------------------------------------
+	function findParentClass(el, className) {
+
+		while (el && !classie.has(el, className) ) {
+			el = el.parentNode;
+		}
+
+		return el;
+
+	}
+
+	function findParentTag(el, tagName) {
+
+		while (el && el.nodeName !== tagName) {
+			el = el.parentNode;
+		}
+
+		return el;
+
+	}
+
+
+	// Helper: CSS Fade In / Out
+	// ----------------------------------------------------------------------------
+	function fadeIn(thisElement) {
 
 		// make the element fully transparent
-		// (don't rely on a predefined CSS style... declare this with JS to getComputerStyle)
-		elOverlay.style.opacity = 0;
+		// (don't rely on a predefined CSS style... declare this with JS to getComputedStyle)
+		thisElement.style.opacity = 0;
 
 		// make sure the initial state is applied
-		window.getComputedStyle(elOverlay).opacity;
+		window.getComputedStyle(thisElement).opacity;
 
-		// set opacity to 1 (predefined CSS transition will handle the fade)
-		elOverlay.style.opacity = 1;
+		// set opacity to 1 (CSS transition will handle the fade)
+		thisElement.style.opacity = 1;
+
+	}
+
+	function fadeOut(thisElement) {
+
+		// set opacity to 0 (CSS transition will handle the fade)
+		thisElement.style.opacity = 0;
+
+	}
+
+
+/*
+	// Helper: Create loading animation
+	// ----------------------------------------------------------------------------
+	function createLoader() {
+
+		// create loader elements
+		var elLoader     = document.createElement('div'),
+			elLoaderWrap = document.createElement('div'),
+			elLoaderSVG  = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
+			elLoaderUse  = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+		// define loader attributes
+		elLoader.setAttribute('class', 'loader_overlay');
+		elLoaderWrap.setAttribute('class', 'wrap_svg');
+		elLoaderUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#ui_loader');
+
+		// append loader elements
+		elLoaderSVG.appendChild(elLoaderUse);
+		elLoaderWrap.appendChild(elLoaderSVG);
+		elLoader.appendChild(elLoaderWrap);
+
+		return elLoader;
+
+	}
+*/
+
+
+	// Helper: Lock / Unlock Body Scrolling
+	// ----------------------------------------------------------------------------
+	function lockBody() {
+
+		classie.add(elHTML, 'overlay_active');
+
+		// if necessary, accomodate for scrollbar width
+		if (hasScrollbar) {
+			elBody.style.paddingRight = numScrollbarWidth + 'px';
+			// elMainNav.style.paddingRight = numScrollbarWidth + 'px';
+		}
+
+	}
+
+	function unlockBody() {
+
+		classie.remove(elHTML, 'overlay_active');
+
+		// if necessary, remove scrollbar width styles
+		// should be expanded to restore original padding if needed
+		if (hasScrollbar) {
+			elBody.style.paddingRight = '0px';
+			// elMainNav.style.paddingRight = '0px';
+		}
+
+	}
+
+
+	// Helper: Create and Destroy [data-overlay] element
+	// ----------------------------------------------------------------------------
+	function createOverlay(childElement, strLabel) {
+
+		// create document fragment
+		var docFrag = document.createDocumentFragment();
+
+		lockBody();
+
+		// create empty overlay <div>
+		elOverlay = document.createElement('div');
+
+		// set data-overlay attribute as passed strLabel value
+		elOverlay.setAttribute('data-overlay', strLabel);
+
+		// append passed child elements
+		if (childElement) {
+			elOverlay.appendChild(childElement);
+		}
+
+		// append the [data-overlay] to the document fragement
+		docFrag.appendChild(elOverlay);
+
+		// empty document fragment into <body>
+		elBody.appendChild(docFrag);
+
+		fadeIn(elOverlay);
 
 	}
 
 	function destroyOverlay() {
 
-		var elOverlay = document.getElementById('overlay');
+		fadeOut(elOverlay);
 
-		elOverlay.style.opacity = 0;
-
+		// listen for CSS transitionEnd before removing the element
 		elOverlay.addEventListener(transitionEvent, removeOverlay);
 
+		// add id to overlay element and get it within destory?
+		// maybe expand this to be passed an ID, and it can destroy / remove any element?
 		function removeOverlay(e) {
 
 			// only listen for the opacity property
 			if (e.propertyName == "opacity") {
 
+				unlockBody();
+
+				// remove elOverlay from <body>
 				elBody.removeChild(elOverlay);
+
+				// must remove event listener!
 				elOverlay.removeEventListener(transitionEvent, removeOverlay);
 
 			}
@@ -194,38 +312,26 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// Navigation: Click to toggle navigation
+	// pageLoaded: Execute once the page has loaded and the FOUT animation has ended
 	// ----------------------------------------------------------------------------
-	function navToggle() {
+	function pageLoaded() {
 
-		var elNavToggle = document.getElementById('nav_toggle');
+		var elHeader = document.getElementsByTagName('header')[0];
 
-		elNavToggle.addEventListener('click', function(e) {
+		elHeader.addEventListener(animationEvent, removeFOUT);
 
-			classie.toggle(elBody, 'toggled_mobile-nav');
+		function removeFOUT() {
 
-			e.preventDefault();
+			classie.add(elHTML, 'ready');
+			elHeader.removeEventListener(animationEvent, removeFOUT);
 
-		}, false);
+		}
 
-	}
-
-
-/*
-	// fixedHeader: Toggle class after specified scroll distance
-	// ----------------------------------------------------------------------------
-	function fixedHeader() {
-
-		scrollPos = window.pageYOffset;
-
-		if (scrollPos >= 360) {
-			classie.add(elHeader, 'shadow');
-		} else {
-			classie.remove(elHeader, 'shadow');
+		if (hasScrollbar) {
+			classie.add(elHTML, 'has_scrollbar');
 		}
 
 	}
-*/
 
 
 	// secretEmail: Add mailto link to footer
@@ -262,6 +368,23 @@ document.addEventListener('DOMContentLoaded', function() {
 			arrLinks[i].setAttribute('href', prefix + ':' + localThis + '@' + domain + '.' + suffix);
 
 		}
+
+	}
+
+
+	// Navigation: Click to toggle navigation
+	// ----------------------------------------------------------------------------
+	function navToggle() {
+
+		var elNavToggle = document.getElementById('nav_toggle');
+
+		elNavToggle.addEventListener('click', function(e) {
+
+			classie.toggle(elBody, 'toggled_mobile-nav');
+
+			e.preventDefault();
+
+		});
 
 	}
 
@@ -331,13 +454,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		function openModal(e) {
 
 			var dataTargetModal = this.getAttribute('href').substring(1); // capture the href of the clicked element, remove the # prefix
-				elTargetModal   = document.getElementById(dataTargetModal); // get the modal we need to open
 
-			classie.add(elHTML, 'overlay_active'); // lock <body> scrolling with 'overlay_active'
-			classie.add(elTargetModal, 'loaded'); // visibility is initially set to "hidden", "loaded" class applied only once
+			elTargetModal = document.getElementById(dataTargetModal); // get the modal we need to open
 
 			// create overlay element and fade in modal
-			createOverlay();
+			createOverlay(false, 'modal');
 			elTargetModal.setAttribute('data-modal', 'active');
 
 			e.preventDefault();
@@ -349,10 +470,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		function closeModal(e) {
 
 			var dataTargetModal = this.getAttribute('href').substring(1); // capture the href of the clicked element, remove the # prefix
-				elTargetModal   = document.getElementById(dataTargetModal); // get the modal we need to open
+
+			elTargetModal = document.getElementById(dataTargetModal); // get the modal we need to open
 
 			// once we have found the desired parent element, hide that modal
-			classie.remove(elHTML, 'overlay_active');
 			elTargetModal.setAttribute('data-modal', 'inactive');
 			destroyOverlay();
 
@@ -365,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		function documentClick(e) {
 
 			// if this is not the currently toggled dropdown
-			if ( e.target === document.getElementById('overlay') ) {
+			if ( e.target === elOverlay ) {
 
 				// ignore this event if preventDefault has been called
 				if (e.defaultPrevented) {
@@ -373,7 +494,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 
 				// once we have found the desired parent element, hide that modal (copied from closeModal)
-				classie.remove(elHTML, 'overlay_active');
 				elTargetModal.setAttribute('data-modal', 'inactive');
 				destroyOverlay();
 
@@ -382,6 +502,35 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
+
+
+/*
+	// scrollbarModal: Accomodate for scrollbar width
+	// ----------------------------------------------------------------------------
+	function scrollbarModal() {
+
+		if (hasScrollbar) {
+
+			var arrModals = document.getElementsByClassName('modal'),
+				numModals = arrModals.length;
+
+			// check if aside.modal exists and is not empty
+			if (typeof arrModals !== 'undefined' && numModals > 0) {
+
+				for (var i = 0; i < arrModals; i++) {
+
+				}
+
+			else {
+
+				return; // array not found or empty... exit function
+
+			}
+
+		}
+
+	}
+*/
 
 
 	// selectDropdown: Pair each <select> element with its <ul> sibling
@@ -511,7 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var elFormQuote   = document.getElementById('form_quote'),
 			elHiddenInput = document.getElementById('hidden_destination'),
-			numOffset     = numViewportWidth < 960 ? 0 : 88, // header becomes fixed at 960px wide
+			numOffset     = numWindowWidth < 960 ? 0 : 88, // header becomes fixed at 960px wide
 			scrollOptions = {
 				speed: 1000,
 				easing: 'easeInOutQuint',
@@ -881,10 +1030,30 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+/*
+	// Window Events: On Resize
+	// ----------------------------------------------------------------------------
+	window.addEventListener('resize', function(e) {
+
+		// re-measure window width and height on resize
+		numWindowWidth = window.innerWidth;
+
+		// do not fire resize event for every pixel... wait until finished
+		waitForFinalEvent(function() {
+
+			scrollbarModal();
+
+		}, 500, 'unique string');
+
+	});
+*/
+
+
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
-	navToggle();
+	pageLoaded();
 	secretEmail();
+	navToggle();
 	toggleAccordian();
 	toggleModal();
 	selectDropdown();
@@ -895,4 +1064,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-}, false);
+});

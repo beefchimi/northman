@@ -134,6 +134,13 @@
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 	}
+	// --- Wordpress Tricks --- \\
+	span.break {
+		display: block;
+	}
+
+	// Overlay & Modals
+	// ----------------------------------------------------------------------------
 	// --- Modals --- \\
 	[data-modal] {
 		right: 0;
@@ -145,11 +152,14 @@
 		max-height: 54.8rem;
 		border-radius: 1.6rem;
 	}
+	html.has_scrollbar [data-modal] {
+		width: 53.7rem;
+	}
 	[data-modal] div.modal_body h5 {
 		padding-top: 2rem;
 		padding-bottom: 2rem;
 	}
-	// + over 60 error + \\
+	// --- Over 60 Error --- \\
 	aside.modal_error-60 {
 		max-height: 38rem;
 	}
@@ -158,10 +168,6 @@
 		bottom: auto;
 		left: auto;
 		transform: translateX(0%);
-	}
-	// --- Wordpress Tricks --- \\
-	span.break {
-		display: block;
 	}
 
 	// Forms
@@ -523,6 +529,9 @@
 		text-align: right;
 		background-color: transparent;
 		overflow-y: visible;
+	}
+	html.has_scrollbar.overlay_active nav.nav_primary {
+		padding-right: 1.5rem;
 	}
 	nav.nav_primary ul {
 		display: inline-block;
