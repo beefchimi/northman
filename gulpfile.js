@@ -98,7 +98,7 @@ gulp.task('styles', function() {
 		// .pipe(plugins.sourcemaps.write())
 		// .pipe(plugins.concat('styles.css')) // concat with sourcemap if --dev
 		.pipe(plugins.autoprefixer({
-			browsers: ['last 2 version', 'ios 6', 'android 4']
+			browsers: ['last 3 version', 'ios 6', 'android 4']
 		}))
 		.pipe(gulp.dest(paths.styles.dest))
 		.pipe(plugins.minifyCss()) // don't minify if --dev

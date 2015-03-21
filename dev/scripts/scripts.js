@@ -285,25 +285,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function destroyOverlay() {
 
-		fadeOut(elOverlay);
+		if ( classie.has(elHTML, 'ie9') ) {
 
-		// listen for CSS transitionEnd before removing the element
-		elOverlay.addEventListener(transitionEvent, removeOverlay);
+			unlockBody();
+			elBody.removeChild(elOverlay);
 
-		// add id to overlay element and get it within destory?
-		// maybe expand this to be passed an ID, and it can destroy / remove any element?
-		function removeOverlay(e) {
+		} else {
 
-			// only listen for the opacity property
-			if (e.propertyName == "opacity") {
+			fadeOut(elOverlay);
 
-				unlockBody();
+			// listen for CSS transitionEnd before removing the element
+			elOverlay.addEventListener(transitionEvent, removeOverlay);
 
-				// remove elOverlay from <body>
-				elBody.removeChild(elOverlay);
+			// add id to overlay element and get it within destory?
+			// maybe expand this to be passed an ID, and it can destroy / remove any element?
+			function removeOverlay(e) {
 
-				// must remove event listener!
-				elOverlay.removeEventListener(transitionEvent, removeOverlay);
+				// only listen for the opacity property
+				if (e.propertyName == "opacity") {
+
+					unlockBody();
+
+					// remove elOverlay from <body>
+					elBody.removeChild(elOverlay);
+
+					// must remove event listener!
+					elOverlay.removeEventListener(transitionEvent, removeOverlay);
+
+				}
 
 			}
 
@@ -316,6 +325,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function pageLoaded() {
 
+		// add 'has_scrollbar' class for OSs that use a visible scrollbar
+		if (hasScrollbar) {
+			classie.add(elHTML, 'has_scrollbar');
+		}
+
+		// the rest of the code does not apply to IE9, so exit
+		if ( classie.has(elHTML, 'ie9') ) {
+			return;
+		}
+
 		var elHeader = document.getElementsByTagName('header')[0];
 
 		elHeader.addEventListener(animationEvent, removeFOUT);
@@ -325,10 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			classie.add(elHTML, 'ready');
 			elHeader.removeEventListener(animationEvent, removeFOUT);
 
-		}
-
-		if (hasScrollbar) {
-			classie.add(elHTML, 'has_scrollbar');
 		}
 
 	}
@@ -868,9 +883,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 						elInputTypeahead.value = '';
 						elInputTypeahead.placeholder = strPlaceholder4;
-						classie.add(elTypeaheadWrap, 'animate_shake');
 
-						elTypeaheadWrap.addEventListener(animationEvent, removeShake);
+						if ( !classie.has(elHTML, 'ie9') ) {
+							classie.add(elTypeaheadWrap, 'animate_shake');
+							elTypeaheadWrap.addEventListener(animationEvent, removeShake);
+						}
 
 					}
 

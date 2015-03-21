@@ -298,6 +298,16 @@ html.ready [data-modal] {
 	left: -200%;
 	animation: animHide 0.4s ease-in-out forwards;
 }
+
+html.ie9 [data-modal="active"] {
+	display: block;
+	visibility: visible;
+	left: 0;
+}
+html.ie9 [data-modal="inactive"] {
+	display: none;
+}
+
 // --- Over 60 Error --- \\
 aside.modal_error-60 div.modal_body {
 	padding-top: 4.8rem;
@@ -1302,21 +1312,21 @@ section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) 
 	display: table;
 	margin: 0 auto;
 }
-// + list: sports + \\
-section.page_articles article ul.list_activities {
+// + list: activities + \\
+section.page_articles article div.list_activities {
 	margin-top: 4rem;
 	margin-bottom: 4rem;
 	padding: 2.4rem;
 	border: 0.2rem solid hsla(60,5%,78%,1);
 }
-section.page_articles article ul.list_activities li {
+section.page_articles article div.list_activities div p {
 	margin-bottom: 1.6rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.2rem;
 	line-height: 1.4;
 	text-transform: uppercase;
 }
-section.page_articles article ul.list_activities li:last-child {
+section.page_articles article div.list_activities div:last-child p:last-child {
 	margin-bottom: 0;
 }
 // + list: svg icons + \\

@@ -81,11 +81,20 @@
 		width: 6.8rem;
 	}
 	// --- Page Articles --- \\
-	// + list: sports + \\
-	section.page_articles article ul.list_activities {
+	// + list: activities + \\
+	section.page_articles article div.list_activities {
 		text-align: left;
-		column-count: 2;
-		column-gap: 3.2rem;
+	}
+	section.page_articles article div.list_activities div {
+		float: left;
+		width: calc(33.3333333% - 1.6rem);
+	}
+	section.page_articles article div.list_activities div:nth-child(1),
+	section.page_articles article div.list_activities div:nth-child(2) {
+		margin-right: 2.4rem;
+	}
+	section.page_articles article div.list_activities div p:last-child {
+		margin-bottom: 0;
 	}
 
 	// Get A Quote
@@ -153,7 +162,7 @@
 		border-radius: 1.6rem;
 	}
 	html.has_scrollbar [data-modal] {
-		width: 53.7rem;
+		width: 56rem; // over estimate the scrollbar size just to be safe
 	}
 	[data-modal] div.modal_body h5 {
 		padding-top: 2rem;
@@ -641,12 +650,24 @@
 		top: 2rem;
 		left: 2rem;
 	}
-	// + list: sports + \\
-	section.page_articles article ul.list_activities {
+	// + list: activities + \\
+	section.page_articles article div.list_activities {
 		margin-top: 6rem;
 		margin-bottom: 6rem;
 		padding: 4rem;
-		column-count: 3;
+	}
+	section.page_articles article div.list_activities div:nth-child(1),
+	section.page_articles article div.list_activities div:nth-child(2) {
+		margin-right: 0;
+	}
+	section.page_articles article div.list_activities div:nth-child(1) {
+		width: 40%;
+	}
+	section.page_articles article div.list_activities div:nth-child(2) {
+		width: 35%;
+	}
+	section.page_articles article div.list_activities div:nth-child(3) {
+		width: 25%;
 	}
 	// + list: svg icons + \\
 	section.page_articles article div[data-container] ul.list_svg {
@@ -916,9 +937,18 @@
 		padding-bottom: 12rem;
 	}
 	// --- Page Articles --- \\
-	// + list: sports + \\
-	section.page_articles article ul.list_activities {
+	// + list: activities + \\
+	section.page_articles article div.list_activities {
 		padding: 4.8rem;
+	}
+	section.page_articles article div.list_activities div:nth-child(1) {
+		width: 42%;
+	}
+	section.page_articles article div.list_activities div:nth-child(2) {
+		width: 36%;
+	}
+	section.page_articles article div.list_activities div:nth-child(3) {
+		width: 22%;
 	}
 
 	// Home Page
