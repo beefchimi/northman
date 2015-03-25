@@ -13,22 +13,22 @@ textarea {
 }
 body {
 	position: relative;
-	background: $nm_cream;
+	background: $hsl_cream;
 }
 ::selection {
-	color: $nm_cream;
-	background-color: $nm_orange;
+	color: $hsl_cream;
+	background-color: $hsl_orange;
 }
 // + autoprefixer does not recognize placeholder + \\
 ::-webkit-input-placeholder {
-	color: $nm_L58;
+	color: $hsl_L58;
 }
 ::-moz-placeholder {
-	color: $nm_L58;
+	color: $hsl_L58;
 	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: $nm_L58;
+	color: $hsl_L58;
 }
 
 // Transitions
@@ -163,7 +163,7 @@ div.loader_overlay div.wrap_svg {
 	animation: anim360 1s linear infinite forwards;
 }
 div.loader_overlay div.wrap_svg svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 */
 
@@ -220,7 +220,7 @@ span.break {
 	display: none; // activates at 768px
 	width: 0;
 	height: 0;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 
 // Overlay & Modals
@@ -250,7 +250,7 @@ html.overlay_active body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: $nm_L15;
+	background-color: $hsl_L15;
 	visibility: hidden; // requires visibility in order to hide animation on initial page load... set to 'visible' via JS class 'loaded'
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
@@ -265,7 +265,7 @@ html.overlay_active body {
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 [data-modal] div.modal_body > p {
 	margin-bottom: 3.2rem;
@@ -274,11 +274,11 @@ html.overlay_active body {
 	font-size: 1.7rem;
 	line-height: 1.4;
 	text-align: center;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 [data-modal] div.modal_body > p a {
 	font-weight: 700;
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 [data-modal] div.modal_body > p a:hover {
 	color: hsla(0,0%,80%,1);
@@ -339,36 +339,36 @@ button[class*="brd_"] {
 }
 // + fill: orange + \\
 .fill_orange {
-	color: $nm_cream;
-	background-color: $nm_orange;
+	color: $hsl_cream;
+	background-color: $hsl_orange;
 }
 .fill_orange:focus,
 .fill_orange:hover {
-	color: $nm_orange;
-	background-color: $nm_cream;
+	color: $hsl_orange;
+	background-color: $hsl_cream;
 }
 .fill_orange:active {
-	color: $nm_orange-D;
-	background-color: $nm_cream-D;
+	color: darken($hsl_orange, 10%);
+	background-color: darken($hsl_cream, 10%);
 }
 // + fill: green + \\
 .fill_green {
-	color: $nm_cream;
-	background-color: $nm_green;
+	color: $hsl_cream;
+	background-color: $hsl_green;
 }
 .fill_green:focus,
 .fill_green:hover {
-	background-color: $nm_green-L;
+	background-color: lighten($hsl_green, 10%);
 }
 .fill_green:active {
-	background-color: $nm_green;
+	background-color: $hsl_green;
 }
 // + border: orange & green + \\
 .brd_orange {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 .brd_green {
-	color: $nm_green;
+	color: $hsl_green;
 }
 .brd_orange:focus,
 .brd_green:focus,
@@ -382,25 +382,25 @@ button[class*="brd_"] {
 }
 // + border: cream + \\
 .brd_cream {
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 .brd_cream:focus,
 .brd_cream:hover {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 .brd_cream:active {
-	color: $nm_orange-L;
+	color: lighten($hsl_orange, 10%);
 }
 // + border: grey + \\
 .brd_grey {
-	color: $nm_L34;
+	color: $hsl_L34;
 }
 .brd_grey:focus,
 .brd_grey:hover {
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 .brd_grey:active {
-	color: $nm_cream-D;
+	color: darken($hsl_cream, 10%);
 }
 
 // Forms
@@ -411,23 +411,23 @@ input[type="date"] {
 	width: 100%;
 	height: 4.8rem;
 	font-size: 1.6rem;
-	color: $nm_L21;
-	background-color: $nm_cream;
-	box-shadow: inset 0 0 0 0.1rem $nm_orange-A0;
+	color: $hsl_L21;
+	background-color: $hsl_cream;
+	box-shadow: inset 0 0 0 0.1rem $hsla_orange-0;
 	border-radius: 0.8rem;
 }
 // + interaction + \\
 input[type="text"]:focus,
 input[type="date"]:focus {
-	box-shadow: inset 0 0 0 0.1rem $nm_orange;
+	box-shadow: inset 0 0 0 0.1rem $hsl_orange;
 }
 input[type="text"]:hover,
 input[type="date"]:hover {
-	background-color: $nm_cream-D;
+	background-color: darken($hsl_cream, 10%);
 }
 input[type="text"]:focus:hover,
 input[type="date"]:focus:hover {
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 // --- Checkbox --- \\
 span.wrap_checkbox {
@@ -443,7 +443,7 @@ input[type="checkbox"] + label {
 	letter-spacing: 0;
 	text-align: left;
 	text-transform: none;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 input[type="checkbox"] + label::before {
 	content: " ";
@@ -453,7 +453,7 @@ input[type="checkbox"] + label::before {
 	left: 0;
 	width: 2.4rem;
 	height: 2.4rem;
-	border: 0.2rem solid $nm_orange;
+	border: 0.2rem solid $hsl_orange;
 	border-radius: 0.3rem;
 }
 input[type="checkbox"] + label svg {
@@ -462,23 +462,23 @@ input[type="checkbox"] + label svg {
 	left: 0.5rem;
 	width: 1.4rem;
 	height: 1.4rem;
-	fill: $nm_orange-A0;
+	fill: $hsla_orange-0;
 }
 // + interaction + \\
 input[type="checkbox"] + label:hover {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 input[type="checkbox"] + label:active {
-	color: $nm_orange-L;
+	color: lighten($hsl_orange, 10%);
 }
 input[type="checkbox"] + label:active::before {
-	border-color: $nm_orange-L;
+	border-color: lighten($hsl_orange, 10%);
 }
 input[type="checkbox"]:focus + label::before {
-	background-color: hsla(0,0%,12%,1); // lighter than: $nm_L7
+	background-color: $hsl_L12;
 }
 input[type="checkbox"]:checked + label svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 // --- Select Dropdown --- \\
 div.wrap_select {
@@ -503,9 +503,9 @@ div.wrap_select div.dropdown_toggle {
 	position: relative;
 	z-index: 102;
 	height: 4.8rem;
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 	border-radius: 0.8rem;
-	box-shadow: inset 0 0 0 0.1rem $nm_orange-A0;
+	box-shadow: inset 0 0 0 0.1rem $hsla_orange-0;
 }
 div.wrap_select div.dropdown_toggle span {
 	display: block;
@@ -514,10 +514,10 @@ div.wrap_select div.dropdown_toggle span {
 	padding-right: 4.8rem;
 	font-size: 1.6rem;
 	line-height: 4.8rem;
-	color: $nm_L21;
+	color: $hsl_L21;
 }
 div.wrap_select[data-selected=""] div.dropdown_toggle span {
-	color: $nm_L58;
+	color: $hsl_L58;
 }
 div.wrap_select div.dropdown_toggle svg {
 	position: absolute;
@@ -525,14 +525,14 @@ div.wrap_select div.dropdown_toggle svg {
 	right: 1.6rem;
 	width: 1.6rem;
 	height: 1.6rem;
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 // + dropdown list + \\
 div.wrap_select div.wrap_dropdown,
 div.wrap_select div.wrap_dropdown ul,
 div.wrap_select div.wrap_dropdown.scrollable,
 div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
-	background-color: $nm_cream; // be sure there is no chance ios rubber band will show a difference background
+	background-color: $hsl_cream; // be sure there is no chance ios rubber band will show a difference background
 }
 div.wrap_select div.wrap_dropdown {
 	position: absolute;
@@ -550,11 +550,11 @@ div.wrap_select div.wrap_dropdown ul li a {
 	display: block;
 	padding: 1.6rem;
 	font-size: 1.6rem;
-	color: $nm_L21;
+	color: $hsl_L21;
 }
 div.wrap_select div.wrap_dropdown ul li.selected a {
 	pointer-events: none;
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 // + dropdown scrollable + \\
 div.wrap_select div.wrap_dropdown.scrollable {
@@ -584,20 +584,20 @@ div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar {
 	background-color: hsla(0,0%,0%,1);
 }
 div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-track {
-	background-color: $nm_cream-D;
+	background-color: darken($hsl_cream, 10%);
 }
 div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-thumb {
-	background-color: $nm_orange;
+	background-color: $hsl_orange;
 }
 // + interaction + \\
 div.wrap_select select:focus + div.dropdown_toggle {
-	box-shadow: inset 0 0 0 0.1rem $nm_orange;
+	box-shadow: inset 0 0 0 0.1rem $hsl_orange;
 }
 div.wrap_select:hover div.dropdown_toggle {
-	background-color: $nm_cream-D;
+	background-color: darken($hsl_cream, 10%);
 }
 div.wrap_select:active div.dropdown_toggle {
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 div.wrap_select div.wrap_dropdown ul li a:hover {
 	background-color: hsla(0,0%,98%,1);
@@ -632,14 +632,14 @@ span.twitter-typeahead input[type="text"] {
 	z-index: 200;
 }
 span.twitter-typeahead input[type="text"].tt-hint {
-	color: $nm_L58;
+	color: $hsl_L58;
 }
 span.tt-dropdown-menu {
 	z-index: 1;
 	top: 4rem !important;
 	padding-top: 0.8rem;
 	width: 100%;
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 	border-radius: 0 0 0.8rem 0.8rem;
 	box-shadow: $boxshadow_drop;
 	max-height: 28.8rem; // dropdown_label height (48px) x 6
@@ -656,7 +656,7 @@ span.tt-dropdown-menu div.tt-dataset-states span.tt-suggestions {
 div.tt-suggestion {
 	cursor: pointer;
 	padding: 1.6rem;
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 div.tt-suggestion:hover {
 	background-color: hsla(0,0%,98%,1);
@@ -668,7 +668,7 @@ div.tt-suggestion p {
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif !important;
 	font-size: 1.6rem;
 	text-align: left;
-	color: $nm_L21;
+	color: $hsl_L21;
 }
 div.tt-suggestion p strong {
 	font-weight: 400; // needed to prevent false browser bolding
@@ -682,7 +682,7 @@ form.form_quote span.txt {
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 form.form_quote div.form_header {
 	padding: 3.2rem 1.6rem;
@@ -705,7 +705,7 @@ form.form_quote div.wrap_input div.wrap_columns {
 form.form_quote div.wrap_input div.column {
 	vertical-align: top;
 	padding: 3.2rem 1.6rem;
-	border-top: 0.1rem solid $nm_L21;
+	border-top: 0.1rem solid $hsl_L21;
 }
 form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
@@ -721,7 +721,7 @@ form.form_quote div.wrap_input div.wrap_element svg {
 	right: 1.6rem;
 	width: 1.6rem;
 	height: 1.6rem;
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 // + individual columns + \\
 form.form_quote div.wrap_input div.col-1 {
@@ -738,7 +738,7 @@ form.form_quote div.wrap_input div.col-2 div.wrap_element p {
 	font-size: 1.6rem;
 	font-style: italic;
 	text-align: center;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 form.form_quote div.wrap_input div.col-3 div.wrap_select,
 form.form_quote div.wrap_input div.col-4 div.wrap_select {
@@ -769,7 +769,7 @@ form.form_quote div.error_message p {
 	font-size: 1.3rem;
 	letter-spacing: 0.3rem;
 	text-transform: uppercase;
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 body.home main form.form_quote div.error_message p {
 	margin: 3.2rem 0 0 0;
@@ -795,7 +795,7 @@ ul.list_badges {
 ul.list_badges li {
 	margin: 0 auto 3.2rem auto;
 	max-width: 41rem;
-	border: 0.2rem solid $nm_orange;
+	border: 0.2rem solid $hsl_orange;
 	border-radius: 1.6rem;
 }
 ul.list_badges li:last-child {
@@ -804,14 +804,14 @@ ul.list_badges li:last-child {
 ul.list_badges li div.badge_header {
 	position: relative;
 	padding: 1.8rem 1.6rem;
-	border-bottom: 0.2rem solid $nm_orange;
+	border-bottom: 0.2rem solid $hsl_orange;
 }
 ul.list_badges li div.badge_header div.wrap_svg {
 	display: inline-block;
 	height: 2.6rem;
 }
 ul.list_badges li div.badge_header div.wrap_svg svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 ul.list_badges li div.badge_header h6 {
 	text-transform: uppercase;
@@ -827,14 +827,14 @@ ul.list_badges li div.badge_body h3,
 ul.list_badges li div.badge_body h3 span.currency,
 ul.list_badges li div.badge_body p,
 ul.list_badges li div.badge_body a.btn_rnd {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 // + badge single + \\
 ul.list_badges li.badge_single {
-	border-color: $nm_bronze;
+	border-color: $hsl_bronze;
 }
 ul.list_badges li.badge_single div.badge_header {
-	border-bottom-color: $nm_bronze;
+	border-bottom-color: $hsl_bronze;
 }
 ul.list_badges li.badge_single div.badge_header h6,
 ul.list_badges li.badge_single div.badge_header p.option_letter,
@@ -842,17 +842,17 @@ ul.list_badges li.badge_single div.badge_body h3,
 ul.list_badges li.badge_single div.badge_body h3 span.currency,
 ul.list_badges li.badge_single div.badge_body p,
 ul.list_badges li.badge_single div.badge_body a.btn_rnd {
-	color: $nm_bronze;
+	color: $hsl_bronze;
 }
 ul.list_badges li.badge_single div.badge_header div.wrap_svg svg {
-	fill: $nm_bronze;
+	fill: $hsl_bronze;
 }
 // + badge family + \\
 ul.list_badges li.badge_family {
-	border-color: $nm_silver;
+	border-color: $hsl_silver;
 }
 ul.list_badges li.badge_family div.badge_header {
-	border-bottom-color: $nm_silver;
+	border-bottom-color: $hsl_silver;
 }
 ul.list_badges li.badge_family div.badge_header h6,
 ul.list_badges li.badge_family div.badge_header p.option_letter,
@@ -860,20 +860,20 @@ ul.list_badges li.badge_family div.badge_body h3,
 ul.list_badges li.badge_family div.badge_body h3 span.currency,
 ul.list_badges li.badge_family div.badge_body p,
 ul.list_badges li.badge_family div.badge_body a.btn_rnd {
-	color: $nm_silver;
+	color: $hsl_silver;
 }
 ul.list_badges li.badge_family div.badge_header div.wrap_svg svg {
-	fill: $nm_silver;
+	fill: $hsl_silver;
 }
 ul.list_badges li.badge_family div.badge_body a.btn_rnd {
-	color: $nm_silver;
+	color: $hsl_silver;
 }
 // + badge annual + \\
 ul.list_badges li.badge_annual {
-	border-color: $nm_gold;
+	border-color: $hsl_gold;
 }
 ul.list_badges li.badge_annual div.badge_header {
-	border-bottom-color: $nm_gold;
+	border-bottom-color: $hsl_gold;
 }
 ul.list_badges li.badge_annual div.badge_header h6,
 ul.list_badges li.badge_annual div.badge_header p.option_letter,
@@ -881,10 +881,10 @@ ul.list_badges li.badge_annual div.badge_body h3,
 ul.list_badges li.badge_annual div.badge_body h3 span.currency,
 ul.list_badges li.badge_annual div.badge_body p,
 ul.list_badges li.badge_annual div.badge_body a.btn_rnd {
-	color: $nm_gold;
+	color: $hsl_gold;
 }
 ul.list_badges li.badge_annual div.badge_header div.wrap_svg svg {
-	fill: $nm_gold;
+	fill: $hsl_gold;
 }
 // + interaction + \\
 ul.list_badges li.badge div.badge_body a.btn_rnd:hover {
@@ -895,25 +895,25 @@ ul.list_badges li.badge div.badge_body a.btn_rnd:active {
 }
 // + badge selected + \\
 ul.list_badges li.selected {
-	border-color: $nm_green;
+	border-color: $hsl_green;
 }
 ul.list_badges li.selected div.badge_header {
-	border-bottom-color: $nm_green;
+	border-bottom-color: $hsl_green;
 }
 ul.list_badges li.selected div.badge_header h6,
 ul.list_badges li.selected div.badge_body h3,
 ul.list_badges li.selected div.badge_body h3 span.currency {
-	color: $nm_green;
+	color: $hsl_green;
 }
 ul.list_badges li.selected div.badge_header div.wrap_svg svg {
-	fill: $nm_green;
+	fill: $hsl_green;
 }
 ul.list_badges li.selected div.badge_body a.btn_rnd,
 ul.list_badges li.selected div.badge_body a.btn_rnd:hover,
 ul.list_badges li.selected div.badge_body a.btn_rnd:active {
-	color: $nm_cream;
-	background-color: $nm_green;
-	box-shadow: inset 0 0 0 0.2rem $nm_green; // need to redefine box-shadow since text colour is different
+	color: $hsl_cream;
+	background-color: $hsl_green;
+	box-shadow: inset 0 0 0 0.2rem $hsl_green; // need to redefine box-shadow since text colour is different
 }
 
 
@@ -923,7 +923,7 @@ ul.list_badges li.selected div.badge_body a.btn_rnd:active {
 // Header
 // ----------------------------------------------------------------------------
 header {
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 header div[data-container] {
 	position: relative;
@@ -939,7 +939,7 @@ header a.wordmark {
 	height: 4.2rem;
 }
 header a.wordmark svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 header a.wordmark:hover svg {
 	fill: hsla(0,0%,20%,1);
@@ -955,7 +955,7 @@ header h2 {
 	font-size: 1.2rem;
 	font-style: italic;
 	letter-spacing: 0.1rem;
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 // --- Nav Toggle --- \\
 a.nav_toggle {
@@ -980,7 +980,7 @@ a.nav_toggle div.wrap_menu span {
 	left: 0;
 	width: 100%;
 	height: 0.3rem;
-	background-color: $nm_orange;
+	background-color: $hsl_orange;
 }
 a.nav_toggle div.wrap_menu span.one {
 	top: 0;
@@ -995,7 +995,7 @@ a.nav_toggle div.wrap_menu span.three {
 nav.nav_primary {
 	max-height: 0;
 	text-align: center;
-	background-color: $nm_orange;
+	background-color: $hsl_orange;
 	overflow-y: hidden;
 }
 nav.nav_primary ul {
@@ -1009,7 +1009,7 @@ nav.nav_primary ul li:last-child {
 }
 nav.nav_primary ul li a {
 	font-size: 1.8rem;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 nav.nav_primary ul li a:hover {
 	color: hsla(0,0%,20%,1);
@@ -1031,7 +1031,7 @@ nav.nav_primary div.social_links a.social_twitter {
 	margin-right: 4rem;
 }
 nav.nav_primary div.social_links a svg {
-	fill: $nm_cream;
+	fill: $hsl_cream;
 }
 nav.nav_primary div.social_links a:hover svg {
 	fill: hsla(0,0%,20%,1);
@@ -1076,13 +1076,13 @@ nav.nav_footer ul li:nth-child(3n) {
 }
 nav.nav_footer ul li a {
 	font-size: 1.4rem;
-	color: $nm_L21;
+	color: $hsl_L21;
 }
 nav.nav_footer ul li a:hover {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 nav.nav_footer ul li a:active {
-	color: $nm_orange-D;
+	color: darken($hsl_orange, 10%);
 }
 // --- Contact Info --- \\
 ul.footer_contact {
@@ -1094,7 +1094,7 @@ ul.footer_contact li {
 	font-style: italic;
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 ul.footer_contact li:last-child {
 	margin-bottom: 0;
@@ -1104,7 +1104,10 @@ footer p {
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
 	line-height: 1.4;
-	color: $nm_orange;
+	color: $hsl_orange;
+}
+footer p:first-of-type {
+	margin-bottom: 1.6rem;
 }
 footer p a {
 	font-weight: 700;
@@ -1113,7 +1116,7 @@ footer p a {
 // --- Privacy & Contact Links --- \\
 footer p a,
 ul.footer_contact li a {
-	color: $nm_orange;
+	color: $hsl_orange;
 }
 footer p a:hover,
 ul.footer_contact li a:hover {
@@ -1131,7 +1134,7 @@ ul.footer_contact li a:active {
 // Common
 // ----------------------------------------------------------------------------
 section.page_header {
-	background-color: $nm_L7;
+	background-color: $hsl_L7;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -1147,7 +1150,7 @@ section.page_header h1 {
 	letter-spacing: 0.4rem;
 	line-height: 1.2;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 section.page_header div.wrap_svg {
 	margin-left: auto;
@@ -1158,7 +1161,7 @@ section.page_header div.wrap_svg.icon {
 	width: 4.8rem;
 }
 section.page_header div.wrap_svg svg {
-	fill: $nm_cream; // 90% opacity?
+	fill: $hsl_cream; // 90% opacity?
 }
 // + internal header + \\
 section.internal_header {
@@ -1167,7 +1170,7 @@ section.internal_header {
 }
 // --- Page Callout --- \\
 section.page_callout {
-	background-color: $nm_orange;
+	background-color: $hsl_orange;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -1183,14 +1186,14 @@ section.page_callout article h2 {
 	line-height: 1.2;
 	text-align: center;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 section.page_callout article p {
 	margin-bottom: 3.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.5;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 section.page_callout article p:last-child {
 	margin-bottom: 0;
@@ -1203,13 +1206,13 @@ section.page_callout article a.btn_rnd:active {
 }
 // --- Page Articles --- \\
 section.page_articles {
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 section.page_articles article {
 	padding: 4.8rem 1.6rem;
 	text-align: center;
 	color: hsla(0,0%,15%,1);
-	border-bottom: 0.2rem solid $nm_orange;
+	border-bottom: 0.2rem solid $hsl_orange;
 }
 section.page_articles article h2 {
 	margin-bottom: 3.2rem;
@@ -1227,7 +1230,7 @@ section.page_articles article div[data-container] > p:not([class]) {
 }
 section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
-	color: $nm_orange;
+	color: $hsl_orange;
 	white-space: nowrap;
 }
 section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format),
@@ -1250,7 +1253,7 @@ section.page_articles article div[data-container] div.article_svg {
 	height: 6.4rem;
 }
 section.page_articles article div[data-container] .article_svg svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 // + list: ordered + \\
 section.page_articles article div[data-container] ol {
@@ -1265,7 +1268,7 @@ section.page_articles article div[data-container] ol li {
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.3rem;
 	line-height: 1.4;
-	border: 0.2rem solid $nm_ash;
+	border: 0.2rem solid $hsl_ash;
 }
 section.page_articles article div[data-container] ol li::before {
 	content: counter(ordered-counter, decimal) ".";
@@ -1360,13 +1363,13 @@ section.page_articles article table {
 	table-layout: fixed;
 	margin-bottom: 3.2rem;
 	width: 100%;
-	border: 0.2rem solid $nm_ash;
+	border: 0.2rem solid $hsl_ash;
 }
 section.page_articles article table:last-child {
 	margin-bottom: 0;
 }
 section.page_articles article table tbody tr {
-	border-bottom: 0.2rem solid $nm_ash;
+	border-bottom: 0.2rem solid $hsl_ash;
 }
 section.page_articles article table tbody tr:last-child {
 	border-bottom: none;
@@ -1389,7 +1392,7 @@ section.home_header div.wrap_svg.title {
 // --- Form: Destination --- \\
 form.form_destination {
 	padding-top: 3.2rem;
-	border-top: 0.1rem solid $nm_cream;
+	border-top: 0.1rem solid $hsl_cream;
 }
 form.form_destination fieldset {
 	margin: 0 auto;
@@ -1403,7 +1406,7 @@ form.form_destination fieldset legend {
 	letter-spacing: 0.3rem;
 	text-align: center;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 }
 form.form_destination fieldset div.wrap_element {
 	max-width: 39rem;
@@ -1421,13 +1424,13 @@ form.form_destination fieldset div.wrap_element svg {
 	right: 1.6rem;
 	width: 2rem;
 	height: 2rem;
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 // --- Form: Quote --- \\
 body.home main form.form_quote {
 	max-height: 0;
 	overflow-y: hidden;
-	background-color: $nm_L7;
+	background-color: $hsl_L7;
 }
 body.home main form.form_quote.reveal {
 	max-height: 99rem;
@@ -1444,7 +1447,7 @@ article.quote_options p.notice {
 	font-size: 1.3rem;
 	font-style: italic;
 	text-align: center;
-	color: $nm_L7;
+	color: $hsl_L7;
 }
 article.quote_options div.error_message {
 	margin: 0 auto;
@@ -1461,8 +1464,8 @@ article.quote_options div.error_message p {
 	font-size: 1.4rem;
 	letter-spacing: 0.2rem;
 	text-transform: uppercase;
-	color: $nm_cream;
-	background-color: $nm_red;
+	color: $hsl_cream;
+	background-color: $hsl_red;
 	border-radius: 0.8rem;
 }
 section.error_quote article.quote_options div.error_message {
@@ -1525,7 +1528,7 @@ ul.quote_badges li.badge_annual div.badge_header div.wrap_svg {
 // --- Details Captured --- \\
 div.details_captured {
 	padding: 3.2rem;
-	border: 0.2rem solid $nm_ash;
+	border: 0.2rem solid $hsl_ash;
 }
 div.details_captured ul {
 	margin-bottom: 4.8rem;
@@ -1551,13 +1554,13 @@ div.details_captured ul li strong {
 div.accordian {
 	margin-bottom: 4.8rem;
 	text-align: left;
-	border: 0.2rem solid $nm_ash;
+	border: 0.2rem solid $hsl_ash;
 	border-bottom: none;
 }
 div.accordian_row {
 	position: relative;
 	padding: 1.6rem;
-	border-bottom: 0.2rem solid $nm_ash;
+	border-bottom: 0.2rem solid $hsl_ash;
 }
 div.accordian_header h4 {
 	padding-right: 3.2rem;
@@ -1580,7 +1583,7 @@ a.accordian_toggle div.wrap_svg {
 	height: 1.6rem;
 }
 a.accordian_toggle div.wrap_svg svg {
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 div.accordian_body {
 	max-height: 0;
@@ -1709,13 +1712,13 @@ form.form_required div.wrap_input div.wrap_element.required_birthday svg {
 	right: 1.6rem;
 	width: 1.6rem;
 	height: 1.6rem;
-	fill: $nm_orange;
+	fill: $hsl_orange;
 }
 
 // Thanks
 // ----------------------------------------------------------------------------
 body.page-template-tpl-thanks-php {
-	background-color: $nm_orange;
+	background-color: $hsl_orange;
 }
 body.page-template-tpl-thanks-php footer {
 	display: none;
@@ -1725,11 +1728,11 @@ section.thanks_articles {
 	background-color: transparent;
 }
 section.thanks_articles article {
-	color: $nm_cream;
+	color: $hsl_cream;
 	border-bottom: none;
 }
 section.thanks_articles article div[data-container] div.article_svg svg {
-	fill: $nm_cream;
+	fill: $hsl_cream;
 }
 section.thanks_articles article div[data-container] h1 {
 	margin-bottom: 4rem;
@@ -1765,7 +1768,7 @@ form.form_coverage div.wrap_element input.input_typeahead {
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
 }
 form.form_coverage div.wrap_element input.input_typeahead:hover {
-	background-color: $nm_cream;
+	background-color: $hsl_cream;
 }
 form.form_coverage div.wrap_element input.input_typeahead:focus {
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
@@ -1799,20 +1802,20 @@ div.form_response div svg {
 	left: 2rem;
 	width: 2.8rem;
 	height: 2.8rem;
-	fill: $nm_cream;
+	fill: $hsl_cream;
 }
 div.form_response div h4 {
 	display: inline-block;
 	line-height: 1.1;
 	text-transform: uppercase;
-	color: $nm_cream;
+	color: $hsl_cream;
 	vertical-align: middle;
 }
 div.form_response div h4 span {
 	white-space: nowrap;
 }
 div.form_response div.response_success {
-	background-color: $nm_green;
+	background-color: $hsl_green;
 }
 div.form_response div.response_success svg {
 	top: 1.4rem;
@@ -1825,7 +1828,7 @@ div.form_response div.response_success h4 {
 	letter-spacing: 0.2rem;
 }
 div.form_response div.response_fail {
-	background-color: $nm_red;
+	background-color: $hsl_red;
 }
 div.form_response div.response_fail svg {
 	top: 1.6rem;
@@ -1876,7 +1879,7 @@ ul.packages_badges li div.badge_body p {
 body.page-id-13 article tr td {
 	display: block;
 	text-align: center;
-	border-bottom: 0.2rem solid $nm_ash;
+	border-bottom: 0.2rem solid $hsl_ash;
 }
 body.page-id-13 article tr td:last-child {
 	border-bottom: none;

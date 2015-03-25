@@ -1,4 +1,4 @@
-%footer
+%footer{"data-container" => "width_720"}
 
 	%nav.nav_footer
 		%ul
@@ -18,5 +18,6 @@
 
 	:plain
 		<p>Your privacy is paramount. Please read our <a href="#" title="View our Privacy Policy">privacy policy</a> and <a href="#" title="View our Terms of Service">terms of service</a>.</p>
+		<p>The language in this website may not be the same as the actual policy wording which will prevail in all instances and is available upon request. Certain exclusions, limitations and conditions may apply.</p>
 
 = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render

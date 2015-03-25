@@ -32,7 +32,7 @@
 	// ----------------------------------------------------------------------------
 	// --- Form: Quote --- \\
 	form.form_quote div.wrap_input div.wrap_columns {
-		border-top: 0.1rem solid $nm_L21;
+		border-top: 0.1rem solid $hsl_L21;
 	}
 	// + individual columns + \\
 	form.form_quote div.wrap_input div.col-1 div.wrap_element {
@@ -48,7 +48,7 @@
 	}
 	form.form_quote div.wrap_input div.col-2 {
 		width: 23.8rem;
-		border-right: 0.1rem solid $nm_L21;
+		border-right: 0.1rem solid $hsl_L21;
 	}
 	form.form_quote div.wrap_input div.col-3 {
 		width: 30rem;
@@ -348,11 +348,11 @@
 	section.page_articles article {
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
-		border-left: 0.2rem solid $nm_orange;
-		border-right: 0.2rem solid $nm_orange;
+		border-left: 0.2rem solid $hsl_orange;
+		border-right: 0.2rem solid $hsl_orange;
 	}
 	section.page_articles article:first-child {
-		border-top: 0.2rem solid $nm_orange;
+		border-top: 0.2rem solid $hsl_orange;
 	}
 	// + preceeded by page callout + \\
 	section.page_callout + section.page_articles {
@@ -490,7 +490,7 @@
 		border-bottom: none;
 	}
 	body.page-id-13 article table tr td:nth-child(n+2) {
-		border-left: 0.2rem solid $nm_ash;
+		border-left: 0.2rem solid $hsl_ash;
 	}
 
 }
@@ -560,10 +560,10 @@
 		color: hsla(0,0%,20%,1);
 	}
 	nav.nav_primary ul li a:hover {
-		color: $nm_orange;
+		color: $hsl_orange;
 	}
 	nav.nav_primary ul li a:active {
-		color: $nm_orange-D;
+		color: darken($hsl_orange, 10%);
 	}
 	// + social links + \\
 	nav.nav_primary div.social_links {
@@ -580,7 +580,7 @@
 		margin-right: 1rem;
 	}
 	nav.nav_primary div.social_links a svg {
-		fill: $nm_ash-D;
+		fill: darken($hsl_ash, 10%);
 	}
 	// --- Toggled: Mobile Nav --- \\
 	body.toggled_mobile-nav nav.nav_primary {
@@ -600,7 +600,7 @@
 		font-size: 1.9rem;
 	}
 	section.page_callout article p {
-		margin-bottom: 4.2rem;
+		// margin-bottom: 4.2rem;
 		font-size: 1.7rem;
 	}
 	section.page_callout article a.btn_rnd {
@@ -964,7 +964,7 @@
 	// --- Form: Quote --- \\
 	body.home main form.form_quote div.form_header {
 		padding: 4rem 0;
-		border-bottom: 0.1rem solid $nm_L21;
+		border-bottom: 0.1rem solid $hsl_L21;
 	}
 	body.home main form.form_quote div.wrap_input div.wrap_columns {
 		border-top: none;
@@ -979,7 +979,7 @@
 	}
 	body.home main form.form_quote div.wrap_input div.col-1,
 	body.home main form.form_quote div.wrap_input div.col-3 {
-		border-right: 0.1rem solid $nm_L21;
+		border-right: 0.1rem solid $hsl_L21;
 	}
 	// + individual columns + \\
 	body.home main form.form_quote div.wrap_input div.col-1 {

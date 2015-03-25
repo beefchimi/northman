@@ -1,31 +1,22 @@
 // SASS Variables
 // ----------------------------------------------------------------------------
-$nm_orange:    hsla(16,100%,54%,1);
-$nm_orange-L:  hsla(16,100%,64%,1);
-$nm_orange-D:  hsla(16,100%,44%,1);
-$nm_orange-A0: hsla(16,100%,54%,0);
+$hsl_orange: hsl(16,100%,54%);
+$hsl_green:  hsl(153,79%,42%);
+$hsl_cream:  hsl(60,11%,93%);
+$hsl_ash:    hsl(60,5%,78%);
+$hsl_red:    hsl(0,76%,61%);
+$hsl_bronze: hsl(14,48%,44%);
+$hsl_silver: hsl(180,2%,55%);
+$hsl_gold:   hsl(35,62%,57%);
 
-$nm_green:   hsla(153,79%,42%,1);
-$nm_green-L: hsla(153,79%,52%,1);
-$nm_green-D: hsla(153,79%,32%,1);
+$hsla_orange-0: hsla(16,100%,54%,0);
 
-$nm_cream:   hsla(60,11%,93%,1);
-$nm_cream-D: hsla(60,11%,83%,1);
-
-$nm_ash:   hsla(60,5%,78%,1);
-$nm_ash-D: hsla(60,4%,68%,1);
-
-$nm_red: hsla(0,76%,61%,1);
-
-$nm_bronze: hsla(14,48%,44%,1);
-$nm_silver: hsla(180,2%,55%,1);
-$nm_gold:   hsla(35,62%,57%,1);
-
-$nm_L58: hsla(0,0%,58%,1);
-$nm_L34: hsla(0,0%,34%,1);
-$nm_L21: hsla(0,0%,21%,1);
-$nm_L15: hsla(0,0%,15%,1);
-$nm_L7:  hsla(0,0%,7%,1);
+$hsl_L58: hsl(0,0%,58%);
+$hsl_L34: hsl(0,0%,34%);
+$hsl_L21: hsl(0,0%,21%);
+$hsl_L15: hsl(0,0%,15%);
+$hsl_L12: hsl(0,0%,12%);
+$hsl_L7:  hsl(0,0%,7%);
 
 $boxshadow_drop: 0.1rem 0.1rem 0.3rem 0.1rem hsla(0,0%,0%,0.4);
 
