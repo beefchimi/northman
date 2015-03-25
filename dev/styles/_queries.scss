@@ -21,6 +21,15 @@
 		font-size: 1.3rem;
 	}
 
+	// Get A Quote
+	// ----------------------------------------------------------------------------
+	// --- Quote Required --- \\
+	// + required: checkbox + \\
+	form.form_required span.wrap_checkbox a,
+	form.form_required span.wrap_checkbox input[type="checkbox"] + label {
+		font-size: 1.4rem;
+	}
+
 }
 
 @media only screen and (min-width: 35.5em) { // 568px / 16px = 35.5em

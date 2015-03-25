@@ -1714,6 +1714,33 @@ form.form_required div.wrap_input div.wrap_element.required_birthday svg {
 	height: 1.6rem;
 	fill: $hsl_orange;
 }
+// + required: checkbox + \\
+form.form_required span.wrap_checkbox {
+	margin-top: 0;
+	margin-bottom: 4.8rem;
+}
+form.form_required span.wrap_checkbox a {
+	text-decoration: underline;
+}
+form.form_required span.wrap_checkbox a,
+form.form_required span.wrap_checkbox input[type="checkbox"] + label {
+	display: inline-block;
+	font-size: 1.2rem;
+	color: $hsl_orange;
+}
+// + interaction + \\
+form.form_required span.wrap_checkbox a:hover {
+	color: $hsl_L21;
+}
+form.form_required span.wrap_checkbox input[type="checkbox"] + label:hover {
+	color: $hsl_L21;
+}
+form.form_required span.wrap_checkbox input[type="checkbox"] + label:hover::before {
+	border-color: $hsl_L21;
+}
+form.form_required span.wrap_checkbox input[type="checkbox"]:focus + label::before {
+	background-color: transparent;
+}
 
 // Thanks
 // ----------------------------------------------------------------------------

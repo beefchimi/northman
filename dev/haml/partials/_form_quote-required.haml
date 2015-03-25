@@ -54,6 +54,14 @@
 			%label{:for => "required_telephone"} Telephone
 			%input#required_telephone.telephone{:type => "text", :name => "telephone", :value => "", :placeholder => "(XXX) XXX-XXXX", :required => true}
 
+	%span.wrap_checkbox
+		%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
+		%label{:for => "check_family"}
+			I have read the
+			%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+				%use{"xlink:href" => "#ui_checkmark"}
+		%a{:href => "#", :title => "Terms & Conditions"} Terms and Conditions
+
 
 	-# currently using e.preventDefault() on this button if no quote selection
 	-# also relying on "title" attribute to retrieve default "Buy Now" string
