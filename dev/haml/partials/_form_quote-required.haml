@@ -55,12 +55,12 @@
 			%input#required_telephone.telephone{:type => "text", :name => "telephone", :value => "", :placeholder => "(XXX) XXX-XXXX", :required => true}
 
 	%span.wrap_checkbox
-		%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
-		%label{:for => "check_family"}
+		%input#required_read.required_read.visuallyhidden{:type => "checkbox", :name => "read", :value => "read", :tabindex => "-1", :required => true}
+		%label{:for => "required_read"}
 			I have read the
 			%svg.ui_checkmark{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_checkmark"}
-		%a{:href => "#", :title => "Terms & Conditions"} Terms and Conditions
+		%a{:href => "#", :title => "Terms & Conditions", :target => "_blank"} Terms and Conditions
 
 
 	-# currently using e.preventDefault() on this button if no quote selection
