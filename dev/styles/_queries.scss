@@ -57,12 +57,15 @@
 	}
 	form.form_quote div.wrap_input div.col-2 {
 		width: 23.8rem;
-		border-right: 0.1rem solid $hsl_L21;
 	}
 	form.form_quote div.wrap_input div.col-3 {
 		width: 30rem;
+		border-left: 0.1rem solid $hsl_L21;
 	}
 	// --- Modal: Quote --- \\
+	aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select {
+		width: 29rem;
+	}
 	aside.modal_quote form.form_quote div.wrap_input div.col-5 {
 		text-align: center;
 	}
@@ -267,6 +270,15 @@
 	aside.modal_quote form.form_quote div.wrap_input div.col-1 div.wrap_element {
 		width: 19.2rem;
 	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-1 div.wrap_checkboxes span.wrap_checkbox {
+		float: left;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-1 div.wrap_checkboxes span.checkbox_booked {
+		margin-left: 2.6rem;
+	}
+	aside.modal_quote form.form_quote div.wrap_input div.col-1 div.datepicker_single {
+		width: 24rem;
+	}
 	aside.modal_quote form.form_quote div.wrap_input div.col-2,
 	aside.modal_quote form.form_quote div.wrap_input div.col-3 {
 		display: block;
@@ -283,9 +295,6 @@
 	}
 	aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select {
 		width: 22.8rem;
-	}
-	aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select {
-		width: 29rem;
 	}
 
 	// Buttons
@@ -658,6 +667,10 @@
 	section.page_articles article div[data-container] ol li::before {
 		top: 2rem;
 		left: 2rem;
+	}
+	// + list: bubble + \\
+	section.page_articles article div[data-container] ul.list_bubble {
+		margin-bottom: 4.2rem;
 	}
 	// + list: activities + \\
 	section.page_articles article div.list_activities {

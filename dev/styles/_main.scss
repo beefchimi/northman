@@ -66,6 +66,9 @@ article.quote_options div.error_message {
 ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
+aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler {
+	transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -298,7 +301,6 @@ html.ready [data-modal] {
 	left: -200%;
 	animation: animHide 0.4s ease-in-out forwards;
 }
-
 html.ie9 [data-modal="active"] {
 	display: block;
 	visibility: visible;
@@ -307,7 +309,6 @@ html.ie9 [data-modal="active"] {
 html.ie9 [data-modal="inactive"] {
 	display: none;
 }
-
 // --- Over 60 Error --- \\
 aside.modal_error-60 div.modal_body {
 	padding-top: 4.8rem;
@@ -711,7 +712,9 @@ form.form_quote div.wrap_input div.wrap_element {
 	position: relative;
 	margin: 0 auto;
 }
-form.form_quote div.wrap_input div.input-daterange div.wrap_element input {
+form.form_quote div.wrap_input input.date_end,
+form.form_quote div.wrap_input input.date_start,
+form.form_quote div.wrap_input input.date_booked {
 	cursor: pointer;
 }
 form.form_quote div.wrap_input div.wrap_element svg {
@@ -779,6 +782,30 @@ form.form_quote.error div.error_message {
 	opacity: 1;
 }
 // --- Modal: Quote --- \\
+aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler {
+	max-height: 8rem;
+	overflow-y: hidden;
+}
+aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 3.2rem;
+}
+aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler.allow-overflow {
+	overflow-y: visible;
+}
+aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler.disabled {
+	opacity: 0;
+	max-height: 0rem;
+}
+aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_disabler.disabled div.wrap_select div.dropdown_toggle,
+aside.modal_quote form.form_quote div.wrap_input div.col-1 div.wrap_disabler.disabled div.datepicker_single input.date_booked {
+	pointer-events: none;
+}
+aside.modal_quote form.form_quote div.wrap_input div.col-1 div.datepicker_single {
+	width: 20rem;
+}
 aside.modal_quote form.form_quote div.wrap_input div.col-3 div.wrap_select div.wrap_dropdown.scrollable {
 	height: 23.6rem; // shortened inorder to stay within modal viewport
 }
@@ -1314,6 +1341,25 @@ section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) 
 section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) li a {
 	display: table;
 	margin: 0 auto;
+}
+// + list: bubble + \\
+section.page_articles article div[data-container] ul.list_bubble {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3.2rem;
+	max-width: 40.4rem;
+	border: 0.2rem solid $hsl_ash;
+	border-radius: 1.2rem;
+}
+section.page_articles article div[data-container] ul.list_bubble li {
+	padding: 1.6rem 1rem;
+	font-size: 1.5rem;
+	line-height: 1.2;
+	text-transform: uppercase;
+	border-bottom: 0.2rem solid $hsl_ash;
+}
+section.page_articles article div[data-container] ul.list_bubble li:last-child {
+	border-bottom: none;
 }
 // + list: activities + \\
 section.page_articles article div.list_activities {

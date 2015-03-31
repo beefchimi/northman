@@ -673,7 +673,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	if ( classie.has(elBody, 'home') ) {
 
-		var elFormQuote   = document.getElementById('form_quote'),
+		var isRevealed    = false,
+			elFormQuote   = document.getElementById('form_quote'),
 			elHiddenInput = document.getElementById('hidden_destination'),
 			numOffset     = numWindowWidth < 960 ? 0 : 88, // header becomes fixed at 960px wide
 			scrollOptions = {
@@ -720,14 +721,23 @@ document.addEventListener('DOMContentLoaded', function() {
 			elHiddenInput.value = psd_valIndex;
 			elHiddenInput.setAttribute('value', psd_valIndex);
 
-			// reveal and scroll to form_quote
-			classie.add(elFormQuote, 'reveal');
 			smoothScroll.animateScroll(null, '#form_quote', scrollOptions);
 
-			// allow overflow-y so dropdowns are not cutoff
-			setTimeout(function() {
-				classie.add(elFormQuote, 'allow-overflow');
-			}, 1200);
+			if (!isRevealed) {
+				classie.add(elFormQuote, 'reveal');
+				elFormQuote.addEventListener(transitionEvent, allowOverflow);
+			}
+
+		}
+
+		function allowOverflow() {
+
+			classie.add(elFormQuote, 'allow-overflow');
+
+			isRevealed = true;
+
+			// must remove event listener!
+			elFormQuote.removeEventListener(transitionEvent, allowOverflow);
 
 		}
 
@@ -999,6 +1009,79 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// editQuoteChecks: Checkbox behaviour for edit quote modal
+	// ----------------------------------------------------------------------------
+	function editQuoteChecks() {
+
+		var elCheckBooked = document.getElementById('check_booked'),
+			elCheckDepart = document.getElementById('check_depart'),
+			elWrapBooked  = document.getElementById('wrap_dis-booked'),
+			elWrapDepart  = document.getElementById('wrap_dis-depart');
+
+		// check if element exists
+		if (elCheckBooked == null) {
+			return;
+		}
+
+		// correct classed on page load
+		if (elCheckBooked.checked) {
+			classie.add(elWrapBooked, 'disabled');
+			classie.remove(elWrapBooked, 'allow-overflow');
+		} else {
+			classie.remove(elWrapBooked, 'disabled');
+			classie.add(elWrapBooked, 'allow-overflow');
+		}
+
+		// correct classed on page load
+		if (elCheckBooked.checked) {
+			classie.add(elWrapBooked, 'disabled');
+			classie.remove(elWrapBooked, 'allow-overflow');
+		} else {
+			classie.remove(elWrapBooked, 'disabled');
+			classie.add(elWrapBooked, 'allow-overflow');
+		}
+
+		elCheckDepart.addEventListener('change', function() {
+
+			if (this.checked) {
+				classie.add(elWrapDepart, 'disabled');
+				classie.remove(elWrapDepart, 'allow-overflow');
+			} else {
+				classie.remove(elWrapDepart, 'disabled');
+				elWrapDepart.addEventListener(transitionEvent, allowOverflow);
+			}
+
+		});
+
+		elCheckBooked.addEventListener('change', function() {
+
+			if (this.checked) {
+				classie.add(elWrapBooked, 'disabled');
+				classie.remove(elWrapBooked, 'allow-overflow');
+			} else {
+				classie.remove(elWrapBooked, 'disabled');
+				elWrapBooked.addEventListener(transitionEvent, allowOverflow);
+			}
+
+		});
+
+		function allowOverflow(e) {
+
+			// only listen for the height property
+			if (e.propertyName == "max-height") {
+
+				classie.add(this, 'allow-overflow');
+
+				// must remove event listener!
+				this.removeEventListener(transitionEvent, allowOverflow);
+
+			}
+
+		}
+
+	}
+
+
 	// Plugin: Bootstrap Datepicker
 	// ----------------------------------------------------------------------------
 	function inputDatepicker() {
@@ -1013,6 +1096,13 @@ document.addEventListener('DOMContentLoaded', function() {
 			valEnd;
 
 		$('#datepicker').datepicker({
+			autoclose: true,
+			todayHighlight: true,
+			startDate: new Date(), // dateToday(),
+			format: 'M d, yyyy'
+		});
+
+		$('#date_booked').datepicker({
 			autoclose: true,
 			todayHighlight: true,
 			startDate: new Date(), // dateToday(),
@@ -1074,6 +1164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	toggleAccordian();
 	toggleModal();
 	selectDropdown();
+	editQuoteChecks();
 	inputDatepicker(); // should I specify the pages this is required on?
 
 	if (elBody.id === 'quote') {

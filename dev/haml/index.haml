@@ -77,32 +77,18 @@
 						%h2 What's Covered
 						%p If you can do it, we can probably cover it. Let’s put it this way–our list of what’s not covered is way shorter. Here’s a list of just a few of the adventures covered by Northman:
 
-					.list_activities.clearfix{"data-container" => "width_1050"}
-						.list_column
-							%p Adventure Racing
-							%p Arctic and Antarctic Expedition
-							%p Mountaineering
-							%p Rock Climbing
-							%p Gator Wrestling
-							%p Bungee Jumping
-							%p Base Jumping
-						.list_column
-							%p Mountain Biking
-							%p Storm Chasing
-							%p Skydiving
-							%p Paragliding
-							%p Kite surfing
-							%p Running with the bulls
-							%p Sailing &amp; Offshore Sailing
-						.list_column
-							%p Ski mountaineering
-							%p Dog sledding
-							%p Ultra endurance events
-							%p Heliskiing &amp; Heliboarding
-							%p Skyrunning
-							%p Speedflying
-							%p Trekking
+						%ul.list_bubble
+							%li Emergency Medical Coverage
+							%li Emergency Evacuation Coverage
+							%li Gear coverage
+							%li Accidental Death Coverage
+							%li Trip Cancelation Coverage
+							%li Trip Delay Coverage
+							%li No out of pocket expenses
+							%li Zero deductible
 
-					%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "What We Cover"} What We Cover
+						%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "What We Cover"} What We Cover
+
+					-# = Haml::Engine.new(File.read("dev/haml/partials/_home_original.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

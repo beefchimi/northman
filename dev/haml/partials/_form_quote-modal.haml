@@ -33,12 +33,27 @@
 							%svg.ui_calendar{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_calendar"}
 
-					%span.wrap_checkbox
-						%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
-						%label{:for => "check_family"}
-							I’m travelling with my family
-							%svg.ui_checkmark{:viewBox => "0 0 64 64"}
-								%use{"xlink:href" => "#ui_checkmark"}
+					.wrap_checkboxes.clearfix
+
+						%span.wrap_checkbox.checkbox_family
+							%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
+							%label{:for => "check_family"}
+								I’m travelling with my family
+								%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+									%use{"xlink:href" => "#ui_checkmark"}
+
+						%span.wrap_checkbox.checkbox_booked
+							%input#check_booked.check_booked.visuallyhidden{:type => "checkbox", :name => "check_booked", :value => "check_booked", :tabindex => "-1", :checked => true}
+							%label{:for => "check_booked"}
+								Trip was booked today
+								%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+									%use{"xlink:href" => "#ui_checkmark"}
+
+					#wrap_dis-booked.wrap_disabler.disabled
+						.wrap_element.datepicker_single
+							%input#date_booked.date_booked{:type => "text", :name => "date_booked", :value => "", :placeholder => "Pick booked date", :required => true, :tabindex => "-1", :readonly => true}
+							%svg.ui_calendar{:viewBox => "0 0 64 64"}
+								%use{"xlink:href" => "#ui_calendar"}
 
 				.wrap_columns.clearfix
 
@@ -110,6 +125,72 @@
 											%a.dropdown_link.truncate{:href => "#", "data-value" => "63"} Saskatchewan
 										%li.dropdown_option
 											%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
+
+						%span.wrap_checkbox.checkbox_depart
+							%input#check_depart.check_depart.visuallyhidden{:type => "checkbox", :name => "check_depart", :value => "check_depart", :tabindex => "-1", :checked => true}
+							%label{:for => "check_depart"}
+								Same departure province
+								%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+									%use{"xlink:href" => "#ui_checkmark"}
+
+						#wrap_dis-depart.wrap_disabler.disabled
+							#wrap_select-depart.wrap_select{"data-selected" => ""}
+
+								%select#select_depart{:name => "select_depart", :required => true, :tabindex => "-1"}
+									%option{:disabled => true, :selected => true, :value => true} select an option
+									%option{:value => "52"} Alberta
+									%option{:value => "53"} British Columbia
+									%option{:value => "54"} Manitoba
+									%option{:value => "55"} New Brunswick
+									%option{:value => "56"} Newfoundland
+									%option{:value => "57"} North West Territories
+									%option{:value => "58"} Nova Scotia
+									%option{:value => "59"} Nunavut
+									%option{:value => "60"} Ontario
+									%option{:value => "61"} Prince Edward Island
+									%option{:value => "62"} Quebec
+									%option{:value => "63"} Saskatchewan
+									%option{:value => "64"} Yukon
+
+								.dropdown_toggle
+									%span.dropdown_placeholder.truncate Select departure
+									%svg.ui_arrow{:viewBox => "0 0 64 64"}
+										%use{"xlink:href" => "#ui_arrow"}
+
+								-# if UL > LI.length >= 6: add class "scrollable"
+								.wrap_dropdown.scrollable
+
+									-# if UL > LI.length >= 6: output <span>
+									%span.fix_ios-scroll
+
+										%ul.dropdown_list
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "52"} Alberta
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "53"} British Columbia
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "54"} Manitoba
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "55"} New Brunswick
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "56"} Newfoundland
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "57"} North West Territories
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "58"} Nova Scotia
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "59"} Nunavut
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "60"} Ontario
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "61"} Prince Edward Island
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "62"} Quebec
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "63"} Saskatchewan
+											%li.dropdown_option
+												%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
+
 
 				.column.col-4
 
