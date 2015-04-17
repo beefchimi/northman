@@ -669,6 +669,95 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// categoryDropdown: Blog category selection functions
+	// ----------------------------------------------------------------------------
+	function categoryDropdown() {
+
+		// search for any div.wrap_select elements
+		var elCatWrap = document.getElementById('wrap_categories');
+
+		// check if #wrap_categories exists
+		if (elCatWrap === null) {
+			return; // not found... exit function
+		}
+
+		var elDropdownToggle = elCatWrap.getElementsByClassName('dropdown_toggle')[0],
+			elCategoryButton = document.getElementById('submit_category'),
+			arrDropdownCats  = elCatWrap.getElementsByClassName('dropdown_cat');
+
+		elDropdownToggle.addEventListener('click', function(e) {
+
+			classie.toggle(elCatWrap, 'toggle_show');
+
+			e.preventDefault(); // requires the event.preventDefault for the document listener to work
+
+		}, false);
+
+		// click outside of element to close dropdown
+		document.addEventListener('click', function(e) {
+
+			// if this is not the currently toggled dropdown
+			if (e.target != elDropdownToggle) {
+
+				// ignore this event if preventDefault has been called
+				if (e.defaultPrevented) {
+					return;
+				}
+
+				// hide dropdown
+				classie.remove(elCatWrap, 'toggle_show');
+
+			}
+
+		}, false);
+
+		// assign the click event to each a.dropdown_cat found in the document
+		for (var i = 0; i < arrDropdownCats.length; i++) {
+			updateCategory(arrDropdownCats[i]);
+		}
+
+		function updateCategory(thisDropdownCat) {
+
+			thisDropdownCat.addEventListener('click', function(e) {
+
+				var dataHREF         = this.href,
+					dataValue        = this.getAttribute('data-value'),
+					dataLabel        = this.innerHTML,
+					elParentLI       = this.parentNode,
+					elParentUL       = elParentLI.parentNode,
+					elSiblingLabel   = findParentClass(elParentUL, 'wrap_dropdown').previousElementSibling.childNodes[1], // 1st child = empty textNode
+					dataPrevSelected = elCatWrap.getAttribute('data-selected'),
+					elPrevSelected   = elParentUL.querySelector('a[data-value="' + dataPrevSelected + '"]');
+
+				// update href of Search Button
+				elCategoryButton.href = dataHREF;
+
+				// set 'data-selected' to new value
+				elCatWrap.setAttribute('data-selected', dataValue);
+
+				// replace div.dropdown_label innerHTML with the selected option text
+				elSiblingLabel.innerHTML = dataLabel;
+
+				// remove 'selected' class from previous <li>, if it exists...
+				if (elPrevSelected != null) {
+					classie.remove(elPrevSelected.parentNode, 'selected');
+				}
+
+				// then add 'selected' class to parent <li> of newly chosen a[data-value]
+				classie.add(elParentLI, 'selected');
+
+				// hide the parent dropdown
+				classie.remove(elCatWrap, 'toggle_show');
+
+				e.preventDefault();
+
+			}, false);
+
+		}
+
+	}
+
+
 	// Typeahead: code to execute only on pages using typeahead.js
 	// ----------------------------------------------------------------------------
 	if ( classie.has(elBody, 'home') ) {
@@ -695,6 +784,41 @@ document.addEventListener('DOMContentLoaded', function() {
 				elFormProvince  = elFormQuote.getElementsByTagName('select')[0];
 
 			elFormQuote.addEventListener('submit', function(e) {
+
+				var age = elFormAges.value;
+
+				if (age != '') {
+
+					// Families can consist of up to two adults 25-59 and children <25
+					var ages      = age.split(','),
+						adults    = 0,
+						children  = 0,
+						badfamily = false;
+
+					for (var i = 0; i < ages.length; i++) {
+
+						if (ages[i] >= 25) {
+							adults++;
+						} else {
+							children++;
+						}
+
+						if (adults > 2) {
+							badfamily = true;
+							break;
+						}
+
+					}
+
+					if (badfamily) {
+
+						alert('Families can have two adults (aged 25 - 59) and children (under 25 yrs). You have too many adults!');
+						e.preventDefault();
+						return false;
+
+					}
+
+				}
 
 				if ( elFormStartDate.value == '' || elFormEndDate.value == '' || elFormAges.value == '' || elFormProvince.value == '' ) {
 
@@ -938,6 +1062,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// might make more sense to leave this with Matt?
 
 		var arrBadges       = document.getElementsByClassName('badge'),
+			arrTravellers   = document.getElementsByClassName('required_traveller'),
 			elQuoteSection  = document.getElementById('quote_articles'),
 			elSubmitButton  = document.getElementById('required_submit'),
 			strDefaultTitle = elSubmitButton.innerHTML,
@@ -947,6 +1072,32 @@ document.addEventListener('DOMContentLoaded', function() {
 				easing: 'easeInOutQuint',
 				updateURL: false
 			};
+
+		function addTraveller(num) {
+
+			console.log("Adding a traveller with num " + num);
+
+			var prevTraveller = arrTravellers[arrTravellers.length-1],
+				$clone        = $(prevTraveller).clone(true,true);
+
+			// $clone.children(".fname").attr("name","fname["+num+"]"); // This doesn't work
+
+			$clone.children(".traveller_label").text("Traveller "+(num+1));
+			$clone.children(".required_birthday").children(':input').attr("name","dob["+num+"]");
+			$clone.children(".required_fname").children(':input').attr("name","fname["+num+"]");
+			$clone.children(".required_lname").children(':input').attr("name","lname["+num+"]");
+
+			// arrTravellers.push($clone);
+
+			$(prevTraveller).after($clone);
+
+		}
+
+		var ages = $(".details_age").text().split(",");
+
+		for (var i = 0; i < ages.length-1; i++) {
+			addTraveller(i+1);
+		}
 
 		for (var i = 0; i < arrBadges.length; i++) {
 			selectQuote(arrBadges[i], i);
@@ -961,11 +1112,49 @@ document.addEventListener('DOMContentLoaded', function() {
 				strSelectedTitle = thisBadge.getElementsByTagName('h6')[0].innerHTML;
 
 				// remove 'selected' class from the badge that is not 'this'
+				// display appropriate Buy Now button
+				if (index === 0) {
+
+					classie.remove(arrBadges[1], 'selected');
+
+					$("#required_submit").hide();
+					$("#annual_submit").hide();
+					$("#annual-coverage-includes").hide();
+					$("#single-coverage-includes").show();
+					$("#single_submit").show();
+
+					// var total = arrBadges[1].children('.total').text();
+					$("#policy-name").text("Northman Single Trip");
+					$("#policy-premium").text('$'+singlePremium/100);
+					$("#policy-tax").text('$'+singleTax/100);
+					$("#policy-total").text('$'+singleTotal/100);
+
+				} else {
+
+					classie.remove(arrBadges[0], 'selected');
+
+					$("#required_submit").hide();
+					$("#single_submit").hide();
+					$("#annual-coverage-includes").show();
+					$("#single-coverage-includes").hide();
+					$("#annual_submit").show();
+
+					// var total = arrBadges[0].children('.total').text();
+					$("#policy-name").text("Northman Annual Coverage");
+					$("#policy-premium").text('$'+annualPremium/100);
+					$("#policy-tax").text('$'+annualTax/100);
+					$("#policy-total").text('$'+annualTotal/100);
+
+				}
+
+/*
+				// remove 'selected' class from the badge that is not 'this'
 				if (index === 0) {
 					classie.remove(arrBadges[1], 'selected');
 				} else {
 					classie.remove(arrBadges[0], 'selected');
 				}
+*/
 
 				// toggle 'selected' class and set elSubmitButton text
 				if ( classie.has(thisBadge, 'selected') ) {
@@ -1109,8 +1298,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			format: 'M d, yyyy'
 		});
 
-		$dateStart.on('hide', function() {
-		// $dateStart.on('changeDate', function() {
+		// $dateStart.on('hide', function() {
+		$dateStart.on('changeDate', function() {
 
 			// changeDate seems to fire 3 times...
 			// but is more accurate to listen for 'changeDate' than 'hide'
@@ -1132,6 +1321,75 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			console.log('Northman insures trips of up to 45 days.');
 
+		});
+
+	}
+
+
+	// stripeHandler: Handlin' them Stripes
+	// ----------------------------------------------------------------------------
+	function stripeHandler() {
+
+		var handler = StripeCheckout.configure({
+			key: stripe_key,
+			image: "/site/northman.png",
+			token: function(token) {
+				var form = $("#form_required");
+				form.append($('<input type="hidden" name="stripeToken" />').val(token.id));
+				form.append($('<input type="hidden" name="stripeEmail" />').val(token.email));
+				form.submit();
+			}
+		});
+
+		$("#single_submit").unbind("click");
+
+		$("#single_submit").on("click", function(e) {
+
+			this.disabled = true;
+
+			$("#form_required").append($('<input type="hidden" name="annual" value="0" />'));
+
+			handler.open({
+				name: "Northman",
+				description: "Single Trip Policy ($"+singleTotal/100+")",
+				amount: singleTotal,
+				email: email,
+				currency: "CAD",
+				panelLabel: "Pay",
+				allowRememberMe: false
+			});
+
+			e.preventDefault();
+
+		});
+
+		$("#annual_submit").unbind("click");
+
+		$("#annual_submit").on("click", function(e) {
+
+			this.disabled = true;
+
+			var form = $("#form_required");
+
+			form.append($('<input type="hidden" name="annual" value="1" />'));
+
+			handler.open({
+				name: "Northman",
+				description: "Annual Policy ($"+annualTotal/100+")",
+				amount: annualTotal,
+				email: email,
+				currency: "CAD",
+				panelLabel: "Pay",
+				allowRememberMe: false
+			});
+
+			e.preventDefault();
+
+		});
+
+		// Close Checkout on page navigation
+		$(window).on("popstate", function() {
+			handler.close();
 		});
 
 	}
@@ -1164,11 +1422,41 @@ document.addEventListener('DOMContentLoaded', function() {
 	toggleAccordian();
 	toggleModal();
 	selectDropdown();
+	categoryDropdown();
 	editQuoteChecks();
 	inputDatepicker(); // should I specify the pages this is required on?
 
+/*
 	if (elBody.id === 'quote') {
 		quoteOptions();
+	}
+*/
+
+	if (elBody.id === 'quote') {
+
+		quoteOptions();
+		stripeHandler();
+
+		$("#required_email").blur(function(){
+			console.log("Blur event on email fired and val is " + $(this).val());
+			email = $(this).val();
+			stripeHandler();
+		});
+
+	}
+
+	if (elBody.id === 'home') {
+
+		$("age-groups").blur(function(){
+
+			console.log("Blur event on ages fired and val is " + $(this).val());
+
+			if ($(this).val().indexOf(',')) {
+				$("check_family").prop("checked", true);
+			}
+
+		});
+
 	}
 
 

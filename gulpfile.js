@@ -59,24 +59,6 @@ gulp.task('haml', function() {
 });
 
 
-/*
-// Minify HTML
-gulp.task('minify-html', function() {
-
-	var opts = {
-		empty: true,
-		comments: true
-	};
-
-	// paths.haml.dest
-	return gulp.src('build/index.html')
-		.pipe(plugins.minifyHtml(opts))
-		.pipe(gulp.dest('build/'));
-
-});
-*/
-
-
 // Compile and Output Styles
 gulp.task('styles', function() {
 

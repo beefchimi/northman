@@ -56,6 +56,9 @@ nav.nav_primary {
 body.home main form.form_quote {
 	transition: max-height 1s ease-in-out;
 }
+section.blog_articles article img {
+	transition: opacity 0.3s ease-in-out;
+}
 div.accordian_body,
 form.form_quote div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -79,6 +82,7 @@ ul.list_badges li div.badge_header {
 input[type="checkbox"] + label,
 ul.list_badges li div.badge_header h6,
 ul.list_badges li div.badge_body h3,
+div.wrap_categories div.dropdown_toggle span,
 ul.list_badges li div.badge_body h3 span.currency {
 	transition: color 0.3s ease-in-out;
 }
@@ -217,6 +221,12 @@ svg.svg_inline {
 }
 [data-container="width_720"] {
 	max-width: 72rem;
+}
+[data-container="width_690"] {
+	max-width: 69rem;
+}
+[data-container="width_454"] {
+	max-width: 45.4rem;
 }
 // --- Wordpress Tricks --- \\
 span.break {
@@ -375,11 +385,11 @@ button[class*="brd_"] {
 .brd_green:focus,
 .brd_orange:hover,
 .brd_green:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 .brd_orange:active,
 .brd_green:active {
-	color: hsla(0,0%,40%,1);
+	color: $hsl_L40;
 }
 // + border: cream + \\
 .brd_cream {
@@ -481,8 +491,9 @@ input[type="checkbox"]:focus + label::before {
 input[type="checkbox"]:checked + label svg {
 	fill: $hsl_orange;
 }
-// --- Select Dropdown --- \\
-div.wrap_select {
+// --- Select & Category Dropdown --- \\
+div.wrap_select,
+div.wrap_categories {
 	position: relative;
 	z-index: 100;
 }
@@ -499,16 +510,15 @@ div.wrap_select > select option[disabled] {
 	border: 0;
 }
 // + dropdown toggle + \\
-div.wrap_select div.dropdown_toggle {
+div.dropdown_toggle {
 	cursor: pointer;
 	position: relative;
 	z-index: 102;
 	height: 4.8rem;
 	background-color: $hsl_cream;
 	border-radius: 0.8rem;
-	box-shadow: inset 0 0 0 0.1rem $hsla_orange-0;
 }
-div.wrap_select div.dropdown_toggle span {
+div.dropdown_toggle span {
 	display: block;
 	user-select: none;
 	padding-left: 1.6rem;
@@ -517,10 +527,7 @@ div.wrap_select div.dropdown_toggle span {
 	line-height: 4.8rem;
 	color: $hsl_L21;
 }
-div.wrap_select[data-selected=""] div.dropdown_toggle span {
-	color: $hsl_L58;
-}
-div.wrap_select div.dropdown_toggle svg {
+div.dropdown_toggle svg {
 	position: absolute;
 	top: 1.6rem;
 	right: 1.6rem;
@@ -529,13 +536,13 @@ div.wrap_select div.dropdown_toggle svg {
 	fill: $hsl_orange;
 }
 // + dropdown list + \\
-div.wrap_select div.wrap_dropdown,
-div.wrap_select div.wrap_dropdown ul,
-div.wrap_select div.wrap_dropdown.scrollable,
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
+div.wrap_dropdown,
+div.wrap_dropdown ul,
+div.wrap_dropdown.scrollable,
+div.wrap_dropdown span.fix_ios-scroll {
 	background-color: $hsl_cream; // be sure there is no chance ios rubber band will show a difference background
 }
-div.wrap_select div.wrap_dropdown {
+div.wrap_dropdown {
 	position: absolute;
 	z-index: 101;
 	top: 0;
@@ -544,24 +551,23 @@ div.wrap_select div.wrap_dropdown {
 	box-shadow: $boxshadow_drop;
 	overflow: hidden;
 }
-div.wrap_select div.wrap_dropdown ul {
+div.wrap_dropdown ul {
 	padding-top: 4.8rem;
 }
-div.wrap_select div.wrap_dropdown ul li a {
+div.wrap_dropdown ul li a {
 	display: block;
 	padding: 1.6rem;
 	font-size: 1.6rem;
 	color: $hsl_L21;
 }
-div.wrap_select div.wrap_dropdown ul li.selected a {
+div.wrap_dropdown ul li.selected a {
 	pointer-events: none;
-	color: $hsl_orange;
 }
 // + dropdown scrollable + \\
-div.wrap_select div.wrap_dropdown.scrollable {
+div.wrap_dropdown.scrollable {
 	height: 28.8rem; // dropdown_label height (48px) x 6
 }
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll { // required only get to iOS to behave
+div.wrap_dropdown span.fix_ios-scroll { // required only get to iOS to behave
 	display: block;
 	position: absolute;
 	top: 4.8rem;
@@ -572,7 +578,7 @@ div.wrap_select div.wrap_dropdown span.fix_ios-scroll { // required only get to 
 	overflow: hidden;
 	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); // required in order to get iOS Chrome to mask the overflow!
 }
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
+div.wrap_dropdown span.fix_ios-scroll ul {
 	padding-top: 0;
 	height: 100%;
 	overflow-x: hidden;
@@ -580,17 +586,33 @@ div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
 	-webkit-overflow-scrolling: touch;
 }
 // + chrome scrollbar + \\
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar {
+div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar {
 	width: 0.4rem;
 	background-color: hsla(0,0%,0%,1);
 }
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-track {
+div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-track {
 	background-color: darken($hsl_cream, 10%);
 }
-div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-thumb {
+div.wrap_dropdown span.fix_ios-scroll ul::-webkit-scrollbar-thumb {
 	background-color: $hsl_orange;
 }
 // + interaction + \\
+div.wrap_dropdown ul li a:hover {
+	background-color: hsla(0,0%,98%,1);
+}
+div.wrap_dropdown ul li a:active {
+	background-color: hsla(0,0%,100%,1);
+}
+// + select specific + \\
+div.wrap_select div.dropdown_toggle {
+	box-shadow: inset 0 0 0 0.1rem $hsla_orange-0;
+}
+div.wrap_select[data-selected=""] div.dropdown_toggle span {
+	color: $hsl_L58;
+}
+div.wrap_select div.wrap_dropdown ul li.selected a {
+	color: $hsl_orange;
+}
 div.wrap_select select:focus + div.dropdown_toggle {
 	box-shadow: inset 0 0 0 0.1rem $hsl_orange;
 }
@@ -600,25 +622,70 @@ div.wrap_select:hover div.dropdown_toggle {
 div.wrap_select:active div.dropdown_toggle {
 	background-color: $hsl_cream;
 }
-div.wrap_select div.wrap_dropdown ul li a:hover {
-	background-color: hsla(0,0%,98%,1);
+// + categories specific + \\
+div.wrap_categories {
+	margin-bottom: 2rem;
 }
-div.wrap_select div.wrap_dropdown ul li a:active {
-	background-color: hsla(0,0%,100%,1);
+div.wrap_categories div.wrap_dropdown.scrollable {
+	top: 3.6rem; // 0
+	height: 30rem; // dropdown_label height (48px) x 6 + 12px
+}
+div.wrap_categories div.dropdown_toggle {
+	text-align: left;
+	box-shadow: inset 0 0 0 0.2rem $hsl_orange;
+}
+div.dropdown_toggle span {
+	color: $hsl_orange;
+}
+div.wrap_categories[data-selected=""] div.dropdown_toggle span {
+	color: $hsl_L21;
+}
+div.wrap_categories[data-selected=""] + a {
+	pointer-events: none;
+	color: $hsl_L58;
+}
+div.wrap_categories div.wrap_dropdown span.fix_ios-scroll {
+	top: 1.2rem; // 4.8rem;
+}
+div.wrap_categories ul.dropdown_list {
+	text-align: left;
+}
+div.wrap_categories div.wrap_dropdown ul li.selected a {
+	color: $hsl_L21;
+	background-color: darken($hsl_cream, 2%);
+}
+div.wrap_categories:hover div.dropdown_toggle {
+	box-shadow: inset 0 0 0 0.2rem $hsl_L21;
+}
+div.wrap_categories:hover div.dropdown_toggle span {
+	color: $hsl_L21;
+}
+div.wrap_categories:hover div.dropdown_toggle svg {
+	fill: $hsl_L21;
+}
+div.wrap_categories:active div.dropdown_toggle {
+	box-shadow: inset 0 0 0 0.2rem $hsl_L40;
+}
+div.wrap_categories:active div.dropdown_toggle span {
+	color: $hsl_L40;
+}
+div.wrap_categories:active div.dropdown_toggle svg {
+	fill: $hsl_L40;
 }
 // + hide / show dropdown + \\
-div.wrap_select div.wrap_dropdown {
+div.wrap_dropdown {
 	opacity: 0;
 	visibility: hidden;
 }
-div.wrap_select.toggle_show {
+div.wrap_select.toggle_show,
+div.wrap_categories.toggle_show {
 	z-index: 200;
 }
-div.wrap_select.toggle_show div.wrap_dropdown {
+div.toggle_show div.wrap_dropdown {
 	opacity: 1;
 	visibility: visible;
 }
-div.wrap_select.toggle_show div.dropdown_toggle {
+div.toggle_show div.dropdown_toggle {
 	border-radius: 0.8rem 0.8rem 0 0;
 }
 // --- Typeahead --- \\
@@ -647,11 +714,6 @@ span.tt-dropdown-menu {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
-	// clip: rect(0rem, 100rem, 100rem, -0.8rem);
-}
-span.tt-dropdown-menu div.tt-dataset-states {
-}
-span.tt-dropdown-menu div.tt-dataset-states span.tt-suggestions {
 }
 // + suggestions + \\
 div.tt-suggestion {
@@ -1231,16 +1293,23 @@ section.page_callout article a.btn_rnd:hover {
 section.page_callout article a.btn_rnd:active {
 	color: hsla(0,0%,40%,1);
 }
-// --- Page Articles --- \\
-section.page_articles {
+
+// Page & Blog Articles
+// ----------------------------------------------------------------------------
+section.page_articles,
+section.blog_articles {
 	background-color: $hsl_cream;
 }
-section.page_articles article {
+section.page_articles article,
+section.blog_articles article {
 	padding: 4.8rem 1.6rem;
 	text-align: center;
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $hsl_orange;
 }
+
+// Page Articles
+// ----------------------------------------------------------------------------
 section.page_articles article h2 {
 	margin-bottom: 3.2rem;
 	font-size: 1.7rem;
@@ -1342,6 +1411,27 @@ section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) 
 	display: table;
 	margin: 0 auto;
 }
+// + internal table + \\
+section.page_articles article table {
+	table-layout: fixed;
+	margin-bottom: 3.2rem;
+	width: 100%;
+	border: 0.2rem solid $hsl_ash;
+}
+section.page_articles article table:last-child {
+	margin-bottom: 0;
+}
+section.page_articles article table tbody tr {
+	border-bottom: 0.2rem solid $hsl_ash;
+}
+section.page_articles article table tbody tr:last-child {
+	border-bottom: none;
+}
+section.page_articles article table tbody tr td {
+	padding: 1rem;
+	font-size: 1.3rem;
+}
+// --- Class Lists --- \\
 // + list: bubble + \\
 section.page_articles article div[data-container] ul.list_bubble {
 	margin-left: auto;
@@ -1404,25 +1494,125 @@ section.page_articles article div[data-container] > ul:last-child,
 section.page_articles article div[data-container] > ul li:last-child {
 	margin-bottom: 0 !important;
 }
-// + internal table + \\
-section.page_articles article table {
-	table-layout: fixed;
+
+// Blog Articles
+// ----------------------------------------------------------------------------
+body.blog section.page_header div.wrap_svg.title {
+	width: 70%;
+	max-width: 25.4rem;
+}
+section.blog_articles article h2 {
+	margin-bottom: 1rem;
+	font-size: 1.7rem;
+	letter-spacing: 0.2rem;
+	line-height: 1.2;
+	text-align: center;
+	text-transform: uppercase;
+}
+section.blog_articles article h2 a {
+	color: $hsl_L21;
+}
+section.blog_articles article h2 a:hover {
+	color: $hsl_orange;
+}
+section.blog_articles article h2 a:active {
+	color: darken($hsl_orange, 10%);
+}
+section.blog_articles article h3 {
+	margin-bottom: 2.6rem;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+}
+section.blog_articles article h3 span.title_author::after {
+	content: "\002F"; // '/'
+	padding-left: 0.7rem;
+	padding-right: 0.1rem;
+}
+section.blog_articles article img {
+	margin-bottom: 2.6rem;
+}
+section.blog_articles article img:hover {
+	opacity: 0.8;
+}
+section.blog_articles article img:active {
+	opacity: 0.9;
+}
+section.blog_articles article p {
 	margin-bottom: 3.2rem;
-	width: 100%;
-	border: 0.2rem solid $hsl_ash;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.5;
 }
-section.page_articles article table:last-child {
-	margin-bottom: 0;
+section.blog_articles article p a,
+section.blog_articles article li a {
+	color: $hsl_orange;
+	white-space: nowrap;
 }
-section.page_articles article table tbody tr {
-	border-bottom: 0.2rem solid $hsl_ash;
+// --- Pagination --- \\
+nav.nav_secondary {
+	margin-top: 8rem;
 }
-section.page_articles article table tbody tr:last-child {
-	border-bottom: none;
+ul.pagination {
+	text-align: center;
 }
-section.page_articles article table tbody tr td {
-	padding: 1rem;
-	font-size: 1.3rem;
+ul.pagination li {
+	display: inline-block;
+	margin-right: 0.2rem;
+	vertical-align: middle;
+}
+ul.pagination li a {
+	display: block;
+	padding: 0.6rem;
+	font-size: 1.5rem;
+	color: $hsl_orange;
+}
+ul.pagination li.current a {
+	position: relative;
+	pointer-events: none;
+}
+ul.pagination li.current a::before {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0.1rem;
+	left: 0.3rem;
+	right: 0.3rem;
+	height: 0.2rem;
+	background-color: $hsl_orange;
+}
+li.pagi_next {
+	margin-right: 0;
+}
+li.pagi_prev a {
+	transform: rotate(90deg);
+}
+li.pagi_next a {
+	transform: rotate(-90deg);
+}
+li.pagi_prev a svg,
+li.pagi_next a svg {
+	width: 1.2rem;
+	fill: $hsl_orange;
+}
+ul.pagination li:hover a {
+	color: $hsl_L21;
+}
+ul.pagination li.current:hover a {
+	color: $hsl_orange;
+}
+li.pagi_prev a:hover svg,
+li.pagi_next a:hover svg {
+	fill: $hsl_L21;
+}
+ul.pagination li:active a {
+	color: $hsl_L40;
+}
+ul.pagination li.current:active a {
+	color: $hsl_orange;
+}
+li.pagi_prev a:active svg,
+li.pagi_next a:active svg {
+	fill: $hsl_L40;
 }
 
 // Home Page

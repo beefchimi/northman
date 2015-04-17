@@ -1,0 +1,108 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#blog.blog
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_blog.jpg')"}
+
+				.wrap_svg.icon
+					%svg.ui_pencil{:viewBox => "0 0 64 21"}
+						%use{"xlink:href" => "#ui_pencil"}
+
+				%h1.visuallyhidden Blog
+				.wrap_svg.title{:style => "max-width: 25.4rem"}
+					%svg.svg_inline.nm_blog{:viewBox => "0 0 254 54"}
+						%use{"xlink:href" => "#nm_blog"}
+
+			%section.blog_articles.internal_articles{"data-container" => "width-padding_1440"}
+
+				%article
+
+					%div.clearfix{"data-container" => "width_454"}
+
+						#wrap_categories.wrap_categories{"data-selected" => ""}
+
+							-# if specific category page: "Cat Title", else: "Categories"
+							.dropdown_toggle
+								%span.dropdown_placeholder.truncate Categories
+								%svg.ui_arrow{:viewBox => "0 0 64 64"}
+									%use{"xlink:href" => "#ui_arrow"}
+
+							-# if UL > LI.length >= 6: add class "scrollable"
+							.wrap_dropdown.scrollable
+
+								-# if UL > LI.length >= 6: output <span>
+								%span.fix_ios-scroll
+
+									%ul.dropdown_list
+										- (1..10).each do |i|
+											%li.dropdown_option
+												%a.dropdown_cat.truncate{:href => "##{i}", :title => "Category #{i}", "data-value" => "#{i}"} Category #{i}
+
+						%a#submit_category.btn_rnd.brd_orange{:href => "#", :title => "Search"} Search
+
+				- (1..4).each do |i|
+					%article{:id => "post_#{i}"}
+
+						%div{"data-container" => "width_690"}
+
+							%h2
+								%a{:href => "#", :title => "The Dragon Back Ridge"} The Riverboat Fantasy
+							%h3
+								%span.title_author David Wilcox
+								%span.title_date April 10, 2015
+
+							%a{:href => "#", :title => "Read More"}
+								%img{:src => "assets/img/placeholder.png", :alt => ""}
+
+							%p Rain, rock scrambling, and good times in Greenland. Mike Libecki, Ethan Pringle, and Angie Payne spent a few weeks exploring the remote fjords and rock walls of Eastern Greenland.
+
+							%a.btn_rnd.brd_orange{:href => "#", :title => "Read More"} Read More
+
+				%article{:id => "post_5"}
+
+					%div{"data-container" => "width_690"}
+
+						%h2
+							%a{:href => "#", :title => "The Final Countdown Extra Long Title FTW"} The Final Countdown Extra Long Title For The Win
+						%h3
+							%span.title_author Dude Mang
+							%span.title_date April 20, 2015
+
+						%a{:href => "", :title => "Read More"}
+							%img{:src => "assets/img/placeholder.png", :alt => ""}
+
+						%p Biking is a great way to see Catalina's wildlands. The terrain is not for the faint of heart though. The dirt roads of the island interior offer challenging biking and awesome views. Mountain biking on Santa Catalina Island is a must-do for serious bikers.
+
+						%a.btn_rnd.brd_orange{:href => "#", :title => "Read More"} Read More
+
+						-# if last article:
+						%nav.nav_secondary
+							%ul.pagination
+								%li.pagi_prev
+									%a.wrap_svg{:href => "#", :title => "Previous Page"}
+										%svg.ui_arrow{:viewBox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_arrow"}
+								%li.page_number
+									%a{:href => "#", :title => "Page 1"} 1
+								%li.page_number.current
+									%a{:href => "#", :title => "Page 2"} 2
+								%li.page_number
+									%a{:href => "#", :title => "Page 3"} 3
+								%li.page_number
+									%a{:href => "#", :title => "Page 4"} 4
+								%li.pagi_next
+									%a.wrap_svg{:href => "#", :title => "Previous Page"}
+										%svg.ui_arrow{:viewBox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_arrow"}
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

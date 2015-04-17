@@ -39,6 +39,20 @@
 
 	// Forms
 	// ----------------------------------------------------------------------------
+	// --- Select & Category Dropdown --- \\
+	// + categories specific + \\
+	div.wrap_categories,
+	section.blog_articles a[title="Search"] {
+		float: left;
+	}
+	div.wrap_categories {
+		margin-right: 2rem;
+		margin-bottom: 0;
+		width: 31.4rem;
+	}
+	section.blog_articles a[title="Search"] {
+		width: 12rem;
+	}
 	// --- Form: Quote --- \\
 	form.form_quote div.wrap_input div.wrap_columns {
 		border-top: 0.1rem solid $hsl_L21;
@@ -92,7 +106,10 @@
 		margin-bottom: 4.2rem;
 		width: 6.8rem;
 	}
-	// --- Page Articles --- \\
+
+	// Page Articles
+	// ----------------------------------------------------------------------------
+	// --- Class Lists --- \\
 	// + list: activities + \\
 	section.page_articles article div.list_activities {
 		text-align: left;
@@ -200,35 +217,43 @@
 	}
 	// --- Select Dropdown --- \\
 	// + dropdown toggle + \\
-	div.wrap_select div.dropdown_toggle {
+	div.dropdown_toggle {
 		height: 5.2rem;
 	}
-	div.wrap_select div.dropdown_toggle span {
+	div.dropdown_toggle span {
 		padding-left: 2rem;
 		padding-right: 5.2rem;
 		line-height: 5.2rem;
 	}
-	div.wrap_select div.dropdown_toggle svg {
+	div.dropdown_toggle svg {
 		top: 1.8rem;
 		right: 2rem;
 	}
 	// + dropdown list + \\
-	div.wrap_select div.wrap_dropdown ul {
+	div.wrap_dropdown ul {
 		padding-top: 5.2rem;
 	}
-	div.wrap_select div.wrap_dropdown ul li a {
+	div.wrap_dropdown ul li a {
 		padding: 1.7rem 2rem;
 	}
 	// + dropdown scrollable + \\
-	div.wrap_select div.wrap_dropdown span.fix_ios-scroll {
+	div.wrap_dropdown.scrollable {
+		height: 31.2rem; // dropdown_label height (52px) x 6
+	}
+	div.wrap_dropdown span.fix_ios-scroll {
 		top: 5.2rem;
 	}
-	div.wrap_select div.wrap_dropdown span.fix_ios-scroll ul {
+	div.wrap_dropdown span.fix_ios-scroll ul {
 		padding-top: 0;
+	}
+	// + categories specific + \\
+	div.wrap_categories div.wrap_dropdown.scrollable {
+		top: 4rem;
 	}
 	// --- Typeahead --- \\
 	span.tt-dropdown-menu {
 		top: 5.2rem !important;
+		max-height: 31.2rem; // dropdown_label height (48px) x 6
 	}
 	// + suggestions + \\
 	div.tt-suggestion {
@@ -359,15 +384,21 @@
 	section.internal_header {
 		padding: 8.2rem 3.2rem 9rem 3.2rem;
 	}
-	// --- Page Articles --- \\
-	section.page_articles {
-		padding-top: 6rem;
-	}
-	section.page_articles article {
+
+	// Page & Blog Articles
+	// ----------------------------------------------------------------------------
+	section.page_articles article,
+	section.blog_articles article {
 		padding-left: 3.2rem;
 		padding-right: 3.2rem;
 		border-left: 0.2rem solid $hsl_orange;
 		border-right: 0.2rem solid $hsl_orange;
+	}
+
+	// Page Articles
+	// ----------------------------------------------------------------------------
+	section.page_articles {
+		padding-top: 6rem;
 	}
 	section.page_articles article:first-child {
 		border-top: 0.2rem solid $hsl_orange;
@@ -627,11 +658,17 @@
 		height: 6rem;
 		line-height: 6rem;
 	}
-	// --- Page Articles --- \\
-	section.page_articles article {
+
+	// Page & Blog Articles
+	// ----------------------------------------------------------------------------
+	section.page_articles article,
+	section.blog_articles article {
 		padding-top: 7.2rem;
 		padding-bottom: 7.2rem;
 	}
+
+	// Page Articles
+	// ----------------------------------------------------------------------------
 	section.page_articles article h2 {
 		margin-bottom: 4.2rem;
 	}
@@ -668,6 +705,7 @@
 		top: 2rem;
 		left: 2rem;
 	}
+	// --- Class Lists --- \\
 	// + list: bubble + \\
 	section.page_articles article div[data-container] ul.list_bubble {
 		margin-bottom: 4.2rem;
@@ -715,6 +753,26 @@
 	section.page_articles article table tbody tr td {
 		padding: 2.4rem;
 		font-size: 1.6rem;
+	}
+
+	// Blog Articles
+	// ----------------------------------------------------------------------------
+	section.blog_articles article h2 {
+		margin-bottom: 1rem;
+		font-size: 3rem;
+		letter-spacing: 0.2rem;
+		line-height: 1.2;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	section.blog_articles article h3,
+	section.blog_articles article img {
+		margin-bottom: 4rem;
+	}
+	// --- Pagination --- \\
+	nav.nav_secondary {
+		margin-top: 12rem;
+		transform: translateY(1rem);
 	}
 
 	// Home Page
@@ -958,7 +1016,10 @@
 		padding-top: 11rem;
 		padding-bottom: 12rem;
 	}
-	// --- Page Articles --- \\
+
+	// Page Articles
+	// ----------------------------------------------------------------------------
+	// --- Class Lists --- \\
 	// + list: activities + \\
 	section.page_articles article div.list_activities {
 		padding: 4.8rem;

@@ -15,6 +15,8 @@
 
 			.wrap_input.clearfix
 
+				%input{:type => "hidden", :name => "st", :value => "q"}
+
 				.column.col-1
 
 					%label When are you going?
@@ -36,14 +38,14 @@
 					.wrap_checkboxes.clearfix
 
 						%span.wrap_checkbox.checkbox_family
-							%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "check_family", :value => "check_family", :tabindex => "-1"}
+							%input#check_family.check_family.visuallyhidden{:type => "checkbox", :name => "family", :value => "check_family", :tabindex => "-1"}
 							%label{:for => "check_family"}
 								I’m travelling with my family
 								%svg.ui_checkmark{:viewBox => "0 0 64 64"}
 									%use{"xlink:href" => "#ui_checkmark"}
 
 						%span.wrap_checkbox.checkbox_booked
-							%input#check_booked.check_booked.visuallyhidden{:type => "checkbox", :name => "check_booked", :value => "check_booked", :tabindex => "-1", :checked => true}
+							%input#check_booked.check_booked.visuallyhidden{:type => "checkbox", :name => "booked", :value => "check_booked", :tabindex => "-1", :checked => true}
 							%label{:for => "check_booked"}
 								Trip was booked today
 								%svg.ui_checkmark{:viewBox => "0 0 64 64"}
