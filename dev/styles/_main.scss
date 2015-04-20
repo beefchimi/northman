@@ -35,7 +35,8 @@ body {
 // ----------------------------------------------------------------------------
 a,
 input,
-button {
+button,
+textarea {
 	transition: all 0.3s ease-in-out;
 }
 svg {
@@ -55,9 +56,6 @@ nav.nav_primary {
 }
 body.home main form.form_quote {
 	transition: max-height 1s ease-in-out;
-}
-section.blog_articles article img {
-	transition: opacity 0.3s ease-in-out;
 }
 div.accordian_body,
 form.form_quote div.error_message {
@@ -345,6 +343,7 @@ aside.modal_error-60 div.modal_body a.cancel_error {
 	border-radius: 0.8rem;
 }
 a[class*="brd_"],
+input[class*="brd_"],
 button[class*="brd_"] {
 	box-shadow: inset 0 0 0 0.2rem;
 }
@@ -1497,7 +1496,8 @@ section.page_articles article div[data-container] > ul li:last-child {
 
 // Blog Articles
 // ----------------------------------------------------------------------------
-body.blog section.page_header div.wrap_svg.title {
+body.blog section.page_header div.wrap_svg.title,
+body.single section.page_header div.wrap_svg.title {
 	width: 70%;
 	max-width: 25.4rem;
 }
@@ -1528,49 +1528,67 @@ section.blog_articles article h3 span.title_author::after {
 	padding-left: 0.7rem;
 	padding-right: 0.1rem;
 }
-section.blog_articles article img {
+section.blog_articles article .the_image {
+	display: block;
 	margin-bottom: 2.6rem;
 }
-section.blog_articles article img:hover {
+section.blog_articles article a.the_image:hover {
 	opacity: 0.8;
 }
-section.blog_articles article img:active {
+section.blog_articles article a.the_image:active {
 	opacity: 0.9;
 }
-section.blog_articles article p {
+// --- The Content --- \\
+section.blog_landing article div.the_content {
 	margin-bottom: 3.2rem;
+}
+section.blog_single article div.the_content {
+	margin-bottom: 5.2rem;
+}
+section.blog_articles article div.the_content p {
+	margin-bottom: 2.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
-section.blog_articles article p a,
-section.blog_articles article li a {
+section.blog_articles article div.the_content blockquote {
+	margin: 0 1rem 2.2rem 1rem;
+}
+section.blog_articles article div.the_content blockquote p {
+	font-size: 2.1rem;
+}
+section.blog_articles article div.the_content p:last-child,
+section.blog_articles article div.the_content blockquote:last-child {
+	margin-bottom: 0;
+}
+section.blog_articles article div.the_content p a,
+section.blog_articles article div.the_content li a {
 	color: $hsl_orange;
 	white-space: nowrap;
 }
-// --- Pagination --- \\
+// --- Secondary Nav --- \\
 nav.nav_secondary {
 	margin-top: 8rem;
 }
-ul.pagination {
+ul.pagi_numbered {
 	text-align: center;
 }
-ul.pagination li {
+ul.pagi_numbered li {
 	display: inline-block;
 	margin-right: 0.2rem;
 	vertical-align: middle;
 }
-ul.pagination li a {
+ul.pagi_numbered li a {
 	display: block;
 	padding: 0.6rem;
 	font-size: 1.5rem;
 	color: $hsl_orange;
 }
-ul.pagination li.current a {
+ul.pagi_numbered li.current a {
 	position: relative;
 	pointer-events: none;
 }
-ul.pagination li.current a::before {
+ul.pagi_numbered li.current a::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -1580,39 +1598,243 @@ ul.pagination li.current a::before {
 	height: 0.2rem;
 	background-color: $hsl_orange;
 }
-li.pagi_next {
+ul.pagi_numbered li.pagi_next {
 	margin-right: 0;
 }
-li.pagi_prev a {
+ul.pagi_numbered li.pagi_prev a {
 	transform: rotate(90deg);
 }
-li.pagi_next a {
+ul.pagi_numbered li.pagi_next a {
 	transform: rotate(-90deg);
 }
-li.pagi_prev a svg,
-li.pagi_next a svg {
+ul.pagi_numbered li.pagi_prev a svg,
+ul.pagi_numbered li.pagi_next a svg {
 	width: 1.2rem;
 	fill: $hsl_orange;
 }
-ul.pagination li:hover a {
+ul.pagi_numbered li:hover a {
 	color: $hsl_L21;
 }
-ul.pagination li.current:hover a {
+ul.pagi_numbered li.current:hover a {
 	color: $hsl_orange;
 }
-li.pagi_prev a:hover svg,
-li.pagi_next a:hover svg {
+ul.pagi_numbered li.pagi_prev a:hover svg,
+ul.pagi_numbered li.pagi_next a:hover svg {
 	fill: $hsl_L21;
 }
-ul.pagination li:active a {
+ul.pagi_numbered li:active a {
 	color: $hsl_L40;
 }
-ul.pagination li.current:active a {
+ul.pagi_numbered li.current:active a {
 	color: $hsl_orange;
 }
-li.pagi_prev a:active svg,
-li.pagi_next a:active svg {
+ul.pagi_numbered li.pagi_prev a:active svg,
+ul.pagi_numbered li.pagi_next a:active svg {
 	fill: $hsl_L40;
+}
+// --- Tertiary Nav --- \\
+nav.nav_tertiary {
+	position: relative;
+	margin-bottom: 5.2rem;
+}
+nav.nav_tertiary > div.wrap_svg {
+	position: absolute;
+	top: 0.2rem;
+	left: 0;
+	width: 2.4rem;
+	fill: $hsl_orange;
+}
+// + tags list + \\
+ul.list_tags {
+	margin-bottom: 1.4rem;
+	padding-left: 4rem;
+	padding-bottom: 1rem;
+	text-align: left;
+	border-bottom: 0.2rem solid $hsl_orange;
+}
+ul.list_tags li {
+	display: inline-block;
+	line-height: 1.4;
+}
+ul.list_tags li::after {
+	content: "\002F"; // '/'
+	padding-left: 0.6rem;
+	padding-right: 0.4rem;
+	font-size: 1.3rem;
+}
+ul.list_tags li:last-child {
+	margin-right: 0;
+}
+ul.list_tags li:last-child::after {
+	content: "";
+	padding-left: 0;
+	padding-right: 0;
+	display: none;
+}
+ul.list_tags li a {
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	color: $hsl_orange;
+}
+ul.list_tags li a:hover {
+	color: $hsl_L21;
+}
+ul.list_tags li a:active {
+	color: $hsl_L40;
+}
+// + pagination siblings + \\
+ul.pagi_siblings {
+	// text-align: right;
+}
+ul.pagi_siblings li {
+	// display: inline-block;
+	float: left;
+	width: 50%;
+}
+ul.pagi_siblings li div.wrap_svg {
+	display: block;
+	position: absolute;
+	width: 1.2rem;
+}
+ul.pagi_siblings li a,
+ul.pagi_siblings li span {
+	display: block;
+	position: relative;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+}
+ul.pagi_siblings li span {
+	color: $hsl_L58;
+}
+ul.pagi_siblings li span svg {
+	fill: $hsl_L58;
+}
+ul.pagi_siblings li a {
+	color: $hsl_orange;
+}
+ul.pagi_siblings li a svg {
+	fill: $hsl_orange;
+}
+ul.pagi_siblings li.pagi_prev {
+	// margin-right: 3.2rem;
+	text-align: left;
+}
+ul.pagi_siblings li.pagi_next {
+	text-align: right;
+}
+ul.pagi_siblings li.pagi_prev a,
+ul.pagi_siblings li.pagi_prev span {
+	padding-left: 2rem;
+}
+ul.pagi_siblings li.pagi_prev div.wrap_svg {
+	left: 0;
+	transform: rotate(90deg);
+}
+ul.pagi_siblings li.pagi_next a,
+ul.pagi_siblings li.pagi_next span {
+	padding-right: 2rem;
+}
+ul.pagi_siblings li.pagi_next div.wrap_svg {
+	right: 0;
+	transform: rotate(-90deg);
+}
+ul.pagi_siblings li a:hover {
+	color: $hsl_L21;
+}
+ul.pagi_siblings li a:hover svg {
+	fill: $hsl_L21;
+}
+ul.pagi_siblings li a:active {
+	color: $hsl_L40;
+}
+ul.pagi_siblings li a:active svg {
+	fill: $hsl_L40;
+}
+
+// Blog Comments
+// ----------------------------------------------------------------------------
+div.comment_results {
+	margin-bottom: 4rem;
+	text-align: left;
+}
+div.comment_results h6 {
+	display: inline-block;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+}
+div.comment_results > h6 {
+	margin-bottom: 1.2rem;
+	text-transform: uppercase;
+}
+ol.comment_list li {
+	padding-top: 1.6rem;
+	padding-bottom: 1.6rem;
+	border-top: 0.2rem solid $hsl_orange;
+}
+ol.comment_list li:last-child {
+	padding-bottom: 0;
+}
+ol.comment_list li div.comment_header {
+	margin-bottom: 1rem;
+}
+ol.comment_list li div.comment_header span {
+	margin-left: 1rem;
+	font-size: 1.2rem;
+	color: $hsl_L70;
+}
+ol.comment_list li div.comment_body p {
+	margin-bottom: 1rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.3rem;
+	line-height: 1.3;
+}
+ol.comment_list li div.comment_body p:last-child {
+	margin-bottom: 0;
+}
+// --- Comment Form --- \\
+form.comment_form textarea,
+form.comment_form input[type="text"],
+form.comment_form input[type="email"] {
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	width: 100%;
+	font-size: 1.5rem;
+	color: $hsl_L21;
+	background-color: $hsl_L100;
+	box-shadow: inset 0 0 0 0.2rem $hsl_L7;
+	border-radius: 0.6rem;
+}
+form.comment_form textarea {
+	padding-top: 1.2rem;
+	padding-bottom: 1.2rem;
+	min-height: 12rem;
+	max-height: 24rem;
+	resize: vertical;
+}
+form.comment_form input[type="text"],
+form.comment_form input[type="email"] {
+	height: 4.4rem;
+}
+// + interaction + \\
+form.comment_form textarea:focus,
+form.comment_form input[type="text"]:focus,
+form.comment_form input[type="email"]:focus {
+	box-shadow: inset 0 0 0 0.2rem $hsl_orange;
+}
+form.comment_form input[type="text"]:hover,
+form.comment_form input[type="email"]:hover {
+	background-color: $hsl_L100;
+}
+form.comment_form input[type="text"]:focus:hover,
+form.comment_form input[type="email"]:focus:hover {
+	background-color: $hsl_L100;
+}
+form.comment_form div.wrap_inputs,
+form.comment_form div.comment_form-comment,
+form.comment_form div.wrap_inputs div.comment_form-author {
+	margin-bottom: 1.6rem;
 }
 
 // Home Page

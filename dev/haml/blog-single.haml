@@ -1,0 +1,136 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#2015.single
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		%main{:role => "main"}
+
+			%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_blog.jpg')"}
+
+				.wrap_svg.icon
+					%svg.ui_pencil{:viewBox => "0 0 64 21"}
+						%use{"xlink:href" => "#ui_pencil"}
+
+				%h1.visuallyhidden Blog
+				.wrap_svg.title{:style => "max-width: 25.4rem"}
+					%svg.svg_inline.nm_blog{:viewBox => "0 0 254 54"}
+						%use{"xlink:href" => "#nm_blog"}
+
+			%section.blog_articles.blog_single{"data-container" => "width-padding_1440"}
+
+				%article{:id => "post_1"}
+
+					%div{"data-container" => "width_690"}
+
+						%h2 The Final Countdown Extra Long Title For The Win
+						%h3
+							%span.title_author Dude Mang
+							%span.title_date April 20, 2015
+
+						%img.the_image{:src => "assets/img/placeholder.png", :alt => ""}
+
+						.the_content
+							:plain
+								<p><strong>After two straight days of rain,</strong> we woke to just a thin layer of cloud cover. We figured it would burn off so after breakfast, we started the trek around the side of the mountain to the ridge. We <em>really should have</em> gotten an earlier start that day, but we figured the good weather would last.</p>
+							%p
+								%em The rain couldn’t come back now could it?
+							%p The team hiked for a few hours around the corner and across the severely steep hillside until we arrived at a pretty decent campsite and, knowing that we’d get benighted on the ridge above if we tried to continue, we opted to spend the night there. It was a really awesome little campsite with jaw dropping views of the fjord. The glaciers across the bay seemed to be sliding right into the ocean. That night we crashed out earlier than the sun went down.
+							%p Panic set in when, early the next morning, I felt a couple raindrops on my face. The cloud cover had gotten thicker since the previous evening and it looked like it might start raining. The team seemed optimistic and packed up our stuff and started hiking.
+							%p Our first obstacle came after about a half an hour of hiking — a steep, muddy scree slope up the side of a huge crevasse ridden glacier just below the ridge. It looked pretty scary to me, but Mike casually navigated up its features, placing his feet on rocks imbedded in the ice. We soon found ourselves on the flat upper section of the glacier, and it was a surreal moment. The glacier felt like the surface of an alien planet, the horizon of its downhill side dropped straight into the fjord.
+							%p We gingerly moved across the ice field to the next obstacle — another serious looking scree slope comprised of unsteady looking boulders and rocks that would lead us to the base of the ridge.
+							%p The notch marked the beginning of the long ridge that extended like a dragon’s back, reaching all the way to the top of a prominent tower. Mike and I started racking up. I flaked the rope and Mike organized the gear. We both donned our harnesses for the first time of the trip, and Mike slipped into his sticky rubber climbing shoes.
+							%p Then it started raining. It was a light rain at first, but we were familiar with how the rain came and went. It was clear that this rain was not abating any time in the foreseeable future. It blanketed the mountains to the north and thicker sheets of it were coming our way. The rock was getting wetter by the minute. It was a hard realization to accept, but given the seriousness of our goal, we couldn’t start up the ridge in the rain. It was time to bail.
+							%blockquote
+								%p Sometimes, you’ve got to know when to press onward, and when to bail.
+							%p Our retreat down the scree slopes and back across the glacier was extremely nerve wracking as it continued to rain and rain. We eventually made it safely back to the camp where we’d bivyed the night before. We all squeezed into Mike’s small Hoopla Tent, ate some food, and rested a while as Mike made us laugh with tales of hilarity from his past expeditions.
+
+
+						%nav.nav_tertiary
+
+							.wrap_svg
+								%svg.ui_tag{:viewBox => "0 0 64 39"}
+									%use{"xlink:href" => "#ui_tag"}
+
+							%ul.list_tags
+								%li.tag
+									%a{:href => "#", :title => "Camping"} Camping
+								%li.tag
+									%a{:href => "#", :title => "Climbing"} Climbing
+								%li.tag
+									%a{:href => "#", :title => "Jumping"} Jumping
+								%li.tag
+									%a{:href => "#", :title => "Diving"} Diving
+								%li.tag
+									%a{:href => "#", :title => "Pwning"} Pwning
+
+							%ul.pagi_siblings.clearfix
+								%li.pagi_prev
+									%a{:href => "#", :title => "Previous Post"}
+										.wrap_svg
+											%svg.ui_arrow{:viewBox => "0 0 64 64"}
+												%use{"xlink:href" => "#ui_arrow"}
+										Previous Post
+								%li.pagi_next
+									%a{:href => "#", :title => "Next Post"}
+										.wrap_svg
+											%svg.ui_arrow{:viewBox => "0 0 64 64"}
+												%use{"xlink:href" => "#ui_arrow"}
+										Next Post
+
+
+					#comment_results.comment_results{"data-container" => "width_690"}
+
+						%h6 Comments (3)
+
+						%ol.comment_list
+
+							%li.comment
+								.comment_header
+									%h6.comment_author Jim Sprout
+									%span.comment_time Yesterday at 5:06PM
+								.comment_body
+									%p After two straight days of rain, we woke to just a thin layer of cloud cover. We figured it would burn off so after breakfast and a gear racking session, we started the trek around the side of the mountain to the ridge. We really should have gotten an earlier start that day, but we figured the good weather would last.
+
+							%li.comment
+								.comment_header
+									%h6.comment_author Lenny
+									%span.comment_time 2 days ago
+								.comment_body
+									%p After two straight days of rain, we woke to just a thin layer of cloud cover. We figured it would burn off so after breakfast and a gear racking session, we started the trek around the side of the mountain to the ridge. We really should have gotten an earlier start that day, but we figured the good weather would last.
+
+							%li.comment
+								.comment_header
+									%h6.comment_author Man Person
+									%span.comment_time 5 days ago
+								.comment_body
+									%p After two straight days of rain, we woke to just a thin layer of cloud cover. We figured it would burn off so after breakfast and a gear racking session, we started the trek around the side of the mountain to the ridge. We really should have gotten an earlier start that day, but we figured the good weather would last.
+									%p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+					%form#comment_form.comment_form.clearfix{:action => "", :method => "post", "data-container" => "width_690"}
+
+						.wrap_inputs.clearfix
+
+							.comment_form-author.wrap_element
+								%label.visuallyhidden{:for => "author"} Name
+								%input#author{:type => "text", :name => "author", :value => "", :placeholder => "Full Name", :required => true}
+
+							.comment_form-email.wrap_element
+								%label.visuallyhidden{:for => "email"} Email
+								%input#email{:type => "email", :name => "email", :value => "", :placeholder => "Email Address", :required => true}
+
+						.comment_form-comment
+							%label.visuallyhidden{:for => "comment"} Comment
+							%textarea#comment{:name => "comment", :maxlength => "500", :placeholder => "Leave a comment", :required => true}
+
+						%input#submit.btn_rnd.brd_orange{:name => "submit", :type => "submit", :value => "Post"}
+
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

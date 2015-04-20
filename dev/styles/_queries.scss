@@ -426,6 +426,65 @@
 		margin: 0 0 0 0.8rem;
 	}
 
+
+
+	// Blog Articles
+	// ----------------------------------------------------------------------------
+	// --- Tertiary Nav --- \\
+	nav.nav_tertiary {
+		margin-bottom: 8rem;
+	}
+	// + pagination siblings + \\
+	ul.pagi_siblings {
+		text-align: right;
+	}
+	ul.pagi_siblings li {
+		display: inline-block;
+		float: none;
+		width: auto;
+	}
+	ul.pagi_siblings li.pagi_prev {
+		margin-right: 5.2rem;
+		text-align: right;
+	}
+
+	// Blog Comments
+	// ----------------------------------------------------------------------------
+	div.comment_results > h6 {
+		margin-bottom: 1.6rem;
+	}
+	ol.comment_list li {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+	ol.comment_list li div.comment_body p {
+		font-size: 1.4rem;
+		line-height: 1.4;
+	}
+	// --- Comment Form --- \\
+	form.comment_form textarea,
+	form.comment_form input[type="text"],
+	form.comment_form input[type="email"] {
+		padding-left: 1.6rem;
+		padding-right: 1.6rem;
+	}
+	form.comment_form div.wrap_inputs {
+		margin-bottom: 2rem;
+	}
+	form.comment_form div.wrap_inputs div.wrap_element {
+		float: left;
+		width: calc(50% - 1rem);
+	}
+	form.comment_form div.wrap_inputs div.comment_form-author {
+		margin-right: 2rem;
+		margin-bottom: 0;
+	}
+	form.comment_form div.comment_form-comment {
+		margin-bottom: 3.2rem;
+	}
+
+
+
 	// Home Page
 	// ----------------------------------------------------------------------------
 	section.home_header div.wrap_svg.icon {
@@ -766,8 +825,16 @@
 		text-transform: uppercase;
 	}
 	section.blog_articles article h3,
-	section.blog_articles article img {
+	section.blog_articles article .the_image {
 		margin-bottom: 4rem;
+	}
+	// --- The Content --- \\
+	section.blog_articles article div.the_content blockquote {
+		margin-left: 3.2rem;
+		margin-right: 3.2rem;
+	}
+	section.blog_articles article div.the_content blockquote p {
+		font-size: 2.4rem;
 	}
 	// --- Pagination --- \\
 	nav.nav_secondary {

@@ -23,7 +23,7 @@
 					%svg.svg_inline.nm_blog{:viewBox => "0 0 254 54"}
 						%use{"xlink:href" => "#nm_blog"}
 
-			%section.blog_articles.internal_articles{"data-container" => "width-padding_1440"}
+			%section.blog_articles.blog_landing{"data-container" => "width-padding_1440"}
 
 				%article
 
@@ -61,10 +61,11 @@
 								%span.title_author David Wilcox
 								%span.title_date April 10, 2015
 
-							%a{:href => "#", :title => "Read More"}
+							%a.the_image{:href => "#", :title => "Read More"}
 								%img{:src => "assets/img/placeholder.png", :alt => ""}
 
-							%p Rain, rock scrambling, and good times in Greenland. Mike Libecki, Ethan Pringle, and Angie Payne spent a few weeks exploring the remote fjords and rock walls of Eastern Greenland.
+							.the_content
+								%p Rain, rock scrambling, and good times in Greenland. Mike Libecki, Ethan Pringle, and Angie Payne spent a few weeks exploring the remote fjords and rock walls of Eastern Greenland.
 
 							%a.btn_rnd.brd_orange{:href => "#", :title => "Read More"} Read More
 
@@ -78,16 +79,17 @@
 							%span.title_author Dude Mang
 							%span.title_date April 20, 2015
 
-						%a{:href => "", :title => "Read More"}
+						%a.the_image{:href => "#", :title => "Read More"}
 							%img{:src => "assets/img/placeholder.png", :alt => ""}
 
-						%p Biking is a great way to see Catalina's wildlands. The terrain is not for the faint of heart though. The dirt roads of the island interior offer challenging biking and awesome views. Mountain biking on Santa Catalina Island is a must-do for serious bikers.
+						.the_content
+							%p Biking is a great way to see Catalina's wildlands. The terrain is not for the faint of heart though. The dirt roads of the island interior offer challenging biking and awesome views. Mountain biking on Santa Catalina Island is a must-do for serious bikers.
 
 						%a.btn_rnd.brd_orange{:href => "#", :title => "Read More"} Read More
 
 						-# if last article:
 						%nav.nav_secondary
-							%ul.pagination
+							%ul.pagi_numbered
 								%li.pagi_prev
 									%a.wrap_svg{:href => "#", :title => "Previous Page"}
 										%svg.ui_arrow{:viewBox => "0 0 64 64"}
