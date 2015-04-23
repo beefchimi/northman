@@ -104,53 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// console.log( ["Apple", "bOy", "caR"].indexOfIgnoreCase('car') ); // returns 2
 
 
-	// Helper: Get current date
-	// ----------------------------------------------------------------------------
-	function dateToday() {
-
-		var today = new Date(),
-			dd    = today.getDate(),
-			mm    = today.getMonth() + 1, // january is 0
-			yyyy  = today.getFullYear();
-
-		if (dd < 10) {
-			dd = '0' + dd;
-		}
-
-		if (mm < 10) {
-			mm = '0' + mm;
-		}
-
-		today = mm + '/' + dd + '/' + yyyy;
-
-		return today;
-
-	}
-
-
-	// Helper: Fire Window Resize Event Upon Finish
-	// ----------------------------------------------------------------------------
-	var waitForFinalEvent = (function() {
-
-		var timers = {};
-
-		return function(callback, ms, uniqueId) {
-
-			if (!uniqueId) {
-				uniqueId = 'beefchimi'; // Don't call this twice without a uniqueId
-			}
-
-			if (timers[uniqueId]) {
-				clearTimeout(timers[uniqueId]);
-			}
-
-			timers[uniqueId] = setTimeout(callback, ms);
-
-		};
-
-	})();
-
-
 	// Helper: Find Parent Element by Class or Tag Name
 	// ----------------------------------------------------------------------------
 	function findParentClass(el, className) {
@@ -198,33 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-/*
-	// Helper: Create loading animation
-	// ----------------------------------------------------------------------------
-	function createLoader() {
-
-		// create loader elements
-		var elLoader     = document.createElement('div'),
-			elLoaderWrap = document.createElement('div'),
-			elLoaderSVG  = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
-			elLoaderUse  = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-
-		// define loader attributes
-		elLoader.setAttribute('class', 'loader_overlay');
-		elLoaderWrap.setAttribute('class', 'wrap_svg');
-		elLoaderUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#ui_loader');
-
-		// append loader elements
-		elLoaderSVG.appendChild(elLoaderUse);
-		elLoaderWrap.appendChild(elLoaderSVG);
-		elLoader.appendChild(elLoaderWrap);
-
-		return elLoader;
-
-	}
-*/
-
-
 	// Helper: Lock / Unlock Body Scrolling
 	// ----------------------------------------------------------------------------
 	function lockBody() {
@@ -234,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		// if necessary, accomodate for scrollbar width
 		if (hasScrollbar) {
 			elBody.style.paddingRight = numScrollbarWidth + 'px';
-			// elMainNav.style.paddingRight = numScrollbarWidth + 'px';
 		}
 
 	}
@@ -247,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		// should be expanded to restore original padding if needed
 		if (hasScrollbar) {
 			elBody.style.paddingRight = '0px';
-			// elMainNav.style.paddingRight = '0px';
 		}
 
 	}
@@ -321,6 +245,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// injectSVG: Inject SVG data once document is ready
+	// ----------------------------------------------------------------------------
+	function injectSVG() {
+
+		var ajax   = new XMLHttpRequest(),
+			origin = window.location.origin,
+			wpPath = '/wp-content/themes/northman/',
+			ajaxPath = origin === 'http://localhost' ? '' : origin + wpPath;
+
+		ajax.open('GET', ajaxPath + 'assets/img/svg.svg?v=1', true);
+		ajax.send();
+		ajax.onload = function(e) {
+
+			var div = document.createElement('div');
+			div.id = 'svgInject';
+			div.innerHTML = ajax.responseText;
+			document.body.insertBefore(div, document.body.childNodes[0]);
+
+		}
+
+	}
+
+
 	// pageLoaded: Execute once the page has loaded and the FOUT animation has ended
 	// ----------------------------------------------------------------------------
 	function pageLoaded() {
@@ -334,6 +281,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		if ( classie.has(elHTML, 'ie9') ) {
 			return;
 		}
+
+		injectSVG(); // inject them SVGs
 
 		var elHeader = document.getElementsByTagName('header')[0];
 
@@ -517,35 +466,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	}
-
-
-/*
-	// scrollbarModal: Accomodate for scrollbar width
-	// ----------------------------------------------------------------------------
-	function scrollbarModal() {
-
-		if (hasScrollbar) {
-
-			var arrModals = document.getElementsByClassName('modal'),
-				numModals = arrModals.length;
-
-			// check if aside.modal exists and is not empty
-			if (typeof arrModals !== 'undefined' && numModals > 0) {
-
-				for (var i = 0; i < arrModals; i++) {
-
-				}
-
-			else {
-
-				return; // array not found or empty... exit function
-
-			}
-
-		}
-
-	}
-*/
 
 
 	// selectDropdown: Pair each <select> element with its <ul> sibling
@@ -785,38 +705,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			elFormQuote.addEventListener('submit', function(e) {
 
+				// Matt's Code
 				var age = elFormAges.value;
 
-				if (age != '') {
+				if ( !checkAges(elFormAges.value) ) {
 
-					// Families can consist of up to two adults 25-59 and children <25
-					var ages      = age.split(','),
-						adults    = 0,
-						children  = 0,
-						badfamily = false;
+					alert('Families can have two adults (aged 25 - 59) and children (under 25 yrs). You have too many adults!');
 
-					for (var i = 0; i < ages.length; i++) {
+					e.preventDefault();
 
-						if (ages[i] >= 25) {
-							adults++;
-						} else {
-							children++;
-						}
-
-						if (adults > 2) {
-							badfamily = true;
-							break;
-						}
-
-					}
-
-					if (badfamily) {
-
-						alert('Families can have two adults (aged 25 - 59) and children (under 25 yrs). You have too many adults!');
-						e.preventDefault();
-						return false;
-
-					}
+					return false;
 
 				}
 
@@ -1047,20 +945,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function quoteOptions() {
 
-		// Form data needs to be sent to the Quote page on load.
-
-		// If landing on Quote with Family checked:
-			// #quote_title-1 = "Family Trip"
-			// #quote_title-2 = "Annual Family Membership"
-			// price is ???
-		// else:
-			// #quote_title-1 = "Single Trip"
-			// #quote_title-2 = "Annual Membership"
-			// price is ???
-
-		// Have not handled family input :checked...
-		// might make more sense to leave this with Matt?
-
 		var arrBadges       = document.getElementsByClassName('badge'),
 			arrTravellers   = document.getElementsByClassName('required_traveller'),
 			elQuoteSection  = document.getElementById('quote_articles'),
@@ -1116,45 +1000,57 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (index === 0) {
 
 					classie.remove(arrBadges[1], 'selected');
-
 					$("#required_submit").hide();
-					$("#annual_submit").hide();
+					$("#single_submit").show();
+					$("#required_submit").unbind("click");
+
+					masterDescription = "Single Trip Policy ($"+singleTotal+")";
+					masterAmount = singleTotal*100;
+
 					$("#annual-coverage-includes").hide();
 					$("#single-coverage-includes").show();
-					$("#single_submit").show();
 
 					// var total = arrBadges[1].children('.total').text();
 					$("#policy-name").text("Northman Single Trip");
-					$("#policy-premium").text('$'+singlePremium/100);
-					$("#policy-tax").text('$'+singleTax/100);
-					$("#policy-total").text('$'+singleTotal/100);
+					$("#policy-premium").text('$'+singlePremium);
+					$("#policy-tax").text('$'+singleTax);
+					$("#policy-total").text('$'+singleTotal);
+
+					$("#covered_for").text(days_covered);
+
+					$("#details_start-date").text(start);
+					$("#details_end-date").text(end);
+
+					$("#hidden-annual").val(0);
 
 				} else {
 
 					classie.remove(arrBadges[0], 'selected');
 
 					$("#required_submit").hide();
-					$("#single_submit").hide();
+					$("#required_submit").unbind("click");
+					$("#single_submit").show();
+
+					masterDescription = "Annual Policy ($"+annualTotal+")";
+					masterAmount = annualTotal*100;
+
 					$("#annual-coverage-includes").show();
 					$("#single-coverage-includes").hide();
-					$("#annual_submit").show();
 
 					// var total = arrBadges[0].children('.total').text();
 					$("#policy-name").text("Northman Annual Coverage");
-					$("#policy-premium").text('$'+annualPremium/100);
-					$("#policy-tax").text('$'+annualTax/100);
-					$("#policy-total").text('$'+annualTotal/100);
+					$("#policy-premium").text('$'+annualPremium);
+					$("#policy-tax").text('$'+annualTax);
+					$("#policy-total").text('$'+annualTotal);
+
+					$("#covered_for").text("Trips of up to 35 days");
+
+					// $("#details_start-date").text(today);
+					$("#details_end-date").text(yearOut);
+
+					$("#hidden-annual").val(1);
 
 				}
-
-/*
-				// remove 'selected' class from the badge that is not 'this'
-				if (index === 0) {
-					classie.remove(arrBadges[1], 'selected');
-				} else {
-					classie.remove(arrBadges[0], 'selected');
-				}
-*/
 
 				// toggle 'selected' class and set elSubmitButton text
 				if ( classie.has(thisBadge, 'selected') ) {
@@ -1205,7 +1101,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		var elCheckBooked = document.getElementById('check_booked'),
 			elCheckDepart = document.getElementById('check_depart'),
 			elWrapBooked  = document.getElementById('wrap_dis-booked'),
-			elWrapDepart  = document.getElementById('wrap_dis-depart');
+			elWrapDepart  = document.getElementById('wrap_dis-depart'),
+			elFormAges    = document.getElementById('age-groups'),
+			elSubmit      = document.getElementById('submit_quote');
 
 		// check if element exists
 		if (elCheckBooked == null) {
@@ -1254,6 +1152,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		});
 
+		elSubmit.addEventListener('click', function() {
+
+			var age = elFormAges.value;
+
+			if ( !checkAges(elFormAges.value) ) {
+				alert('Families can have two adults (aged 25 - 59) and children (under 25 yrs). You have too many adults!');
+				e.preventDefault();
+				return false;
+			}
+
+		});
+
 		function allowOverflow(e) {
 
 			// only listen for the height property
@@ -1275,10 +1185,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	function inputDatepicker() {
 
-		// CURRENTLY BUGGED!
-		// if you select a start date in the semi-future (45 days from current date?),
-		// end date will no longer allow you to select a date, or paginate between years / months
-
 		var $dateStart = $('#date_start'),
 			$dateEnd   = $('#date_end'),
 			valStart,
@@ -1287,14 +1193,14 @@ document.addEventListener('DOMContentLoaded', function() {
 		$('#datepicker').datepicker({
 			autoclose: true,
 			todayHighlight: true,
-			startDate: new Date(), // dateToday(),
+			startDate: new Date(),
 			format: 'M d, yyyy'
 		});
 
 		$('#date_booked').datepicker({
 			autoclose: true,
 			todayHighlight: true,
-			startDate: new Date(), // dateToday(),
+			endDate: new Date(),
 			format: 'M d, yyyy'
 		});
 
@@ -1307,19 +1213,18 @@ document.addEventListener('DOMContentLoaded', function() {
 			valStart = $dateStart.datepicker('getDate');
 			valEnd   = new Date();
 
-			// calculate selectable date range as 45 days from dateStart
-			valEnd.setDate(valStart.getDate() + 45);
+			// calculate selectable date range as 35 days from dateStart
+			// it's correct that we use 34 here. don't worry.
+			valEnd.setDate(valStart.getDate() + 34);
 
 			// set min-max date range for dateEnd
 			$dateEnd.datepicker('setStartDate', valStart);
 			$dateEnd.datepicker('setEndDate', valEnd);
 
-			// this should be handled with a conditional:
-			// if greater than 45 days: reset / else: do nothing
 			$dateEnd.datepicker('setDate', false);
 			$dateEnd.datepicker('show');
 
-			console.log('Northman insures trips of up to 45 days.');
+			console.log('Northman insures trips of up to 35 days.');
 
 		});
 
@@ -1341,42 +1246,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 
-		$("#single_submit").unbind("click");
-
 		$("#single_submit").on("click", function(e) {
 
-			this.disabled = true;
+			// this.disabled = true;
+			console.log('Buy now click handler');
 
-			$("#form_required").append($('<input type="hidden" name="annual" value="0" />'));
+			if (!validatePersonalDetails()) {
+				return false;
+			}
 
-			handler.open({
-				name: "Northman",
-				description: "Single Trip Policy ($"+singleTotal/100+")",
-				amount: singleTotal,
-				email: email,
-				currency: "CAD",
-				panelLabel: "Pay",
-				allowRememberMe: false
-			});
-
-			e.preventDefault();
-
-		});
-
-		$("#annual_submit").unbind("click");
-
-		$("#annual_submit").on("click", function(e) {
-
-			this.disabled = true;
-
-			var form = $("#form_required");
-
-			form.append($('<input type="hidden" name="annual" value="1" />'));
+			// $.validate();
 
 			handler.open({
 				name: "Northman",
-				description: "Annual Policy ($"+annualTotal/100+")",
-				amount: annualTotal,
+				description: masterDescription,
+				amount: masterAmount,
 				email: email,
 				currency: "CAD",
 				panelLabel: "Pay",
@@ -1394,24 +1278,106 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	}
 
+	function validatePersonalDetails(e) {
 
-/*
-	// Window Events: On Resize
-	// ----------------------------------------------------------------------------
-	window.addEventListener('resize', function(e) {
+		console.log('validatePersonalDetails()');
 
-		// re-measure window width and height on resize
-		numWindowWidth = window.innerWidth;
+		if (!$('#required_read').is(':checked')) {
 
-		// do not fire resize event for every pixel... wait until finished
-		waitForFinalEvent(function() {
+			console.log('Terms checkbox not checked');
 
-			scrollbarModal();
+			// $('#required_read').before('<div class="error_message">Please read the terms.</div>');
+			$('#single_submit').removeAttr('disabled');
 
-		}, 500, 'unique string');
+			e.preventDefault();
 
-	});
-*/
+			return false;
+
+		}
+
+		if ($('#required_dob[0]').attr('placeholder') == 'Birthday') {
+
+			console.log('Birthdate missing');
+
+			$('#single_submit').removeAttr('disabled');
+
+			e.preventDefault();
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	function formValidation() {
+
+		$.validate({ // initialize the plugin
+			form : '#form_required',
+			modules : 'security',
+			onError : function() {
+				alert('Validation failed');
+			},
+			onSuccess : function() {
+				alert('The form is valid!');
+				return false; // Will stop the submission of the form
+			},
+			onValidate : function() {
+				alert('onValidate');
+				return {
+					element : $('#some-input'),
+					message : 'This input has an invalid value for some reason'
+				}
+			},
+			rules: {
+				fname: 	{ required: true },
+				lname: 	{ required: true },
+				address:{ required: true },
+				city: 	{ required: true },
+				post_code: { required: true },
+				phone: 	{ required: true },
+				email: 	{ required: true, email: true },
+				read: 	{ required: true },
+				beneficiary: { required: true }
+			},
+			messages: {
+				email:{
+					required:"Email is required",
+					email:"Please type a valid email"
+				}
+			}
+		});
+
+	}
+
+	// Families can consist of up to two adults 25-59 and children <25
+	function checkAges(age) {
+
+		if (age == '') {
+			return false;
+		}
+
+		var ages     = age.split(',');
+		var adults   = 0;
+		var children = 0;
+
+		for (var i = 0; i < ages.length; i++) {
+
+			if (ages[i] >= 25) {
+				adults++;
+			} else {
+				children++;
+			}
+
+			if (adults > 2) {
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
 
 
 	// Initialize Primary Functions
@@ -1426,31 +1392,36 @@ document.addEventListener('DOMContentLoaded', function() {
 	editQuoteChecks();
 	inputDatepicker(); // should I specify the pages this is required on?
 
-/*
-	if (elBody.id === 'quote') {
-		quoteOptions();
-	}
-*/
+	var email;
+	var masterDescription;
+	var masterAmount;
 
 	if (elBody.id === 'quote') {
 
 		quoteOptions();
 		stripeHandler();
+		// formValidation();
 
-		$("#required_email").blur(function(){
-			console.log("Blur event on email fired and val is " + $(this).val());
+		// Work-around for readonly <input>'s in datepicker widgets
+		$(".readonly").keydown(function(e) {
+			e.preventDefault();
+		});
+
+		masterDescription = "Single Trip Policy ($"+singleTotal+")";
+		masterAmount = singleTotal*100;
+
+		$("#required_email").blur(function() {
+			// console.log("Blur event on email fired and val is " + $(this).val());
 			email = $(this).val();
-			stripeHandler();
 		});
 
 	}
 
 	if (elBody.id === 'home') {
 
-		$("age-groups").blur(function(){
+		$("age-groups").blur(function() {
 
-			console.log("Blur event on ages fired and val is " + $(this).val());
-
+			// console.log("Blur event on ages fired and val is " + $(this).val());
 			if ($(this).val().indexOf(',')) {
 				$("check_family").prop("checked", true);
 			}

@@ -976,10 +976,10 @@ ul.list_badges li.badge_annual div.badge_header div.wrap_svg svg {
 }
 // + interaction + \\
 ul.list_badges li.badge div.badge_body a.btn_rnd:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 ul.list_badges li.badge div.badge_body a.btn_rnd:active {
-	color: hsla(0,0%,40%,1);
+	color: $hsl_L40;
 }
 // + badge selected + \\
 ul.list_badges li.selected {
@@ -1030,10 +1030,10 @@ header a.wordmark svg {
 	fill: $hsl_orange;
 }
 header a.wordmark:hover svg {
-	fill: hsla(0,0%,20%,1);
+	fill: $hsl_L21;
 }
 header a.wordmark:active svg {
-	fill: hsla(0,0%,40%,1);
+	fill: $hsl_L40;
 }
 header h2 {
 	display: none;
@@ -1100,10 +1100,10 @@ nav.nav_primary ul li a {
 	color: $hsl_cream;
 }
 nav.nav_primary ul li a:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 nav.nav_primary ul li a:active {
-	color: hsla(0,0%,40%,1);
+	color: $hsl_L40;
 }
 // + social links + \\
 nav.nav_primary div.social_links {
@@ -1122,10 +1122,10 @@ nav.nav_primary div.social_links a svg {
 	fill: $hsl_cream;
 }
 nav.nav_primary div.social_links a:hover svg {
-	fill: hsla(0,0%,20%,1);
+	fill: $hsl_L21;
 }
 nav.nav_primary div.social_links a:active svg {
-	fill: hsla(0,0%,40%,1);
+	fill: $hsl_L40;
 }
 // --- Toggled: Mobile Nav --- \\
 body.toggled_mobile-nav nav.nav_primary {
@@ -1208,7 +1208,7 @@ ul.footer_contact li a {
 }
 footer p a:hover,
 ul.footer_contact li a:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 footer p a:active,
 ul.footer_contact li a:active {
@@ -1287,10 +1287,10 @@ section.page_callout article p:last-child {
 	margin-bottom: 0;
 }
 section.page_callout article a.btn_rnd:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 section.page_callout article a.btn_rnd:active {
-	color: hsla(0,0%,40%,1);
+	color: $hsl_L40;
 }
 
 // Page & Blog Articles
@@ -1306,56 +1306,47 @@ section.blog_articles article {
 	color: hsla(0,0%,15%,1);
 	border-bottom: 0.2rem solid $hsl_orange;
 }
-
-// Page Articles
-// ----------------------------------------------------------------------------
-section.page_articles article h2 {
-	margin-bottom: 3.2rem;
+section.page_articles article h2,
+section.blog_articles article h2 {
 	font-size: 1.7rem;
 	letter-spacing: 0.2rem;
 	line-height: 1.2;
 	text-align: center;
 	text-transform: uppercase;
 }
+section.blog_articles article div.the_content p,
 section.page_articles article div[data-container] > p:not([class]) {
-	margin-bottom: 3.2rem;
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
+section.blog_articles article div.the_content p a,
+section.blog_articles article div.the_content li a,
 section.page_articles article div[data-container] > p a,
 section.page_articles article div[data-container] > ul:not([class]) li a {
 	color: $hsl_orange;
 	white-space: nowrap;
 }
-section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format),
-body.page-id-19 section.page_articles article div[data-container] > p a[href^="mailto:"] {
-	display: table;
-	margin: 0.2rem auto 0 auto;
-	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
-}
+section.blog_articles article div.the_content p a:hover,
+section.blog_articles article div.the_content li a:hover,
 section.page_articles article div[data-container] > p a:hover,
 section.page_articles article div[data-container] > ul:not([class]) li a:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
+section.blog_articles article div.the_content p a:active,
+section.blog_articles article div.the_content li a:active,
 section.page_articles article div[data-container] > p a:active,
 section.page_articles article div[data-container] > ul:not([class]) li a:active {
-	color: hsla(0,0%,40%,1);
-}
-section.page_articles article div[data-container] div.article_svg {
-	margin: 0 auto 4rem auto;
-	width: 6.4rem;
-	height: 6.4rem;
-}
-section.page_articles article div[data-container] .article_svg svg {
-	fill: $hsl_orange;
+	color: $hsl_L40;
 }
 // + list: ordered + \\
+section.blog_articles article div.the_content ol,
 section.page_articles article div[data-container] ol {
 	counter-reset: ordered-counter;
 	margin-bottom: 3.2rem;
 	text-align: left;
 }
+section.blog_articles article div.the_content ol li,
 section.page_articles article div[data-container] ol li {
 	position: relative;
 	margin-bottom: 2rem;
@@ -1365,6 +1356,7 @@ section.page_articles article div[data-container] ol li {
 	line-height: 1.4;
 	border: 0.2rem solid $hsl_ash;
 }
+section.blog_articles article div.the_content ol li::before,
 section.page_articles article div[data-container] ol li::before {
 	content: counter(ordered-counter, decimal) ".";
 	counter-increment: ordered-counter;
@@ -1373,13 +1365,16 @@ section.page_articles article div[data-container] ol li::before {
 	left: 1rem;
 	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
 }
+section.blog_articles article div.the_content ol li:last-child,
 section.page_articles article div[data-container] ol li:last-child {
 	margin-bottom: 0;
 }
 // + list: unordered + \\
+section.blog_articles article div.the_content ul,
 section.page_articles article div[data-container] > ul:not([class]) {
 	margin-bottom: 3.2rem;
 }
+section.blog_articles article div.the_content ul li,
 section.page_articles article div[data-container] > ul:not([class]) li {
 	position: relative;
 	display: table;
@@ -1389,6 +1384,7 @@ section.page_articles article div[data-container] > ul:not([class]) li {
 	font-weight: 700;
 	line-height: 1.2;
 }
+section.blog_articles article div.the_content ul li::before,
 section.page_articles article div[data-container] > ul:not([class]) li::before {
 	display: none;
 	content: "\2022"; // bullet
@@ -1396,6 +1392,34 @@ section.page_articles article div[data-container] > ul:not([class]) li::before {
 	top: -0.2rem;
 	left: -1.8rem;
 	font-size: 1.8rem;
+}
+section.blog_articles article div.the_content p:last-child,
+section.blog_articles article div.the_content blockquote:last-child,
+section.page_articles article div[data-container] > p:last-child,
+section.page_articles article div[data-container] > ul:last-child,
+section.page_articles article div[data-container] > ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+// Page Articles
+// ----------------------------------------------------------------------------
+section.page_articles article h2,
+section.page_articles article div[data-container] > p:not([class]) {
+	margin-bottom: 3.2rem;
+}
+section.page_articles article div[data-container] > p a[href^="tel:"]:not(.no_format),
+body.page-id-19 section.page_articles article div[data-container] > p a[href^="mailto:"] {
+	display: table;
+	margin: 0.2rem auto 0 auto;
+	font-family: ITCAvantGardeGothic, Futura, 'Trebuchet MS', Arial, sans-serif;
+}
+section.page_articles article div[data-container] div.article_svg {
+	margin: 0 auto 4rem auto;
+	width: 6.4rem;
+	height: 6.4rem;
+}
+section.page_articles article div[data-container] .article_svg svg {
+	fill: $hsl_orange;
 }
 // + list: links + \\
 section.page_articles article div[data-container] ul.list_svg ~ ul:not([class]) li {
@@ -1488,26 +1512,16 @@ section.page_articles article div[data-container] ul.list_svg li.icon_twitter {
 section.page_articles article div[data-container] ul.list_svg li.icon_facebook {
 	width: 2rem;
 }
-section.page_articles article div[data-container] > p:last-child,
-section.page_articles article div[data-container] > ul:last-child,
-section.page_articles article div[data-container] > ul li:last-child {
-	margin-bottom: 0 !important;
-}
 
 // Blog Articles
 // ----------------------------------------------------------------------------
 body.blog section.page_header div.wrap_svg.title,
 body.single section.page_header div.wrap_svg.title {
 	width: 70%;
-	max-width: 25.4rem;
+	// max-width: 25.4rem;
 }
 section.blog_articles article h2 {
 	margin-bottom: 1rem;
-	font-size: 1.7rem;
-	letter-spacing: 0.2rem;
-	line-height: 1.2;
-	text-align: center;
-	text-transform: uppercase;
 }
 section.blog_articles article h2 a {
 	color: $hsl_L21;
@@ -1547,9 +1561,6 @@ section.blog_single article div.the_content {
 }
 section.blog_articles article div.the_content p {
 	margin-bottom: 2.2rem;
-	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	font-size: 1.5rem;
-	line-height: 1.5;
 }
 section.blog_articles article div.the_content blockquote {
 	margin: 0 1rem 2.2rem 1rem;
@@ -1557,16 +1568,15 @@ section.blog_articles article div.the_content blockquote {
 section.blog_articles article div.the_content blockquote p {
 	font-size: 2.1rem;
 }
-section.blog_articles article div.the_content p:last-child,
-section.blog_articles article div.the_content blockquote:last-child {
-	margin-bottom: 0;
+section.blog_articles article div.the_content ol,
+section.blog_articles article div.the_content ul {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 42rem;
 }
-section.blog_articles article div.the_content p a,
-section.blog_articles article div.the_content li a {
-	color: $hsl_orange;
-	white-space: nowrap;
-}
-// --- Secondary Nav --- \\
+
+// Blog Navigation
+// ----------------------------------------------------------------------------
 nav.nav_secondary {
 	margin-top: 8rem;
 }
@@ -1684,11 +1694,7 @@ ul.list_tags li a:active {
 	color: $hsl_L40;
 }
 // + pagination siblings + \\
-ul.pagi_siblings {
-	// text-align: right;
-}
 ul.pagi_siblings li {
-	// display: inline-block;
 	float: left;
 	width: 50%;
 }
@@ -1718,7 +1724,6 @@ ul.pagi_siblings li a svg {
 	fill: $hsl_orange;
 }
 ul.pagi_siblings li.pagi_prev {
-	// margin-right: 3.2rem;
 	text-align: left;
 }
 ul.pagi_siblings li.pagi_next {
@@ -1948,7 +1953,7 @@ ul.quote_badges li div.badge_body h3 {
 	display: inline-block;
 	position: relative;
 	margin-bottom: 3.2rem;
-	font-size: 6.8rem;
+	font-size: 6rem;
 	letter-spacing: -0.4rem;
 }
 ul.quote_badges li div.badge_body h3 span.currency {
@@ -2030,7 +2035,7 @@ a.accordian_toggle {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 100%; // 4rem;
+	width: 100%;
 	height: 4.7rem; // computed height of collapsed row
 }
 a.accordian_toggle div.wrap_svg {
@@ -2070,9 +2075,6 @@ div.accordian_body div.wrap_content ol li {
 div.accordian_body div.wrap_content p {
 	line-height: 1.4;
 }
-div.accordian_body div.wrap_content ul,
-div.accordian_body div.wrap_content ol {
-}
 div.accordian_body div.wrap_content ul li,
 div.accordian_body div.wrap_content ol li {
 	position: relative;
@@ -2098,10 +2100,10 @@ div.accordian_body div.wrap_content ol li:last-child {
 }
 // + interaction + \\
 a.accordian_toggle:hover div.wrap_svg svg {
-	fill: hsla(0,0%,20%,1);
+	fill: $hsl_L21;
 }
 a.accordian_toggle:active div.wrap_svg svg {
-	fill: hsla(0,0%,40%,1);
+	fill: $hsl_L40;
 }
 // + toggled row + \\
 .toggle_row a.accordian_toggle div.wrap_svg {
@@ -2151,7 +2153,7 @@ form.form_required div.wrap_input div.wrap_element input[type="text"] {
 	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,62%,1);
 }
 form.form_required div.wrap_input div.wrap_element input[type="text"]:focus {
-	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
+	box-shadow: inset 0 0 0 0.2rem $hsl_L40;
 }
 form.form_required button {
 	min-width: 22rem;
@@ -2185,6 +2187,12 @@ form.form_required span.wrap_checkbox input[type="checkbox"] + label {
 	display: inline-block;
 	font-size: 1.2rem;
 	color: $hsl_orange;
+}
+form.form_required span.wrap_checkbox input[type="checkbox"] + label::before {
+	top: 0.2rem;
+}
+form.form_required span.wrap_checkbox input[type="checkbox"] + label svg {
+	top: 0.7rem;
 }
 // + interaction + \\
 form.form_required span.wrap_checkbox a:hover {
@@ -2229,10 +2237,10 @@ section.thanks_articles article div[data-container] h1 {
 }
 // + button + \\
 section.thanks_articles article div[data-container] a.brd_cream:hover {
-	color: hsla(0,0%,20%,1);
+	color: $hsl_L21;
 }
 section.thanks_articles article div[data-container] a.brd_cream:active {
-	color: hsla(0,0%,40%,1);
+	color: $hsl_L40;
 }
 
 // What's Covered
@@ -2256,7 +2264,7 @@ form.form_coverage div.wrap_element input.input_typeahead:hover {
 	background-color: $hsl_cream;
 }
 form.form_coverage div.wrap_element input.input_typeahead:focus {
-	box-shadow: inset 0 0 0 0.2rem hsla(0,0%,40%,1);
+	box-shadow: inset 0 0 0 0.2rem $hsl_L40;
 }
 form.form_coverage div.wrap_element span.tt-dropdown-menu {
 	transform: translateX(0.1rem);

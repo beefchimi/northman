@@ -54,14 +54,24 @@
 			%label{:for => "required_telephone"} Telephone
 			%input#required_telephone.telephone{:type => "text", :name => "telephone", :value => "", :placeholder => "(XXX) XXX-XXXX", :required => true}
 
+		.wrap_element.required_beneficiary.matt
+			%label{:for => "beneficiary"} Accidental Death Beneficiary
+			%input#required_beneficiary.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", "data-validation" => "required", :required => true}
+
+		.wrap_element.required_email.matt
+			%label{:for => "email"} Email
+			%input#required_email.email{:type => "text", :name => "email", :value => "", :placeholder => "Your Email Address", "data-validation" => "required", :required => true}
+
 	%span.wrap_checkbox
 		%input#required_read.required_read.visuallyhidden{:type => "checkbox", :name => "read", :value => "read", :tabindex => "-1", :required => true}
 		%label{:for => "required_read"}
 			I have read the
+			%a{:href => "#", :title => "Terms & Conditions", :target => "_blank"} Terms and Conditions.
+			%br
+			For more detail, please review our
+			%a{:href => "#", :title => "Policy Manual", :target => "_blank"} Policy Manual.
 			%svg.ui_checkmark{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_checkmark"}
-		%a{:href => "#", :title => "Terms & Conditions", :target => "_blank"} Terms and Conditions
-
 
 	-# currently using e.preventDefault() on this button if no quote selection
 	-# also relying on "title" attribute to retrieve default "Buy Now" string
