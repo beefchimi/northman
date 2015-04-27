@@ -57,9 +57,9 @@
 
 							%h2
 								%a{:href => "#", :title => "The Dragon Back Ridge"} The Riverboat Fantasy
-							%h3
-								%span.title_author David Wilcox
-								%span.title_date April 10, 2015
+							.author_date
+								%cite.title_author David Wilcox
+								%time.title_date{:datetime => ""} April 10, 2015
 
 							%a.the_image{:href => "#", :title => "Read More"}
 								%img{:src => "assets/img/placeholder.png", :alt => ""}
@@ -75,9 +75,9 @@
 
 						%h2
 							%a{:href => "#", :title => "The Final Countdown Extra Long Title FTW"} The Final Countdown Extra Long Title For The Win
-						%h3
-							%span.title_author Dude Mang
-							%span.title_date April 20, 2015
+						.author_date
+							%cite.title_author Sir Dude Mang Gonzales
+							%time.title_date{:datetime => ""} February 20, 2015
 
 						%a.the_image{:href => "#", :title => "Read More"}
 							%img{:src => "assets/img/placeholder.png", :alt => ""}
@@ -90,7 +90,7 @@
 						-# if last article:
 						%nav.nav_secondary
 							%ul.pagi_numbered
-								%li.pagi_prev
+								%li.pagi_prev.disabled
 									%a.wrap_svg{:href => "#", :title => "Previous Page"}
 										%svg.ui_arrow{:viewBox => "0 0 64 64"}
 											%use{"xlink:href" => "#ui_arrow"}
@@ -100,8 +100,10 @@
 									%a{:href => "#", :title => "Page 2"} 2
 								%li.page_number
 									%a{:href => "#", :title => "Page 3"} 3
+								%li.page_ellipsis
+									%span ...
 								%li.page_number
-									%a{:href => "#", :title => "Page 4"} 4
+									%a{:href => "#", :title => "Page 7"} 7
 								%li.pagi_next
 									%a.wrap_svg{:href => "#", :title => "Previous Page"}
 										%svg.ui_arrow{:viewBox => "0 0 64 64"}

@@ -5,7 +5,7 @@
 		%form#form_quote.form_quote.has_dropdown
 
 			-# receives the value from #input_destination
-			%input#hidden_destination{:type => "hidden", :name => "hidden_destination", :value => "", :tabindex => "-1"}
+			%input#hidden_destination{:type => "hidden", :name => "destination", :value => "", :tabindex => "-1"}
 
 			-# "Edit Details" if on Quote page
 			%h5 Get a quote
@@ -24,14 +24,14 @@
 					#datepicker.input-daterange.input-group
 
 						.wrap_element
-							%input#date_start.date_start{:type => "text", :name => "date_start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1", :readonly => true}
+							%input#date_start.date_start{:type => "text", :name => "start", :value => "", :placeholder => "Pick start date", :required => true, :tabindex => "-1", :readonly => true}
 							%svg.ui_calendar{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_calendar"}
 
 						%span.txt Til
 
 						.wrap_element
-							%input#date_end.date_end{:type => "text", :name => "date_end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1", :readonly => true}
+							%input#date_end.date_end{:type => "text", :name => "end", :value => "", :placeholder => "Pick end date", :required => true, :tabindex => "-1", :readonly => true}
 							%svg.ui_calendar{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_calendar"}
 
@@ -193,10 +193,15 @@
 											%li.dropdown_option
 												%a.dropdown_link.truncate{:href => "#", "data-value" => "64"} Yukon
 
-
 				.column.col-4
 
 					%label Trip Cancellation
+
+					.tooltip
+						.wrap_svg
+							%svg.ui_help{:viewBox => "0 0 64 64"}
+								%use{"xlink:href" => "#ui_help"}
+						%p Get reimbursed for airfare if you can't make your trip.
 
 					#wrap_select-cancellation.wrap_select{"data-selected" => ""}
 

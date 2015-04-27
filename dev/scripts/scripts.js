@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			wpPath = '/wp-content/themes/northman/',
 			ajaxPath = origin === 'http://localhost' ? '' : origin + wpPath;
 
-		ajax.open('GET', ajaxPath + 'assets/img/svg.svg?v=1', true);
+		ajax.open('GET', ajaxPath + 'assets/img/svg.svg?v=2', true);
 		ajax.send();
 		ajax.onload = function(e) {
 
