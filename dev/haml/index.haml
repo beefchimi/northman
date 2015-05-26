@@ -23,14 +23,17 @@
 					%svg.nm_tagline.svg_inline{:viewBox => "0 0 723 298"}
 						%use{"xlink:href" => "#nm_tagline"}
 
-				%form#form_destination.form_destination.has_typeahead
+				-# %form#form_destination.form_destination.has_typeahead
+				%form#form_activities.form_activities.has_typeahead
 
 					%fieldset
 
-						%legend Start by telling us what country you’re travelling to.
+						-# %legend Start by telling us what country you're travelling to.
+						%legend Name your adventure.
 
 						.wrap_element.wrap_input-typeahead
-							%input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :required => true, :placeholder => "Enter your destination", "data-placeholder2" => "Could not load covered Countries", "data-placeholder3" => "Retreiving countries...", "data-placeholder4" => "Unrecognized country", "data-src" => "assets/js/datalist_countries.json"}
+							-# %input#input_destination.input_typeahead{:type => "text", :name => "input_destination", :value => "", :required => true, :placeholder => "Enter your destination", "data-placeholder2" => "Could not load covered Countries", "data-placeholder3" => "Retreiving countries...", "data-placeholder4" => "Unrecognized country", "data-src" => "assets/js/datalist_countries.json"}
+							%input#input_activity.input_typeahead{:type => "text", :name => "input_activity", :value => "", :required => true, :placeholder => "Enter a sport or activity", "data-placeholder2" => "Could not load covered Activities", "data-placeholder3" => "Retreiving activities...", "data-placeholder4" => "Unrecognized activity", "data-src" => "assets/js/datalist_activities.json"}
 							%svg.ui_globe{:viewBox => "0 0 64 64"}
 								%use{"xlink:href" => "#ui_globe"}
 

@@ -37,6 +37,7 @@ a,
 input,
 button,
 textarea,
+span.phone,
 div.tooltip p {
 	transition: all 0.3s ease-in-out;
 }
@@ -1136,15 +1137,27 @@ nav.nav_primary div.social_links a {
 	display: inline-block;
 	width: 2.8rem;
 	height: 2.8rem;
+	color: $hsl_cream;
 }
-nav.nav_primary div.social_links a.social_twitter {
-	margin-right: 4rem;
+nav.nav_primary div.social_links a.social_call,
+nav.nav_primary div.social_links a.social_facebook {
+	margin-right: 3.2rem;
+}
+nav.nav_primary div.social_links a.social_call span.phone {
+	display: none;
 }
 nav.nav_primary div.social_links a svg {
 	fill: $hsl_cream;
 }
+// + interaction + \\
+nav.nav_primary div.social_links a:hover {
+	color: $hsl_orange;
+}
 nav.nav_primary div.social_links a:hover svg {
 	fill: $hsl_L21;
+}
+nav.nav_primary div.social_links a:active {
+	color: lighten($hsl_orange, 10%);
 }
 nav.nav_primary div.social_links a:active svg {
 	fill: $hsl_L40;
@@ -1932,16 +1945,16 @@ section.home_header div.wrap_svg.title {
 	text-align: center;
 }
 // --- Form: Destination --- \\
-form.form_destination {
+form.form_activities {
 	padding-top: 3.2rem;
 	border-top: 0.1rem solid $hsl_cream;
 }
-form.form_destination fieldset {
+form.form_activities fieldset {
 	margin: 0 auto;
 	max-width: 62.4rem; // width 560px + eventual padding (32px x 2)
 	padding: 0 1.6rem 3.2rem 1.6rem;
 }
-form.form_destination fieldset legend {
+form.form_activities fieldset legend {
 	margin-bottom: 3.2rem;
 	width: 100%; // required to center <legend>
 	font-size: 1.8rem;
@@ -1950,15 +1963,15 @@ form.form_destination fieldset legend {
 	text-transform: uppercase;
 	color: $hsl_cream;
 }
-form.form_destination fieldset div.wrap_element {
+form.form_activities fieldset div.wrap_element {
 	max-width: 39rem;
 	margin: 0 auto 2rem auto;
 }
-form.form_destination fieldset div.wrap_element input[type="text"],
-form.form_destination fieldset div.wrap_element input[type="date"] {
+form.form_activities fieldset div.wrap_element input[type="text"],
+form.form_activities fieldset div.wrap_element input[type="date"] {
 	padding-right: 4.8rem;
 }
-form.form_destination fieldset div.wrap_element svg {
+form.form_activities fieldset div.wrap_element svg {
 	pointer-events: none;
 	position: absolute;
 	z-index: 200;
