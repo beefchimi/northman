@@ -370,7 +370,6 @@
 		border-right: 1.2rem solid transparent;
 		border-top: 1.2rem solid $hsl_L7;
 	}
-
 	div.tooltip:hover div.wrap_svg svg {
 		fill: $hsl_orange;
 	}
@@ -379,7 +378,6 @@
 		opacity: 1;
 		visibility: visible;
 	}
-
 
 	// Buttons
 	// ----------------------------------------------------------------------------
@@ -442,6 +440,10 @@
 	// + internal header + \\
 	section.internal_header {
 		padding: 8.2rem 3.2rem 9rem 3.2rem;
+	}
+	body.page-template-tpl-quote-php section.internal_header {
+		padding-top: 4.8rem;
+		padding-bottom: 4.8rem;
 	}
 
 	// Page & Blog Articles
@@ -1188,6 +1190,10 @@
 	section.internal_header {
 		padding-top: 11rem;
 		padding-bottom: 12rem;
+	}
+	body.page-template-tpl-quote-php section.internal_header {
+		padding-top: 4.8rem;
+		padding-bottom: 4.8rem;
 	}
 
 	// Page Articles

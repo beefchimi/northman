@@ -1,0 +1,104 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#quote.page-template-tpl-quote-php
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		-# for Wordpress only
+		-# = Haml::Engine.new(File.read("dev/haml/partials/_php_stripe.haml")).render
+
+		-# 'data-step' changes based on current STEP
+		%main{:role => "main", "data-step" => "1"}
+
+			%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_why.jpg')"}
+
+				%h1.visuallyhidden Get a Quote
+				.wrap_svg.title{:style => "max-width: 75.8rem"}
+					%svg.svg_inline.nm_quote{:viewBox => "0 0 758 56"}
+						%use{"xlink:href" => "#nm_quote"}
+
+			-# you will need to do something to prevent users from accessing the inactive HREFs...
+			-# may need to do up an error message for "sorry but you have forgotten to fill out the previous step"
+			%nav#quote_steps.nav_steps
+				%ol
+					%li.step_1-choose
+						%a{:href => "#", :title => "Step 1: Choose"} Choose
+					%li.step_2-customize
+						%a{:href => "#", :title => "Step 2: Customize"} Customize
+					%li.step_3-review
+						%a{:href => "#", :title => "Step 3: Review"} Review
+					%li.step_4-finalize
+						%a{:href => "#", :title => "Step 4: Finalize"} Finalize
+
+			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
+
+				-# article class + content changes based on current STEP
+				%article.quote_options
+
+					%div.clearfix{"data-container" => "width_868"}
+
+						%h2 You're covered for your next adventure. Select from one of the plans below:
+
+						.error_message
+							%p Please select a quote.
+
+						%ul.quote_badges.list_badges.clearfix
+
+							-# If landing on Quote with Family checked:
+								-# #quote_title-1 = "Family Trip"
+								-# #quote_title-2 = "Annual Family Membership"
+								-# price is ???
+							-# else:
+								-# #quote_title-1 = "Single Trip"
+								-# #quote_title-2 = "Annual Membership"
+								-# price is ???
+
+							%li#quote_badge-1.badge.badge_annual
+
+								.badge_header
+
+									%h6#quote_title-1 Annual Membership
+									.wrap_svg
+										%svg.svg_inline.ui_globe-double{:viewBox => "0 0 64 38"}
+											%use{"xlink:href" => "#ui_globe-double"}
+
+								.badge_body
+
+									%h3
+										$10
+										%span.monthly / month
+
+									:plain
+										<a href="#" class="btn_rnd brd_blank" title="Select">
+											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
+										</a>
+
+							%li#quote_badge-2.badge.badge_single
+
+								.badge_header
+
+									%h6#quote_title-2 Single Trip
+									.wrap_svg
+										%svg.svg_inline.ui_globe{:viewBox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_globe"}
+
+								.badge_body
+
+									%h3 $135.15
+
+									:plain
+										<a href="#" class="btn_rnd brd_blank" title="Select">
+											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
+										</a>
+
+
+
+						%p.notice * Annual Membership does not include baggage insurance.
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

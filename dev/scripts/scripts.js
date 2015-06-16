@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ----------------------------------------------------------------------------
 	var elHTML            = document.documentElement,
 		elBody            = document.body,
+		// strLocation       = document.location.hostname,
 		transitionEvent   = whichTransitionEvent(),
 		animationEvent    = whichAnimationEvent(),
 		elOverlay;
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			function removeOverlay(e) {
 
 				// only listen for the opacity property
-				if (e.propertyName == "opacity") {
+				if (e.propertyName == 'opacity') {
 
 					unlockBody();
 
@@ -239,29 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 
 			}
-
-		}
-
-	}
-
-
-	// injectSVG: Inject SVG data once document is ready
-	// ----------------------------------------------------------------------------
-	function injectSVG() {
-
-		var ajax   = new XMLHttpRequest(),
-			origin = window.location.origin,
-			wpPath = '/wp-content/themes/northman/',
-			ajaxPath = origin === 'http://localhost' ? '' : origin + wpPath;
-
-		ajax.open('GET', ajaxPath + 'assets/img/svg.svg?v=3', true);
-		ajax.send();
-		ajax.onload = function(e) {
-
-			var div = document.createElement('div');
-			div.id = 'svgInject';
-			div.innerHTML = ajax.responseText;
-			document.body.insertBefore(div, document.body.childNodes[0]);
 
 		}
 
@@ -281,8 +259,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		if ( classie.has(elHTML, 'ie9') ) {
 			return;
 		}
-
-		injectSVG(); // inject them SVGs
 
 		var elHeader = document.getElementsByTagName('header')[0];
 
@@ -941,6 +917,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+/*
 	// quoteOptions: Toggle between quote options
 	// ----------------------------------------------------------------------------
 	function quoteOptions() {
@@ -1092,6 +1069,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 
 	}
+*/
 
 
 	// editQuoteChecks: Checkbox behaviour for edit quote modal
@@ -1110,16 +1088,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			return;
 		}
 
-		// correct classed on page load
-		if (elCheckBooked.checked) {
-			classie.add(elWrapBooked, 'disabled');
-			classie.remove(elWrapBooked, 'allow-overflow');
-		} else {
-			classie.remove(elWrapBooked, 'disabled');
-			classie.add(elWrapBooked, 'allow-overflow');
-		}
-
-		// correct classed on page load
+		// correct classes on page load
 		if (elCheckBooked.checked) {
 			classie.add(elWrapBooked, 'disabled');
 			classie.remove(elWrapBooked, 'allow-overflow');
@@ -1231,6 +1200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+/*
 	// stripeHandler: Handlin' them Stripes
 	// ----------------------------------------------------------------------------
 	function stripeHandler() {
@@ -1350,6 +1320,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	}
 
+*/
+
 	// Families can consist of up to two adults 25-59 and children <25
 	function checkAges(age) {
 
@@ -1398,32 +1370,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	if (elBody.id === 'quote') {
 
-		quoteOptions();
-		stripeHandler();
+		// quoteOptions();
+		// stripeHandler();
+
 		// formValidation();
 
 		// Work-around for readonly <input>'s in datepicker widgets
-		$(".readonly").keydown(function(e) {
+		$('.readonly').keydown(function(e) {
 			e.preventDefault();
 		});
 
-		masterDescription = "Single Trip Policy ($"+singleTotal+")";
-		masterAmount = singleTotal*100;
+/*
+		masterDescription = 'Single Trip Policy ($' + singleTotal + ')';
+		masterAmount = singleTotal * 100;
+*/
 
-		$("#required_email").blur(function() {
+		$('#required_email').blur(function() {
+
 			// console.log("Blur event on email fired and val is " + $(this).val());
 			email = $(this).val();
+
 		});
 
 	}
 
 	if (elBody.id === 'home') {
 
-		$("age-groups").blur(function() {
+		$('age-groups').blur(function() {
 
-			// console.log("Blur event on ages fired and val is " + $(this).val());
+			// console.log('Blur event on ages fired and val is ' + $(this).val());
 			if ($(this).val().indexOf(',')) {
-				$("check_family").prop("checked", true);
+				$('check_family').prop('checked', true);
 			}
 
 		});

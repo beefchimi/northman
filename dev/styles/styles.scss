@@ -1,13 +1,14 @@
 // SASS Variables
 // ----------------------------------------------------------------------------
-$hsl_orange: hsl(16,100%,54%);
-$hsl_green:  hsl(153,79%,42%);
-$hsl_cream:  hsl(60,11%,93%);
-$hsl_ash:    hsl(60,5%,78%);
-$hsl_red:    hsl(0,76%,61%);
-$hsl_bronze: hsl(14,48%,44%);
-$hsl_silver: hsl(180,2%,55%);
-$hsl_gold:   hsl(35,62%,57%);
+$hsl_orange:   hsl(16,100%,54%);
+$hsl_orange-D: hsl(16,60%,28%); // darken(desaturate($hsl_orange, 40%), 26%);
+$hsl_green:    hsl(153,79%,42%);
+$hsl_cream:    hsl(60,11%,93%);
+$hsl_ash:      hsl(60,5%,78%);
+$hsl_red:      hsl(0,76%,61%);
+$hsl_bronze:   hsl(14,48%,44%);
+$hsl_silver:   hsl(180,2%,55%);
+$hsl_gold:     hsl(35,62%,57%);
 
 $hsla_orange-0: hsla(16,100%,54%,0);
 
