@@ -10,40 +10,21 @@
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
-		-# for Wordpress only
-		-# = Haml::Engine.new(File.read("dev/haml/partials/_php_stripe.haml")).render
-
 		-# 'data-step' changes based on current STEP
 		%main{:role => "main", "data-step" => "1"}
 
-			%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_why.jpg')"}
-
-				%h1.visuallyhidden Get a Quote
-				.wrap_svg.title{:style => "max-width: 75.8rem"}
-					%svg.svg_inline.nm_quote{:viewBox => "0 0 758 56"}
-						%use{"xlink:href" => "#nm_quote"}
-
-			-# you will need to do something to prevent users from accessing the inactive HREFs...
-			-# may need to do up an error message for "sorry but you have forgotten to fill out the previous step"
-			%nav#quote_steps.nav_steps
-				%ol
-					%li.step_1-choose
-						%a{:href => "#", :title => "Step 1: Choose"} Choose
-					%li.step_2-customize
-						%a{:href => "#", :title => "Step 2: Customize"} Customize
-					%li.step_3-review
-						%a{:href => "#", :title => "Step 3: Review"} Review
-					%li.step_4-finalize
-						%a{:href => "#", :title => "Step 4: Finalize"} Finalize
+			= Haml::Engine.new(File.read("dev/haml/partials/_quote_nav-steps.haml")).render
 
 			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
 
 				-# article class + content changes based on current STEP
-				%article.quote_options
+				%article.quote_choose
 
-					%div.clearfix{"data-container" => "width_868"}
+					-# :action and :method will need to be configured by Matt
+					%form#form_quote-step1{:action => "", :method => "", "data-container" => "width_868"}
 
-						%h2 You're covered for your next adventure. Select from one of the plans below:
+						:plain
+							<h2>You're covered for your next adventure.<br> Select from one of the plans below:</h2>
 
 						.error_message
 							%p Please select a quote.
@@ -59,7 +40,7 @@
 								-# #quote_title-2 = "Annual Membership"
 								-# price is ???
 
-							%li#quote_badge-1.badge.badge_annual
+							%li#quote_badge-1.badge.badge_standard.badge_annual
 
 								.badge_header
 
@@ -74,12 +55,11 @@
 										$10
 										%span.monthly / month
 
-									:plain
-										<a href="#" class="btn_rnd brd_blank" title="Select">
-											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
-										</a>
+									%input#submit_annual.btn_rnd.brd_blank{:type => "submit", :name => "submit_annual", :value => "Select"}
 
-							%li#quote_badge-2.badge.badge_single
+								%p.notice Annual Membership includes unlimited travel per year.
+
+							%li#quote_badge-2.badge.badge_standard.badge_single
 
 								.badge_header
 
@@ -92,13 +72,6 @@
 
 									%h3 $135.15
 
-									:plain
-										<a href="#" class="btn_rnd brd_blank" title="Select">
-											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
-										</a>
-
-
-
-						%p.notice * Annual Membership does not include baggage insurance.
+									%input#submit_single.btn_rnd.brd_blank{:type => "submit", :name => "submit_single", :value => "Select"}
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

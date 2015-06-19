@@ -1,0 +1,72 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#quote.page-template-tpl-quote-php
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		-# 'data-step' changes based on current STEP
+		%main{:role => "main", "data-step" => "3"}
+
+			= Haml::Engine.new(File.read("dev/haml/partials/_quote_nav-steps.haml")).render
+
+			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
+
+				-# article class + content changes based on current STEP
+				%article.quote_review
+
+					-# :action and :method will need to be configured by Matt
+					%div{"data-container" => "width_868"}
+
+						:plain
+							<h2>Review or edit the details of your adventure.</h2>
+
+						.details_captured{"data-container" => "width_660"}
+
+							.list_wrap.clearfix
+
+								%ul.list_left
+									%li.list_prov
+										%strong.details_label Province of Residence:
+										%span#details_province.details_data Ontario
+									%li.list_start-end
+										%strong.details_label Start Date:
+										%span#details_start-date.details_data Nov 6, 2015
+										%strong.details_label End Date:
+										%span#details_end-date.details_data Nov 11, 2015
+									%li.list_booked
+										%strong.details_label Date trip was booked:
+										%span#details_family.details_data Nov 2, 2015
+									%li
+										%strong.details_label Family:
+										%span#details_family.details_data Yes
+
+								%ul.list_right
+									%li.list_age
+										%strong.details_label Age(s):
+										%span#details_age.details_data 18, 19, 34, 41
+									%li.list_covered
+										%strong.details_label Covered For:
+										%span#details_covered.details_data 35 days
+									%li.list_cancel
+										%strong.details_label Trip Cancellation:
+										%span#details_cancellation.details_data $3,000
+									%li.list_delay
+										%strong.details_label Trip Delay:
+										%span#details_delay.details_data $25,000
+
+							.details_actions
+								%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details
+
+						.wrap_buttons
+							%a.btn_rnd.brd_orange{:href => "quote_2-customize.html", :title => "Go Back"} Go Back
+							%button#submit_customize.btn_rnd.brd_green{:type => "submit"} Continue
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

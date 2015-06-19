@@ -1,0 +1,17 @@
+%section.page_header.internal_header{:style => "background-image: url('assets/img/bg_why.jpg')"}
+
+	%h1.visuallyhidden Get a Quote
+	.wrap_svg.title{:style => "max-width: 75.8rem"}
+		%svg.svg_inline.nm_quote{:viewBox => "0 0 758 56"}
+			%use{"xlink:href" => "#nm_quote"}
+
+-# you will need to do something to prevent users from accessing the inactive HREFs...
+-# may need to do up an error message for "sorry but you have forgotten to fill out the previous step"
+%nav#quote_steps.nav_steps
+	%ol
+		%li.step_1-choose Choose
+		%li.step_2-customize Customize
+		%li.step_3-review Review
+		%li.step_4-finalize Finalize
+		-# %li.step_4-finalize
+			-# %a{:href => "#", :title => "Step 4: Finalize"} Finalize

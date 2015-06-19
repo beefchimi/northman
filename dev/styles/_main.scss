@@ -63,10 +63,10 @@ div.accordian_body,
 form.form_quote div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
-article.quote_options div.error_message {
+article.quote_choose div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
+div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler {
@@ -75,21 +75,21 @@ aside.modal_quote form.form_quote div.wrap_input div.wrap_disabler {
 div.dropdown_toggle {
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-ul.list_badges li,
-ul.list_badges li div.badge_header {
+li.badge,
+li.badge div.badge_header {
 	transition: border-color 0.3s ease-in-out;
 }
 input[type="checkbox"] + label,
-ul.list_badges li div.badge_header h6,
-ul.list_badges li div.badge_body h3,
+li.badge div.badge_header h6,
+li.badge div.badge_body h3,
 div.wrap_categories div.dropdown_toggle span,
-ul.list_badges li div.badge_body h3 span.currency {
+li.badge div.badge_body h3 span.currency {
 	transition: color 0.3s ease-in-out;
 }
 input[type="checkbox"] + label::before {
 	transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
-ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
+div.badge_body a.btn_rnd span.txt_select {
 	transition: padding-left 0.3s ease-in-out;
 }
 [data-overlay] {
@@ -224,6 +224,9 @@ svg.svg_inline {
 }
 [data-container="width_690"] {
 	max-width: 69rem;
+}
+[data-container="width_660"] {
+	max-width: 66rem !important;
 }
 [data-container="width_454"] {
 	max-width: 45.4rem;
@@ -375,21 +378,27 @@ button[class*="brd_"] {
 .fill_green:active {
 	background-color: $hsl_green;
 }
-// + border: orange & green + \\
+// + border: orange & green & ash + \\
 .brd_orange {
 	color: $hsl_orange;
 }
 .brd_green {
 	color: $hsl_green;
 }
+.brd_ash {
+	color: $hsl_L58;
+}
 .brd_orange:focus,
 .brd_green:focus,
+.brd_ash:focus,
 .brd_orange:hover,
-.brd_green:hover {
+.brd_green:hover,
+.brd_ash:hover {
 	color: $hsl_L21;
 }
 .brd_orange:active,
-.brd_green:active {
+.brd_green:active,
+.brd_ash:active {
 	color: $hsl_L40;
 }
 // + border: cream + \\
@@ -413,6 +422,16 @@ button[class*="brd_"] {
 }
 .brd_grey:active {
 	color: darken($hsl_cream, 10%);
+}
+
+// Tooltip
+// ----------------------------------------------------------------------------
+div.tooltip div.wrap_svg {
+	display: none;
+	width: 2.4rem;
+}
+div.tooltip div.wrap_svg svg {
+	fill: $hsl_orange;
 }
 
 // Forms
@@ -822,27 +841,17 @@ form.form_quote div.wrap_input div.col-5 a.btn_rnd {
 	margin-bottom: 3.2rem;
 	width: 16.4rem;
 }
-
-// + tooltip + \\
-div.tooltip {
+// + form tooltip + \\
+form.form_quote div.tooltip {
 	margin: 0 auto 2.2rem auto;
 	max-width: 22rem;
 	text-align: center;
 }
-div.tooltip div.wrap_svg {
-	display: none;
-	// cursor: help;
-	width: 2rem;
-}
-div.tooltip div.wrap_svg svg {
-	fill: $hsl_cream;
-}
-div.tooltip p {
+form.form_quote div.tooltip p {
 	font-size: 1.3rem;
 	line-height: 1.4;
 	color: $hsl_orange;
 }
-
 // + quote form error message + \\
 form.form_quote div.error_message {
 	text-align: center;
@@ -899,134 +908,372 @@ aside.modal_quote form.form_quote div.wrap_input div.col-4 div.wrap_select div.w
 
 // Badges
 // ----------------------------------------------------------------------------
-// --- Badges List --- \\
-ul.list_badges {
-	margin-bottom: 3.2rem;
-}
-ul.list_badges li {
-	margin: 0 auto 3.2rem auto;
+.badge {
 	max-width: 41rem;
 	border: 0.2rem solid $hsl_orange;
 	border-radius: 1.6rem;
 }
-ul.list_badges li:last-child {
-	margin-bottom: 0;
-}
-ul.list_badges li div.badge_header {
+// + badge header + \\
+div.badge_header {
 	position: relative;
 	padding: 1.8rem 1.6rem;
 	border-bottom: 0.2rem solid $hsl_orange;
 }
-ul.list_badges li div.badge_header div.wrap_svg {
+div.badge_header div.wrap_svg {
 	display: inline-block;
 	height: 2.6rem;
 }
-ul.list_badges li div.badge_header div.wrap_svg svg {
+div.badge_header div.wrap_svg svg {
 	fill: $hsl_orange;
 }
-ul.list_badges li div.badge_header h6 {
+div.badge_header h6 {
 	text-transform: uppercase;
 }
-ul.list_badges li div.badge_body {
+// + badge body + \\
+div.badge_body {
 	display: table;
 	padding: 2.6rem 1.6rem;
 	width: 100%;
 }
-ul.list_badges li div.badge_header h6,
-ul.list_badges li div.badge_header p.option_letter,
-ul.list_badges li div.badge_body h3,
-ul.list_badges li div.badge_body h3 span.currency,
-ul.list_badges li div.badge_body p,
-ul.list_badges li div.badge_body a.btn_rnd {
+// + badge options + \\
+div.badge_options {
+	padding: 2.6rem 1.6rem;
+	border-top: 0.2rem solid $hsl_orange;
+}
+// + badge all + \\
+div.badge_header h6,
+div.badge_header p.option_letter,
+div.badge_body h3,
+div.badge_body h3 span.currency,
+div.badge_body p,
+div.badge_body .btn_rnd {
 	color: $hsl_orange;
 }
-// + badge single + \\
-ul.list_badges li.badge_single {
+// + badge annual + \\
+.badge.badge_annual {
 	border-color: $hsl_bronze;
 }
-ul.list_badges li.badge_single div.badge_header {
+.badge.badge_annual div.badge_header {
 	border-bottom-color: $hsl_bronze;
 }
-ul.list_badges li.badge_single div.badge_header h6,
-ul.list_badges li.badge_single div.badge_header p.option_letter,
-ul.list_badges li.badge_single div.badge_body h3,
-ul.list_badges li.badge_single div.badge_body h3 span.currency,
-ul.list_badges li.badge_single div.badge_body p,
-ul.list_badges li.badge_single div.badge_body a.btn_rnd {
+.badge.badge_annual div.badge_options {
+	border-top-color: $hsl_bronze;
+}
+.badge.badge_annual div.badge_header h6,
+.badge.badge_annual div.badge_header p.option_letter,
+.badge.badge_annual div.badge_body h3,
+.badge.badge_annual div.badge_body h3 span.currency,
+.badge.badge_annual div.badge_body p,
+.badge.badge_annual div.badge_body .btn_rnd,
+.badge.badge_annual ul.badge_checklist li span.txt_label {
 	color: $hsl_bronze;
 }
-ul.list_badges li.badge_single div.badge_header div.wrap_svg svg {
+.badge.badge_annual div.badge_header div.wrap_svg svg,
+.badge.badge_annual ul.badge_checklist li span.wrap_checkmark div.wrap_svg {
 	fill: $hsl_bronze;
 }
 // + badge family + \\
-ul.list_badges li.badge_family {
+.badge.badge_family {
 	border-color: $hsl_silver;
 }
-ul.list_badges li.badge_family div.badge_header {
+.badge.badge_family div.badge_header {
 	border-bottom-color: $hsl_silver;
 }
-ul.list_badges li.badge_family div.badge_header h6,
-ul.list_badges li.badge_family div.badge_header p.option_letter,
-ul.list_badges li.badge_family div.badge_body h3,
-ul.list_badges li.badge_family div.badge_body h3 span.currency,
-ul.list_badges li.badge_family div.badge_body p,
-ul.list_badges li.badge_family div.badge_body a.btn_rnd {
+.badge.badge_family div.badge_options {
+	border-top-color: $hsl_silver;
+}
+.badge.badge_family div.badge_header h6,
+.badge.badge_family div.badge_header p.option_letter,
+.badge.badge_family div.badge_body h3,
+.badge.badge_family div.badge_body h3 span.currency,
+.badge.badge_family div.badge_body p,
+.badge.badge_family div.badge_body .btn_rnd,
+.badge.badge_family ul.badge_checklist li span.txt_label {
 	color: $hsl_silver;
 }
-ul.list_badges li.badge_family div.badge_header div.wrap_svg svg {
+.badge.badge_family div.badge_header div.wrap_svg svg,
+.badge.badge_family ul.badge_checklist li span.wrap_checkmark div.wrap_svg {
 	fill: $hsl_silver;
 }
-ul.list_badges li.badge_family div.badge_body a.btn_rnd {
-	color: $hsl_silver;
-}
-// + badge annual + \\
-ul.list_badges li.badge_annual {
+// + badge single + \\
+.badge.badge_single {
 	border-color: $hsl_gold;
 }
-ul.list_badges li.badge_annual div.badge_header {
+.badge.badge_single div.badge_header {
 	border-bottom-color: $hsl_gold;
 }
-ul.list_badges li.badge_annual div.badge_header h6,
-ul.list_badges li.badge_annual div.badge_header p.option_letter,
-ul.list_badges li.badge_annual div.badge_body h3,
-ul.list_badges li.badge_annual div.badge_body h3 span.currency,
-ul.list_badges li.badge_annual div.badge_body p,
-ul.list_badges li.badge_annual div.badge_body a.btn_rnd {
+.badge.badge_single div.badge_options {
+	border-top-color: $hsl_gold;
+}
+.badge.badge_single div.badge_header h6,
+.badge.badge_single div.badge_header p.option_letter,
+.badge.badge_single div.badge_body h3,
+.badge.badge_single div.badge_body h3 span.currency,
+.badge.badge_single div.badge_body p,
+.badge.badge_single div.badge_body .btn_rnd,
+.badge.badge_single ul.badge_checklist li span.txt_label {
 	color: $hsl_gold;
 }
-ul.list_badges li.badge_annual div.badge_header div.wrap_svg svg {
+.badge.badge_single div.badge_header div.wrap_svg svg,
+.badge.badge_single ul.badge_checklist li span.wrap_checkmark div.wrap_svg {
 	fill: $hsl_gold;
 }
 // + interaction + \\
-ul.list_badges li.badge div.badge_body a.btn_rnd:hover {
+.badge div.badge_body .btn_rnd:hover {
 	color: $hsl_L21;
 }
-ul.list_badges li.badge div.badge_body a.btn_rnd:active {
+.badge div.badge_body .btn_rnd:active {
 	color: $hsl_L40;
 }
+// + individual svgs + \\
+.badge.badge_single div.badge_header div.wrap_svg {
+	width: 2.6rem; // iOS requires a explicit width
+}
+.badge.badge_annual div.badge_header div.wrap_svg {
+	width: 4.4rem; // iOS requires a explicit width
+}
 // + badge selected + \\
-ul.list_badges li.selected {
+.badge.badge_standard.selected {
 	border-color: $hsl_green;
 }
-ul.list_badges li.selected div.badge_header {
+.badge.badge_standard.selected div.badge_header {
 	border-bottom-color: $hsl_green;
 }
-ul.list_badges li.selected div.badge_header h6,
-ul.list_badges li.selected div.badge_body h3,
-ul.list_badges li.selected div.badge_body h3 span.currency {
+.badge.badge_standard.selected div.badge_header h6,
+.badge.badge_standard.selected div.badge_body h3,
+.badge.badge_standard.selected div.badge_body h3 span.currency {
 	color: $hsl_green;
 }
-ul.list_badges li.selected div.badge_header div.wrap_svg svg {
+.badge.badge_standard.selected div.badge_header div.wrap_svg svg {
 	fill: $hsl_green;
 }
-ul.list_badges li.selected div.badge_body a.btn_rnd,
-ul.list_badges li.selected div.badge_body a.btn_rnd:hover,
-ul.list_badges li.selected div.badge_body a.btn_rnd:active {
+.badge.badge_standard.selected div.badge_body a.btn_rnd,
+.badge.badge_standard.selected div.badge_body a.btn_rnd:hover,
+.badge.badge_standard.selected div.badge_body a.btn_rnd:active {
 	color: $hsl_cream;
 	background-color: $hsl_green;
 	box-shadow: inset 0 0 0 0.2rem $hsl_green; // need to redefine box-shadow since text colour is different
 }
-
+.badge.badge_standard.selected div.badge_body a.btn_rnd span.txt_select {
+	padding-left: 0rem;
+}
+.badge.badge_standard.selected div.badge_body a.btn_rnd span.txt_select span.txt_ed {
+	opacity: 1;
+}
+// --- Standard Badges --- \\
+.badge.badge_standard {
+	position: relative;
+}
+.badge.badge_standard.badge_annual {
+	margin-bottom: 6.4rem;
+}
+.badge.badge_standard div.badge_header {
+	text-align: left;
+}
+.badge.badge_standard div.badge_header h6 {
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+}
+.badge.badge_standard div.badge_header div.wrap_svg {
+	position: absolute;
+	top: 1.2rem;
+	right: 1.6rem;
+}
+.badge.badge_standard div.badge_body h3 {
+	font-size: 6rem;
+	letter-spacing: -0.4rem;
+}
+.badge.badge_standard div.badge_body h3 span.currency,
+.badge.badge_standard div.badge_body h3 span.monthly {
+	display: block;
+	position: relative;
+	bottom: -1rem;
+	font-size: 1.4rem;
+	letter-spacing: 0;
+}
+.badge.badge_standard div.badge_body h3 span.currency {
+	text-transform: uppercase;
+}
+.badge.badge_standard p.notice {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -4.8rem;
+	margin-left: auto;
+	margin-right: auto;
+	width: 24rem;
+	font-size: 1.3rem;
+	line-height: 1.2;
+	text-align: center;
+	color: $hsl_bronze;
+}
+.badge.badge_standard div.badge_body .btn_rnd {
+	width: 17.4rem;
+}
+.badge.badge_standard div.badge_body h3 + .btn_rnd {
+	margin-top: 3.2rem;
+}
+.badge.badge_standard div.badge_body a.btn_rnd span.txt_select {
+	padding-left: 2.4rem;
+}
+.badge.badge_standard div.badge_body a.btn_rnd span.txt_select span.txt_ed {
+	opacity: 0;
+}
+// --- Badges List --- \\
+ul.list_badges {
+	margin-bottom: 3.2rem;
+}
+ul.list_badges li.badge {
+	margin: 0 auto 3.2rem auto;
+}
+ul.list_badges li:last-child {
+	margin-bottom: 0;
+}
+// --- Big Badge --- \\
+div.badge_options a.brd_ash {
+	margin-top: 2.8rem;
+}
+div.badge_options a.brd_ash span.txt_desktop {
+	display: none;
+}
+// + badge checklist + \\
+ul.badge_checklist {
+	text-align: left;
+}
+ul.badge_checklist > li {
+	margin-bottom: 2rem;
+}
+ul.badge_checklist li:last-child {
+	margin-bottom: 0;
+}
+ul.badge_checklist > li span.wrap_checkmark,
+ul.badge_checklist > li span.wrap_checkbox {
+	display: block;
+	position: relative;
+}
+ul.badge_checklist > li span.wrap_checkmark div.wrap_svg {
+	position: absolute;
+	top: 0;
+	left: 0.2rem;
+	width: 2rem;
+}
+ul.badge_checklist > li span.txt_label {
+	display: block;
+	padding-left: 4rem;
+	font-size: 1.3rem;
+}
+ul.badge_checklist > li span.wrap_checkbox {
+	margin: 0;
+}
+ul.badge_checklist > li input[type="checkbox"] + label {
+	font-size: 1.3rem;
+	color: $hsl_orange;
+}
+// + interaction + \\
+ul.badge_checklist > li input[type="checkbox"] + label:hover {
+	color: $hsl_L21;
+}
+ul.badge_checklist > li input[type="checkbox"] + label:active {
+	color: $hsl_L40;
+}
+ul.badge_checklist > li input[type="checkbox"]:focus + label::before {
+	background-color: transparent;
+}
+// + checklist tooltip + \\
+ul.badge_checklist > li div.tooltip {
+	margin-top: 1rem;
+	padding-left: 4rem;
+}
+ul.badge_checklist > li div.tooltip p {
+	font-size: 1.1rem;
+	font-style: italic;
+	line-height: 1.1;
+	color: $hsl_L34;
+}
+// + badge wrap buttons + \\
+body.page-template-tpl-quote-php div.wrap_buttons {
+	margin-top: 3.2rem;
+}
+body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd {
+	width: 17.2rem;
+}
+body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd.brd_orange {
+	margin-bottom: 1.6rem;
+}
+// --- Badge Dropdown --- \\
+ul.badge_checklist li div.wrap_select {
+	margin-top: 1.8rem;
+	margin-left: 4rem;
+	width: 21rem;
+}
+// + dropdown toggle + \\
+ul.badge_checklist li div.dropdown_toggle {
+	height: 3.8rem;
+	background-color: $hsl_orange;
+	border-radius: 0.6rem;
+}
+ul.badge_checklist li div.dropdown_toggle span {
+	font-size: 1.5rem;
+	line-height: 3.8rem;
+	color: $hsl_cream;
+}
+ul.badge_checklist li div.dropdown_toggle svg {
+	top: 1.2rem;
+	fill: $hsl_cream;
+}
+// + dropdown list + \\
+ul.badge_checklist li div.wrap_dropdown,
+ul.badge_checklist li div.wrap_dropdown ul,
+ul.badge_checklist li div.wrap_dropdown.scrollable,
+ul.badge_checklist li div.wrap_dropdown span.fix_ios-scroll {
+	background-color: $hsl_L21; // be sure there is no chance ios rubber band will show a difference background
+}
+ul.badge_checklist li div.wrap_dropdown {
+	border-radius: 0.6rem;
+}
+ul.badge_checklist li div.wrap_dropdown ul {
+	padding-top: 0;
+}
+ul.badge_checklist li div.wrap_dropdown ul li a {
+	font-size: 1.5rem;
+	color: $hsl_cream;
+}
+// + dropdown scrollable + \\
+ul.badge_checklist li div.wrap_dropdown.scrollable {
+	height: 22.8rem; // dropdown_label height (38px) x 6
+}
+ul.badge_checklist li div.wrap_dropdown span.fix_ios-scroll { // required only get to iOS to behave
+	top: 3.8rem;
+	border-radius: 0 0 0.6rem 0.6rem;
+	// -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); // required in order to get iOS Chrome to mask the overflow!
+}
+// + interaction + \\
+ul.badge_checklist li div.wrap_dropdown ul li a:hover {
+	background-color: $hsl_L34;
+}
+ul.badge_checklist li div.wrap_dropdown ul li a:active {
+	background-color: $hsl_L40;
+}
+// + select specific + \\
+ul.badge_checklist li div.wrap_select[data-selected=""] div.dropdown_toggle span {
+	color: $hsl_cream;
+}
+ul.badge_checklist li div.wrap_select div.wrap_dropdown ul li.selected a {
+	color: $hsl_orange;
+}
+ul.badge_checklist li div.wrap_select select:focus + div.dropdown_toggle {
+	box-shadow: none;
+}
+ul.badge_checklist li div.wrap_select:hover div.dropdown_toggle {
+	background-color: $hsl_L21;
+}
+ul.badge_checklist li div.wrap_select:active div.dropdown_toggle {
+	background-color: $hsl_L40;
+}
+// + hide / show dropdown + \\
+ul.badge_checklist li div.toggle_show div.dropdown_toggle {
+	border-radius: 0.6rem 0.6rem 0 0;
+}
 
 // ==|== common sections ======================================================
 // ============================================================================
@@ -1999,81 +2246,7 @@ body.home main form.form_quote.allow-overflow {
 body.page-template-tpl-quote-php section.page_header {
 	background-position: bottom center;
 }
-
-// --- Nav Steps --- \\
-nav.nav_steps {
-	padding-top: 1.6rem;
-	padding-bottom: 1.6rem;
-	text-align: center;
-	background-color: $hsl_orange;
-}
-nav.nav_steps ol li {
-	display: inline-block;
-	margin-right: 1.6rem;
-	font-size: 1.2rem; // 1.7rem;
-	letter-spacing: 0.1rem;
-	text-transform: uppercase;
-}
-nav.nav_steps ol li:last-child {
-	margin-right: 0;
-}
-nav.nav_steps ol li a {
-	position: relative;
-	color: $hsl_cream;
-}
-main[data-step="1"] ol li:nth-child(n+2) a,
-main[data-step="2"] ol li:nth-child(n+3) a,
-main[data-step="3"] ol li:nth-child(n+4) a,
-main[data-step="4"] ol li:nth-child(n+5) a {
-	pointer-events: none;
-	color: $hsl_orange-D;
-}
-nav.nav_steps ol li a:hover {
-	color: $hsl_orange-D;
-}
-nav.nav_steps ol li a:active {
-	color: darken($hsl_orange, 20%);
-}
-/*
-// + numbered list + \\
-nav.nav_steps ol {
-	counter-reset: ordered-counter;
-}
-nav.nav_steps ol li a {
-	position: relative;
-}
-nav.nav_steps ol li a::before {
-	content: counter(ordered-counter, decimal) ". ";
-	counter-increment: ordered-counter;
-}
-*/
-
-
-
-
-
-main[data-step="1"] section.page_articles article h2 {
-	letter-spacing: 0;
-	text-transform: none;
-}
-
-
-
-
-
-
-
-
-
-article.quote_options p.notice {
-	margin-bottom: 4.8rem;
-	padding: 0 2rem;
-	font-size: 1.3rem;
-	font-style: italic;
-	text-align: center;
-	color: $hsl_L7;
-}
-article.quote_options div.error_message {
+article.quote_choose div.error_message {
 	margin: 0 auto;
 	max-width: 36rem;
 	max-height: 0rem;
@@ -2081,7 +2254,7 @@ article.quote_options div.error_message {
 	overflow: hidden;
 	transform: translateY(-2.4rem) scale(0.8);
 }
-article.quote_options div.error_message p {
+article.quote_choose div.error_message p {
 	display: block;
 	margin-bottom: 3.2rem;
 	padding: 1rem;
@@ -2092,87 +2265,86 @@ article.quote_options div.error_message p {
 	background-color: $hsl_red;
 	border-radius: 0.8rem;
 }
-section.error_quote article.quote_options div.error_message {
+section.error_quote article.quote_choose div.error_message {
 	max-height: 10rem;
 	opacity: 1;
 	transform: translateY(0rem) scale(1);
 }
-// --- Quote Badges --- \\
-ul.quote_badges li div.badge_header {
-	text-align: left;
+
+// --- Nav Steps --- \\
+nav.nav_steps {
+	padding-top: 1.6rem;
+	padding-bottom: 1.6rem;
+	text-align: center;
+	background-color: $hsl_orange;
 }
-ul.quote_badges li div.badge_header h6 {
-	font-size: 1.5rem;
-	letter-spacing: 0.1rem;
-}
-ul.quote_badges li div.badge_header div.wrap_svg {
-	position: absolute;
-	top: 1.2rem;
-	right: 1.6rem;
-}
-ul.quote_badges li div.badge_body h3 {
+nav.nav_steps ol li {
 	display: inline-block;
 	position: relative;
-	margin-bottom: 3.2rem;
-	font-size: 6rem;
-	letter-spacing: -0.4rem;
-}
-ul.quote_badges li div.badge_body h3 span.currency {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: -4rem;
-	font-size: 1.4rem;
-	letter-spacing: 0;
+	margin-right: 1.6rem;
+	font-size: 1.2rem;
+	// font-weight: 700; // does not look right?
+	letter-spacing: 0.1rem;
 	text-transform: uppercase;
+	color: $hsl_orange-D;
 }
-ul.quote_badges li div.badge_body a.btn_rnd {
-	width: 17.4rem;
+nav.nav_steps ol li:last-child {
+	margin-right: 0;
 }
-ul.quote_badges li div.badge_body a.btn_rnd span.txt_select {
-	padding-left: 2.4rem;
+main[data-step="1"] ol li:nth-child(1),
+main[data-step="2"] ol li:nth-child(2),
+main[data-step="3"] ol li:nth-child(3),
+main[data-step="4"] ol li:nth-child(4) {
+	color: $hsl_cream;
 }
-ul.quote_badges li div.badge_body a.btn_rnd span.txt_select span.txt_ed {
-	opacity: 0;
+
+// --- Steps --- \\
+main[data-step="1"] section.page_articles article h2,
+main[data-step="2"] section.page_articles article h2,
+main[data-step="3"] section.page_articles article h2 {
+	margin-bottom: 4.8rem;
+	letter-spacing: 0;
+	line-height: 1.4;
+	text-transform: none;
 }
-// + selected + \\
-ul.quote_badges li.selected div.badge_body a.btn_rnd span.txt_select {
-	padding-left: 0rem;
-}
-ul.quote_badges li.selected div.badge_body a.btn_rnd span.txt_select span.txt_ed {
-	opacity: 1;
-}
-// + individual svgs + \\
-ul.quote_badges li.badge_single div.badge_header div.wrap_svg {
-	width: 2.6rem; // iOS requires a explicit width
-}
-ul.quote_badges li.badge_annual div.badge_header div.wrap_svg {
-	width: 4.4rem; // iOS requires a explicit width
+main[data-step="1"] section.page_articles article h2 br,
+main[data-step="2"] section.page_articles article h2 br {
+	display: none;
 }
 // --- Details Captured --- \\
 div.details_captured {
-	padding: 3.2rem;
-	border: 0.2rem solid $hsl_ash;
+	border: 0.2rem solid $hsl_L58;
+	border-radius: 1rem;
 }
-div.details_captured ul {
-	margin-bottom: 4.8rem;
+div.details_captured div.list_wrap,
+div.details_captured div.details_actions {
+	padding: 2rem; // 3.2rem;
+}
+div.details_captured div.list_wrap ul {
 	text-align: center;
 }
-div.details_captured ul li {
+div.details_captured div.list_wrap ul li {
 	margin-bottom: 2rem;
 	font-size: 1.4rem;
 }
-div.details_captured ul li:last-child {
+div.details_captured ul.list_right li:last-child {
 	margin-bottom: 0;
 }
-div.details_captured ul li strong,
-div.details_captured ul li span {
+div.details_captured div.list_wrap ul li strong,
+div.details_captured div.list_wrap ul li span {
 	display: block;
 }
-div.details_captured ul li strong {
+div.details_captured div.list_wrap ul li strong {
 	margin-bottom: 0.6rem;
 	font-weight: 400;
 	text-transform: uppercase;
+	color: $hsl_orange;
+}
+div.details_captured div.list_wrap ul li.list_start-end span:first-of-type {
+	margin-bottom: 2rem;
+}
+div.details_captured div.details_actions {
+	border-top: 0.2rem solid $hsl_L58;
 }
 // --- Quote Details --- \\
 div.accordian {
@@ -2369,15 +2541,102 @@ form.form_required span.wrap_checkbox input[type="checkbox"]:focus + label::befo
 	background-color: transparent;
 }
 
-
-
-
-
-
-
-
-
-
+// Coverage Modal
+// ----------------------------------------------------------------------------
+aside.modal_coverage::after {
+	content: "";
+	display: block;
+	position: fixed;
+	z-index: 999;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 3.2rem;
+	background: linear-gradient(to top, hsla(0,0%,15%,1) 0%, hsla(0,0%,15%,1) 40%, hsla(0,0%,15%,0) 100%);
+}
+aside.modal_coverage div.modal_header {
+	position: fixed;
+	z-index: 101;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding-top: 2rem;
+	padding-bottom: 2.6rem;
+	background-color: $hsl_L15;
+	background: linear-gradient(to bottom, hsla(0,0%,15%,1) 0%, hsla(0,0%,15%,1) 80%, hsla(0,0%,15%,0) 100%);
+}
+aside.modal_coverage div.modal_header h2 {
+	font-size: 1.6rem;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $hsl_cream;
+}
+aside.modal_coverage div.modal_header a.modal_close {
+	position: absolute;
+	top: 1.7rem;
+	right: 1.6rem;
+	width: 2rem;
+}
+aside.modal_coverage div.modal_header a.modal_close svg {
+	fill: $hsl_orange;
+}
+aside.modal_coverage div.modal_header a.modal_close:hover svg {
+	fill: $hsl_cream;
+}
+aside.modal_coverage div.modal_header a.modal_close:active svg {
+	fill: darken($hsl_cream, 20%);
+}
+// + coverage modal content + \\
+aside.modal_coverage div.modal_content {
+	padding: 7.2rem 1.6rem 3.2rem 1.6rem;
+}
+aside.modal_coverage div.modal_content h4,
+aside.modal_coverage div.modal_content h5 {
+	margin-bottom: 1.6rem;
+	font-size: 1.6rem;
+	color: $hsl_orange;
+}
+aside.modal_coverage div.modal_content h4 {
+	text-transform: uppercase;
+}
+aside.modal_coverage div.modal_content p + h4,
+aside.modal_coverage div.modal_content p + h5,
+aside.modal_coverage div.modal_content ul + h4,
+aside.modal_coverage div.modal_content ul + h5 {
+	margin-top: 3.2rem;
+}
+aside.modal_coverage div.modal_content p,
+aside.modal_coverage div.modal_content ul li {
+	margin-bottom: 1.6rem;
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	font-size: 1.5rem;
+	line-height: 1.4;
+	color: $hsl_cream;
+}
+aside.modal_coverage div.modal_content ul li {
+	position: relative;
+	z-index: 100;
+	padding-left: 2rem;
+	line-height: 1.2;
+}
+aside.modal_coverage div.modal_content ul li::before {
+	content: "\2022"; // bullet
+	position: absolute;
+	top: -0.2rem;
+	left: 0rem;
+}
+aside.modal_coverage div.modal_content a {
+	font-weight: 700;
+	color: $hsl_orange;
+}
+aside.modal_coverage div.modal_content a:hover {
+	color: hsla(0,0%,80%,1);
+}
+aside.modal_coverage div.modal_content a:active {
+	color: hsla(0,0%,60%,1);
+}
 
 // Thanks
 // ----------------------------------------------------------------------------
@@ -2517,22 +2776,22 @@ div.form_response.fail div.response_fail {
 
 // Packages
 // ----------------------------------------------------------------------------
-ul.packages_badges li div.badge_header p.option_letter {
+ul.packages_badges li.badge div.badge_header p.option_letter {
 	position: absolute;
 	top: 1.6rem;
 	left: 1.6rem;
 	font-size: 2.2rem;
 }
-ul.packages_badges li div.badge_header h6 {
+ul.packages_badges li.badge div.badge_header h6 {
 	font-size: 1.6rem;
 	font-style: italic;
 	letter-spacing: 0.3rem;
 	line-height: 1.2;
 }
-ul.packages_badges li div.badge_header div.wrap_svg {
+ul.packages_badges li.badge div.badge_header div.wrap_svg {
 	margin: 0 auto 1.6rem auto;
 }
-ul.packages_badges li div.badge_body p {
+ul.packages_badges li.badge div.badge_body p {
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 1.5rem;

@@ -199,66 +199,11 @@
 
 					.tooltip
 						.wrap_svg
-							%svg.ui_help{:viewBox => "0 0 64 64"}
-								%use{"xlink:href" => "#ui_help"}
+							%svg.ui_question{:viewBox => "0 0 64 64"}
+								%use{"xlink:href" => "#ui_question"}
 						%p Get reimbursed for airfare if you can't make your trip.
 
-					#wrap_select-cancellation.wrap_select{"data-selected" => ""}
-
-						%select#select_cancellation{:name => "select_cancellation", :required => true, :tabindex => "-1"}
-							%option{:disabled => true, :selected => true, :value => true} select an option
-							%option{:value => "3000"} $3,000
-							%option{:value => "4000"} $4,000
-							%option{:value => "5000"} $5,000
-							%option{:value => "6000"} $6,000
-							%option{:value => "7000"} $7,000
-							%option{:value => "8000"} $8,000
-							%option{:value => "9000"} $9,000
-							%option{:value => "10000"} $10,000
-							%option{:value => "11000"} $11,000
-							%option{:value => "12000"} $12,000
-							%option{:value => "13000"} $13,000
-							%option{:value => "14000"} $14,000
-							%option{:value => "15000"} $15,000
-
-						.dropdown_toggle
-							%span.dropdown_placeholder.truncate Select cancellation amount
-							%svg.ui_arrow{:viewBox => "0 0 64 64"}
-								%use{"xlink:href" => "#ui_arrow"}
-
-						-# if UL > LI.length >= 6: add class "scrollable"
-						.wrap_dropdown.scrollable
-
-							-# if UL > LI.length >= 6: output <span>
-							%span.fix_ios-scroll
-
-								%ul.dropdown_list
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "3000"} $3,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "4000"} $4,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "5000"} $5,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "6000"} $6,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "7000"} $7,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "8000"} $8,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "9000"} $9,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "10000"} $10,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "11000"} $11,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "12000"} $12,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "13000"} $13,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "14000"} $14,000
-									%li.dropdown_option
-										%a.dropdown_link.truncate{:href => "#", "data-value" => "15000"} $15,000
+					= Haml::Engine.new(File.read("dev/haml/partials/_form_select-cancel.haml")).render
 
 				.column.col-5
 

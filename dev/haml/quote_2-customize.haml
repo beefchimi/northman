@@ -1,0 +1,111 @@
+!!!
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html{:lang => "en"}<>
+	<!--<![endif]-->
+
+	= Haml::Engine.new(File.read("dev/haml/partials/_doc_head.haml")).render
+
+	%body#quote.page-template-tpl-quote-php
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
+
+		-# 'data-step' changes based on current STEP
+		%main{:role => "main", "data-step" => "2"}
+
+			= Haml::Engine.new(File.read("dev/haml/partials/_quote_nav-steps.haml")).render
+
+			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
+
+				-# article class + content changes based on current STEP
+				%article.quote_customize
+
+					-# :action and :method will need to be configured by Matt
+					%form#form_quote-step2{:action => "", :method => "", "data-container" => "width_868"}
+
+						:plain
+							<h2>Add or remove coverage options from your plan.<br> The price will be adjusted automatically.</h2>
+
+						#custom_badge.badge.badge_standard.badge_single{"data-container" => "width_660"}
+
+							.badge_header
+
+								%h6 Single Trip
+								.wrap_svg
+									%svg.svg_inline.ui_globe{:viewBox => "0 0 64 64"}
+										%use{"xlink:href" => "#ui_globe"}
+
+							.badge_body
+
+								%h3 $135.15
+
+							.badge_options
+
+								%ul.badge_checklist
+
+									%li.checklist_medical
+
+										%span.wrap_checkmark.checkmark_medical
+											.wrap_svg
+												%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_checkmark"}
+											%span.txt_label Emergency Medical Coverage (included)
+
+										.tooltip
+											.wrap_svg
+												%svg.ui_question{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_question"}
+											%p You're protected in case of injury or illness.
+
+									%li.checklist_baggage
+
+										%span.wrap_checkbox.checkbox_baggage
+											%input#check_baggage.check_baggage.visuallyhidden{:type => "checkbox", :name => "baggage", :value => "check_baggage", :tabindex => "-1"}
+											%label{:for => "check_baggage"}
+												Baggage Coverage
+												%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_checkmark"}
+
+										.tooltip
+											.wrap_svg
+												%svg.ui_question{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_question"}
+											%p Get coverage for lost or stolen luggage.
+
+									%li.checklist_cancellation
+
+										%span.wrap_checkbox.checkbox_cancellation
+											%input#check_cancellation.check_cancellation.visuallyhidden{:type => "checkbox", :name => "cancellation", :value => "check_cancellation", :tabindex => "-1"}
+											%label{:for => "check_cancellation"}
+												Trip Cancellation
+												%svg.ui_checkmark{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_checkmark"}
+
+										= Haml::Engine.new(File.read("dev/haml/partials/_form_select-cancel.haml")).render
+
+										.tooltip
+											.wrap_svg
+												%svg.ui_question{:viewBox => "0 0 64 64"}
+													%use{"xlink:href" => "#ui_question"}
+											%p You won’t be left out of pocket.
+
+								%a.btn_rnd.brd_ash.modal_open{:href => "#modal_coverage", :title => "Coverage Options"}
+									%span.txt_desktop Click to see a detailed description of our
+									%span.txt_mobile coverage options
+
+						.wrap_buttons
+							%a.btn_rnd.brd_orange{:href => "quote_1-choose.html", :title => "Go Back"} Go Back
+							%button#submit_customize.btn_rnd.brd_green{:type => "submit"} Continue
+
+		%aside#modal_coverage.modal_coverage.modal{"data-modal" => "inactive"}
+
+			.modal_header
+				%h2 Coverage Options
+				%a#close_coverage.close_coverage.wrap_svg.modal_close{:href => "#modal_coverage", :title => "Close"}
+					%svg.ui_cancel{:viewBox => "0 0 64 64"}
+						%use{"xlink:href" => "#ui_cancel"}
+
+			.modal_content
+				= Haml::Engine.new(File.read("dev/haml/partials/_quote_details-single.haml")).render
+
+		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

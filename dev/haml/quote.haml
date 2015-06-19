@@ -24,7 +24,7 @@
 
 			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
 
-				%article.quote_options
+				%article.quote_choose
 
 					%div.clearfix{"data-container" => "width_868"}
 
@@ -44,31 +44,11 @@
 								-# #quote_title-2 = "Annual Membership"
 								-# price is ???
 
-							%li#quote_badge-1.badge.badge_single
+							%li#quote_badge-1.badge.badge_standard.badge_annual
 
 								.badge_header
 
-									%h6#quote_title-1 Single Trip
-									.wrap_svg
-										%svg.svg_inline.ui_globe{:viewBox => "0 0 64 64"}
-											%use{"xlink:href" => "#ui_globe"}
-
-								.badge_body
-
-									%h3
-										$135.15
-										%span.currency can
-
-									:plain
-										<a href="#" class="btn_rnd brd_blank" title="Select">
-											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
-										</a>
-
-							%li#quote_badge-2.badge.badge_annual
-
-								.badge_header
-
-									%h6#quote_title-2 Annual Membership
+									%h6#quote_title-1 Annual Membership
 									.wrap_svg
 										%svg.svg_inline.ui_globe-double{:viewBox => "0 0 64 38"}
 											%use{"xlink:href" => "#ui_globe-double"}
@@ -84,7 +64,27 @@
 											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
 										</a>
 
-						%p.notice * Annual Membership does not include baggage insurance.
+								%p.notice * Annual Membership does not include baggage insurance.
+
+							%li#quote_badge-2.badge.badge_standard.badge_single
+
+								.badge_header
+
+									%h6#quote_title-2 Single Trip
+									.wrap_svg
+										%svg.svg_inline.ui_globe{:viewBox => "0 0 64 64"}
+											%use{"xlink:href" => "#ui_globe"}
+
+								.badge_body
+
+									%h3
+										$135.15
+										%span.currency can
+
+									:plain
+										<a href="#" class="btn_rnd brd_blank" title="Select">
+											<span class="txt_select">Select<span class="txt_ed">ed</span></span>
+										</a>
 
 						.details_captured.clearfix
 
@@ -120,8 +120,8 @@
 
 					%div{"data-container" => "width_868"}
 
-						= Haml::Engine.new(File.read("dev/haml/partials/_quote_details-single.haml")).render
-						-# = Haml::Engine.new(File.read("dev/haml/partials/_quote_details-annual.haml")).render
+						= Haml::Engine.new(File.read("dev/haml/partials/_quote_accordian-single.haml")).render
+						-# = Haml::Engine.new(File.read("dev/haml/partials/_quote_accordian-annual.haml")).render
 
 						%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "Full Coverage List"} Full Coverage List
 

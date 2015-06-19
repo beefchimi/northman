@@ -1,0 +1,42 @@
+#wrap_select-cancellation.wrap_select{"data-selected" => ""}
+
+	%select#select_cancellation{:name => "select_cancellation", :required => true, :tabindex => "-1"}
+		%option{:disabled => true, :selected => true, :value => true} select an option
+		%option{:value => "3000"} $3,000
+		%option{:value => "4000"} $4,000
+		%option{:value => "5000"} $5,000
+		%option{:value => "6000"} $6,000
+		%option{:value => "7000"} $7,000
+		%option{:value => "8000"} $8,000
+		%option{:value => "9000"} $9,000
+		%option{:value => "10000"} $10,000
+
+	.dropdown_toggle
+		-#  Select cancellation amount
+		%span.dropdown_placeholder.truncate Up to $10,000
+		%svg.ui_arrow{:viewBox => "0 0 64 64"}
+			%use{"xlink:href" => "#ui_arrow"}
+
+	-# if UL > LI.length >= 6: add class "scrollable"
+	.wrap_dropdown.scrollable
+
+		-# if UL > LI.length >= 6: output <span>
+		%span.fix_ios-scroll
+
+			%ul.dropdown_list
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "3000"} $3,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "4000"} $4,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "5000"} $5,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "6000"} $6,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "7000"} $7,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "8000"} $8,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "9000"} $9,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "10000"} $10,000
