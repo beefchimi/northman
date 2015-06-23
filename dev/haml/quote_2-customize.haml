@@ -87,11 +87,12 @@
 											.wrap_svg
 												%svg.ui_question{:viewBox => "0 0 64 64"}
 													%use{"xlink:href" => "#ui_question"}
-											%p You won’t be left out of pocket.
+											%p Get reimbursed for airfare if you can't make your trip.
 
 								%a.btn_rnd.brd_ash.modal_open{:href => "#modal_coverage", :title => "Coverage Options"}
-									%span.txt_desktop Click to see a detailed description of our
-									%span.txt_mobile coverage options
+									:plain
+										<span class="txt_desktop">Click to see a detailed description of our </span>
+										<span class="txt_mobile">coverage options</span>
 
 						.wrap_buttons
 							%a.btn_rnd.brd_orange{:href => "quote_1-choose.html", :title => "Go Back"} Go Back

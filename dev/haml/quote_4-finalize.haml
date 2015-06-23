@@ -11,27 +11,39 @@
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_header.haml")).render
 
 		-# 'data-step' changes based on current STEP
-		%main{:role => "main", "data-step" => "3"}
+		%main{:role => "main", "data-step" => "4"}
 
 			= Haml::Engine.new(File.read("dev/haml/partials/_quote_nav-steps.haml")).render
 
 			%section#quote_articles.page_articles.internal_articles{"data-container" => "width-padding_1440"}
 
 				-# article class + content changes based on current STEP
-				%article.quote_review
+				%article.quote_finalize
 
-					-# :action and :method will need to be configured by Matt
-					%div{"data-container" => "width_868"}
+					%div.quote_summary{"data-container" => "width_868"}
 
-						:plain
-							<h2>Review or edit the details of your adventure.</h2>
+						%h2 Quote Summary
 
-						= Haml::Engine.new(File.read("dev/haml/partials/_quote_details-captured.haml")).render
+						%table
 
-						.wrap_buttons
-							%a.btn_rnd.brd_orange{:href => "quote_2-customize.html", :title => "Go Back"} Go Back
-							%button#submit_customize.btn_rnd.brd_green{:type => "submit"} Continue
+							%tbody
 
-		= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-modal.haml")).render
+								%tr
+									%td#policy-name Northman Single Trip / Non-Family
+									%td#policy-premium $135.00
+
+								%tr
+									%td Adventure &amp; Sport Package
+									%td#policy-fee $18.00
+
+								%tr
+									%td HST
+									%td#policy-tax $2.00
+
+								%tr
+									%td Total (CAN)
+									%td#policy-total $153.00
+
+					= Haml::Engine.new(File.read("dev/haml/partials/_form_quote-required.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

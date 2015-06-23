@@ -1385,12 +1385,14 @@ document.addEventListener('DOMContentLoaded', function() {
 		masterAmount = singleTotal * 100;
 */
 
+/*
 		$('#required_email').blur(function() {
 
 			// console.log("Blur event on email fired and val is " + $(this).val());
 			email = $(this).val();
 
 		});
+*/
 
 	}
 

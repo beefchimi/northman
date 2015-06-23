@@ -1,0 +1,36 @@
+.details_captured{"data-container" => "width_660"}
+
+	.list_wrap.clearfix
+
+		%ul.list_left
+			%li.list_prov
+				%strong.details_label Province of Residence:
+				%span#details_province.details_province.details_data Ontario
+			%li.list_start-end
+				%strong.details_label Start Date:
+				%span#details_start-date.details_start-date.details_data Nov 6, 2015
+				%strong.details_label End Date:
+				%span#details_end-date.details_end-date.details_data Nov 11, 2015
+			%li.list_booked
+				%strong.details_label Date trip was booked:
+				%span#details_booked-date.details_booked-date.details_data Nov 2, 2015
+			%li.list_family
+				%strong.details_label Family:
+				%span#details_family.details_family.details_data Yes
+
+		%ul.list_right
+			%li.list_age
+				%strong.details_label Age(s):
+				%span#details_age.details_age.details_data 18, 19, 34, 41
+			%li.list_covered
+				%strong.details_label Covered For:
+				%span#covered_for.details_covered.details_data 35 days
+			%li.list_cancel
+				%strong.details_label Trip Cancellation:
+				%span#details_cancellation.details_cancellation.details_data $3,000
+			%li.list_delay
+				%strong.details_label Trip Delay:
+				%span#details_delay.details_delay.details_data $25,000
+
+	.details_actions
+		%a.btn_rnd.brd_orange.modal_open{:href => "#modal_quote", :title => "Edit Details"} Edit Details

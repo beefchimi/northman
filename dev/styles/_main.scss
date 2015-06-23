@@ -1191,13 +1191,16 @@ ul.badge_checklist > li div.tooltip p {
 	color: $hsl_L34;
 }
 // + badge wrap buttons + \\
-body.page-template-tpl-quote-php div.wrap_buttons {
+body.page-template-tpl-quote-php div.wrap_buttons,
+body.page-template-tpl-quotesteps-php div.wrap_buttons {
 	margin-top: 3.2rem;
 }
-body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd {
+body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd,
+body.page-template-tpl-quotesteps-php div.wrap_buttons .btn_rnd {
 	width: 17.2rem;
 }
-body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd.brd_orange {
+body.page-template-tpl-quote-php div.wrap_buttons .btn_rnd.brd_orange,
+body.page-template-tpl-quotesteps-php div.wrap_buttons .btn_rnd.brd_orange {
 	margin-bottom: 1.6rem;
 }
 // --- Badge Dropdown --- \\
@@ -1217,6 +1220,13 @@ ul.badge_checklist li div.dropdown_toggle span {
 	line-height: 3.8rem;
 	color: $hsl_cream;
 }
+
+
+ul.badge_checklist li div.dropdown_toggle span::before {
+	content: "Up to ";
+}
+
+
 ul.badge_checklist li div.dropdown_toggle svg {
 	top: 1.2rem;
 	fill: $hsl_cream;
@@ -2243,7 +2253,8 @@ body.home main form.form_quote.allow-overflow {
 
 // Get A Quote
 // ----------------------------------------------------------------------------
-body.page-template-tpl-quote-php section.page_header {
+body.page-template-tpl-quote-php section.page_header,
+body.page-template-tpl-quotesteps-php section.page_header {
 	background-position: bottom center;
 }
 article.quote_choose div.error_message {
@@ -2447,16 +2458,20 @@ a.accordian_toggle:active div.wrap_svg svg {
 	opacity: 1;
 }
 // --- Quote Summary --- \\
-article.quote_summary table tbody tr td:first-child {
+div.quote_summary {
+	margin-bottom: 4rem;
+}
+.quote_summary table tbody tr td:first-child {
 	width: 70%;
 	text-align: left;
 }
-article.quote_summary table tbody tr td:last-child {
+.quote_summary table tbody tr td:last-child {
 	width: 30%;
 	text-align: right;
 }
-article.quote_summary table tbody tr:last-child td {
-	font-size: 1.6rem;
+.quote_summary table tbody tr:last-child td:last-child {
+	font-size: 1.8rem;
+	color: $hsl_green;
 }
 // --- Quote Required --- \\
 form.form_required label {
@@ -2488,9 +2503,11 @@ form.form_required div.wrap_input div.wrap_element input[type="text"] {
 form.form_required div.wrap_input div.wrap_element input[type="text"]:focus {
 	box-shadow: inset 0 0 0 0.2rem $hsl_L40;
 }
+/*
 form.form_required button {
 	min-width: 22rem;
 }
+*/
 // + required: birthday + \\
 form.form_required div.wrap_input div.wrap_element.required_birthday {
 	position: relative;

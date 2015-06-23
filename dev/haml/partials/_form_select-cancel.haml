@@ -1,7 +1,9 @@
 #wrap_select-cancellation.wrap_select{"data-selected" => ""}
 
 	%select#select_cancellation{:name => "select_cancellation", :required => true, :tabindex => "-1"}
-		%option{:disabled => true, :selected => true, :value => true} select an option
+		-# %option{:disabled => true, :selected => true, :value => true} select an option
+		%option{:value => "1000", :selected => true} $1,000
+		%option{:value => "2000"} $2,000
 		%option{:value => "3000"} $3,000
 		%option{:value => "4000"} $4,000
 		%option{:value => "5000"} $5,000
@@ -13,7 +15,7 @@
 
 	.dropdown_toggle
 		-#  Select cancellation amount
-		%span.dropdown_placeholder.truncate Up to $10,000
+		%span.dropdown_placeholder.truncate $1,000
 		%svg.ui_arrow{:viewBox => "0 0 64 64"}
 			%use{"xlink:href" => "#ui_arrow"}
 
@@ -24,6 +26,10 @@
 		%span.fix_ios-scroll
 
 			%ul.dropdown_list
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "1000"} $1,000
+				%li.dropdown_option
+					%a.dropdown_link.truncate{:href => "#", "data-value" => "2000"} $2,000
 				%li.dropdown_option
 					%a.dropdown_link.truncate{:href => "#", "data-value" => "3000"} $3,000
 				%li.dropdown_option

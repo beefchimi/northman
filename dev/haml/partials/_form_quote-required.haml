@@ -1,11 +1,17 @@
-%form#form_required.form_required
+-# :action and :method will need to be configured by Matt
+%form#form_required.form_required{:action => "", :method => "", "data-container" => "width_868"}
+
+	%h2 Required Information
+
+	%input{:type => "hidden", :name => "st", :value => "b"}
+	%input#hidden-annual{:type => "hidden", :name => "annual", :value => "0"}
 
 	.wrap_input.required_traveller.clearfix
 
-		%label Traveller 1
+		%label Traveller 1 (Cardholder)
 
 		.wrap_element.required_birthday
-			%input.datepicker{:type => "text", :name => "dob[0]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
+			%input.datepicker.readonly{:type => "text", :name => "dob[0]", :value => "", :placeholder => "Birthday", :required => true, :readonly => true, "data-provide" => "datepicker", "data-date-format" => "yyyy-mm-dd", "data-date-autoclose" => "true", "data-date-start-view" => "decade"}
 			%svg.ui_calendar{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_calendar"}
 
@@ -15,8 +21,8 @@
 		.wrap_element.required_lname
 			%input.lname{:type => "text", :name => "lname[0]", :value => "", :placeholder => "Last Name", :required => true}
 
-		.wrap_element.required_beneficiary
-			%input.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", :required => true}
+		.wrap_element.required_email
+			%input.email{:type => "text", :name => "email[0]", :value => "", :placeholder => "Email Address", "data-validation" => "required", :required => true}
 
 	.wrap_input.required_traveller.clearfix
 
@@ -33,8 +39,8 @@
 		.wrap_element.required_lname
 			%input.lname{:type => "text", :name => "lname[1]", :value => "", :placeholder => "Last Name", :required => true}
 
-		.wrap_element.required_beneficiary
-			%input.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", :required => true}
+		.wrap_element.required_email
+			%input.email{:type => "text", :name => "email[1]", :value => "", :placeholder => "Email Address", "data-validation" => "required", :required => true}
 
 	.wrap_input.required_details.clearfix
 
@@ -54,14 +60,6 @@
 			%label{:for => "required_telephone"} Telephone
 			%input#required_telephone.telephone{:type => "text", :name => "telephone", :value => "", :placeholder => "(XXX) XXX-XXXX", :required => true}
 
-		.wrap_element.required_beneficiary.matt
-			%label{:for => "beneficiary"} Accidental Death Beneficiary
-			%input#required_beneficiary.beneficiary{:type => "text", :name => "beneficiary", :value => "", :placeholder => "Full Name of Beneficiary", "data-validation" => "required", :required => true}
-
-		.wrap_element.required_email.matt
-			%label{:for => "email"} Email
-			%input#required_email.email{:type => "text", :name => "email", :value => "", :placeholder => "Your Email Address", "data-validation" => "required", :required => true}
-
 	%span.wrap_checkbox
 		%input#required_read.required_read.visuallyhidden{:type => "checkbox", :name => "read", :value => "read", :tabindex => "-1", :required => true}
 		%label{:for => "required_read"}
@@ -73,6 +71,6 @@
 			%svg.ui_checkmark{:viewBox => "0 0 64 64"}
 				%use{"xlink:href" => "#ui_checkmark"}
 
-	-# currently using e.preventDefault() on this button if no quote selection
-	-# also relying on "title" attribute to retrieve default "Buy Now" string
-	%button#required_submit.btn_rnd.brd_green{:type => "submit"} Buy Now
+	.wrap_buttons
+		%a.btn_rnd.brd_orange{:href => "quote_3-review.html", :title => "Go Back"} Go Back
+		%button#submit_finalize.btn_rnd.fill_green{:type => "submit"} Pay Now
