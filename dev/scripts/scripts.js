@@ -1352,6 +1352,131 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	// Mailchimp Form Functions
+	// ----------------------------------------------------------------------------
+	function formMailchimp() {
+
+		var $elOrigin = $('#mce-ORIGIN');
+
+		// exit the function if element does not exist
+		if ( $elOrigin.length <= 0 ) {
+			return;
+		}
+
+		var strCookieString = $elOrigin.attr('value');
+
+		// exit function if cookie is already set
+		if ( Cookies.get(strCookieString) ) {
+			return;
+		}
+
+		var emailFilter     = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i,
+			$elModal        = $('#modal_discount'),
+			$elForm         = $('#mc-embedded-subscribe-form'),
+			$elInputEmail   = $('#mce-EMAIL'),
+			$elResponseText = $('#mce_response-text'),
+			$elCloseButton  = $('#cancel_discount'),
+			isValid         = true;
+
+		function validateEmail() {
+
+			// email input validation
+			if ( emailFilter.test( $elInputEmail.val() ) == false ) {
+				$elInputEmail.addClass('error');
+				isValid = false;
+			} else {
+				isValid = true;
+			}
+
+		}
+
+		$elForm.submit(function(e) {
+
+			if ($elInputEmail.val().length > 0) {
+
+				// we may have added an error class... so let's go ahead and remove it
+				$elInputEmail.removeClass('error');
+
+				validateEmail();
+
+				if (isValid) {
+
+					$.ajax({
+
+						type: 'GET',
+						url:  $(this).attr('action'),
+						data: $(this).serialize(),
+						dataType: 'json',
+						contentType: 'application/json; charset=utf-8',
+						error: function(jqXHR, textStatus, errorThrown) {
+
+							$elResponseText.html(data.msg);
+							$elModal.addClass('mce_fail');
+
+						},
+
+						success: function(data) {
+
+							$elResponseText.html(data.msg);
+							$elModal.addClass('mce_success');
+							$elForm[0].reset();
+
+						}
+
+					});
+
+				}
+
+			} else {
+
+				$elInputEmail.addClass('error');
+
+			}
+
+			return false;
+
+		});
+
+		// hide signup modal on click outside of signup article
+		$elCloseButton.on('click', function(e) {
+
+			destroyOverlay();
+			$elModal.attr('data-modal', 'inactive');
+
+			e.preventDefault();
+
+		});
+
+		$(document).click(function(event) {
+
+			if ( !$(event.target).closest($elModal).length ) {
+
+				if ( $elModal.attr('data-modal') == 'active' ) {
+
+					// once we have found the desired parent element, hide that modal (copied from closeModal)
+					$elModal.attr('data-modal', 'inactive');
+					destroyOverlay();
+
+				}
+
+			}
+
+		});
+
+		// wait 9 seconds before displaying modal
+		setTimeout(function() {
+
+			// set the cookie
+			Cookies.set(strCookieString, 'visted');
+
+			createOverlay(false, 'modal');
+			$elModal.attr('data-modal', 'active');
+
+		}, 9000);
+
+	}
+
+
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
 	pageLoaded();
@@ -1397,6 +1522,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	if (elBody.id === 'home') {
+
+		formMailchimp();
 
 		$('age-groups').blur(function() {
 

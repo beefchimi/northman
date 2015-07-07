@@ -66,6 +66,7 @@ form.form_quote div.error_message {
 article.quote_choose div.error_message {
 	transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
+div.mce_response,
 div.badge_body a.btn_rnd span.txt_select span.txt_ed {
 	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
@@ -437,7 +438,8 @@ div.tooltip div.wrap_svg svg {
 // Forms
 // ----------------------------------------------------------------------------
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="email"] {
 	padding: 0 4rem 0 1.6rem;
 	width: 100%;
 	height: 4.8rem;
@@ -449,15 +451,18 @@ input[type="date"] {
 }
 // + interaction + \\
 input[type="text"]:focus,
-input[type="date"]:focus {
+input[type="date"]:focus,
+input[type="email"]:focus {
 	box-shadow: inset 0 0 0 0.1rem $hsl_orange;
 }
 input[type="text"]:hover,
-input[type="date"]:hover {
+input[type="date"]:hover,
+input[type="email"]:hover {
 	background-color: darken($hsl_cream, 10%);
 }
 input[type="text"]:focus:hover,
-input[type="date"]:focus:hover {
+input[type="date"]:focus:hover,
+input[type="email"]:focus:hover {
 	background-color: $hsl_cream;
 }
 // --- Checkbox --- \\
@@ -1397,7 +1402,8 @@ nav.nav_primary div.social_links a {
 	color: $hsl_cream;
 }
 nav.nav_primary div.social_links a.social_call,
-nav.nav_primary div.social_links a.social_facebook {
+nav.nav_primary div.social_links a.social_facebook,
+nav.nav_primary div.social_links a.social_twitter {
 	margin-right: 3.2rem;
 }
 nav.nav_primary div.social_links a.social_call span.phone {
@@ -1421,7 +1427,7 @@ nav.nav_primary div.social_links a:active svg {
 }
 // --- Toggled: Mobile Nav --- \\
 body.toggled_mobile-nav nav.nav_primary {
-	max-height: 32rem;
+	max-height: 40rem;
 }
 body.toggled_mobile-nav a.nav_toggle div.wrap_menu span.one {
 	top: 0.9rem;
@@ -2249,6 +2255,86 @@ body.home main form.form_quote.reveal {
 }
 body.home main form.form_quote.allow-overflow {
 	overflow-y: visible;
+}
+// --- Discount Modal --- \\
+aside.modal_discount div.modal_body {
+	padding: 4.8rem 1.6rem 0 1.6rem;
+}
+aside.modal_discount div.modal_body div.wrap_svg {
+	margin: 0 auto 3.2rem auto;
+	width: 6.4rem;
+}
+aside.modal_discount div.modal_body div.wrap_svg svg {
+	fill: $hsl_orange;
+}
+aside.modal_discount div.modal_body h6 {
+	margin-bottom: 3.2rem;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+	line-height: 1.2;
+	text-align: center;
+	color: $hsl_cream;
+}
+aside.modal_discount div.modal_body a.cancel_discount {
+	position: absolute;
+	z-index: 2;
+	top: 1.6rem;
+	right: 1.6rem;
+	padding: 1rem;
+	width: 3.8rem;
+}
+aside.modal_discount div.modal_body a.cancel_discount svg {
+	fill: $hsl_cream;
+}
+form.form_discount div.wrap_inputs {
+	margin: 0 auto 2rem auto;
+	max-width: 47.2rem;
+}
+form.form_discount div.wrap_inputs input[type="email"].error {
+	color: $hsl_red;
+	box-shadow: inset 0 0 0 0.1rem $hsl_red;
+}
+// + interaction + \\
+aside.modal_discount div.modal_body a.cancel_discount:hover svg {
+	fill: $hsl_orange;
+}
+aside.modal_discount div.modal_body a.cancel_discount:active svg {
+	fill: darken($hsl_orange, 10%);
+}
+// + response + \\
+div.mce_response {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: $hsl_L15;
+	opacity: 0;
+	visibility: hidden;
+}
+div.mce_response div.wrap_outer {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+div.mce_response div.wrap_outer div.wrap_inner {
+	display: table-cell;
+	vertical-align: middle;
+}
+div.mce_response div.wrap_outer div.wrap_inner h4.mce_response-text {
+	padding: 0 1.6rem;
+	font-size: 2rem;
+	letter-spacing: 0.1rem;
+	line-height: 1.2;
+	text-align: center;
+	color: $hsl_cream;
+}
+aside.modal_discount.mce_fail div.mce_response,
+aside.modal_discount.mce_success div.mce_response {
+	opacity: 1;
+	visibility: visible;
 }
 
 // Get A Quote

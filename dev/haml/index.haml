@@ -88,6 +88,7 @@
 
 						%a.btn_rnd.brd_orange{:href => "coverage.html", :title => "What We Cover"} What We Cover
 
-					-# = Haml::Engine.new(File.read("dev/haml/partials/_home_original.haml")).render
+		-# toggled on / off through CMS
+		= Haml::Engine.new(File.read("dev/haml/partials/_home_discount-modal.haml")).render
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

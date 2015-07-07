@@ -720,6 +720,50 @@
 	form.form_required div.wrap_input div.wrap_element.required_lname {
 		float: right;
 	}
+	// --- Discount Modal --- \\
+	aside.modal_discount {
+		width: 74rem;
+		max-height: 32.8rem;
+	}
+	aside.modal_discount div.modal_body {
+		padding: 4.8rem 4.2rem 0 4.2rem;
+	}
+	aside.modal_discount div.modal_body div.wrap_svg {
+		margin-bottom: 4.2rem;
+	}
+	aside.modal_discount div.modal_body h6 {
+		margin-bottom: 4.2rem;
+		font-size: 1.8rem;
+	}
+	aside.modal_discount div.modal_body a.cancel_discount {
+		top: 2rem;
+		right: 3.8rem;
+	}
+	form.form_discount div.wrap_inputs,
+	form.form_discount input[type="submit"] {
+		float: left;
+	}
+	form.form_discount div.wrap_inputs {
+		margin: 0 2rem 0 0;
+		max-width: none;
+		width: calc(75% - 2rem);
+	}
+	form.form_discount div.wrap_inputs input[type="email"],
+	form.form_discount input[type="submit"] {
+		height: 6.4rem;
+		font-size: 1.8rem;
+	}
+	form.form_discount div.wrap_inputs input[type="email"] {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+	form.form_discount input[type="submit"] {
+		width: 25%;
+	}
+	// + response + \\
+	div.mce_response div.wrap_outer div.wrap_inner h4.mce_response-text {
+		padding: 0 4.2rem;
+	}
 
 	// Get A Quote
 	// ----------------------------------------------------------------------------
@@ -849,6 +893,12 @@
 		padding-top: 8.8rem;
 	}
 
+	// Transitions
+	// ----------------------------------------------------------------------------
+	nav.nav_primary div.social_links a.social_call span.phone {
+		transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	}
+
 	// Badges
 	// ----------------------------------------------------------------------------
 	// + badge header + \\
@@ -924,7 +974,7 @@
 		box-shadow: 0rem 0.1rem 0.2rem hsla(0,0%,0%,0.2);
 	}
 	header div[data-container] {
-		padding: 2.8rem 3.2rem 0 3.2rem;
+		padding: 3.8rem 3.2rem 0 3.2rem;
 		min-height: 8.8rem;
 	}
 	// --- Wordmark --- \\
@@ -947,9 +997,9 @@
 		padding-right: 1.5rem;
 	}
 	nav.nav_primary ul {
-		display: inline-block;
-		margin-right: 3.2rem;
-		padding: 0;
+		// display: inline-block;
+		// margin-right: 3.2rem;
+		padding: 0 18rem 0 0;
 	}
 	nav.nav_primary ul li {
 		display: inline-block;
@@ -971,60 +1021,73 @@
 	}
 	// + social links + \\
 	nav.nav_primary div.social_links {
-		display: inline-block;
+		// display: inline-block;
+		position: absolute;
+		top: 2.6rem;
+		right: 3.2rem;
 		padding-bottom: 0;
 		text-align: right;
 		transform: translateY(0.6rem);
 	}
 	nav.nav_primary div.social_links a {
-		width: 2.2rem;
-		height: 2.2rem;
+		padding: 0.4rem;
+		width: 3rem; // 2.2rem;
+		height: 3rem; // 2.2rem;
 	}
 	nav.nav_primary div.social_links a.social_call {
-		margin-right: 1.2rem;
+		margin-right: 0.4rem;
 	}
-	nav.nav_primary div.social_links a.social_facebook {
-		margin-right: 1.4rem;
+	nav.nav_primary div.social_links a.social_facebook,
+	nav.nav_primary div.social_links a.social_twitter {
+		margin-right: 0.6rem;
 	}
 	nav.nav_primary div.social_links a svg {
 		fill: darken($hsl_ash, 10%);
 	}
 	nav.nav_primary div.social_links a.social_call {
 		position: relative;
-		overflow: hidden;
 	}
 	nav.nav_primary div.social_links a.social_call span.phone {
 		display: block;
 		position: absolute;
-		top: 0.1rem;
-		right: 3.2rem;
-		width: 12rem;
+		top: 3.8rem;
+		left: 50%;
+		margin-left: -0.4rem; // compensate for margin-right of icon
+		transform: translateX(-50%);
+		padding: 0.8rem 1.4rem;
 		font-size: 1.4rem;
+		color: $hsl_cream;
+		background-color: $hsl_orange;
 		white-space: nowrap;
+		opacity: 0;
+		visibility: hidden;
 	}
-	nav.nav_primary div.social_links a.social_call svg {
+	nav.nav_primary div.social_links a.social_call span.phone::before {
+		content: '';
+		display: block;
 		position: absolute;
-		top: 0;
-		right: 0;
-		width: 2.2rem;
+		top: -2.4rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		height: 0;
+		border-left: 1.2rem solid transparent;
+		border-right: 1.2rem solid transparent;
+		border-bottom: 1.2rem solid $hsl_orange;
+		border-top: 1.2rem solid transparent;
 	}
 	// + interaction + \\
-	nav.nav_primary div.social_links a.social_facebook:hover svg,
-	nav.nav_primary div.social_links a.social_twitter:hover svg {
-		fill: $hsl_L21;
-	}
-	nav.nav_primary div.social_links a.social_call:hover {
-		width: 15rem;
-	}
 	nav.nav_primary div.social_links a.social_call:hover span.phone {
+		top: 5.6rem;
 		opacity: 1;
+		visibility: visible;
 	}
 	nav.nav_primary div.social_links a.social_call:hover svg {
 		fill: $hsl_orange;
 	}
-	nav.nav_primary div.social_links a.social_facebook:active svg,
-	nav.nav_primary div.social_links a.social_twitter:active svg {
-		fill: $hsl_L40;
+	nav.nav_primary div.social_links a.social_call:active span.phone {
+		top: 4.8rem;
+		opacity: 0.9;
 	}
 	nav.nav_primary div.social_links a.social_call:active svg {
 		fill: lighten($hsl_orange, 10%);

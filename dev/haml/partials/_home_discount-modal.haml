@@ -1,0 +1,33 @@
+%aside#modal_discount.modal_discount.modal{"data-modal" => "inactive"}
+
+	.modal_body
+
+		.wrap_svg
+			%svg.ui_envelope{:viewBox => "0 0 64 64"}
+				%use{"xlink:href" => "#ui_envelope"}
+
+		-# added via CMS
+		%h6 Sign up and receive a discount on your next purchase!
+
+		%form#mc-embedded-subscribe-form.form_discount.validate{:action => "//northman.us9.list-manage.com/subscribe/post-json?u=83bb440596cc17fe903cfdb39&amp;id=b02e7c813a&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :target => "_blank", :novalidate => true}
+
+			.clearfix
+
+				-# origin value added via CMS
+				.wrap_inputs
+					%input#mce-EMAIL.mce_email.mce_required{:type => "email", :value => "", :name => "EMAIL", :placeholder => "Enter e-mail"}
+					%input#mce-ORIGIN.mce_hidden{:type => "hidden", :value => "origin", :name => "ORIGIN", :tabindex => "-1"}
+
+				#do-not-remove.visuallyhidden
+					%input{:type => "text", :name => "b_83bb440596cc17fe903cfdb39_b02e7c813a", :value => "", :tabindex => "-1"}
+
+				%input#mc-embedded-subscribe.btn_rnd.fill_orange{:type => "submit", :value => "Send", :name => "subscribe"}
+
+		#mce_response.mce_response
+			.wrap_outer
+				.wrap_inner
+					%h4#mce_response-text.mce_response-text Congratulations! All will be revealed to you in time. For now, take peace and have rest!
+
+		%a#cancel_discount.cancel_discount.wrap_svg.modal_close{:href => "#modal_discount", :title => "Close"}
+			%svg.ui_cancel{:viewBox => "0 0 64 64"}
+				%use{"xlink:href" => "#ui_cancel"}
